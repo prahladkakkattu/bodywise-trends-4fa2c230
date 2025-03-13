@@ -4,7 +4,7 @@ export type BodyMeasurement = {
   waist: number;
   hips: number;
   shoulders?: number;
-  height?: number;
+  height: number;  // Changed from optional to required
 };
 
 export type BodyType = 'hourglass' | 'pear' | 'apple' | 'rectangle' | 'inverted-triangle' | 'unknown';

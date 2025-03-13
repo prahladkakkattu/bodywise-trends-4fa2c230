@@ -2,38 +2,49 @@
 import { BodyMeasurement, BodyType } from "@/types";
 
 export function determineBodyType(measurements: BodyMeasurement): BodyType {
-  const { bust, waist, hips, shoulders } = measurements;
+  const { bust, waist, hips, shoulders, height } = measurements;
   
-  // Calculate differences between measurements
-  const bustHipDifference = Math.abs(bust - hips);
-  const bustWaistRatio = bust / waist;
-  const hipWaistRatio = hips / waist;
+  // Calculate ratios for body type determination
+  const shoulderToHipRatio = shoulders ? shoulders / hips : 0;
+  const hipToShoulderRatio = shoulders ? hips / shoulders : 0;
+  const waistToHipRatio = waist / hips;
+  const shoulderToBustRatio = shoulders && bust ? shoulders / bust : 0;
+  const bustToWaistRatio = bust / waist;
+  const waistToHeightRatio = height ? waist / height : 0;
   
-  // Simplified body type determination logic
+  // Determine body type based on provided logic table
   
-  // Hourglass: bust and hips are similar, with a significantly smaller waist
-  if (bustHipDifference <= 2 && bustWaistRatio >= 1.25 && hipWaistRatio >= 1.25) {
-    return 'hourglass';
-  }
-  
-  // Pear: hips are larger than bust, with a defined waist
-  if (hips > bust && hipWaistRatio >= 1.25) {
-    return 'pear';
-  }
-  
-  // Apple: bust is larger than hips, waist is less defined
-  if (bust > hips && bustWaistRatio < 1.25) {
-    return 'apple';
-  }
-  
-  // Inverted triangle: shoulders/bust are wider than hips
-  if (shoulders && shoulders > hips && bust > hips) {
+  // Inverted Triangle: Shoulder to Hip ratio is highest
+  if (shoulderToHipRatio >= 1.05 && shoulderToHipRatio > hipToShoulderRatio) {
     return 'inverted-triangle';
   }
   
-  // Rectangle: relatively straight up and down
-  if (bustHipDifference < 3.6 && bustWaistRatio < 1.25 && hipWaistRatio < 1.25) {
+  // Triangle/Pear: Hip to Shoulder ratio is highest
+  if (hipToShoulderRatio >= 1.05 && hipToShoulderRatio > shoulderToHipRatio) {
+    return 'pear';
+  }
+  
+  // Rectangle: All ratios are close to 1 (or 0.8 for Waist to Hip)
+  if (
+    Math.abs(shoulderToHipRatio - 1) < 0.1 && 
+    Math.abs(bustToWaistRatio - 1) < 0.1 && 
+    Math.abs(waistToHipRatio - 0.8) < 0.1
+  ) {
     return 'rectangle';
+  }
+  
+  // Hourglass: Waist to Hip ratio is low, Shoulder and Bust ratios are similar and higher than Waist
+  if (
+    waistToHipRatio < 0.75 && 
+    Math.abs(shoulderToBustRatio - 1) < 0.1 && 
+    bustToWaistRatio > 1.25
+  ) {
+    return 'hourglass';
+  }
+  
+  // Apple: Waist to Hip ratio > 0.85 and Waist to Height ratio > 0.48
+  if (waistToHipRatio > 0.85 && height && waistToHeightRatio > 0.48) {
+    return 'apple';
   }
   
   // Fall back to unknown if none of the conditions match
