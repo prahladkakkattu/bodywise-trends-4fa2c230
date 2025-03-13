@@ -77,7 +77,7 @@ export function getBodyTypeStyleTips(bodyType: BodyType): string[] {
       return [
         'Empire waistlines create definition above your midsection',
         'V-necks and scoop necks draw the eye upward',
-        'Flowy tops that don't cling to the midsection',
+        "Flowy tops that don't cling to the midsection",
         'Straight or wide-leg pants elongate your lower half'
       ];
     case 'rectangle':
