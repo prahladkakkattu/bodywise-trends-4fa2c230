@@ -41,7 +41,9 @@ const ProductRecommendations = ({ bodyType }: ProductRecommendationsProps) => {
   
   return (
     <div className="w-full space-y-6">
-      <h2 className="text-2xl font-semibold text-center">Recommended for Your Body Type</h2>
+      <h2 className="text-2xl font-semibold text-center">
+        <span className="text-brand-600">Recommended</span> <span className="text-brand-300">for Your Body Type</span>
+      </h2>
       
       <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="w-full">
         <div className="flex justify-center mb-6">

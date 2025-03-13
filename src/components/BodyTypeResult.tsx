@@ -32,8 +32,8 @@ const BodyTypeResult = ({ bodyType }: BodyTypeResultProps) => {
   
   return (
     <Card className="w-full p-6 shadow-md bg-brand-100/50">
-      <h2 className="text-2xl font-semibold text-center mb-2 text-brand-500">
-        Your Body Type: <span className="font-bold">{formattedBodyType}</span>
+      <h2 className="text-2xl font-semibold text-center mb-2">
+        <span className="text-brand-600">Your Body Type:</span> <span className="text-brand-300 font-bold">{formattedBodyType}</span>
       </h2>
       
       <p className="text-center text-muted-foreground mb-6">

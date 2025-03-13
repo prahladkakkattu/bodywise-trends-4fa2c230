@@ -8,7 +8,10 @@ const Navbar = () => {
     <nav className="w-full py-4 bg-white/90 backdrop-blur-sm shadow-sm fixed top-0 z-50">
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-bold text-xl text-brand-500">StyleMyFit</span>
+          <span className="font-bold text-xl">
+            <span className="text-brand-600">STYLEMY</span>
+            <span className="text-brand-300">FIT</span>
+          </span>
         </Link>
         
         <div className="flex items-center gap-4">

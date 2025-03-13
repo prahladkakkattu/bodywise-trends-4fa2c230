@@ -40,7 +40,9 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     <Card className="w-full max-w-xl p-6 shadow-md">
       <div className="flex items-center gap-2 mb-6">
         <Ruler className="h-5 w-5 text-brand-300" />
-        <h2 className="text-2xl font-semibold text-brand-500">Your Measurements</h2>
+        <h2 className="text-2xl font-semibold">
+          <span className="text-brand-600">Your</span> <span className="text-brand-300">Measurements</span>
+        </h2>
       </div>
       
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -136,7 +138,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           </div>
         </div>
         
-        <Button type="submit" className="w-full bg-brand-300 hover:bg-brand-400" disabled={isLoading}>
+        <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading ? "Analyzing..." : "Find My Style"}
         </Button>
         

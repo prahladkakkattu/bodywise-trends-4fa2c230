@@ -37,7 +37,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       
       <CardFooter className="flex justify-between pt-0 pb-4">
         <div className="font-semibold">${product.price.toFixed(2)}</div>
-        <Button size="sm" className="bg-brand-300 hover:bg-brand-400">
+        <Button size="sm">
           Add to Cart
         </Button>
       </CardFooter>

@@ -1,11 +1,10 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 260 60% 99%;
+    --background: 0 0% 100%;
     --foreground: 240 10% 20%;
 
     --card: 0 0% 100%;
@@ -14,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 20%;
 
-    --primary: 255 80% 75%;
+    --primary: 24 94% 53%; /* Orange (F97316) */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 240 5% 96%;
@@ -23,7 +22,7 @@
     --muted: 240 5% 96%;
     --muted-foreground: 240 5% 45%;
 
-    --accent: 255 80% 95%;
+    --accent: 24 100% 93%; /* Light orange */
     --accent-foreground: 240 10% 20%;
 
     --destructive: 0 84.2% 60.2%;
@@ -31,7 +30,7 @@
 
     --border: 240 5% 90%;
     --input: 240 5% 90%;
-    --ring: 255 80% 75%;
+    --ring: 24 94% 53%; /* Orange */
 
     --radius: 0.75rem;
   }
@@ -46,7 +45,7 @@
     --popover: 240 10% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 255 80% 75%;
+    --primary: 24 94% 53%; /* Orange (F97316) */
     --primary-foreground: 240 10% 10%;
 
     --secondary: 240 5% 20%;
@@ -55,7 +54,7 @@
     --muted: 240 5% 20%;
     --muted-foreground: 240 5% 65%;
 
-    --accent: 240 5% 20%;
+    --accent: 24 80% 30%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -63,7 +62,7 @@
 
     --border: 240 5% 20%;
     --input: 240 5% 20%;
-    --ring: 255 80% 75%;
+    --ring: 24 94% 53%; /* Orange */
   }
 }
 
