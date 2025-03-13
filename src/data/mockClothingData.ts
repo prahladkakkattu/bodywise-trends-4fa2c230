@@ -44,13 +44,13 @@ export const clothingItems: ClothingItem[] = [
   },
   {
     id: "dress-1",
-    name: "Wrap Midi Dress",
+    name: "Minimalist Black Dress",
     type: "dresses",
-    imageUrl: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1383&auto=format&fit=crop",
-    description: "A classic wrap dress that flatters all body types by cinching at the waist.",
-    price: 79.99,
+    imageUrl: "/lovable-uploads/c40251e8-a434-4b1a-90b1-b7bad31b3e06.png",
+    description: "An elegant black dress with a distinctive neckline, perfect for any formal occasion.",
+    price: 89.99,
     bodyTypes: ["hourglass", "pear", "apple", "rectangle"],
-    brand: "StyleMyFit"
+    brand: "StyleMyFit Premium"
   },
   {
     id: "dress-2",

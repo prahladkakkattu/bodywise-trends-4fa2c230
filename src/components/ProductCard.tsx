@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ClothingItem } from "@/types";
 import { Heart } from "lucide-react";
@@ -9,6 +10,12 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+  
   return (
     <Card className="overflow-hidden transition-all duration-300 hover:shadow-md">
       <div className="relative aspect-square overflow-hidden bg-muted">
@@ -21,8 +28,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
           variant="ghost" 
           size="icon" 
           className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white"
+          onClick={toggleFavorite}
         >
-          <Heart className="h-4 w-4" />
+          <Heart className={`h-4 w-4 ${isFavorite ? "fill-red-500 text-red-500" : ""}`} />
           <span className="sr-only">Add to favorites</span>
         </Button>
       </div>
