@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ClothingItem } from "@/types";
-import { Heart } from "lucide-react";
+import { Heart, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
@@ -14,6 +14,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
   
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+  };
+  
+  const handleGoToSeller = () => {
+    window.open("https://www.juju.ie/", "_blank");
   };
   
   return (
@@ -45,8 +49,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
       
       <CardFooter className="flex justify-between pt-0 pb-4">
         <div className="font-semibold">${product.price.toFixed(2)}</div>
-        <Button size="sm">
-          Add to Cart
+        <Button size="sm" onClick={handleGoToSeller}>
+          Go to seller website
+          <ExternalLink className="h-4 w-4 ml-2" />
         </Button>
       </CardFooter>
     </Card>

@@ -4,21 +4,21 @@ import { ClothingItem } from "@/types";
 export const clothingItems: ClothingItem[] = [
   {
     id: "top-1",
-    name: "V-Neck Wrap Blouse",
+    name: "Cream Turtleneck Sweater",
     type: "tops",
-    imageUrl: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=1470&auto=format&fit=crop",
-    description: "A flattering wrap blouse that accentuates the waist and creates a balanced silhouette.",
-    price: 49.99,
+    imageUrl: "/lovable-uploads/8533b7f4-b8a3-426f-9586-957df87bb1cb.png",
+    description: "A comfortable turtleneck sweater in cream that's perfect for layering in colder weather.",
+    price: 59.99,
     bodyTypes: ["hourglass", "pear", "apple"],
     brand: "StyleMyFit"
   },
   {
     id: "top-2",
-    name: "Structured Peplum Top",
+    name: "Black Blouse with Puff Sleeves",
     type: "tops",
-    imageUrl: "https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?q=80&w=1470&auto=format&fit=crop",
-    description: "A structured top with peplum detail to create definition at the waist.",
-    price: 39.99,
+    imageUrl: "/lovable-uploads/64644141-5070-4b59-8e13-671f62edfc7e.png",
+    description: "An elegant black blouse with stylish puff sleeves for a sophisticated look.",
+    price: 49.99,
     bodyTypes: ["rectangle", "inverted-triangle"],
     brand: "StyleMyFit"
   },
@@ -44,10 +44,10 @@ export const clothingItems: ClothingItem[] = [
   },
   {
     id: "dress-1",
-    name: "Minimalist Black Dress",
+    name: "Black Minimalist Dress",
     type: "dresses",
-    imageUrl: "/lovable-uploads/c40251e8-a434-4b1a-90b1-b7bad31b3e06.png",
-    description: "An elegant black dress with a distinctive neckline, perfect for any formal occasion.",
+    imageUrl: "/lovable-uploads/eb7dc452-17a8-4f28-b10d-5d5581fc0d20.png",
+    description: "A versatile black dress with a modern minimalist cut, perfect for any occasion.",
     price: 89.99,
     bodyTypes: ["hourglass", "pear", "apple", "rectangle"],
     brand: "StyleMyFit Premium"
@@ -64,11 +64,11 @@ export const clothingItems: ClothingItem[] = [
   },
   {
     id: "outerwear-1",
-    name: "Tailored Blazer",
+    name: "Light Gray Minimalist Jacket",
     type: "outerwear",
-    imageUrl: "https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?q=80&w=1631&auto=format&fit=crop",
-    description: "A structured blazer that adds definition and creates a polished look.",
-    price: 89.99,
+    imageUrl: "/lovable-uploads/5b7a49a9-cbee-4976-a7fb-49ea06de02de.png",
+    description: "A structured minimal jacket in light gray that adds sophistication to any outfit.",
+    price: 99.99,
     bodyTypes: ["rectangle", "apple", "hourglass"],
     brand: "StyleMyFit"
   },
