@@ -50,7 +50,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <CardFooter className="flex justify-between pt-0 pb-4">
         <div className="font-semibold">${product.price.toFixed(2)}</div>
         <Button size="sm" onClick={handleGoToSeller}>
-          Go to seller website
+          Go to JuJu
           <ExternalLink className="h-4 w-4 ml-2" />
         </Button>
       </CardFooter>
