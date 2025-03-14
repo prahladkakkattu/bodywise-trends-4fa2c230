@@ -23,26 +23,6 @@ export const clothingItems: ClothingItem[] = [
     brand: "StyleMyFit"
   },
   {
-    id: "bottom-1",
-    name: "High-Waisted Wide Leg Pants",
-    type: "bottoms",
-    imageUrl: "/lovable-uploads/8a30a19d-72a0-45b7-99a7-81535ac84122.png",
-    description: "Flattering high-waisted pants with a wide leg to balance proportions.",
-    price: 59.99,
-    bodyTypes: ["hourglass", "pear", "inverted-triangle"],
-    brand: "StyleMyFit"
-  },
-  {
-    id: "bottom-2",
-    name: "A-Line Midi Skirt",
-    type: "bottoms",
-    imageUrl: "/lovable-uploads/8a30a19d-72a0-45b7-99a7-81535ac84122.png",
-    description: "A versatile A-line skirt that flatters the lower body and creates balance.",
-    price: 45.99,
-    bodyTypes: ["pear", "apple", "inverted-triangle"],
-    brand: "StyleMyFit"
-  },
-  {
     id: "dress-1",
     name: "Black Minimalist Dress",
     type: "dresses",
