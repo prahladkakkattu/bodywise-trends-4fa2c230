@@ -1,4 +1,3 @@
-
 import { ClothingItem, BodyType } from "@/types";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,7 +17,7 @@ const clothingData: ClothingItem[] = [
     id: uuidv4(),
     name: "CASHMERE JUMPER",
     type: "tops",
-    imageUrl: "/lovable-uploads/ab1983e3-e854-4cb7-b63b-59c868e324dc.png",
+    imageUrl: "/lovable-uploads/c40251e8-a434-4b1a-90b1-b7bad31b3e06.png",
     description: "Relaxed fit jumper made of premium cashmere",
     price: 364,
     bodyTypes: ["apple", "inverted-triangle", "rectangle"],
@@ -28,7 +27,7 @@ const clothingData: ClothingItem[] = [
     id: uuidv4(),
     name: "VINCE COLLARLESS JACKET",
     type: "outerwear",
-    imageUrl: "/lovable-uploads/ab1983e3-e854-4cb7-b63b-59c868e324dc.png",
+    imageUrl: "/lovable-uploads/5b7a49a9-cbee-4976-a7fb-49ea06de02de.png",
     description: "Wool and nylon blend collarless jacket",
     price: 660,
     bodyTypes: ["hourglass", "pear", "rectangle", "inverted-triangle"],
@@ -38,7 +37,7 @@ const clothingData: ClothingItem[] = [
     id: uuidv4(),
     name: "STUDIO NICHOLSON ENNA",
     type: "dresses",
-    imageUrl: "/lovable-uploads/ab1983e3-e854-4cb7-b63b-59c868e324dc.png",
+    imageUrl: "/lovable-uploads/64644141-5070-4b59-8e13-671f62edfc7e.png",
     description: "V neckline elegant dress with modern silhouette",
     price: 558,
     bodyTypes: ["hourglass", "apple", "rectangle"],
