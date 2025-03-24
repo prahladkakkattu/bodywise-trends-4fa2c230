@@ -1,11 +1,14 @@
+
 import { Button } from "@/components/ui/button";
 import { Heart, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return <nav className="w-full py-4 bg-white/90 backdrop-blur-sm shadow-sm fixed top-0 z-50">
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img alt="STYLEMYFIT" className="h-8" src="/lovable-uploads/8a30a19d-72a0-45b7-99a7-81535ac84122.png" />
+          <span className="font-bold text-brand-600 text-lg hidden sm:inline-block">StyleMyFit</span>
         </Link>
         
         <div className="flex items-center gap-4">
