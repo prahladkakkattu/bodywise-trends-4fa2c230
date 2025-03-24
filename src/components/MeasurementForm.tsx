@@ -143,7 +143,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
         </Button>
         
         <p className="text-xs text-center text-muted-foreground">
-          Your measurements are only used to determine your body type and are never stored.
+          Your measurements are only used to determine your body shape and are never stored.
         </p>
       </form>
     </Card>

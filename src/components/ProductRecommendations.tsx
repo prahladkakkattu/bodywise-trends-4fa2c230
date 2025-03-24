@@ -33,7 +33,7 @@ const ProductRecommendations = ({ bodyType }: ProductRecommendationsProps) => {
         <p className="text-muted-foreground">
           {bodyType === "unknown" 
             ? "Please provide your measurements to get personalized recommendations."
-            : "No recommendations found for this body type. Try adjusting your measurements."}
+            : "No recommendations found for this body shape. Try adjusting your measurements."}
         </p>
       </div>
     );
@@ -42,7 +42,7 @@ const ProductRecommendations = ({ bodyType }: ProductRecommendationsProps) => {
   return (
     <div className="w-full space-y-6">
       <h2 className="text-2xl font-semibold text-center">
-        <span className="text-brand-600">Recommended</span> <span className="text-brand-300">for Your Body Type</span>
+        <span className="text-brand-600">Recommended</span> <span className="text-brand-300">for Your Body Shape</span>
       </h2>
       
       <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -65,7 +65,7 @@ const ProductRecommendations = ({ bodyType }: ProductRecommendationsProps) => {
           
           {filterByType(activeTab).length === 0 && (
             <p className="text-center py-8 text-muted-foreground">
-              No items found in this category for your body type.
+              No items found in this category for your body shape.
             </p>
           )}
         </TabsContent>

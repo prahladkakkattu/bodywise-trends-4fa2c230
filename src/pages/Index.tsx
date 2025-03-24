@@ -34,7 +34,7 @@ const Index = () => {
       
       if (newBodyType !== "unknown") {
         toast({
-          title: "Body Type Analysis Complete",
+          title: "Body Shape Analysis Complete",
           description: `We've analyzed your measurements and found personalized recommendations.`,
           duration: 5000,
         });
@@ -127,7 +127,7 @@ const Index = () => {
                 ) : (
                   <div className="h-full flex items-center justify-center p-6 bg-muted/20 rounded-lg border border-dashed">
                     <p className="text-muted-foreground text-center">
-                      Enter your measurements to discover your body type and get personalized style recommendations.
+                      Enter your measurements to discover your body shape and get personalized style recommendations.
                     </p>
                   </div>
                 )}
@@ -175,14 +175,14 @@ const Index = () => {
               
               <div className="p-4">
                 <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">2</div>
-                <h3 className="font-medium mb-2">Discover Your Body Type</h3>
+                <h3 className="font-medium mb-2">Discover Your Body Shape</h3>
                 <p className="text-sm text-muted-foreground">Our algorithm identifies your body shape and provides styling tips.</p>
               </div>
               
               <div className="p-4">
                 <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">3</div>
                 <h3 className="font-medium mb-2">Get Personalized Recommendations</h3>
-                <p className="text-sm text-muted-foreground">Browse clothing options specially curated for your body type.</p>
+                <p className="text-sm text-muted-foreground">Browse clothing options specially curated for your body shape.</p>
               </div>
             </div>
           </section>
@@ -194,7 +194,7 @@ const Index = () => {
           <div className="text-center">
             <h3 className="font-bold text-xl text-brand-500 mb-2">StyleMyFit</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Personalized fashion recommendations based on your unique body type.
+              Personalized fashion recommendations based on your unique body shape.
             </p>
             <div className="flex justify-center space-x-6 mb-4">
               <a href="#" className="text-sm text-muted-foreground hover:text-brand-300 transition-colors">FAQ</a>

@@ -4,7 +4,7 @@ import { BodyMeasurement, BodyType } from "@/types";
 export function determineBodyType(measurements: BodyMeasurement): BodyType {
   const { bust, waist, hips, shoulders, height } = measurements;
   
-  // Calculate ratios for body type determination
+  // Calculate ratios for body shape determination
   const shoulderToHipRatio = shoulders ? shoulders / hips : 0;
   const hipToShoulderRatio = shoulders ? hips / shoulders : 0;
   const waistToHipRatio = waist / hips;
@@ -12,7 +12,7 @@ export function determineBodyType(measurements: BodyMeasurement): BodyType {
   const bustToWaistRatio = bust / waist;
   const waistToHeightRatio = height ? waist / height : 0;
   
-  // Determine body type based on provided logic table
+  // Determine body shape based on provided logic table
   
   // Inverted Triangle: Shoulder to Hip ratio is highest
   if (shoulderToHipRatio >= 1.05 && shoulderToHipRatio > hipToShoulderRatio) {
@@ -64,7 +64,7 @@ export function getBodyTypeDescription(bodyType: BodyType): string {
     case 'inverted-triangle':
       return 'Your shoulders and bust are wider than your hips. Your upper body tends to be more prominent than your lower body.';
     default:
-      return 'We need more information to determine your body type accurately.';
+      return 'We need more information to determine your body shape accurately.';
   }
 }
 
