@@ -8,7 +8,6 @@ const Navbar = () => {
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img alt="STYLEMYFIT" className="h-8" src="/lovable-uploads/8a30a19d-72a0-45b7-99a7-81535ac84122.png" />
-          <span className="font-bold text-brand-600 text-lg hidden sm:inline-block">StyleMyFit</span>
         </Link>
         
         <div className="flex items-center gap-4">
