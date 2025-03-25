@@ -8,15 +8,22 @@ import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { ChevronsRight, Ruler, ShirtIcon, Tally4, Sparkles } from "lucide-react";
+import { BodyType } from "@/types";
+import { useToast } from "@/components/ui/use-toast";
 
 interface AlternativeSizingOptionsProps {
   onProceedToMeasurements: () => void;
+  onBodyTypeSelected: (bodyType: BodyType) => void;
 }
 
 type SizingMethod = "estimation" | "standardSize" | "intuitive";
 
-const AlternativeSizingOptions = ({ onProceedToMeasurements }: AlternativeSizingOptionsProps) => {
+const AlternativeSizingOptions = ({ 
+  onProceedToMeasurements, 
+  onBodyTypeSelected 
+}: AlternativeSizingOptionsProps) => {
   const [selectedMethod, setSelectedMethod] = useState<SizingMethod | null>(null);
+  const { toast } = useToast();
   
   const form = useForm({
     defaultValues: {
@@ -30,9 +37,74 @@ const AlternativeSizingOptions = ({ onProceedToMeasurements }: AlternativeSizing
   });
   
   const handleProceed = () => {
-    // Here you could do something with the alternative sizing data
-    // For now, we'll just proceed to the measurements step
-    onProceedToMeasurements();
+    if (!selectedMethod) {
+      toast({
+        title: "Selection Required",
+        description: "Please select a sizing method before continuing.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    const values = form.getValues();
+    
+    let estimatedBodyType: BodyType = "rectangle";
+    
+    if (selectedMethod === "estimation") {
+      const height = parseFloat(values.height);
+      const weight = parseFloat(values.weight);
+      
+      if (height && weight) {
+        if (weight / (height * height) < 0.0018) {
+          estimatedBodyType = "rectangle";
+        } else if (height > 65 && weight < 150) {
+          estimatedBodyType = "inverted-triangle";
+        } else {
+          estimatedBodyType = "hourglass";
+        }
+      }
+    } else if (selectedMethod === "standardSize") {
+      const size = values.standardSize;
+      
+      switch (size) {
+        case "xs":
+        case "s":
+          estimatedBodyType = "rectangle";
+          break;
+        case "m":
+          estimatedBodyType = "hourglass";
+          break;
+        case "l":
+        case "xl":
+        case "xxl":
+          estimatedBodyType = "pear";
+          break;
+        default:
+          estimatedBodyType = "rectangle";
+      }
+    } else if (selectedMethod === "intuitive") {
+      const shirtFit = values.shirtFit;
+      const pantsFit = values.pantsFit;
+      
+      if (shirtFit === "tight" && pantsFit === "tight-hips") {
+        estimatedBodyType = "hourglass";
+      } else if (shirtFit === "tight" && pantsFit === "just-right") {
+        estimatedBodyType = "inverted-triangle";
+      } else if (shirtFit === "just-right" && pantsFit === "tight-hips") {
+        estimatedBodyType = "pear";
+      } else if (shirtFit === "loose" && pantsFit === "tight-waist") {
+        estimatedBodyType = "apple";
+      } else {
+        estimatedBodyType = "rectangle";
+      }
+    }
+    
+    toast({
+      title: "Size Estimation Complete",
+      description: "We've analyzed your information and found personalized recommendations.",
+    });
+    
+    onBodyTypeSelected(estimatedBodyType);
   };
   
   return (

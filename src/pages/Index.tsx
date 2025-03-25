@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -40,6 +39,17 @@ const Index = () => {
         });
       }
     }, 1500);
+  };
+  
+  const handleAlternativeSizing = (estimatedBodyType: BodyType) => {
+    setIsLoading(true);
+    
+    // Simulate API call delay
+    setTimeout(() => {
+      setBodyType(estimatedBodyType);
+      setIsLoading(false);
+      setCurrentStep("results");
+    }, 1000);
   };
   
   const renderStep = () => {
@@ -96,7 +106,10 @@ const Index = () => {
         );
         
       case "alternative":
-        return <AlternativeSizingOptions onProceedToMeasurements={() => setCurrentStep("measurement")} />;
+        return <AlternativeSizingOptions 
+                 onProceedToMeasurements={() => setCurrentStep("measurement")} 
+                 onBodyTypeSelected={handleAlternativeSizing}
+               />;
         
       case "measurement":
         return (
@@ -116,23 +129,31 @@ const Index = () => {
       case "results":
         return (
           <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-8 mb-16">
-              <div className="w-full md:w-1/2">
-                <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
+            {measurements && (
+              <div className="flex flex-col md:flex-row gap-8 mb-16">
+                <div className="w-full md:w-1/2">
+                  <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
+                </div>
+                
+                <div className="w-full md:w-1/2">
+                  {bodyType ? (
+                    <BodyTypeResult bodyType={bodyType} />
+                  ) : (
+                    <div className="h-full flex items-center justify-center p-6 bg-muted/20 rounded-lg border border-dashed">
+                      <p className="text-muted-foreground text-center">
+                        Enter your measurements to discover your body shape and get personalized style recommendations.
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
-              
-              <div className="w-full md:w-1/2">
-                {bodyType ? (
-                  <BodyTypeResult bodyType={bodyType} />
-                ) : (
-                  <div className="h-full flex items-center justify-center p-6 bg-muted/20 rounded-lg border border-dashed">
-                    <p className="text-muted-foreground text-center">
-                      Enter your measurements to discover your body shape and get personalized style recommendations.
-                    </p>
-                  </div>
-                )}
+            )}
+            
+            {!measurements && bodyType && (
+              <div className="mb-16">
+                <BodyTypeResult bodyType={bodyType} />
               </div>
-            </div>
+            )}
             
             {bodyType && bodyType !== "unknown" && (
               <section className="mb-12">
