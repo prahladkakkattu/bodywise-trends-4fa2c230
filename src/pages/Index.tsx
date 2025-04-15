@@ -11,6 +11,7 @@ import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
 
+// Steps in the user flow
 type Step = "intro" | "alternative" | "measurement" | "results";
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
   const handleBodyTypeChange = (newBodyType: BodyType, newMeasurements: BodyMeasurement) => {
     setIsLoading(true);
     
+    // Simulate API call delay
     setTimeout(() => {
       setBodyType(newBodyType);
       setMeasurements(newMeasurements);
@@ -42,6 +44,7 @@ const Index = () => {
   const handleAlternativeSizing = (estimatedBodyType: BodyType) => {
     setIsLoading(true);
     
+    // Simulate API call delay
     setTimeout(() => {
       setBodyType(estimatedBodyType);
       setIsLoading(false);
@@ -53,15 +56,7 @@ const Index = () => {
     switch (currentStep) {
       case "intro":
         return (
-          <section className="flex flex-col items-center text-center max-w-4xl mx-auto py-10">
-            <div className="mb-8">
-              <img 
-                src="/public/lovable-uploads/1665848b-7c1f-48e3-9406-15136bbfeb29.png" 
-                alt="StyleMyFit Logo" 
-                className="h-28 mx-auto"
-              />
-            </div>
-            
+          <section className="flex flex-col items-center text-center max-w-4xl mx-auto py-20">
             <h1 className="text-5xl sm:text-6xl font-bold text-brand-600 mb-6 tracking-tight">
               Find Your Perfect Fit, Instantly
             </h1>
@@ -89,32 +84,23 @@ const Index = () => {
             </div>
             
             <div className="w-full mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { 
-                  icon: Ruler, 
-                  title: "Precise Recommendations", 
-                  description: "Get clothing suggestions perfectly matched to your unique body shape.",
-                  bg: "bg-soft-purple" 
-                },
-                { 
-                  icon: ShirtIcon, 
-                  title: "Perfect Fit Every Time", 
-                  description: "Say goodbye to returns and exchanges with our tailored size guidance.",
-                  bg: "bg-soft-blue" 
-                },
-                { 
-                  icon: Sparkles, 
-                  title: "Styling Expertise", 
-                  description: "Discover which styles enhance your natural shape and personal style.",
-                  bg: "bg-soft-green" 
-                }
-              ].map(({ icon: Icon, title, description, bg }, index) => (
-                <div key={index} className={`${bg} rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow`}>
-                  <Icon className="h-10 w-10 text-brand-300 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{title}</h3>
-                  <p className="text-muted-foreground">{description}</p>
-                </div>
-              ))}
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+                <Ruler className="h-10 w-10 text-brand-300 mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Precise Recommendations</h3>
+                <p className="text-muted-foreground">Get clothing suggestions perfectly matched to your unique body shape.</p>
+              </div>
+              
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+                <ShirtIcon className="h-10 w-10 text-brand-300 mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Perfect Fit Every Time</h3>
+                <p className="text-muted-foreground">Say goodbye to returns and exchanges with our tailored size guidance.</p>
+              </div>
+              
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+                <Sparkles className="h-10 w-10 text-brand-300 mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Styling Expertise</h3>
+                <p className="text-muted-foreground">Discover which styles enhance your natural shape and personal style.</p>
+              </div>
             </div>
           </section>
         );
@@ -180,7 +166,7 @@ const Index = () => {
   };
   
   return (
-    <div className="min-h-screen bg-soft-gray">
+    <div className="min-h-screen bg-[#fcfaff]">
       <Navbar />
       
       <main className="container pt-24 pb-16">
@@ -202,21 +188,23 @@ const Index = () => {
           <section className="max-w-3xl mx-auto text-center py-16">
             <h2 className="text-2xl font-semibold mb-4">How StyleMyFit Works</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((step) => (
-                <div key={step} className="p-4 bg-white rounded-lg shadow-sm">
-                  <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">{step}</div>
-                  <h3 className="font-medium mb-2">
-                    {step === 1 && "Enter Your Measurements"}
-                    {step === 2 && "Discover Your Body Shape"}
-                    {step === 3 && "Get Personalized Recommendations"}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {step === 1 && "Input your key body measurements accurately for the best results."}
-                    {step === 2 && "Our algorithm identifies your body shape and provides styling tips."}
-                    {step === 3 && "Browse clothing options specially curated for your body shape."}
-                  </p>
-                </div>
-              ))}
+              <div className="p-4">
+                <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">1</div>
+                <h3 className="font-medium mb-2">Enter Your Measurements</h3>
+                <p className="text-sm text-muted-foreground">Input your key body measurements accurately for the best results.</p>
+              </div>
+              
+              <div className="p-4">
+                <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">2</div>
+                <h3 className="font-medium mb-2">Discover Your Body Shape</h3>
+                <p className="text-sm text-muted-foreground">Our algorithm identifies your body shape and provides styling tips.</p>
+              </div>
+              
+              <div className="p-4">
+                <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">3</div>
+                <h3 className="font-medium mb-2">Get Personalized Recommendations</h3>
+                <p className="text-sm text-muted-foreground">Browse clothing options specially curated for your body shape.</p>
+              </div>
             </div>
           </section>
         )}
