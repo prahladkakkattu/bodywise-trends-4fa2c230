@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -57,15 +56,7 @@ const Index = () => {
     switch (currentStep) {
       case "intro":
         return (
-          <section className="flex flex-col items-center text-center max-w-4xl mx-auto py-10">
-            <div className="mb-8">
-              <img 
-                src="/public/lovable-uploads/1665848b-7c1f-48e3-9406-15136bbfeb29.png" 
-                alt="StyleMyFit Logo" 
-                className="h-28 mx-auto"
-              />
-            </div>
-            
+          <section className="flex flex-col items-center text-center max-w-4xl mx-auto py-20">
             <h1 className="text-5xl sm:text-6xl font-bold text-brand-600 mb-6 tracking-tight">
               Find Your Perfect Fit, Instantly
             </h1>
