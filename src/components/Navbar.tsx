@@ -10,21 +10,6 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2">
           <div className="flex flex-col items-start">
             <span className="text-xl font-black tracking-tight text-brand-600">STYLEMYFIT</span>
-            <span className="text-sm font-medium tracking-widest text-brand-300 -mt-1 flex items-center">
-              FIT
-              <svg className="h-3 ml-1" viewBox="0 0 100 10" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="5" x2="100" y2="5" stroke="currentColor" strokeWidth="2" />
-                <line x1="10" y1="0" x2="10" y2="10" stroke="currentColor" strokeWidth="2" />
-                <line x1="20" y1="0" x2="20" y2="10" stroke="currentColor" strokeWidth="2" />
-                <line x1="30" y1="0" x2="30" y2="10" stroke="currentColor" strokeWidth="2" />
-                <line x1="40" y1="0" x2="40" y2="10" stroke="currentColor" strokeWidth="2" />
-                <line x1="50" y1="0" x2="50" y2="10" stroke="currentColor" strokeWidth="2" />
-                <line x1="60" y1="0" x2="60" y2="10" stroke="currentColor" strokeWidth="2" />
-                <line x1="70" y1="0" x2="70" y2="10" stroke="currentColor" strokeWidth="2" />
-                <line x1="80" y1="0" x2="80" y2="10" stroke="currentColor" strokeWidth="2" />
-                <line x1="90" y1="0" x2="90" y2="10" stroke="currentColor" strokeWidth="2" />
-              </svg>
-            </span>
           </div>
         </Link>
         
