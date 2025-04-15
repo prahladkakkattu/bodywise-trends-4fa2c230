@@ -1,68 +1,69 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 20%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 20%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 20%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 24 94% 53%; /* Orange (F97316) */
+    --primary: 0 72% 35%; /* Red (#AF2323) */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 10% 20%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 12%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 5% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 24 100% 93%; /* Light orange */
-    --accent-foreground: 240 10% 20%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5% 90%;
-    --input: 240 5% 90%;
-    --ring: 24 94% 53%; /* Orange */
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 0 72% 35%; /* Red */
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 10% 10%;
+    --background: 0 0% 5%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 12%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 12%;
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 24 94% 53%; /* Orange (F97316) */
-    --primary-foreground: 240 10% 10%;
+    --primary: 0 72% 45%; /* Red (#C42626) */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 5% 20%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 5% 20%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 24 80% 30%;
+    --accent: 0 0% 20%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5% 20%;
-    --input: 240 5% 20%;
-    --ring: 24 94% 53%; /* Orange */
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 72% 45%; /* Red */
   }
 }
 
