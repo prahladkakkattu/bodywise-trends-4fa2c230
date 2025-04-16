@@ -9,9 +9,9 @@ const Navbar = () => {
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center gap-4">
           <img 
-            src="/lovable-uploads/e690e0d9-9542-442b-bb9f-88cb9d82dd1b.png" 
+            src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png" 
             alt="StyleMyFit Logo" 
-            className="h-10 w-auto"
+            className="h-12 w-auto"
           />
         </Link>
         
