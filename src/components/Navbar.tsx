@@ -5,10 +5,14 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="w-full py-4 bg-white/90 backdrop-blur-sm shadow-sm fixed top-0 z-50">
+    <nav className="w-full py-6 bg-white/90 backdrop-blur-sm shadow-sm fixed top-0 z-50">
       <div className="container flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          {/* Removed branding text */}
+        <Link to="/" className="flex items-center gap-4">
+          <img 
+            src="/lovable-uploads/e690e0d9-9542-442b-bb9f-88cb9d82dd1b.png" 
+            alt="StyleMyFit Logo" 
+            className="h-10 w-auto"
+          />
         </Link>
         
         <div className="flex items-center gap-4">
