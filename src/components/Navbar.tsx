@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="w-full py-6 bg-white/90 backdrop-blur-sm shadow-sm fixed top-0 z-50">
+    <nav className="w-full py-6 bg-fashion-white shadow-sm fixed top-0 z-50">
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center gap-4">
           <img 
@@ -15,22 +15,22 @@ const Navbar = () => {
           />
         </Link>
         
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" asChild>
+        <div className="flex items-center gap-5">
+          <Button variant="ghost" size="icon" asChild className="text-fashion-teal">
             <Link to="/">
               <Heart className="h-5 w-5" />
               <span className="sr-only">Favorites</span>
             </Link>
           </Button>
           
-          <Button variant="ghost" size="icon" asChild>
+          <Button variant="ghost" size="icon" asChild className="text-fashion-teal">
             <Link to="/">
               <ShoppingBag className="h-5 w-5" />
               <span className="sr-only">Cart</span>
             </Link>
           </Button>
           
-          <Button variant="ghost" size="icon" asChild>
+          <Button variant="ghost" size="icon" asChild className="text-fashion-teal">
             <Link to="/">
               <User className="h-5 w-5" />
               <span className="sr-only">Profile</span>

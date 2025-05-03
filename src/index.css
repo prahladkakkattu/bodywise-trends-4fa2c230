@@ -5,65 +5,65 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 10%;
+    --background: 38 33% 97%; /* Soft beige background */
+    --foreground: 193 100% 15%; /* Dark teal text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 193 100% 15%; /* Dark teal text on cards */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 193 100% 15%;
 
-    --primary: 0 72% 35%; /* Red (#AF2323) */
-    --primary-foreground: 0 0% 100%;
+    --primary: 16 87% 55%; /* Rich coral */
+    --primary-foreground: 0 0% 100%; /* White text on coral */
 
-    --secondary: 0 0% 94%;
-    --secondary-foreground: 0 0% 12%;
+    --secondary: 38 33% 97%; /* Soft beige */
+    --secondary-foreground: 193 100% 15%; /* Dark teal on beige */
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 38 20% 92%; /* Light beige */
+    --muted-foreground: 0 0% 55%; /* Warm grey text */
 
-    --accent: 0 0% 94%;
-    --accent-foreground: 0 0% 12%;
+    --accent: 38 20% 92%; /* Light beige */
+    --accent-foreground: 193 100% 15%; /* Dark teal on accent */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 89%;
-    --input: 0 0% 89%;
-    --ring: 0 72% 35%; /* Red */
+    --border: 38 10% 80%; /* Softer beige border */
+    --input: 38 10% 80%;
+    --ring: 16 87% 55%; /* Coral ring */
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 5%;
-    --foreground: 0 0% 98%;
+    --background: 193 100% 10%; /* Dark teal bg */
+    --foreground: 38 33% 97%; /* Beige text */
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 193 80% 15%;
+    --card-foreground: 38 33% 97%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 193 80% 15%;
+    --popover-foreground: 38 33% 97%;
 
-    --primary: 0 72% 45%; /* Red (#C42626) */
-    --primary-foreground: 0 0% 100%;
+    --primary: 16 87% 55%;
+    --primary-foreground: 38 33% 97%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 193 60% 20%;
+    --secondary-foreground: 38 33% 97%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 193 40% 20%;
+    --muted-foreground: 38 20% 80%;
 
-    --accent: 0 0% 20%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 193 60% 20%;
+    --accent-foreground: 38 33% 97%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 38 33% 97%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 72% 45%; /* Red */
+    --border: 193 50% 20%;
+    --input: 193 50% 20%;
+    --ring: 16 87% 55%;
   }
 }
 
@@ -74,6 +74,10 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight text-fashion-teal;
   }
 }
 
@@ -86,4 +90,27 @@
 
 .measurement-input {
   -moz-appearance: textfield;
+}
+
+/* Custom premium styling elements */
+@layer components {
+  .btn-premium {
+    @apply bg-fashion-coral text-white hover:bg-fashion-coral/90 transition-colors duration-300;
+  }
+  
+  .card-premium {
+    @apply bg-fashion-white border border-fashion-beige/50 shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+  
+  .section-premium {
+    @apply bg-fashion-beige py-16 px-4 sm:px-6;
+  }
+  
+  .heading-premium {
+    @apply text-fashion-teal font-medium leading-tight;
+  }
+  
+  .subtext-premium {
+    @apply text-fashion-grey text-sm;
+  }
 }

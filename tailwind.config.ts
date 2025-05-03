@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				brand: {
-					100: '#F8F0F0', // Light red tint
-					200: '#F2D9D9', // Light red
-					300: '#AF2323', // Primary red
-					400: '#8C1C1C', // Dark red
-					500: '#701616', // Darker red
-					600: '#111111', // Near black
+				// Fashion color palette
+				fashion: {
+					teal: '#003B4A', // Dark Teal
+					coral: '#F15A29', // Rich Coral
+					beige: '#F5F2ED', // Soft Beige
+					grey: '#8B8B8B', // Warm Grey
+					white: '#FFFFFF', // White
 				}
 			},
 			borderRadius: {
