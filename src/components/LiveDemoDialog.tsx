@@ -40,10 +40,10 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
           pointer-events-auto
           absolute bottom-4 right-4
           w-[350px] sm:w-[400px] 
-          bg-fashion-white
+          bg-fashion-beige/95 
           rounded-lg 
           shadow-lg 
-          border border-fashion-beige
+          border
           transition-all
           ${minimized ? 'h-[60px]' : 'h-auto'}
         `}
@@ -62,7 +62,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="h-8 w-8 text-fashion-teal hover:text-fashion-teal/80 hover:bg-fashion-beige/50"
+                className="h-8 w-8"
                 onClick={handleMinimizeToggle}
               >
                 <Minimize className="h-4 w-4" />
@@ -70,7 +70,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="h-8 w-8 text-fashion-teal hover:text-fashion-teal/80 hover:bg-fashion-beige/50"
+                className="h-8 w-8"
                 onClick={() => onOpenChange(false)}
               >
                 <X className="h-4 w-4" />
@@ -83,7 +83,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="h-8 w-8 text-fashion-teal hover:text-fashion-teal/80 hover:bg-fashion-beige/50"
+                className="h-8 w-8"
                 onClick={handleMinimizeToggle}
               >
                 <Minimize className="h-4 w-4" />
@@ -91,7 +91,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="h-8 w-8 text-fashion-teal hover:text-fashion-teal/80 hover:bg-fashion-beige/50"
+                className="h-8 w-8"
                 onClick={() => onOpenChange(false)}
               >
                 <X className="h-4 w-4" />
@@ -114,7 +114,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                     id="height"
                     value={height}
                     onChange={(e) => setHeight(e.target.value)}
-                    className="w-32 bg-white border-fashion-beige focus:border-fashion-coral focus:ring-fashion-coral"
+                    className="w-32 bg-white"
                     placeholder="cm"
                   />
                 </div>
@@ -125,7 +125,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                     id="weight"
                     value={weight}
                     onChange={(e) => setWeight(e.target.value)}
-                    className="w-32 bg-white border-fashion-beige focus:border-fashion-coral focus:ring-fashion-coral"
+                    className="w-32 bg-white"
                     placeholder="kg"
                   />
                 </div>
@@ -136,7 +136,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                     id="age"
                     value={age}
                     onChange={(e) => setAge(e.target.value)}
-                    className="w-32 bg-white border-fashion-beige focus:border-fashion-coral focus:ring-fashion-coral"
+                    className="w-32 bg-white"
                     placeholder="years"
                   />
                 </div>
@@ -149,14 +149,14 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                 <div className="flex justify-center pt-2">
                   <Button
                     type="submit"
-                    className="bg-fashion-coral hover:bg-fashion-coral/90 text-white w-full max-w-[160px]"
+                    className="bg-[#666] hover:bg-[#555] text-white w-full max-w-[160px]"
                   >
                     Next
                   </Button>
                 </div>
               </form>
               
-              <div className="text-xs text-fashion-grey text-center mt-6 mb-2">
+              <div className="text-xs text-[#666] text-center mt-6 mb-2">
                 <img 
                   src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
                   alt="StyleMyFit Logo"
