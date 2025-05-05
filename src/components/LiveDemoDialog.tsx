@@ -1,5 +1,10 @@
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -23,9 +28,13 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-fashion-beige/95 sm:max-w-md">
-        <div className="flex flex-col gap-6">
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent side="left" className="w-[350px] sm:w-[400px] bg-fashion-beige/95 bottom-0 top-auto h-auto rounded-tr-lg shadow-lg border-t border-r">
+        <SheetHeader>
+          <SheetTitle className="sr-only">Live Demo</SheetTitle>
+        </SheetHeader>
+        
+        <div className="flex flex-col gap-6 pt-2">
           <div className="flex justify-center">
             <img 
               src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
@@ -53,7 +62,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
                 className="w-32 bg-white"
-                placeholder="cm"
+                placeholder="kg"
               />
             </div>
             
@@ -64,7 +73,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
                 className="w-32 bg-white"
-                placeholder="cm"
+                placeholder="years"
               />
             </div>
             
@@ -83,7 +92,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
             </div>
           </form>
           
-          <div className="text-xs text-[#666] text-center mt-10">
+          <div className="text-xs text-[#666] text-center mt-6 mb-2">
             <img 
               src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
               alt="StyleMyFit Logo"
@@ -94,8 +103,8 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
             the property of others.
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </SheetContent>
+    </Sheet>
   );
 };
 
