@@ -34,22 +34,22 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
   };
 
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent 
-        side="right" 
+    <div className={`${open ? 'block' : 'hidden'} pointer-events-none fixed inset-0 z-50`}>
+      <div 
         className={`
+          pointer-events-auto
+          absolute bottom-4 right-4
           w-[350px] sm:w-[400px] 
           bg-fashion-beige/95 
-          bottom-0 top-auto 
-          h-auto 
-          rounded-tl-lg 
+          rounded-lg 
           shadow-lg 
-          border-t border-l
-          ${minimized ? 'h-[60px] p-4' : ''}
+          border
+          transition-all
+          ${minimized ? 'h-[60px]' : 'h-auto'}
         `}
       >
         {minimized ? (
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between p-4">
             <div className="flex items-center">
               <img 
                 src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
@@ -78,7 +78,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
             </div>
           </div>
         ) : (
-          <>
+          <div className="p-6">
             <div className="absolute right-4 top-4 flex items-center gap-2">
               <Button 
                 variant="ghost" 
@@ -88,13 +88,17 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
               >
                 <Minimize className="h-4 w-4" />
               </Button>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8"
+                onClick={() => onOpenChange(false)}
+              >
+                <X className="h-4 w-4" />
+              </Button>
             </div>
             
-            <SheetHeader>
-              <SheetTitle className="sr-only">Live Demo</SheetTitle>
-            </SheetHeader>
-            
-            <div className="flex flex-col gap-6 pt-2">
+            <div className="flex flex-col gap-6 pt-6">
               <div className="flex justify-center">
                 <img 
                   src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
@@ -163,10 +167,10 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                 the property of others.
               </div>
             </div>
-          </>
+          </div>
         )}
-      </SheetContent>
-    </Sheet>
+      </div>
+    </div>
   );
 };
 
