@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
@@ -29,7 +28,7 @@ const Blog = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#fcfaff]">
+    <div className="min-h-screen">
       <Navbar />
       
       <main className="container pt-32 pb-16">

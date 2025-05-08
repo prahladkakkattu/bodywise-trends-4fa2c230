@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-[#fcfaff]">
+    <div className="min-h-screen">
       <Navbar />
       
       <main className="container pt-32 pb-16">
