@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -7,7 +6,7 @@ import ProductRecommendations from "@/components/ProductRecommendations";
 import { BodyMeasurement, BodyType } from "@/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Ruler, ShirtIcon } from "lucide-react";
+import { ArrowRight, Ruler, ShirtIcon } from "lucide-react";
 import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
@@ -205,69 +204,6 @@ const Index = () => {
                 <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">3</div>
                 <h3 className="font-medium mb-2">Get Personalized Recommendations</h3>
                 <p className="text-sm text-muted-foreground">Browse clothing options specially curated for your body shape.</p>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {currentStep === "intro" && (
-          <section className="bg-white py-16 my-8 rounded-lg shadow-sm">
-            <div className="max-w-5xl mx-auto px-4">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold text-fashion-teal mb-4">Ready to Transform Your Fashion Business?</h2>
-                <p className="text-lg text-fashion-teal/80 mb-6">
-                  Let us show you how StyleMyFit can drive real results — for you and your customers.
-                </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-white p-5 rounded-lg shadow-sm border border-fashion-beige/30">
-                    <p className="text-fashion-teal font-medium">✅ Personalized Demo tailored to your brand</p>
-                  </div>
-                  <div className="bg-white p-5 rounded-lg shadow-sm border border-fashion-beige/30">
-                    <p className="text-fashion-teal font-medium">📈 ROI Snapshot based on your actual metrics</p>
-                  </div>
-                  <div className="bg-white p-5 rounded-lg shadow-sm border border-fashion-beige/30">
-                    <p className="text-fashion-teal font-medium">🔧 Free Integration Consultation with our experts</p>
-                  </div>
-                </div>
-                
-                <Button size="lg" className="font-medium">
-                  <Calendar className="mr-2 h-5 w-5" /> Schedule Your Demo
-                </Button>
-              </div>
-              
-              <div className="mt-16">
-                <h3 className="text-2xl font-semibold text-fashion-teal text-center mb-10">Why Businesses Choose StyleMyFit</h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                  <div className="bg-white p-6 rounded-lg shadow-sm border border-fashion-beige/30">
-                    <p className="text-fashion-coral font-bold text-xl mb-2">🛍️ Increased Conversions</p>
-                    <p className="text-fashion-teal/80">
-                      Boost sales by up to 35% with AI-powered size and style recommendations that give shoppers the confidence to click buy.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-white p-6 rounded-lg shadow-sm border border-fashion-beige/30">
-                    <p className="text-fashion-coral font-bold text-xl mb-2">📉 Reduced Returns</p>
-                    <p className="text-fashion-teal/80">
-                      Cut returns by as much as 42% by getting the fit right the first time.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-white p-6 rounded-lg shadow-sm border border-fashion-beige/30">
-                    <p className="text-fashion-coral font-bold text-xl mb-2">🛒 Higher Average Order Value</p>
-                    <p className="text-fashion-teal/80">
-                      Encourage more items per order with personalized outfit pairings.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-white p-6 rounded-lg shadow-sm border border-fashion-beige/30">
-                    <p className="text-fashion-coral font-bold text-xl mb-2">📊 Deeper Customer Insights</p>
-                    <p className="text-fashion-teal/80">
-                      Learn what drives your shoppers — and make smarter decisions with every click.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
