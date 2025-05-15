@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -6,7 +7,7 @@ import ProductRecommendations from "@/components/ProductRecommendations";
 import { BodyMeasurement, BodyType } from "@/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Ruler, ShirtIcon } from "lucide-react";
+import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign } from "lucide-react";
 import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
@@ -185,28 +186,65 @@ const Index = () => {
         )}
         
         {currentStep === "intro" && (
-          <section className="max-w-3xl mx-auto text-center py-16">
-            <h2 className="text-2xl font-semibold mb-4">How StyleMyFit Works</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-4">
-                <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">1</div>
-                <h3 className="font-medium mb-2">Enter Your Measurements</h3>
-                <p className="text-sm text-muted-foreground">Input your key body measurements accurately for the best results.</p>
+          <>
+            <section className="max-w-5xl mx-auto px-4 py-16 bg-white rounded-lg shadow-sm mb-16">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-bold text-fashion-teal mb-4">For Fashion Businesses</h2>
+                <p className="text-lg text-fashion-teal/80 mb-8 max-w-3xl mx-auto">
+                  Transform your customer experience with StyleMyFit's powerful sizing and recommendation engine.
+                </p>
               </div>
               
-              <div className="p-4">
-                <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">2</div>
-                <h3 className="font-medium mb-2">Discover Your Body Shape</h3>
-                <p className="text-sm text-muted-foreground">Our algorithm identifies your body shape and provides styling tips.</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="bg-fashion-beige p-6 rounded-lg border border-fashion-beige/50">
+                  <DollarSign className="h-10 w-10 text-fashion-coral mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">Increase Revenue</h3>
+                  <p className="text-muted-foreground">Boost conversions by up to 35% with accurate fit recommendations that give shoppers buying confidence.</p>
+                </div>
+                
+                <div className="bg-fashion-beige p-6 rounded-lg border border-fashion-beige/50">
+                  <Users className="h-10 w-10 text-fashion-coral mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">Enhance Experience</h3>
+                  <p className="text-muted-foreground">Provide personalized shopping journeys that make customers feel understood and valued.</p>
+                </div>
+                
+                <div className="bg-fashion-beige p-6 rounded-lg border border-fashion-beige/50">
+                  <ChartBar className="h-10 w-10 text-fashion-coral mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">Reduce Returns</h3>
+                  <p className="text-muted-foreground">Cut return rates by as much as 42% by getting the fit right the first time.</p>
+                </div>
               </div>
               
-              <div className="p-4">
-                <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">3</div>
-                <h3 className="font-medium mb-2">Get Personalized Recommendations</h3>
-                <p className="text-sm text-muted-foreground">Browse clothing options specially curated for your body shape.</p>
+              <div className="mt-10 text-center">
+                <Button variant="premium" size="lg">
+                  Partner With StyleMyFit
+                </Button>
               </div>
-            </div>
-          </section>
+            </section>
+            
+            <section className="max-w-3xl mx-auto text-center py-16">
+              <h2 className="text-2xl font-semibold mb-4">How StyleMyFit Works</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="p-4">
+                  <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">1</div>
+                  <h3 className="font-medium mb-2">Enter Your Measurements</h3>
+                  <p className="text-sm text-muted-foreground">Input your key body measurements accurately for the best results.</p>
+                </div>
+                
+                <div className="p-4">
+                  <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">2</div>
+                  <h3 className="font-medium mb-2">Discover Your Body Shape</h3>
+                  <p className="text-sm text-muted-foreground">Our algorithm identifies your body shape and provides styling tips.</p>
+                </div>
+                
+                <div className="p-4">
+                  <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">3</div>
+                  <h3 className="font-medium mb-2">Get Personalized Recommendations</h3>
+                  <p className="text-sm text-muted-foreground">Browse clothing options specially curated for your body shape.</p>
+                </div>
+              </div>
+            </section>
+          </>
         )}
       </main>
       
