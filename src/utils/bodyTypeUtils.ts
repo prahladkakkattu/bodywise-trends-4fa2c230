@@ -1,8 +1,7 @@
-
 import { BodyMeasurement, BodyType } from "@/types";
 
 export function determineBodyType(measurements: BodyMeasurement): BodyType {
-  const { bust, waist, hips, shoulders, height } = measurements;
+  const { bust, waist, hips, shoulders, height, weight } = measurements;
   
   // Calculate ratios for body shape determination
   const shoulderToHipRatio = shoulders ? shoulders / hips : 0;
@@ -11,6 +10,9 @@ export function determineBodyType(measurements: BodyMeasurement): BodyType {
   const shoulderToBustRatio = shoulders && bust ? shoulders / bust : 0;
   const bustToWaistRatio = bust / waist;
   const waistToHeightRatio = height ? waist / height : 0;
+  
+  // Weight could be used for additional analysis but current logic focuses on proportions
+  console.log(`Weight: ${weight} lbs - included in analysis`);
   
   // Determine body shape based on provided logic table
   

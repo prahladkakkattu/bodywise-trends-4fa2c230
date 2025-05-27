@@ -21,6 +21,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     hips: 38,
     shoulders: 40,
     height: 65,
+    weight: 140,
   });
 
   const handleChange = (name: keyof BodyMeasurement, value: number) => {
@@ -116,6 +117,23 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   max={60}
                 />
               </div>
+            </div>
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="weight" className="text-sm font-medium">
+              Weight (lbs)
+            </Label>
+            <div className="flex items-center">
+              <Input
+                id="weight"
+                type="number"
+                className="measurement-input"
+                value={measurements.weight}
+                onChange={(e) => handleChange("weight", Number(e.target.value))}
+                min={80}
+                max={300}
+              />
             </div>
           </div>
           
