@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Heart, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -11,6 +10,12 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Navbar = () => {
   const [showLiveDemo, setShowLiveDemo] = useState(false);
@@ -69,14 +74,23 @@ const Navbar = () => {
         </NavigationMenu>
         
         <div className="flex items-center gap-4">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="hidden sm:inline-flex"
-            onClick={() => setShowLiveDemo(true)}
-          >
-            Live Preview
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="hidden sm:inline-flex"
+                  onClick={() => setShowLiveDemo(true)}
+                >
+                  Live Preview
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="max-w-xs">See how StyleMyFit appears on your e-commerce website</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           
           <Button variant="ghost" size="sm" asChild>
             <Link to="/">Log in</Link>
