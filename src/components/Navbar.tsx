@@ -75,7 +75,7 @@ const Navbar = () => {
             className="hidden sm:inline-flex"
             onClick={() => setShowLiveDemo(true)}
           >
-            Live Demo
+            Live Preview
           </Button>
           
           <Button variant="ghost" size="sm" asChild>
