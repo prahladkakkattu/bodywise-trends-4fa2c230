@@ -1,8 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import { Heart, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import LiveDemoDialog from "./LiveDemoDialog";
 import { 
   NavigationMenu,
   NavigationMenuList,
@@ -10,16 +9,8 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 const Navbar = () => {
-  const [showLiveDemo, setShowLiveDemo] = useState(false);
-  
   return (
     <nav className="w-full py-6 bg-fashion-white shadow-sm fixed top-0 z-50">
       <div className="container flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-2">
@@ -74,24 +65,6 @@ const Navbar = () => {
         </NavigationMenu>
         
         <div className="flex items-center gap-4">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="hidden sm:inline-flex"
-                  onClick={() => setShowLiveDemo(true)}
-                >
-                  Live Preview
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p className="max-w-xs">See how StyleMyFit appears on your e-commerce website</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          
           <Button variant="ghost" size="sm" asChild>
             <Link to="/">Log in</Link>
           </Button>
@@ -124,8 +97,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      
-      <LiveDemoDialog open={showLiveDemo} onOpenChange={setShowLiveDemo} />
     </nav>
   );
 };

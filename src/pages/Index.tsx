@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -11,6 +10,13 @@ import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign } from "lucid
 import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
+import LiveDemoDialog from "@/components/LiveDemoDialog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Steps in the user flow
 type Step = "intro" | "alternative" | "measurement" | "results";
@@ -20,6 +26,7 @@ const Index = () => {
   const [measurements, setMeasurements] = useState<BodyMeasurement | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState<Step>("intro");
+  const [showLiveDemo, setShowLiveDemo] = useState(false);
   const { toast } = useToast();
   
   const handleBodyTypeChange = (newBodyType: BodyType, newMeasurements: BodyMeasurement) => {
@@ -215,10 +222,27 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="mt-10 text-center">
+              <div className="mt-10 text-center flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="premium" size="lg">
                   Partner With StyleMyFit
                 </Button>
+                
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button 
+                        variant="outline" 
+                        size="lg"
+                        onClick={() => setShowLiveDemo(true)}
+                      >
+                        Live Preview
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">See how StyleMyFit appears on your e-commerce website</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             </section>
             
@@ -266,6 +290,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      
+      <LiveDemoDialog open={showLiveDemo} onOpenChange={setShowLiveDemo} />
     </div>
   );
 };
