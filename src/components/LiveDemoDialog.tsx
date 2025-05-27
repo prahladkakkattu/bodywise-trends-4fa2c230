@@ -102,7 +102,21 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Color</label>
+                    <div className="flex items-center justify-between mb-2">
+                      <label className="block text-sm font-medium text-gray-700">Colour</label>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="p-0 h-auto"
+                        onClick={() => onOpenChange(false)}
+                      >
+                        <img 
+                          src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
+                          alt="StyleMyFit - Find Your Perfect Fit"
+                          className="h-6 w-auto"
+                        />
+                      </Button>
+                    </div>
                     <div className="flex gap-2">
                       {['bg-black', 'bg-gray-600', 'bg-blue-900'].map((color, i) => (
                         <button key={i} className={`w-8 h-8 rounded-full border-2 border-gray-300 ${color}`}></button>
