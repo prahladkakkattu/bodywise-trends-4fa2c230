@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <Link to="/" className="flex items-center gap-4">
             <img 
-              src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png" 
+              src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png" 
               alt="StyleMyFit Logo" 
               className="h-12 w-auto"
             />

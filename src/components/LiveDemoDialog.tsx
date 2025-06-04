@@ -1,4 +1,3 @@
-
 import {
   Dialog,
   DialogContent,
@@ -109,7 +108,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                         onClick={() => onOpenChange(false)}
                       >
                         <img 
-                          src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
+                          src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png"
                           alt="StyleMyFit - Find Your Perfect Fit"
                           className="h-7 w-auto"
                         />
@@ -164,7 +163,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                 <div className="flex items-center justify-between p-4">
                   <div className="flex items-center">
                     <img 
-                      src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
+                      src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png"
                       alt="StyleMyFit Logo"
                       className="h-6 mr-2"
                     />
@@ -213,7 +212,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                   <div className="flex flex-col gap-6 pt-6">
                     <div className="flex justify-center">
                       <img 
-                        src="/lovable-uploads/e180d18c-55a7-42a8-ac5e-cb13e7517e1a.png"
+                        src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png"
                         alt="StyleMyFit Logo"
                         className="h-8"
                       />
