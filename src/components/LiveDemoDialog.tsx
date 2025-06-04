@@ -100,17 +100,17 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                     </div>
                     
                     {/* StyleMyFit Logo positioned below size buttons */}
-                    <div className="mt-3">
+                    <div className="mt-4 flex justify-center">
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="p-2 h-auto hover:bg-gray-50"
+                        className="p-3 h-auto hover:bg-gray-50"
                         onClick={() => onOpenChange(false)}
                       >
                         <img 
                           src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png"
                           alt="StyleMyFit - Find Your Perfect Fit"
-                          className="h-10 w-auto"
+                          className="h-16 w-auto"
                         />
                       </Button>
                     </div>
@@ -156,7 +156,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                 shadow-lg 
                 border
                 transition-all
-                ${minimized ? 'h-[60px]' : 'h-auto'}
+                ${minimized ? 'h-[70px]' : 'h-auto'}
               `}
             >
               {minimized ? (
@@ -165,9 +165,9 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                     <img 
                       src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png"
                       alt="StyleMyFit Logo"
-                      className="h-8 mr-2"
+                      className="h-12 mr-3"
                     />
-                    <span className="text-fashion-teal font-medium">StyleMyFit</span>
+                    <span className="text-fashion-teal font-medium text-lg">StyleMyFit</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Button 
@@ -214,7 +214,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                       <img 
                         src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png"
                         alt="StyleMyFit Logo"
-                        className="h-12"
+                        className="h-16"
                       />
                     </div>
                     
