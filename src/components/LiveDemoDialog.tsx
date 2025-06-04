@@ -110,7 +110,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                         <img 
                           src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png"
                           alt="StyleMyFit - Find Your Perfect Fit"
-                          className="h-16 w-auto"
+                          className="h-32 w-auto"
                         />
                       </Button>
                     </div>
@@ -214,7 +214,7 @@ const LiveDemoDialog = ({ open, onOpenChange }: LiveDemoDialogProps) => {
                       <img 
                         src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png"
                         alt="StyleMyFit Logo"
-                        className="h-16"
+                        className="h-32"
                       />
                     </div>
                     

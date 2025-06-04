@@ -19,7 +19,7 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png" 
               alt="StyleMyFit Logo" 
-              className="h-24 w-auto"
+              className="h-50 w-auto"
             />
           </Link>
         </div>
