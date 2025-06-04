@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -6,7 +7,7 @@ import ProductRecommendations from "@/components/ProductRecommendations";
 import { BodyMeasurement, BodyType } from "@/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign } from "lucide-react";
+import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign, Smartphone, CheckCircle } from "lucide-react";
 import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
@@ -64,53 +65,167 @@ const Index = () => {
     switch (currentStep) {
       case "intro":
         return (
-          <section className="flex flex-col items-center text-center max-w-4xl mx-auto py-20">
-            <h1 className="text-5xl sm:text-6xl font-bold text-brand-600 mb-6 tracking-tight">
-              Find Your Perfect Fit, Instantly
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-              No more sizing guesswork. Get accurate recommendations with or without exact measurements.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
-              <Button 
-                size="lg" 
-                onClick={() => setCurrentStep("measurement")}
-                className="group"
-              >
-                Start Now
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg" 
-                onClick={() => setCurrentStep("alternative")}
-              >
-                I Don't Know My Measurements
-              </Button>
-            </div>
-            
-            <div className="w-full mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-                <Ruler className="h-10 w-10 text-brand-300 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Precise Recommendations</h3>
-                <p className="text-muted-foreground">Get clothing suggestions perfectly matched to your unique body shape.</p>
+          <>
+            {/* Hero Section with Mobile App Showcase */}
+            <section className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto py-20 gap-16">
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-5xl sm:text-6xl font-bold text-brand-600 mb-6 tracking-tight">
+                  Find Your Perfect Fit, Instantly
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-2xl mb-10">
+                  No more sizing guesswork. Get accurate recommendations with or without exact measurements through our intelligent mobile app.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Button 
+                    size="lg" 
+                    onClick={() => setCurrentStep("measurement")}
+                    className="group"
+                  >
+                    Start Now
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                  
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    onClick={() => setCurrentStep("alternative")}
+                  >
+                    I Don't Know My Measurements
+                  </Button>
+                </div>
               </div>
               
-              <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-                <ShirtIcon className="h-10 w-10 text-brand-300 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Perfect Fit Every Time</h3>
-                <p className="text-muted-foreground">Say goodbye to returns and exchanges with our tailored size guidance.</p>
+              {/* Mobile App Mockups */}
+              <div className="flex-1 flex justify-center lg:justify-end">
+                <div className="relative">
+                  <div className="flex items-end gap-4">
+                    <img 
+                      src="/lovable-uploads/82c7db8f-311f-4ec2-bcf8-3edfdfb01d1b.png"
+                      alt="StyleMyFit App - Measurement Input"
+                      className="h-96 w-auto drop-shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300"
+                    />
+                    <img 
+                      src="/lovable-uploads/e3a03439-b3cc-4c12-8f17-b4af48b5de58.png"
+                      alt="StyleMyFit App - Body Type Selection"
+                      className="h-80 w-auto drop-shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
               </div>
-              
-              <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-                <Sparkles className="h-10 w-10 text-brand-300 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Styling Expertise</h3>
-                <p className="text-muted-foreground">Discover which styles enhance your natural shape and personal style.</p>
+            </section>
+
+            {/* Features Section */}
+            <section className="max-w-6xl mx-auto py-16">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+                  <Ruler className="h-10 w-10 text-brand-300 mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">Precise Recommendations</h3>
+                  <p className="text-muted-foreground">Get clothing suggestions perfectly matched to your unique body shape.</p>
+                </div>
+                
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+                  <ShirtIcon className="h-10 w-10 text-brand-300 mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">Perfect Fit Every Time</h3>
+                  <p className="text-muted-foreground">Say goodbye to returns and exchanges with our tailored size guidance.</p>
+                </div>
+                
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+                  <Sparkles className="h-10 w-10 text-brand-300 mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">Styling Expertise</h3>
+                  <p className="text-muted-foreground">Discover which styles enhance your natural shape and personal style.</p>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+
+            {/* App Journey Showcase */}
+            <section className="bg-fashion-beige/50 py-20">
+              <div className="max-w-7xl mx-auto px-4">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl font-bold text-fashion-teal mb-4">Experience StyleMyFit</h2>
+                  <p className="text-xl text-fashion-teal/80 max-w-3xl mx-auto">
+                    See how our intelligent sizing technology works through our intuitive mobile interface
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                  {/* Left side - App screens */}
+                  <div className="flex justify-center">
+                    <div className="relative">
+                      <img 
+                        src="/lovable-uploads/1871e457-9247-4b1f-80d4-7ce359d805d7.png"
+                        alt="StyleMyFit App - Body Dimensions"
+                        className="h-96 w-auto drop-shadow-xl"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Right side - Features list */}
+                  <div className="space-y-8">
+                    <div className="flex items-start gap-4">
+                      <CheckCircle className="h-6 w-6 text-fashion-coral mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-xl font-semibold text-fashion-teal mb-2">Smart Body Analysis</h3>
+                        <p className="text-fashion-teal/80">Advanced algorithms analyze your body dimensions and preferences</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <CheckCircle className="h-6 w-6 text-fashion-coral mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-xl font-semibold text-fashion-teal mb-2">Interactive Fit Guide</h3>
+                        <p className="text-fashion-teal/80">Visual guides help you understand how garments should fit</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <CheckCircle className="h-6 w-6 text-fashion-coral mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-xl font-semibold text-fashion-teal mb-2">Personalized Results</h3>
+                        <p className="text-fashion-teal/80">Get size recommendations tailored specifically to your body type</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Results Showcase */}
+            <section className="py-20">
+              <div className="max-w-7xl mx-auto px-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                  {/* Left side - Text content */}
+                  <div className="space-y-6">
+                    <h2 className="text-4xl font-bold text-fashion-teal">
+                      Get Personalized Product Recommendations
+                    </h2>
+                    <p className="text-xl text-fashion-teal/80">
+                      Once we understand your body type, we show you exactly which products will fit and flatter you best.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Button 
+                        size="lg" 
+                        onClick={() => setCurrentStep("measurement")}
+                        className="group"
+                      >
+                        Try It Now
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {/* Right side - App screen */}
+                  <div className="flex justify-center">
+                    <img 
+                      src="/lovable-uploads/2a536660-86f5-4060-8a15-9e1a5aef1aa4.png"
+                      alt="StyleMyFit App - Product Recommendations"
+                      className="h-96 w-auto drop-shadow-xl"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
         );
         
       case "alternative":
