@@ -96,21 +96,24 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Mobile App Mockups */}
+              {/* Mobile App Mockups - Updated with consistent sizing */}
               <div className="flex-1 flex justify-center lg:justify-end">
-                <div className="relative">
-                  <div className="flex items-end gap-4">
-                    <img 
-                      src="/lovable-uploads/82c7db8f-311f-4ec2-bcf8-3edfdfb01d1b.png"
-                      alt="StyleMyFit App - Measurement Input"
-                      className="h-96 w-auto drop-shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300"
-                    />
-                    <img 
-                      src="/lovable-uploads/e3a03439-b3cc-4c12-8f17-b4af48b5de58.png"
-                      alt="StyleMyFit App - Body Type Selection"
-                      className="h-80 w-auto drop-shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300"
-                    />
-                  </div>
+                <div className="flex items-center gap-4">
+                  <img 
+                    src="/lovable-uploads/2cae05db-298f-41b0-8e72-b9bf80c5554e.png"
+                    alt="StyleMyFit App - Welcome Screen"
+                    className="h-80 w-auto drop-shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300"
+                  />
+                  <img 
+                    src="/lovable-uploads/82c7db8f-311f-4ec2-bcf8-3edfdfb01d1b.png"
+                    alt="StyleMyFit App - Measurement Input"
+                    className="h-80 w-auto drop-shadow-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
+                  />
+                  <img 
+                    src="/lovable-uploads/e3a03439-b3cc-4c12-8f17-b4af48b5de58.png"
+                    alt="StyleMyFit App - Body Type Selection"
+                    className="h-80 w-auto drop-shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300"
+                  />
                 </div>
               </div>
             </section>
