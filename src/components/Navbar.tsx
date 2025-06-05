@@ -12,10 +12,10 @@ import {
 
 const Navbar = () => {
   return (
-    <nav className="w-full py-6 bg-fashion-white shadow-sm fixed top-0 z-50">
-      <div className="container flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-2">
-        <div className="flex items-center gap-4">
-          <Link to="/" className="flex items-center gap-4">
+    <nav className="w-full py-2 bg-fashion-white shadow-sm fixed top-0 z-50">
+      <div className="container flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-1 px-4">
+        <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img 
               src="/lovable-uploads/c48f4d7d-9735-4f09-823d-69d5b0c75576.png" 
               alt="StyleMyFit Logo" 
@@ -25,7 +25,7 @@ const Navbar = () => {
         </div>
         
         <NavigationMenu className="mx-auto">
-          <NavigationMenuList className="gap-1 md:gap-4">
+          <NavigationMenuList className="gap-1 md:gap-2">
             <NavigationMenuItem>
               <Link to="/">
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -64,7 +64,7 @@ const Navbar = () => {
           </NavigationMenuList>
         </NavigationMenu>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" asChild>
             <Link to="/">Log in</Link>
           </Button>
@@ -73,7 +73,7 @@ const Navbar = () => {
             <Link to="/">Sign up</Link>
           </Button>
           
-          <div className="flex items-center gap-3 ml-2">
+          <div className="flex items-center gap-2 ml-1">
             <Button variant="ghost" size="icon" asChild className="text-fashion-teal">
               <Link to="/">
                 <Heart className="h-5 w-5" />
