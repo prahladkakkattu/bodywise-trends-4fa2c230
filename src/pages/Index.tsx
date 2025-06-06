@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -95,9 +96,9 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Mobile App Mockups - Updated with very close spacing and no hover effects */}
+              {/* Mobile App Mockups - Updated with extremely close spacing */}
               <div className="flex-1 flex justify-center lg:justify-end">
-                <div className="flex items-center gap-0.5">
+                <div className="flex items-center gap-0.5 -space-x-1">
                   <img 
                     src="/lovable-uploads/2cae05db-298f-41b0-8e72-b9bf80c5554e.png"
                     alt="StyleMyFit App - Welcome Screen"
