@@ -95,23 +95,23 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Mobile App Mockups - Updated with reduced gap and no default rotation */}
+              {/* Mobile App Mockups - Updated with very close spacing and no hover effects */}
               <div className="flex-1 flex justify-center lg:justify-end">
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-0.5">
                   <img 
                     src="/lovable-uploads/2cae05db-298f-41b0-8e72-b9bf80c5554e.png"
                     alt="StyleMyFit App - Welcome Screen"
-                    className="h-80 w-auto drop-shadow-2xl hover:rotate-2 transition-transform duration-300"
+                    className="h-80 w-auto drop-shadow-2xl"
                   />
                   <img 
                     src="/lovable-uploads/82c7db8f-311f-4ec2-bcf8-3edfdfb01d1b.png"
                     alt="StyleMyFit App - Measurement Input"
-                    className="h-80 w-auto drop-shadow-2xl hover:-rotate-1 transition-transform duration-300"
+                    className="h-80 w-auto drop-shadow-2xl"
                   />
                   <img 
                     src="/lovable-uploads/e3a03439-b3cc-4c12-8f17-b4af48b5de58.png"
                     alt="StyleMyFit App - Body Type Selection"
-                    className="h-80 w-auto drop-shadow-2xl hover:rotate-1 transition-transform duration-300"
+                    className="h-80 w-auto drop-shadow-2xl"
                   />
                 </div>
               </div>
