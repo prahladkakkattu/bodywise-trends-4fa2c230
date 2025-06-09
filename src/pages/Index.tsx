@@ -66,17 +66,17 @@ const Index = () => {
         return (
           <>
             {/* Hero Section */}
-            <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-20 px-4">
+            <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-16 px-4">
               <div className="max-w-7xl mx-auto text-center">
                 <h1 className="text-4xl md:text-6xl font-bold text-fashion-teal mb-6 tracking-tight">
                   Find Your Perfect Fit, Instantly
                 </h1>
-                <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-12">
+                <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-8">
                   No more sizing guesswork. Use our solution and get accurate style and size recommendations—with or without measurements.
                 </p>
                 
                 {/* StyleMyFit App Interface */}
-                <div className="flex justify-center items-center mb-12">
+                <div className="flex justify-center items-center mb-8">
                   <img 
                     src="/lovable-uploads/687d2721-eb43-4fba-8f44-6a5d80ff527d.png"
                     alt="StyleMyFit App Interface"
@@ -106,7 +106,7 @@ const Index = () => {
             </section>
 
             {/* Product Showcase Section */}
-            <section className="py-20 bg-white">
+            <section className="py-12 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                   {/* Sample product cards to match the reference design */}
@@ -154,7 +154,7 @@ const Index = () => {
             </section>
 
             {/* Features Section */}
-            <section className="py-20 bg-fashion-beige/20">
+            <section className="py-16 bg-fashion-beige/20">
               <div className="max-w-6xl mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="bg-white rounded-lg p-8 text-center shadow-sm">
@@ -179,7 +179,7 @@ const Index = () => {
             </section>
 
             {/* Business Solutions Section */}
-            <section className="py-20 bg-white">
+            <section className="py-16 bg-white">
               <div className="max-w-6xl mx-auto px-4">
                 <div className="text-center mb-12">
                   <h2 className="text-3xl md:text-4xl font-bold text-fashion-teal mb-4">For Fashion Businesses</h2>
