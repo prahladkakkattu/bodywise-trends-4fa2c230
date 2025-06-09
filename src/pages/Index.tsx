@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -109,44 +110,83 @@ const Index = () => {
             <section className="py-12 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                  {/* Sample product cards to match the reference design */}
+                  {/* Black Suit/Blazer - First Image */}
                   <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
-                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 flex items-center justify-center">
-                      <ShirtIcon className="h-12 w-12 text-fashion-teal/60" />
+                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png"
+                        alt="Classic Black Blazer"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Button-Down Shirt</h3>
-                    <p className="text-xs text-fashion-teal/60 mb-2">Wool and nylon blend collarless jacket</p>
+                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Black Blazer</h3>
+                    <p className="text-xs text-fashion-teal/60 mb-2">Elegant wool blazer with structured fit</p>
+                    <div className="mb-2">
+                      <span className="inline-block bg-fashion-coral text-white text-xs px-2 py-1 rounded-full">
+                        Hourglass
+                      </span>
+                    </div>
                     <p className="font-semibold text-fashion-teal">€ 450.00</p>
                     <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
+                  {/* Black Dress with Hat - Second Image */}
                   <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
-                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 flex items-center justify-center">
-                      <ShirtIcon className="h-12 w-12 text-fashion-teal/60" />
+                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png"
+                        alt="Belted Black Dress"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Button-Down Shirt</h3>
-                    <p className="text-xs text-fashion-teal/60 mb-2">Wool and nylon blend collarless jacket</p>
-                    <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Belted Black Dress</h3>
+                    <p className="text-xs text-fashion-teal/60 mb-2">Midi length dress with cinched waist</p>
+                    <div className="mb-2">
+                      <span className="inline-block bg-green-600 text-white text-xs px-2 py-1 rounded-full">
+                        Pear
+                      </span>
+                    </div>
+                    <p className="font-semibold text-fashion-teal">€ 385.00</p>
                     <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
+                  {/* White Dress - Third Image */}
                   <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
-                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 flex items-center justify-center">
-                      <ShirtIcon className="h-12 w-12 text-fashion-teal/60" />
+                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/6593ea9a-91e1-415d-8e1e-7641480ae35e.png"
+                        alt="Elegant White Dress"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Button-Down Shirt</h3>
-                    <p className="text-xs text-fashion-teal/60 mb-2">Wool and nylon blend collarless jacket</p>
-                    <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Elegant White Dress</h3>
+                    <p className="text-xs text-fashion-teal/60 mb-2">V-neck sleeveless midi dress</p>
+                    <div className="mb-2">
+                      <span className="inline-block bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
+                        Apple
+                      </span>
+                    </div>
+                    <p className="font-semibold text-fashion-teal">€ 295.00</p>
                     <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
+                  {/* Orange Blazer - Fourth Image */}
                   <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
-                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 flex items-center justify-center">
-                      <ShirtIcon className="h-12 w-12 text-fashion-teal/60" />
+                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png"
+                        alt="Orange Blazer Set"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Button-Down Shirt</h3>
-                    <p className="text-xs text-fashion-teal/60 mb-2">Wool and nylon blend collarless jacket</p>
-                    <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Orange Blazer Set</h3>
+                    <p className="text-xs text-fashion-teal/60 mb-2">Structured blazer with matching trousers</p>
+                    <div className="mb-2">
+                      <span className="inline-block bg-fashion-coral text-white text-xs px-2 py-1 rounded-full">
+                        Hourglass
+                      </span>
+                    </div>
+                    <p className="font-semibold text-fashion-teal">€ 520.00</p>
                     <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                 </div>
