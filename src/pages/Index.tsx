@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -76,25 +75,13 @@ const Index = () => {
                   No more sizing guesswork. Use our solution and get accurate style and size recommendations—with or without measurements.
                 </p>
                 
-                {/* Mobile App Mockups with minimal spacing */}
+                {/* StyleMyFit App Interface */}
                 <div className="flex justify-center items-center mb-12">
-                  <div className="flex items-center -space-x-2">
-                    <img 
-                      src="/lovable-uploads/2cae05db-298f-41b0-8e72-b9bf80c5554e.png"
-                      alt="StyleMyFit App - Welcome Screen"
-                      className="h-72 w-auto drop-shadow-xl z-30"
-                    />
-                    <img 
-                      src="/lovable-uploads/82c7db8f-311f-4ec2-bcf8-3edfdfb01d1b.png"
-                      alt="StyleMyFit App - Measurement Input"
-                      className="h-72 w-auto drop-shadow-xl z-20"
-                    />
-                    <img 
-                      src="/lovable-uploads/e3a03439-b3cc-4c12-8f17-b4af48b5de58.png"
-                      alt="StyleMyFit App - Body Type Selection"
-                      className="h-72 w-auto drop-shadow-xl z-10"
-                    />
-                  </div>
+                  <img 
+                    src="/lovable-uploads/fb3389f5-0b73-4523-b3e8-d94cb03ab750.png"
+                    alt="StyleMyFit App Interface"
+                    className="max-w-full h-auto drop-shadow-xl"
+                  />
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
