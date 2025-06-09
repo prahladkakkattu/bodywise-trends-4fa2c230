@@ -7,7 +7,7 @@ import ProductRecommendations from "@/components/ProductRecommendations";
 import { BodyMeasurement, BodyType } from "@/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign, Smartphone, CheckCircle } from "lucide-react";
+import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign, CheckCircle } from "lucide-react";
 import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
@@ -66,165 +66,183 @@ const Index = () => {
       case "intro":
         return (
           <>
-            {/* Hero Section with Mobile App Showcase */}
-            <section className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto py-20 gap-16">
-              <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-5xl sm:text-6xl font-bold text-brand-600 mb-6 tracking-tight">
+            {/* Hero Section */}
+            <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-20 px-4">
+              <div className="max-w-7xl mx-auto text-center">
+                <h1 className="text-4xl md:text-6xl font-bold text-fashion-teal mb-6 tracking-tight">
                   Find Your Perfect Fit, Instantly
                 </h1>
-                <p className="text-xl text-muted-foreground max-w-2xl mb-10">
-                  No more sizing guesswork. Get accurate recommendations with or without exact measurements through our intelligent mobile app.
+                <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-12">
+                  No more sizing guesswork. Use our solution and get accurate style and size recommendations—with or without measurements.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                {/* Mobile App Mockups with minimal spacing */}
+                <div className="flex justify-center items-center mb-12">
+                  <div className="flex items-center -space-x-2">
+                    <img 
+                      src="/lovable-uploads/2cae05db-298f-41b0-8e72-b9bf80c5554e.png"
+                      alt="StyleMyFit App - Welcome Screen"
+                      className="h-72 w-auto drop-shadow-xl z-30"
+                    />
+                    <img 
+                      src="/lovable-uploads/82c7db8f-311f-4ec2-bcf8-3edfdfb01d1b.png"
+                      alt="StyleMyFit App - Measurement Input"
+                      className="h-72 w-auto drop-shadow-xl z-20"
+                    />
+                    <img 
+                      src="/lovable-uploads/e3a03439-b3cc-4c12-8f17-b4af48b5de58.png"
+                      alt="StyleMyFit App - Body Type Selection"
+                      className="h-72 w-auto drop-shadow-xl z-10"
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
                     size="lg" 
                     onClick={() => setCurrentStep("measurement")}
-                    className="group"
+                    className="bg-fashion-coral hover:bg-fashion-coral/90 text-white px-8 py-3 text-lg"
                   >
-                    Find Your Fit
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    Find My Style
                   </Button>
                   
                   <Button 
                     variant="outline" 
                     size="lg" 
                     onClick={() => setCurrentStep("alternative")}
+                    className="px-8 py-3 text-lg"
                   >
-                    I Don't Know My Measurements
+                    Not sure about my measurements
                   </Button>
                 </div>
               </div>
-              
-              {/* Mobile App Mockups - Updated with extremely close spacing */}
-              <div className="flex-1 flex justify-center lg:justify-end">
-                <div className="flex items-center gap-0.5 -space-x-1">
-                  <img 
-                    src="/lovable-uploads/2cae05db-298f-41b0-8e72-b9bf80c5554e.png"
-                    alt="StyleMyFit App - Welcome Screen"
-                    className="h-80 w-auto drop-shadow-2xl"
-                  />
-                  <img 
-                    src="/lovable-uploads/82c7db8f-311f-4ec2-bcf8-3edfdfb01d1b.png"
-                    alt="StyleMyFit App - Measurement Input"
-                    className="h-80 w-auto drop-shadow-2xl"
-                  />
-                  <img 
-                    src="/lovable-uploads/e3a03439-b3cc-4c12-8f17-b4af48b5de58.png"
-                    alt="StyleMyFit App - Body Type Selection"
-                    className="h-80 w-auto drop-shadow-2xl"
-                  />
+            </section>
+
+            {/* Product Showcase Section */}
+            <section className="py-20 bg-white">
+              <div className="max-w-7xl mx-auto px-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                  {/* Sample product cards to match the reference design */}
+                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
+                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 flex items-center justify-center">
+                      <ShirtIcon className="h-12 w-12 text-fashion-teal/60" />
+                    </div>
+                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Button-Down Shirt</h3>
+                    <p className="text-xs text-fashion-teal/60 mb-2">Wool and nylon blend collarless jacket</p>
+                    <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                    <Button size="sm" className="mt-2 w-full">See More</Button>
+                  </div>
+                  
+                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
+                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 flex items-center justify-center">
+                      <ShirtIcon className="h-12 w-12 text-fashion-teal/60" />
+                    </div>
+                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Button-Down Shirt</h3>
+                    <p className="text-xs text-fashion-teal/60 mb-2">Wool and nylon blend collarless jacket</p>
+                    <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                    <Button size="sm" className="mt-2 w-full">See More</Button>
+                  </div>
+                  
+                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
+                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 flex items-center justify-center">
+                      <ShirtIcon className="h-12 w-12 text-fashion-teal/60" />
+                    </div>
+                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Button-Down Shirt</h3>
+                    <p className="text-xs text-fashion-teal/60 mb-2">Wool and nylon blend collarless jacket</p>
+                    <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                    <Button size="sm" className="mt-2 w-full">See More</Button>
+                  </div>
+                  
+                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
+                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 flex items-center justify-center">
+                      <ShirtIcon className="h-12 w-12 text-fashion-teal/60" />
+                    </div>
+                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Button-Down Shirt</h3>
+                    <p className="text-xs text-fashion-teal/60 mb-2">Wool and nylon blend collarless jacket</p>
+                    <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                    <Button size="sm" className="mt-2 w-full">See More</Button>
+                  </div>
                 </div>
               </div>
             </section>
 
             {/* Features Section */}
-            <section className="max-w-6xl mx-auto py-16">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-                  <Ruler className="h-10 w-10 text-brand-300 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Precise Recommendations</h3>
-                  <p className="text-muted-foreground">Get clothing suggestions perfectly matched to your unique body shape.</p>
-                </div>
-                
-                <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-                  <ShirtIcon className="h-10 w-10 text-brand-300 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Perfect Fit Every Time</h3>
-                  <p className="text-muted-foreground">Say goodbye to returns and exchanges with our tailored size guidance.</p>
-                </div>
-                
-                <div className="bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-                  <Sparkles className="h-10 w-10 text-brand-300 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Styling Expertise</h3>
-                  <p className="text-muted-foreground">Discover which styles enhance your natural shape and personal style.</p>
+            <section className="py-20 bg-fashion-beige/20">
+              <div className="max-w-6xl mx-auto px-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="bg-white rounded-lg p-8 text-center shadow-sm">
+                    <Ruler className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                    <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Precise Recommendations</h3>
+                    <p className="text-fashion-teal/70">Get clothing suggestions perfectly matched to your unique body shape.</p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-8 text-center shadow-sm">
+                    <CheckCircle className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                    <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Perfect Fit Every Time</h3>
+                    <p className="text-fashion-teal/70">Say goodbye to returns and exchanges with our tailored sizing solution.</p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-8 text-center shadow-sm">
+                    <Sparkles className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                    <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Styling Expertise</h3>
+                    <p className="text-fashion-teal/70">Discover which styles enhance your natural shape and personal style.</p>
+                  </div>
                 </div>
               </div>
             </section>
 
-            {/* App Journey Showcase */}
-            <section className="bg-fashion-beige/50 py-20">
-              <div className="max-w-7xl mx-auto px-4">
-                <div className="text-center mb-16">
-                  <h2 className="text-4xl font-bold text-fashion-teal mb-4">Experience StyleMyFit</h2>
-                  <p className="text-xl text-fashion-teal/80 max-w-3xl mx-auto">
-                    See how our intelligent sizing technology works through our intuitive mobile interface
+            {/* Business Solutions Section */}
+            <section className="py-20 bg-white">
+              <div className="max-w-6xl mx-auto px-4">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl md:text-4xl font-bold text-fashion-teal mb-4">For Fashion Businesses</h2>
+                  <p className="text-lg text-fashion-teal/80 max-w-3xl mx-auto">
+                    Transform your customer experience with StyleMyFit's powerful sizing and recommendation engine.
                   </p>
                 </div>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                  {/* Left side - App screens */}
-                  <div className="flex justify-center">
-                    <div className="relative">
-                      <img 
-                        src="/lovable-uploads/1871e457-9247-4b1f-80d4-7ce359d805d7.png"
-                        alt="StyleMyFit App - Body Dimensions"
-                        className="h-96 w-auto drop-shadow-xl"
-                      />
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
+                    <DollarSign className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                    <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Increase Revenue</h3>
+                    <p className="text-fashion-teal/70">Boost conversions by up to 35% with accurate fit recommendations.</p>
                   </div>
                   
-                  {/* Right side - Features list */}
-                  <div className="space-y-8">
-                    <div className="flex items-start gap-4">
-                      <CheckCircle className="h-6 w-6 text-fashion-coral mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="text-xl font-semibold text-fashion-teal mb-2">Smart Body Analysis</h3>
-                        <p className="text-fashion-teal/80">Advanced algorithms analyze your body dimensions and preferences</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-4">
-                      <CheckCircle className="h-6 w-6 text-fashion-coral mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="text-xl font-semibold text-fashion-teal mb-2">Interactive Fit Guide</h3>
-                        <p className="text-fashion-teal/80">Visual guides help you understand how garments should fit</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-4">
-                      <CheckCircle className="h-6 w-6 text-fashion-coral mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="text-xl font-semibold text-fashion-teal mb-2">Personalized Results</h3>
-                        <p className="text-fashion-teal/80">Get size recommendations tailored specifically to your body type</p>
-                      </div>
-                    </div>
+                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
+                    <Users className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                    <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Enhance Experience</h3>
+                    <p className="text-fashion-teal/70">Provide personalized shopping journeys that make customers feel valued.</p>
+                  </div>
+                  
+                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
+                    <ChartBar className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                    <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Reduce Returns</h3>
+                    <p className="text-fashion-teal/70">Cut return rates by as much as 42% by getting the fit right the first time.</p>
                   </div>
                 </div>
-              </div>
-            </section>
-
-            {/* Results Showcase */}
-            <section className="py-20">
-              <div className="max-w-7xl mx-auto px-4">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                  {/* Left side - Text content */}
-                  <div className="space-y-6">
-                    <h2 className="text-4xl font-bold text-fashion-teal">
-                      Get Personalized Product Recommendations
-                    </h2>
-                    <p className="text-xl text-fashion-teal/80">
-                      Once we understand your body type, we show you exactly which products will fit and flatter you best.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <Button 
-                        size="lg" 
-                        onClick={() => setCurrentStep("measurement")}
-                        className="group"
-                      >
-                        Try It Now
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </div>
-                  </div>
+                
+                <div className="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button variant="premium" size="lg" className="px-8 py-3">
+                    Partner With StyleMyFit
+                  </Button>
                   
-                  {/* Right side - App screen */}
-                  <div className="flex justify-center">
-                    <img 
-                      src="/lovable-uploads/2a536660-86f5-4060-8a15-9e1a5aef1aa4.png"
-                      alt="StyleMyFit App - Product Recommendations"
-                      className="h-96 w-auto drop-shadow-xl"
-                    />
-                  </div>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button 
+                          variant="outline" 
+                          size="lg"
+                          onClick={() => setShowLiveDemo(true)}
+                          className="px-8 py-3"
+                        >
+                          Live Preview
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">See how StyleMyFit appears on your e-commerce website</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
               </div>
             </section>
@@ -292,14 +310,14 @@ const Index = () => {
   };
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
       
-      <main className="container pt-24 pb-16">
+      <main className="pt-16">
         {renderStep()}
         
         {currentStep !== "intro" && (
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-8 pb-8">
             <Button 
               variant="ghost" 
               onClick={() => setCurrentStep("intro")}
@@ -309,98 +327,18 @@ const Index = () => {
             </Button>
           </div>
         )}
-        
-        {currentStep === "intro" && (
-          <>
-            <section className="max-w-5xl mx-auto px-4 py-16 bg-white rounded-lg shadow-sm mb-16">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold text-fashion-teal mb-4">For Fashion Businesses</h2>
-                <p className="text-lg text-fashion-teal/80 mb-8 max-w-3xl mx-auto">
-                  Transform your customer experience with StyleMyFit's powerful sizing and recommendation engine.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-fashion-beige p-6 rounded-lg border border-fashion-beige/50">
-                  <DollarSign className="h-10 w-10 text-fashion-coral mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Increase Revenue</h3>
-                  <p className="text-muted-foreground">Boost conversions by up to 35% with accurate fit recommendations that give shoppers buying confidence.</p>
-                </div>
-                
-                <div className="bg-fashion-beige p-6 rounded-lg border border-fashion-beige/50">
-                  <Users className="h-10 w-10 text-fashion-coral mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Enhance Experience</h3>
-                  <p className="text-muted-foreground">Provide personalized shopping journeys that make customers feel understood and valued.</p>
-                </div>
-                
-                <div className="bg-fashion-beige p-6 rounded-lg border border-fashion-beige/50">
-                  <ChartBar className="h-10 w-10 text-fashion-coral mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Reduce Returns</h3>
-                  <p className="text-muted-foreground">Cut return rates by as much as 42% by getting the fit right the first time.</p>
-                </div>
-              </div>
-              
-              <div className="mt-10 text-center flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="premium" size="lg">
-                  Partner With StyleMyFit
-                </Button>
-                
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button 
-                        variant="outline" 
-                        size="lg"
-                        onClick={() => setShowLiveDemo(true)}
-                      >
-                        Live Preview
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p className="max-w-xs">See how StyleMyFit appears on your e-commerce website</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
-            </section>
-            
-            <section className="max-w-3xl mx-auto text-center py-16">
-              <h2 className="text-2xl font-semibold mb-4">How StyleMyFit Works</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-4">
-                  <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">1</div>
-                  <h3 className="font-medium mb-2">Enter Your Measurements</h3>
-                  <p className="text-sm text-muted-foreground">Input your key body measurements accurately for the best results.</p>
-                </div>
-                
-                <div className="p-4">
-                  <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">2</div>
-                  <h3 className="font-medium mb-2">Discover Your Body Shape</h3>
-                  <p className="text-sm text-muted-foreground">Our algorithm identifies your body shape and provides styling tips.</p>
-                </div>
-                
-                <div className="p-4">
-                  <div className="bg-brand-300 text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4">3</div>
-                  <h3 className="font-medium mb-2">Get Personalized Recommendations</h3>
-                  <p className="text-sm text-muted-foreground">Browse clothing options specially curated for your body shape.</p>
-                </div>
-              </div>
-            </section>
-          </>
-        )}
       </main>
       
-      <footer className="bg-white border-t py-8">
+      <footer className="bg-white border-t py-12">
         <div className="container">
           <div className="text-center">
             <h3 className="font-bold text-xl text-brand-500 mb-2">StyleMyFit</h3>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-sm text-muted-foreground mb-6">
               Personalized fashion recommendations based on your unique body shape.
             </p>
-            <div className="flex justify-center space-x-6 mb-4">
-              <a href="#" className="text-sm text-muted-foreground hover:text-brand-300 transition-colors">FAQ</a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-brand-300 transition-colors">Privacy Policy</a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-brand-300 transition-colors">Contact Us</a>
+            <div className="flex justify-center space-x-6 mb-6">
+              <a href="mailto:info@stylemyfit.com" className="text-sm text-muted-foreground hover:text-brand-300 transition-colors">info@stylemyfit.com</a>
+              <a href="#" className="text-sm text-muted-foreground hover:text-brand-300 transition-colors">LinkedIn</a>
             </div>
             <p className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} StyleMyFit. All rights reserved.
