@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -18,6 +17,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useNavigate } from "react-router-dom";
 
 // Steps in the user flow
 type Step = "intro" | "alternative" | "measurement" | "results";
@@ -29,6 +29,7 @@ const Index = () => {
   const [currentStep, setCurrentStep] = useState<Step>("intro");
   const [showLiveDemo, setShowLiveDemo] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   const handleBodyTypeChange = (newBodyType: BodyType, newMeasurements: BodyMeasurement) => {
     setIsLoading(true);
@@ -60,6 +61,10 @@ const Index = () => {
       setCurrentStep("results");
     }, 1000);
   };
+
+  const handleProductClick = (productId: string) => {
+    navigate(`/product/${productId}`);
+  };
   
   const renderStep = () => {
     switch (currentStep) {
@@ -67,25 +72,16 @@ const Index = () => {
         return (
           <>
             {/* Hero Section */}
-            <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-16 px-4">
+            <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-8 px-4">
               <div className="max-w-7xl mx-auto text-center">
-                <h1 className="text-4xl md:text-6xl font-bold text-fashion-teal mb-6 tracking-tight">
+                <h1 className="text-4xl md:text-6xl font-bold text-fashion-teal mb-4 tracking-tight">
                   Find Your Perfect Fit, Instantly
                 </h1>
-                <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-8">
+                <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-6">
                   No more sizing guesswork. Use our solution and get accurate style and size recommendations—with or without measurements.
                 </p>
                 
-                {/* StyleMyFit App Interface */}
-                <div className="flex justify-center items-center mb-8">
-                  <img 
-                    src="/lovable-uploads/687d2721-eb43-4fba-8f44-6a5d80ff527d.png"
-                    alt="StyleMyFit App Interface"
-                    className="max-w-full h-auto drop-shadow-xl"
-                  />
-                </div>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                   <Button 
                     size="lg" 
                     onClick={() => setCurrentStep("measurement")}
@@ -103,15 +99,24 @@ const Index = () => {
                     Not sure about my measurements
                   </Button>
                 </div>
+                
+                {/* StyleMyFit App Interface - Reduced size */}
+                <div className="flex justify-center items-center">
+                  <img 
+                    src="/lovable-uploads/687d2721-eb43-4fba-8f44-6a5d80ff527d.png"
+                    alt="StyleMyFit App Interface"
+                    className="max-w-md h-auto drop-shadow-xl"
+                  />
+                </div>
               </div>
             </section>
 
-            {/* Product Showcase Section */}
-            <section className="py-12 bg-white">
+            {/* Product Showcase Section - Reduced padding */}
+            <section className="py-6 bg-white">
               <div className="max-w-7xl mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                  {/* Black Suit/Blazer - First Image */}
-                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                  {/* Classic Black Blazer */}
+                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleProductClick('black-blazer')}>
                     <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
                       <img 
                         src="/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png"
@@ -130,8 +135,8 @@ const Index = () => {
                     <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
-                  {/* Black Dress with Hat - Second Image */}
-                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
+                  {/* Belted Black Dress */}
+                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleProductClick('black-dress')}>
                     <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
                       <img 
                         src="/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png"
@@ -150,8 +155,8 @@ const Index = () => {
                     <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
-                  {/* White Dress - Third Image */}
-                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
+                  {/* Elegant White Dress */}
+                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleProductClick('white-dress')}>
                     <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
                       <img 
                         src="/lovable-uploads/6593ea9a-91e1-415d-8e1e-7641480ae35e.png"
@@ -170,8 +175,8 @@ const Index = () => {
                     <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
-                  {/* Orange Blazer - Fourth Image */}
-                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center">
+                  {/* Orange Blazer Set */}
+                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleProductClick('orange-blazer')}>
                     <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
                       <img 
                         src="/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png"
@@ -193,8 +198,8 @@ const Index = () => {
               </div>
             </section>
 
-            {/* Features Section */}
-            <section className="py-16 bg-fashion-beige/20">
+            {/* Features Section - Reduced padding */}
+            <section className="py-8 bg-fashion-beige/20">
               <div className="max-w-6xl mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="bg-white rounded-lg p-8 text-center shadow-sm">
