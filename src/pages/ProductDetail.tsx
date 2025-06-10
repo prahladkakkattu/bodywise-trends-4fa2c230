@@ -2,7 +2,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Heart, ShoppingCart, Star, Truck, Shield, RotateCcw } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { ArrowLeft, Heart, ShoppingCart, Star, Truck, Shield, RotateCcw, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { useState } from "react";
 
@@ -106,6 +107,10 @@ const ProductDetail = () => {
 
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
+  const handleBuyNow = () => {
+    window.open("https://www.juju.ie/", "_blank");
+  };
+
   return (
     <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
@@ -198,6 +203,22 @@ const ProductDetail = () => {
                   <ShoppingCart className="h-5 w-5 mr-2" />
                   Add to Cart
                 </Button>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button 
+                      variant="premium" 
+                      size="lg" 
+                      className="flex-1"
+                      onClick={handleBuyNow}
+                    >
+                      <ExternalLink className="h-5 w-5 mr-2" />
+                      Buy Now
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>You will be redirected to the seller or designer website of this product</p>
+                  </TooltipContent>
+                </Tooltip>
                 <Button 
                   variant="outline" 
                   size="lg"

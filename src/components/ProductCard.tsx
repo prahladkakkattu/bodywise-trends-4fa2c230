@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ClothingItem } from "@/types";
 import { Heart, ExternalLink } from "lucide-react";
@@ -11,17 +12,24 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
   
-  const toggleFavorite = () => {
+  const toggleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setIsFavorite(!isFavorite);
   };
   
-  const handleGoToSeller = () => {
+  const handleCardClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+  
+  const handleGoToSeller = (e: React.MouseEvent) => {
+    e.stopPropagation();
     window.open("https://www.juju.ie/", "_blank");
   };
   
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-md">
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-md cursor-pointer" onClick={handleCardClick}>
       <div className="relative aspect-square overflow-hidden bg-muted">
         <img 
           src={product.imageUrl} 
