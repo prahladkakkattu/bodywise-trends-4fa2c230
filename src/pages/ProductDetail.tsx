@@ -1,9 +1,10 @@
-
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { ArrowLeft, Heart, ShoppingCart, Star, Truck, Shield, RotateCcw, ExternalLink } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft, Heart, Star, Truck, Shield, RotateCcw, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { useState } from "react";
 
@@ -11,7 +12,24 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
-  const [selectedSize, setSelectedSize] = useState("M");
+  const [userRating, setUserRating] = useState(0);
+  const [userReview, setUserReview] = useState("");
+  const [reviews, setReviews] = useState([
+    {
+      id: 1,
+      name: "Sarah M.",
+      rating: 5,
+      comment: "Absolutely love this piece! Perfect fit and great quality.",
+      date: "2024-06-01"
+    },
+    {
+      id: 2,
+      name: "Emma L.",
+      rating: 4,
+      comment: "Beautiful design and comfortable to wear. Highly recommend!",
+      date: "2024-05-28"
+    }
+  ]);
 
   // Mock product data - in a real app, this would come from an API
   const getProductData = (id: string) => {
@@ -111,6 +129,21 @@ const ProductDetail = () => {
     window.open("https://www.juju.ie/", "_blank");
   };
 
+  const handleSubmitReview = () => {
+    if (userRating > 0 && userReview.trim()) {
+      const newReview = {
+        id: reviews.length + 1,
+        name: "You",
+        rating: userRating,
+        comment: userReview,
+        date: new Date().toISOString().split('T')[0]
+      };
+      setReviews([newReview, ...reviews]);
+      setUserRating(0);
+      setUserReview("");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
@@ -171,38 +204,13 @@ const ProductDetail = () => {
                 {/* Price */}
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-3xl font-bold text-fashion-teal">€{product.price.toFixed(2)}</span>
-                  <span className="text-lg text-fashion-teal/50 line-through">€{product.originalPrice.toFixed(2)}</span>
-                  <Badge variant="destructive" className="text-xs">
-                    {discount}% OFF
-                  </Badge>
                 </div>
 
                 <p className="text-fashion-teal/80 mb-6">{product.description}</p>
               </div>
 
-              {/* Size Selection */}
-              <div>
-                <h3 className="text-lg font-semibold text-fashion-teal mb-3">Size</h3>
-                <div className="flex gap-2 mb-6">
-                  {product.sizes.map((size) => (
-                    <Button
-                      key={size}
-                      variant={selectedSize === size ? "default" : "outline"}
-                      className="w-12 h-12"
-                      onClick={() => setSelectedSize(size)}
-                    >
-                      {size}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
               {/* Action Buttons */}
               <div className="flex gap-4 mb-8">
-                <Button size="lg" className="flex-1">
-                  <ShoppingCart className="h-5 w-5 mr-2" />
-                  Add to Cart
-                </Button>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button 
@@ -229,19 +237,6 @@ const ProductDetail = () => {
                 </Button>
               </div>
 
-              {/* Features */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-fashion-teal">Key Features</h3>
-                <ul className="space-y-2">
-                  {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-fashion-teal/70">
-                      <div className="w-2 h-2 bg-fashion-coral rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
               {/* Shipping & Returns */}
               <div className="border-t pt-6 space-y-3">
                 <div className="flex items-center text-fashion-teal/70">
@@ -266,6 +261,91 @@ const ProductDetail = () => {
             <p className="text-fashion-teal/80 leading-relaxed max-w-4xl">
               {product.longDescription}
             </p>
+          </div>
+
+          {/* Product Reviews Section */}
+          <div className="mt-12 border-t pt-8">
+            <h2 className="text-2xl font-bold text-fashion-teal mb-6">Customer Reviews</h2>
+            
+            {/* Add Review Form */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="text-lg text-fashion-teal">Write a Review</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {/* Rating Input */}
+                <div>
+                  <label className="block text-sm font-medium text-fashion-teal mb-2">
+                    Your Rating
+                  </label>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((rating) => (
+                      <button
+                        key={rating}
+                        onClick={() => setUserRating(rating)}
+                        className="p-1"
+                      >
+                        <Star
+                          className={`h-6 w-6 ${
+                            rating <= userRating
+                              ? "fill-yellow-400 text-yellow-400"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Comment Input */}
+                <div>
+                  <label className="block text-sm font-medium text-fashion-teal mb-2">
+                    Your Review
+                  </label>
+                  <Textarea
+                    placeholder="Share your thoughts about this product..."
+                    value={userReview}
+                    onChange={(e) => setUserReview(e.target.value)}
+                    rows={4}
+                  />
+                </div>
+                
+                <Button onClick={handleSubmitReview} disabled={!userRating || !userReview.trim()}>
+                  Submit Review
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Existing Reviews */}
+            <div className="space-y-4">
+              {reviews.map((review) => (
+                <Card key={review.id}>
+                  <CardContent className="pt-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h4 className="font-semibold text-fashion-teal">{review.name}</h4>
+                        <div className="flex items-center gap-2 mt-1">
+                          <div className="flex">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`h-4 w-4 ${
+                                  i < review.rating
+                                    ? "fill-yellow-400 text-yellow-400"
+                                    : "text-gray-300"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <span className="text-sm text-fashion-teal/60">{review.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-fashion-teal/80">{review.comment}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </main>
