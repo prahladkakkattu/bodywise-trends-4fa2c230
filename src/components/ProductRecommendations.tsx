@@ -16,25 +16,7 @@ const ProductRecommendations = ({ bodyType }: ProductRecommendationsProps) => {
   useEffect(() => {
     if (bodyType && bodyType !== "unknown") {
       const items = getRecommendedClothing(bodyType);
-      // Map the product IDs to match the ones in ProductDetail page
-      const mappedItems = items.map(item => {
-        let mappedId = item.id;
-        
-        // Map the mock data IDs to the actual product detail IDs
-        if (item.name.toLowerCase().includes('black blazer') || item.name.toLowerCase().includes('blazer')) {
-          mappedId = 'black-blazer';
-        } else if (item.name.toLowerCase().includes('black dress') && item.name.toLowerCase().includes('belt')) {
-          mappedId = 'black-dress';
-        } else if (item.name.toLowerCase().includes('white dress')) {
-          mappedId = 'white-dress';
-        } else if (item.name.toLowerCase().includes('orange') && item.name.toLowerCase().includes('blazer')) {
-          mappedId = 'orange-blazer';
-        }
-        
-        return { ...item, id: mappedId };
-      });
-      
-      setRecommendations(mappedItems);
+      setRecommendations(items);
     }
   }, [bodyType]);
   
