@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ClothingItem } from "@/types";
 import { Heart, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BodyShapeIcon from "./BodyShapeIcon";
 
 interface ProductCardProps {
   product: ClothingItem;
@@ -53,6 +54,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <p className="text-sm text-muted-foreground line-clamp-2 h-10">
           {product.description}
         </p>
+        <div className="mt-2 flex justify-center">
+          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+        </div>
       </CardContent>
       
       <CardFooter className="flex justify-between pt-0 pb-4">

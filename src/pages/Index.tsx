@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
 import BodyTypeResult from "@/components/BodyTypeResult";
 import ProductRecommendations from "@/components/ProductRecommendations";
+import BodyShapeIcon from "@/components/BodyShapeIcon";
 import { BodyMeasurement, BodyType } from "@/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
@@ -127,9 +128,7 @@ const Index = () => {
                     <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Black Blazer</h3>
                     <p className="text-xs text-fashion-teal/60 mb-2">Elegant wool blazer with structured fit</p>
                     <div className="mb-2">
-                      <span className="inline-block bg-fashion-coral text-white text-xs px-2 py-1 rounded-full">
-                        Hourglass
-                      </span>
+                      <BodyShapeIcon bodyType="hourglass" size="sm" />
                     </div>
                     <p className="font-semibold text-fashion-teal">€ 450.00</p>
                     <Button size="sm" className="mt-2 w-full">See More</Button>
@@ -147,9 +146,7 @@ const Index = () => {
                     <h3 className="font-medium text-fashion-teal text-sm mb-1">Belted Black Dress</h3>
                     <p className="text-xs text-fashion-teal/60 mb-2">Midi length dress with cinched waist</p>
                     <div className="mb-2">
-                      <span className="inline-block bg-green-600 text-white text-xs px-2 py-1 rounded-full">
-                        Pear
-                      </span>
+                      <BodyShapeIcon bodyType="pear" size="sm" />
                     </div>
                     <p className="font-semibold text-fashion-teal">€ 385.00</p>
                     <Button size="sm" className="mt-2 w-full">See More</Button>
@@ -167,9 +164,7 @@ const Index = () => {
                     <h3 className="font-medium text-fashion-teal text-sm mb-1">Elegant White Dress</h3>
                     <p className="text-xs text-fashion-teal/60 mb-2">V-neck sleeveless midi dress</p>
                     <div className="mb-2">
-                      <span className="inline-block bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
-                        Apple
-                      </span>
+                      <BodyShapeIcon bodyType="apple" size="sm" />
                     </div>
                     <p className="font-semibold text-fashion-teal">€ 295.00</p>
                     <Button size="sm" className="mt-2 w-full">See More</Button>
@@ -187,9 +182,7 @@ const Index = () => {
                     <h3 className="font-medium text-fashion-teal text-sm mb-1">Orange Blazer Set</h3>
                     <p className="text-xs text-fashion-teal/60 mb-2">Structured blazer with matching trousers</p>
                     <div className="mb-2">
-                      <span className="inline-block bg-fashion-coral text-white text-xs px-2 py-1 rounded-full">
-                        Hourglass
-                      </span>
+                      <BodyShapeIcon bodyType="hourglass" size="sm" />
                     </div>
                     <p className="font-semibold text-fashion-teal">€ 520.00</p>
                     <Button size="sm" className="mt-2 w-full">See More</Button>
@@ -385,3 +378,5 @@ const Index = () => {
 };
 
 export default Index;
+
+}

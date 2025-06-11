@@ -1,3 +1,4 @@
+
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Heart, Star, Truck, Shield, RotateCcw, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import BodyShapeIcon from "@/components/BodyShapeIcon";
 import { useState } from "react";
 
 const ProductDetail = () => {
@@ -194,11 +196,9 @@ const ProductDetail = () => {
                 </div>
 
                 {/* Body Type Badge */}
-                <div className="mb-4">
-                  <span className="text-sm text-fashion-teal/70 mr-2">Perfect for:</span>
-                  <Badge className={`${product.bodyTypeColor} text-white`}>
-                    {product.bodyType} Body Type
-                  </Badge>
+                <div className="mb-4 flex items-center gap-2">
+                  <span className="text-sm text-fashion-teal/70">Perfect for:</span>
+                  <BodyShapeIcon bodyType={product.bodyType as any} size="md" />
                 </div>
 
                 {/* Price */}
