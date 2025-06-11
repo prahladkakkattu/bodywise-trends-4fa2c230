@@ -102,10 +102,10 @@ const Index = () => {
                   </Button>
                 </div>
                 
-                {/* StyleMyFit App Interface - Reduced size */}
+                {/* StyleMyFit App Interface - Updated image */}
                 <div className="flex justify-center items-center">
                   <img 
-                    src="/lovable-uploads/687d2721-eb43-4fba-8f44-6a5d80ff527d.png"
+                    src="/lovable-uploads/0288e697-3616-4617-930d-b5429498a34f.png"
                     alt="StyleMyFit App Interface"
                     className="max-w-md h-auto drop-shadow-xl"
                   />
