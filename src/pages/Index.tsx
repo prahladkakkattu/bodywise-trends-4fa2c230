@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -378,5 +379,3 @@ const Index = () => {
 };
 
 export default Index;
-
-}
