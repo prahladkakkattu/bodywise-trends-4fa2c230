@@ -83,7 +83,7 @@ const Index = () => {
                   No more sizing guesswork. Use our solution and get accurate style and size recommendations—with or without measurements.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                   <Button 
                     size="lg" 
                     onClick={() => setCurrentStep("measurement")}
@@ -102,19 +102,19 @@ const Index = () => {
                   </Button>
                 </div>
                 
-                {/* StyleMyFit App Interface - Updated image */}
-                <div className="flex justify-center items-center">
+                {/* StyleMyFit App Interface - Increased image size */}
+                <div className="flex justify-center items-center mb-8">
                   <img 
                     src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png"
                     alt="StyleMyFit App Interface"
-                    className="max-w-md h-auto drop-shadow-xl"
+                    className="max-w-lg h-auto drop-shadow-xl"
                   />
                 </div>
               </div>
             </section>
 
-            {/* Product Showcase Section - Reduced padding */}
-            <section className="py-6 bg-white">
+            {/* Product Showcase Section - Adjusted padding for equal spacing */}
+            <section className="py-8 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                   {/* Classic Black Blazer */}
