@@ -8,20 +8,20 @@ interface BodyShapeIconProps {
 }
 
 const BodyShapeIcon = ({ bodyType, size = "md" }: BodyShapeIconProps) => {
-  const getBodyShapeIcon = (type: BodyType) => {
+  const getBodyShapeImage = (type: BodyType) => {
     switch (type) {
-      case "hourglass":
-        return "⧗"; // Hourglass symbol
-      case "pear":
-        return "🍐"; // Pear emoji
       case "apple":
-        return "🍎"; // Apple emoji
+        return "/lovable-uploads/ba1c269f-6b5c-4956-843b-01a19529bf8f.png"; // Apple/oval shape
       case "rectangle":
-        return "▬"; // Rectangle symbol
+        return "/lovable-uploads/466b805a-012e-474b-9fef-42d90cdacff2.png"; // Rectangle shape
+      case "pear":
+        return "/lovable-uploads/4db74749-7d68-41b5-9548-503eb365212d.png"; // Pear/triangle shape
+      case "hourglass":
+        return "/lovable-uploads/fc8516fe-6316-4407-8719-7cbbad7dc09d.png"; // Hourglass shape
       case "inverted-triangle":
-        return "🔺"; // Triangle symbol
+        return "/lovable-uploads/e7bff7ff-17bb-4b0c-9725-57299ebf9e10.png"; // Inverted triangle shape
       default:
-        return "?";
+        return "/lovable-uploads/466b805a-012e-474b-9fef-42d90cdacff2.png"; // Default to rectangle
     }
   };
 
@@ -42,36 +42,23 @@ const BodyShapeIcon = ({ bodyType, size = "md" }: BodyShapeIconProps) => {
     }
   };
 
-  const getBodyShapeColor = (type: BodyType) => {
-    switch (type) {
-      case "hourglass":
-        return "bg-fashion-coral";
-      case "pear":
-        return "bg-green-600";
-      case "apple":
-        return "bg-blue-600";
-      case "rectangle":
-        return "bg-purple-600";
-      case "inverted-triangle":
-        return "bg-orange-600";
-      default:
-        return "bg-gray-600";
-    }
-  };
-
   const sizeClasses = {
-    sm: "text-xs px-2 py-1",
-    md: "text-sm px-2 py-1", 
-    lg: "text-base px-3 py-2"
+    sm: "w-6 h-6",
+    md: "w-8 h-8", 
+    lg: "w-12 h-12"
   };
 
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <span className={`inline-flex items-center justify-center rounded-full text-white font-medium ${getBodyShapeColor(bodyType)} ${sizeClasses[size]} cursor-help`}>
-            {getBodyShapeIcon(bodyType)}
-          </span>
+          <div className={`inline-flex items-center justify-center cursor-help ${sizeClasses[size]}`}>
+            <img 
+              src={getBodyShapeImage(bodyType)}
+              alt={getBodyShapeLabel(bodyType)}
+              className="w-full h-full object-contain"
+            />
+          </div>
         </TooltipTrigger>
         <TooltipContent>
           <p>{getBodyShapeLabel(bodyType)} Body Shape</p>
