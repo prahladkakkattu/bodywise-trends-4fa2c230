@@ -49,23 +49,22 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
       
       <CardContent className="pt-4">
-        <div className="text-xs text-muted-foreground mb-1">{product.brand}</div>
-        <h3 className="font-medium text-base mb-1 truncate">{product.name}</h3>
-        <p className="text-sm text-muted-foreground line-clamp-2 h-10">
+        <div className="text-xs text-muted-foreground mb-1 text-left">{product.brand}</div>
+        <h3 className="font-medium text-base mb-1 text-left">{product.name}</h3>
+        <p className="text-sm text-muted-foreground line-clamp-2 h-10 text-left">
           {product.description}
         </p>
-        <div className="mt-2 flex justify-center">
+        <div className="mt-2 flex justify-between items-center">
           <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+          <div className="font-semibold">€{product.price.toFixed(2)}</div>
+        </div>
+        <div className="mt-2 flex justify-center">
+          <Button size="sm" onClick={handleGoToSeller}>
+            Go to JuJu
+            <ExternalLink className="h-4 w-4 ml-2" />
+          </Button>
         </div>
       </CardContent>
-      
-      <CardFooter className="flex justify-between pt-0 pb-4">
-        <div className="font-semibold">€{product.price.toFixed(2)}</div>
-        <Button size="sm" onClick={handleGoToSeller}>
-          Go to JuJu
-          <ExternalLink className="h-4 w-4 ml-2" />
-        </Button>
-      </CardFooter>
     </Card>
   );
 };
