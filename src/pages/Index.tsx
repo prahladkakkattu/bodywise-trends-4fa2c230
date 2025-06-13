@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -101,19 +102,19 @@ const Index = () => {
                   </Button>
                 </div>
                 
-                {/* StyleMyFit App Interface - Increased image size significantly */}
-                <div className="flex justify-center items-center mb-4">
+                {/* StyleMyFit App Interface - Made 50% larger */}
+                <div className="flex justify-center items-center mb-2">
                   <img 
                     src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png"
                     alt="StyleMyFit App Interface"
-                    className="max-w-2xl h-auto drop-shadow-xl"
+                    className="max-w-3xl h-auto drop-shadow-xl"
                   />
                 </div>
               </div>
             </section>
 
-            {/* Product Showcase Section - Reduced gap */}
-            <section className="py-4 bg-white">
+            {/* Product Showcase Section - Reduced gap by 50% */}
+            <section className="py-2 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                   {/* Classic Black Blazer */}
@@ -127,7 +128,7 @@ const Index = () => {
                     </div>
                     <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Black Blazer</h3>
                     <p className="text-xs text-fashion-teal/60 mb-2">Elegant wool blazer with structured fit</p>
-                    <div className="mb-2">
+                    <div className="mb-2 flex justify-start">
                       <BodyShapeIcon bodyType="hourglass" size="sm" />
                     </div>
                     <p className="font-semibold text-fashion-teal">€ 450.00</p>
@@ -145,7 +146,7 @@ const Index = () => {
                     </div>
                     <h3 className="font-medium text-fashion-teal text-sm mb-1">Belted Black Dress</h3>
                     <p className="text-xs text-fashion-teal/60 mb-2">Midi length dress with cinched waist</p>
-                    <div className="mb-2">
+                    <div className="mb-2 flex justify-start">
                       <BodyShapeIcon bodyType="pear" size="sm" />
                     </div>
                     <p className="font-semibold text-fashion-teal">€ 385.00</p>
@@ -163,7 +164,7 @@ const Index = () => {
                     </div>
                     <h3 className="font-medium text-fashion-teal text-sm mb-1">Elegant White Dress</h3>
                     <p className="text-xs text-fashion-teal/60 mb-2">V-neck sleeveless midi dress</p>
-                    <div className="mb-2">
+                    <div className="mb-2 flex justify-start">
                       <BodyShapeIcon bodyType="apple" size="sm" />
                     </div>
                     <p className="font-semibold text-fashion-teal">€ 295.00</p>
@@ -181,7 +182,7 @@ const Index = () => {
                     </div>
                     <h3 className="font-medium text-fashion-teal text-sm mb-1">Orange Blazer Set</h3>
                     <p className="text-xs text-fashion-teal/60 mb-2">Structured blazer with matching trousers</p>
-                    <div className="mb-2">
+                    <div className="mb-2 flex justify-start">
                       <BodyShapeIcon bodyType="hourglass" size="sm" />
                     </div>
                     <p className="font-semibold text-fashion-teal">€ 520.00</p>

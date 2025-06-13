@@ -42,6 +42,23 @@ const BodyShapeIcon = ({ bodyType, size = "md" }: BodyShapeIconProps) => {
     }
   };
 
+  const getTooltipText = (type: BodyType) => {
+    switch (type) {
+      case "hourglass":
+        return "Suitable for Hourglass bodyshape";
+      case "pear":
+        return "Suitable for Pear bodyshape";
+      case "apple":
+        return "Suitable for Apple bodyshape";
+      case "rectangle":
+        return "Suitable for Rectangle bodyshape";
+      case "inverted-triangle":
+        return "Suitable for Inverted Triangle bodyshape";
+      default:
+        return "Suitable for Unknown bodyshape";
+    }
+  };
+
   const sizeClasses = {
     sm: "w-6 h-6",
     md: "w-8 h-8", 
@@ -61,7 +78,7 @@ const BodyShapeIcon = ({ bodyType, size = "md" }: BodyShapeIconProps) => {
           </div>
         </TooltipTrigger>
         <TooltipContent>
-          <p>{getBodyShapeLabel(bodyType)} Body Shape</p>
+          <p>{getTooltipText(bodyType)}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
