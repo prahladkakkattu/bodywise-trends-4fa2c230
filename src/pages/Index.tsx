@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -102,19 +103,19 @@ const Index = () => {
                   </Button>
                 </div>
                 
-                {/* StyleMyFit App Interface - Made 50% larger */}
-                <div className="flex justify-center items-center mb-2">
+                {/* StyleMyFit App Interface - Made 1.5 times larger */}
+                <div className="flex justify-center items-center">
                   <img 
                     src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png"
                     alt="StyleMyFit App Interface"
-                    className="max-w-3xl h-auto drop-shadow-xl"
+                    className="max-w-5xl h-auto drop-shadow-xl"
                   />
                 </div>
               </div>
             </section>
 
-            {/* Product Showcase Section - Reduced gap by 50% */}
-            <section className="py-2 bg-white">
+            {/* Product Showcase Section - Moved closer to image */}
+            <section className="pt-4 pb-2 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                   {/* Classic Black Blazer */}
@@ -379,3 +380,4 @@ const Index = () => {
 };
 
 export default Index;
+
