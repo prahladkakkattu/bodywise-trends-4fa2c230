@@ -58,9 +58,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
           <div className="font-semibold">€{product.price.toFixed(2)}</div>
         </div>
-        <div className="mt-2 flex justify-center">
+        <div className="mt-3 flex justify-center">
           <Button size="sm" onClick={handleGoToSeller}>
-            Go to JuJu
+            See More
             <ExternalLink className="h-4 w-4 ml-2" />
           </Button>
         </div>
