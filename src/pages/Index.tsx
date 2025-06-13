@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
@@ -84,7 +82,7 @@ const Index = () => {
                   No more sizing guesswork. Use our solution and get accurate style and size recommendations—with or without measurements.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
                   <Button 
                     size="lg" 
                     onClick={() => setCurrentStep("measurement")}
@@ -103,7 +101,7 @@ const Index = () => {
                   </Button>
                 </div>
                 
-                {/* StyleMyFit App Interface - Made 1.5 times larger */}
+                {/* StyleMyFit App Interface - Made 1.5 times larger, moved closer to buttons */}
                 <div className="flex justify-center items-center">
                   <img 
                     src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png"
@@ -380,4 +378,3 @@ const Index = () => {
 };
 
 export default Index;
-
