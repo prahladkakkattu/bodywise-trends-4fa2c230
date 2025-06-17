@@ -112,8 +112,8 @@ const Index = () => {
               </div>
             </section>
 
-            {/* Product Showcase Section - Moved closer to image */}
-            <section className="pt-4 pb-2 bg-white">
+            {/* Product Showcase Section - Moved much closer to image */}
+            <section className="pt-0 pb-2 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                   {/* Classic Black Blazer */}
