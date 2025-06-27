@@ -12,6 +12,7 @@ import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
 import LiveDemoDialog from "@/components/LiveDemoDialog";
+import { getHomepageProducts } from "@/data/mockClothingData";
 import {
   Tooltip,
   TooltipContent,
@@ -29,6 +30,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState<Step>("intro");
   const [showLiveDemo, setShowLiveDemo] = useState(false);
+  const [showMoreProducts, setShowMoreProducts] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
   
@@ -65,6 +67,10 @@ const Index = () => {
 
   const handleProductClick = (productId: string) => {
     navigate(`/product/${productId}`);
+  };
+  
+  const handleViewMore = () => {
+    setShowMoreProducts(true);
   };
   
   const renderStep = () => {
@@ -106,99 +112,45 @@ const Index = () => {
                   <img 
                     src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png"
                     alt="StyleMyFit App Interface"
-                    className="max-w-3xl h-auto drop-shadow-xl"
+                    className="max-w-2xl h-auto drop-shadow-xl"
                   />
                 </div>
               </div>
             </section>
 
             {/* Product Showcase Section - Updated layout matching reference */}
-            <section className="py-8 bg-white">
+            <section className="py-4 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {/* Classic Black Blazer */}
-                  <div className="group cursor-pointer" onClick={() => handleProductClick('black-blazer')}>
-                    <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
-                      <img 
-                        src="/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png"
-                        alt="Classic Black Blazer"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">BLAZER</p>
-                      <h3 className="font-medium text-fashion-teal text-sm">Classic Black Blazer</h3>
-                      <div className="flex items-center justify-between">
-                        <BodyShapeIcon bodyType="hourglass" size="sm" />
-                        <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                  {getHomepageProducts(showMoreProducts).map((product) => (
+                    <div key={product.id} className="group cursor-pointer" onClick={() => handleProductClick(product.id)}>
+                      <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
+                        <img 
+                          src={product.imageUrl}
+                          alt={product.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">{product.type}</p>
+                        <h3 className="font-medium text-fashion-teal text-sm">{product.name}</h3>
+                        <div className="flex items-center justify-between">
+                          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+                          <p className="font-semibold text-fashion-teal">€ {product.price}.00</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  
-                  {/* Belted Black Dress */}
-                  <div className="group cursor-pointer" onClick={() => handleProductClick('black-dress')}>
-                    <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
-                      <img 
-                        src="/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png"
-                        alt="Belted Black Dress"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">DRESS</p>
-                      <h3 className="font-medium text-fashion-teal text-sm">Belted Black Dress</h3>
-                      <div className="flex items-center justify-between">
-                        <BodyShapeIcon bodyType="pear" size="sm" />
-                        <p className="font-semibold text-fashion-teal">€ 385.00</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Elegant White Dress */}
-                  <div className="group cursor-pointer" onClick={() => handleProductClick('white-dress')}>
-                    <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
-                      <img 
-                        src="/lovable-uploads/6593ea9a-91e1-415d-8e1e-7641480ae35e.png"
-                        alt="Elegant White Dress"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">DRESS</p>
-                      <h3 className="font-medium text-fashion-teal text-sm">Elegant White Dress</h3>
-                      <div className="flex items-center justify-between">
-                        <BodyShapeIcon bodyType="apple" size="sm" />
-                        <p className="font-semibold text-fashion-teal">€ 295.00</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Orange Blazer Set */}
-                  <div className="group cursor-pointer" onClick={() => handleProductClick('orange-blazer')}>
-                    <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
-                      <img 
-                        src="/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png"
-                        alt="Orange Blazer Set"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">SET</p>
-                      <h3 className="font-medium text-fashion-teal text-sm">Orange Blazer Set</h3>
-                      <div className="flex items-center justify-between">
-                        <BodyShapeIcon bodyType="hourglass" size="sm" />
-                        <p className="font-semibold text-fashion-teal">€ 520.00</p>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
                 
-                {/* View All Products Button */}
-                <div className="text-center mt-8">
-                  <Button variant="outline" size="lg" className="px-8 py-3">
-                    View All Products
-                  </Button>
-                </div>
+                {/* View More Button */}
+                {!showMoreProducts && (
+                  <div className="text-center mt-8">
+                    <Button variant="outline" size="lg" className="px-8 py-3" onClick={handleViewMore}>
+                      View More
+                    </Button>
+                  </div>
+                )}
               </div>
             </section>
 

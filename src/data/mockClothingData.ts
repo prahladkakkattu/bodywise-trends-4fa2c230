@@ -134,3 +134,26 @@ export function getClothingByType(type: string): ClothingItem[] {
 export function getClothingById(id: string): ClothingItem | undefined {
   return clothingData.find(item => item.id === id);
 }
+
+// Function to get homepage products (first 4 by default, all when expanded)
+export function getHomepageProducts(showMore: boolean = false): ClothingItem[] {
+  const mainProducts = [
+    clothingData.find(item => item.id === 'black-blazer'),
+    clothingData.find(item => item.id === 'black-dress'),
+    clothingData.find(item => item.id === 'white-dress'),
+    clothingData.find(item => item.id === 'orange-blazer'),
+  ].filter(Boolean) as ClothingItem[];
+
+  if (!showMore) {
+    return mainProducts;
+  }
+
+  const additionalProducts = [
+    clothingData.find(item => item.id === 'velvet-satin-top'),
+    clothingData.find(item => item.id === 'cashmere-jumper'),
+    clothingData.find(item => item.id === 'vince-collarless-jacket'),
+    clothingData.find(item => item.id === 'studio-nicholson-enna'),
+  ].filter(Boolean) as ClothingItem[];
+
+  return [...mainProducts, ...additionalProducts];
+}
