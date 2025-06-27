@@ -72,10 +72,10 @@ const Index = () => {
       case "intro":
         return (
           <>
-            {/* Hero Section */}
-            <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-8 px-4">
+            {/* Hero Section - Reduced padding and image size */}
+            <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-6 px-4">
               <div className="max-w-7xl mx-auto text-center">
-                <h1 className="text-4xl md:text-6xl font-bold text-fashion-teal mb-4 tracking-tight">
+                <h1 className="text-4xl md:text-5xl font-bold text-fashion-teal mb-4 tracking-tight">
                   Find Your Perfect Fit, Instantly
                 </h1>
                 <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-6">
@@ -101,97 +101,108 @@ const Index = () => {
                   </Button>
                 </div>
                 
-                {/* StyleMyFit App Interface - Made 1.5 times larger, moved closer to buttons */}
+                {/* StyleMyFit App Interface - Reduced size */}
                 <div className="flex justify-center items-center">
                   <img 
                     src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png"
                     alt="StyleMyFit App Interface"
-                    className="max-w-5xl h-auto drop-shadow-xl"
+                    className="max-w-3xl h-auto drop-shadow-xl"
                   />
                 </div>
               </div>
             </section>
 
-            {/* Product Showcase Section - Moved much closer to image */}
-            <section className="pt-0 pb-2 bg-white">
+            {/* Product Showcase Section - Updated layout matching reference */}
+            <section className="py-8 bg-white">
               <div className="max-w-7xl mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {/* Classic Black Blazer */}
-                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleProductClick('black-blazer')}>
-                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
+                  <div className="group cursor-pointer" onClick={() => handleProductClick('black-blazer')}>
+                    <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
                       <img 
                         src="/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png"
                         alt="Classic Black Blazer"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Classic Black Blazer</h3>
-                    <p className="text-xs text-fashion-teal/60 mb-2">Elegant wool blazer with structured fit</p>
-                    <div className="mb-2 flex justify-start">
-                      <BodyShapeIcon bodyType="hourglass" size="sm" />
+                    <div className="space-y-1">
+                      <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">BLAZER</p>
+                      <h3 className="font-medium text-fashion-teal text-sm">Classic Black Blazer</h3>
+                      <div className="flex items-center justify-between">
+                        <BodyShapeIcon bodyType="hourglass" size="sm" />
+                        <p className="font-semibold text-fashion-teal">€ 450.00</p>
+                      </div>
                     </div>
-                    <p className="font-semibold text-fashion-teal">€ 450.00</p>
-                    <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
                   {/* Belted Black Dress */}
-                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleProductClick('black-dress')}>
-                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
+                  <div className="group cursor-pointer" onClick={() => handleProductClick('black-dress')}>
+                    <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
                       <img 
                         src="/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png"
                         alt="Belted Black Dress"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Belted Black Dress</h3>
-                    <p className="text-xs text-fashion-teal/60 mb-2">Midi length dress with cinched waist</p>
-                    <div className="mb-2 flex justify-start">
-                      <BodyShapeIcon bodyType="pear" size="sm" />
+                    <div className="space-y-1">
+                      <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">DRESS</p>
+                      <h3 className="font-medium text-fashion-teal text-sm">Belted Black Dress</h3>
+                      <div className="flex items-center justify-between">
+                        <BodyShapeIcon bodyType="pear" size="sm" />
+                        <p className="font-semibold text-fashion-teal">€ 385.00</p>
+                      </div>
                     </div>
-                    <p className="font-semibold text-fashion-teal">€ 385.00</p>
-                    <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
                   {/* Elegant White Dress */}
-                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleProductClick('white-dress')}>
-                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
+                  <div className="group cursor-pointer" onClick={() => handleProductClick('white-dress')}>
+                    <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
                       <img 
                         src="/lovable-uploads/6593ea9a-91e1-415d-8e1e-7641480ae35e.png"
                         alt="Elegant White Dress"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Elegant White Dress</h3>
-                    <p className="text-xs text-fashion-teal/60 mb-2">V-neck sleeveless midi dress</p>
-                    <div className="mb-2 flex justify-start">
-                      <BodyShapeIcon bodyType="apple" size="sm" />
+                    <div className="space-y-1">
+                      <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">DRESS</p>
+                      <h3 className="font-medium text-fashion-teal text-sm">Elegant White Dress</h3>
+                      <div className="flex items-center justify-between">
+                        <BodyShapeIcon bodyType="apple" size="sm" />
+                        <p className="font-semibold text-fashion-teal">€ 295.00</p>
+                      </div>
                     </div>
-                    <p className="font-semibold text-fashion-teal">€ 295.00</p>
-                    <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
                   
                   {/* Orange Blazer Set */}
-                  <div className="bg-fashion-beige/30 rounded-lg p-4 text-center cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleProductClick('orange-blazer')}>
-                    <div className="aspect-square bg-fashion-beige rounded-lg mb-4 overflow-hidden">
+                  <div className="group cursor-pointer" onClick={() => handleProductClick('orange-blazer')}>
+                    <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
                       <img 
                         src="/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png"
                         alt="Orange Blazer Set"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="font-medium text-fashion-teal text-sm mb-1">Orange Blazer Set</h3>
-                    <p className="text-xs text-fashion-teal/60 mb-2">Structured blazer with matching trousers</p>
-                    <div className="mb-2 flex justify-start">
-                      <BodyShapeIcon bodyType="hourglass" size="sm" />
+                    <div className="space-y-1">
+                      <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">SET</p>
+                      <h3 className="font-medium text-fashion-teal text-sm">Orange Blazer Set</h3>
+                      <div className="flex items-center justify-between">
+                        <BodyShapeIcon bodyType="hourglass" size="sm" />
+                        <p className="font-semibold text-fashion-teal">€ 520.00</p>
+                      </div>
                     </div>
-                    <p className="font-semibold text-fashion-teal">€ 520.00</p>
-                    <Button size="sm" className="mt-2 w-full">See More</Button>
                   </div>
+                </div>
+                
+                {/* View All Products Button */}
+                <div className="text-center mt-8">
+                  <Button variant="outline" size="lg" className="px-8 py-3">
+                    View All Products
+                  </Button>
                 </div>
               </div>
             </section>
 
-            {/* Features Section - Reduced padding */}
+            {/* Features Section */}
             <section className="py-8 bg-fashion-beige/20">
               <div className="max-w-6xl mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
