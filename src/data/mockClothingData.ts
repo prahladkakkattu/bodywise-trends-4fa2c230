@@ -1,4 +1,3 @@
-
 import { ClothingItem, BodyType } from "@/types";
 
 // Mock product data - using the same products as shown on home page
@@ -47,7 +46,7 @@ const clothingData: ClothingItem[] = [
     id: "velvet-satin-top",
     name: "VELVET ESME SATIN TOP",
     type: "tops",
-    imageUrl: "/lovable-uploads/ab1983e3-e854-4cb7-b63b-59c868e324dc.png",
+    imageUrl: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=600&fit=crop",
     description: "Relaxed fit satin top with elegant velvet finish",
     price: 285,
     bodyTypes: ["hourglass", "pear", "rectangle"],
