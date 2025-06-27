@@ -146,6 +146,10 @@ const ProductDetail = () => {
     }
   };
 
+  const handleKnowYourBodyShape = () => {
+    navigate("/?step=measurement");
+  };
+
   return (
     <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
@@ -196,9 +200,17 @@ const ProductDetail = () => {
                 </div>
 
                 {/* Body Type Badge */}
-                <div className="mb-4 flex items-center gap-2">
+                <div className="mb-4 flex items-center gap-3">
                   <span className="text-sm text-fashion-teal/70">Perfect for:</span>
-                  <BodyShapeIcon bodyType={product.bodyType as any} size="md" />
+                  <div className="flex items-center gap-2">
+                    <BodyShapeIcon bodyType={product.bodyType as any} size="md" />
+                    <button 
+                      onClick={handleKnowYourBodyShape}
+                      className="text-sm text-fashion-coral hover:text-fashion-coral/80 underline cursor-pointer transition-colors"
+                    >
+                      Know your bodyshape
+                    </button>
+                  </div>
                 </div>
 
                 {/* Price */}
