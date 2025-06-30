@@ -32,13 +32,10 @@ const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProp
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="fixed inset-x-4 bottom-4 top-auto w-auto max-w-[440px] mx-auto h-[70vh] max-h-[600px] p-0 border-none shadow-2xl bg-white rounded-[30px] translate-x-0 translate-y-0 overflow-hidden"
+        className="fixed bottom-4 right-4 w-[440px] h-[70vh] max-h-[600px] p-0 border-none shadow-2xl bg-white rounded-[30px] overflow-hidden"
         style={{ 
           transform: 'none',
-          left: 'auto',
-          right: 'auto',
-          top: 'auto',
-          bottom: '1rem'
+          maxWidth: '440px'
         }}
       >
         {/* Background overlay */}
