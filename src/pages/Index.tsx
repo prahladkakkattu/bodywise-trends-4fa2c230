@@ -13,17 +13,11 @@ import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
 import LiveDemoDialog from "@/components/LiveDemoDialog";
 import { getHomepageProducts } from "@/data/mockClothingData";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useNavigate } from "react-router-dom";
 
 // Steps in the user flow
 type Step = "intro" | "alternative" | "measurement" | "results";
-
 const Index = () => {
   const [bodyType, setBodyType] = useState<BodyType | null>(null);
   const [measurements, setMeasurements] = useState<BodyMeasurement | null>(null);
@@ -31,32 +25,31 @@ const Index = () => {
   const [currentStep, setCurrentStep] = useState<Step>("intro");
   const [showLiveDemo, setShowLiveDemo] = useState(false);
   const [showMoreProducts, setShowMoreProducts] = useState(false);
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const navigate = useNavigate();
-  
   const handleBodyTypeChange = (newBodyType: BodyType, newMeasurements: BodyMeasurement) => {
     setIsLoading(true);
-    
+
     // Simulate API call delay
     setTimeout(() => {
       setBodyType(newBodyType);
       setMeasurements(newMeasurements);
       setIsLoading(false);
       setCurrentStep("results");
-      
       if (newBodyType !== "unknown") {
         toast({
           title: "Body Shape Analysis Complete",
           description: `We've analyzed your measurements and found personalized recommendations.`,
-          duration: 5000,
+          duration: 5000
         });
       }
     }, 1500);
   };
-  
   const handleAlternativeSizing = (estimatedBodyType: BodyType) => {
     setIsLoading(true);
-    
+
     // Simulate API call delay
     setTimeout(() => {
       setBodyType(estimatedBodyType);
@@ -64,56 +57,37 @@ const Index = () => {
       setCurrentStep("results");
     }, 1000);
   };
-
   const handleProductClick = (productId: string) => {
     navigate(`/product/${productId}`);
   };
-  
   const handleViewMore = () => {
     setShowMoreProducts(true);
   };
-  
   const renderStep = () => {
     switch (currentStep) {
       case "intro":
-        return (
-          <>
+        return <>
             {/* Hero Section - Reduced padding and image size */}
             <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-6 px-4">
               <div className="max-w-7xl mx-auto text-center">
                 <h1 className="text-4xl md:text-5xl font-bold text-fashion-teal mb-4 tracking-tight">
                   Find Your Perfect Fit, Instantly
                 </h1>
-                <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-6">
-                  No more sizing guesswork. Use our solution and get accurate style and size recommendations—with or without measurements.
-                </p>
+                <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-6">No more sizing guesswork. Use our solution to get accurate style and size recommendations—with or without measurements.</p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                  <Button 
-                    size="lg" 
-                    onClick={() => setCurrentStep("measurement")}
-                    className="bg-fashion-coral hover:bg-fashion-coral/90 text-white px-8 py-3 text-lg"
-                  >
+                  <Button size="lg" onClick={() => setCurrentStep("measurement")} className="bg-fashion-coral hover:bg-fashion-coral/90 text-white px-8 py-3 text-lg">
                     Find My Style
                   </Button>
                   
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    onClick={() => setCurrentStep("alternative")}
-                    className="px-8 py-3 text-lg"
-                  >
+                  <Button variant="outline" size="lg" onClick={() => setCurrentStep("alternative")} className="px-8 py-3 text-lg">
                     Not sure about my measurements
                   </Button>
                 </div>
                 
                 {/* StyleMyFit App Interface - Reduced size */}
                 <div className="flex justify-center items-center">
-                  <img 
-                    src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png"
-                    alt="StyleMyFit App Interface"
-                    className="max-w-2xl h-auto drop-shadow-xl"
-                  />
+                  <img src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png" alt="StyleMyFit App Interface" className="max-w-2xl h-auto drop-shadow-xl" />
                 </div>
               </div>
             </section>
@@ -122,14 +96,9 @@ const Index = () => {
             <section className="py-4 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {getHomepageProducts(showMoreProducts).map((product) => (
-                    <div key={product.id} className="group cursor-pointer" onClick={() => handleProductClick(product.id)}>
+                  {getHomepageProducts(showMoreProducts).map(product => <div key={product.id} className="group cursor-pointer" onClick={() => handleProductClick(product.id)}>
                       <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
-                        <img 
-                          src={product.imageUrl}
-                          alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
+                        <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       </div>
                       <div className="space-y-1">
                         <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">{product.type}</p>
@@ -139,18 +108,15 @@ const Index = () => {
                           <p className="font-semibold text-fashion-teal">€ {product.price}.00</p>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
                 
                 {/* View More Button */}
-                {!showMoreProducts && (
-                  <div className="text-center mt-8">
+                {!showMoreProducts && <div className="text-center mt-8">
                     <Button variant="outline" size="lg" className="px-8 py-3" onClick={handleViewMore}>
                       View More
                     </Button>
-                  </div>
-                )}
+                  </div>}
               </div>
             </section>
 
@@ -217,12 +183,7 @@ const Index = () => {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Button 
-                          variant="outline" 
-                          size="lg"
-                          onClick={() => setShowLiveDemo(true)}
-                          className="px-8 py-3"
-                        >
+                        <Button variant="outline" size="lg" onClick={() => setShowLiveDemo(true)} className="px-8 py-3">
                           Live Preview
                         </Button>
                       </TooltipTrigger>
@@ -234,18 +195,11 @@ const Index = () => {
                 </div>
               </div>
             </section>
-          </>
-        );
-        
+          </>;
       case "alternative":
-        return <AlternativeSizingOptions 
-                 onProceedToMeasurements={() => setCurrentStep("measurement")} 
-                 onBodyTypeSelected={handleAlternativeSizing}
-               />;
-        
+        return <AlternativeSizingOptions onProceedToMeasurements={() => setCurrentStep("measurement")} onBodyTypeSelected={handleAlternativeSizing} />;
       case "measurement":
-        return (
-          <div className="max-w-6xl mx-auto">
+        return <div className="max-w-6xl mx-auto">
             <div className="flex flex-col md:flex-row gap-8">
               <div className="w-full md:w-1/2">
                 <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
@@ -255,66 +209,44 @@ const Index = () => {
                 <QuickMeasurementGuide />
               </div>
             </div>
-          </div>
-        );
-        
+          </div>;
       case "results":
-        return (
-          <div className="max-w-6xl mx-auto">
-            {measurements && (
-              <div className="flex flex-col md:flex-row gap-8 mb-16">
+        return <div className="max-w-6xl mx-auto">
+            {measurements && <div className="flex flex-col md:flex-row gap-8 mb-16">
                 <div className="w-full md:w-1/2">
                   <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
                 </div>
                 
                 <div className="w-full md:w-1/2">
-                  {bodyType ? (
-                    <BodyTypeResult bodyType={bodyType} />
-                  ) : (
-                    <div className="h-full flex items-center justify-center p-6 bg-muted/20 rounded-lg border border-dashed">
+                  {bodyType ? <BodyTypeResult bodyType={bodyType} /> : <div className="h-full flex items-center justify-center p-6 bg-muted/20 rounded-lg border border-dashed">
                       <p className="text-muted-foreground text-center">
                         Enter your measurements to discover your body shape and get personalized style recommendations.
                       </p>
-                    </div>
-                  )}
+                    </div>}
                 </div>
-              </div>
-            )}
+              </div>}
             
-            {!measurements && bodyType && (
-              <div className="mb-16">
+            {!measurements && bodyType && <div className="mb-16">
                 <BodyTypeResult bodyType={bodyType} />
-              </div>
-            )}
+              </div>}
             
-            {bodyType && bodyType !== "unknown" && (
-              <section className="mb-12">
+            {bodyType && bodyType !== "unknown" && <section className="mb-12">
                 <ProductRecommendations bodyType={bodyType} />
-              </section>
-            )}
-          </div>
-        );
+              </section>}
+          </div>;
     }
   };
-  
-  return (
-    <div className="min-h-screen bg-fashion-beige/10">
+  return <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
       
       <main className="pt-16">
         {renderStep()}
         
-        {currentStep !== "intro" && (
-          <div className="flex justify-center mt-8 pb-8">
-            <Button 
-              variant="ghost" 
-              onClick={() => setCurrentStep("intro")}
-              className="text-muted-foreground"
-            >
+        {currentStep !== "intro" && <div className="flex justify-center mt-8 pb-8">
+            <Button variant="ghost" onClick={() => setCurrentStep("intro")} className="text-muted-foreground">
               Back to Home
             </Button>
-          </div>
-        )}
+          </div>}
       </main>
       
       <footer className="bg-white border-t py-12">
@@ -336,8 +268,6 @@ const Index = () => {
       </footer>
       
       <LiveDemoDialog open={showLiveDemo} onOpenChange={setShowLiveDemo} />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
