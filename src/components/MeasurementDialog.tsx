@@ -32,8 +32,14 @@ const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProp
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="fixed bottom-4 right-4 w-[440px] h-[600px] max-w-none p-0 border-none shadow-2xl bg-white rounded-[30px] translate-x-0 translate-y-0 overflow-hidden"
-        style={{ maxHeight: '90vh' }}
+        className="fixed inset-x-4 bottom-4 top-auto w-auto max-w-[440px] mx-auto h-[70vh] max-h-[600px] p-0 border-none shadow-2xl bg-white rounded-[30px] translate-x-0 translate-y-0 overflow-hidden"
+        style={{ 
+          transform: 'none',
+          left: 'auto',
+          right: 'auto',
+          top: 'auto',
+          bottom: '1rem'
+        }}
       >
         {/* Background overlay */}
         <div 
@@ -43,7 +49,7 @@ const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProp
         
         <div className="relative flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-4">
+          <div className="flex items-center justify-between p-4 flex-shrink-0">
             <Button 
               variant="ghost" 
               size="icon"
@@ -63,7 +69,7 @@ const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProp
           </div>
 
           {/* Title */}
-          <div className="px-6 mb-4">
+          <div className="px-6 mb-4 flex-shrink-0">
             <div 
               className="w-full h-[80px] flex items-center justify-center text-center border border-black/20 rounded-lg bg-white/80"
               style={{ 
@@ -79,7 +85,7 @@ const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProp
           </div>
 
           {/* Scrollable content */}
-          <div className="flex-1 overflow-y-auto px-6 space-y-4">
+          <div className="flex-1 overflow-y-auto px-6 space-y-4 min-h-0">
             {/* Measurement buttons */}
             <div className="space-y-2">
               {measurements.map((measurement) => (
@@ -265,7 +271,7 @@ const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProp
           </div>
 
           {/* Next button */}
-          <div className="p-6">
+          <div className="p-6 flex-shrink-0">
             <Button 
               onClick={onNext}
               className="w-[150px] h-[49px] mx-auto block rounded-[20px] text-[20px] text-white"
