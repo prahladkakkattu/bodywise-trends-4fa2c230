@@ -1,4 +1,3 @@
-
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Heart, Star, Truck, Shield, RotateCcw, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import BodyShapeIcon from "@/components/BodyShapeIcon";
+import WelcomeDialog from "@/components/WelcomeDialog";
 import { useState } from "react";
 
 const ProductDetail = () => {
@@ -16,6 +16,7 @@ const ProductDetail = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [userRating, setUserRating] = useState(0);
   const [userReview, setUserReview] = useState("");
+  const [showWelcomeDialog, setShowWelcomeDialog] = useState(false);
   const [reviews, setReviews] = useState([
     {
       id: 1,
@@ -147,6 +148,11 @@ const ProductDetail = () => {
   };
 
   const handleKnowYourBodyShape = () => {
+    setShowWelcomeDialog(true);
+  };
+
+  const handleWelcomeNext = () => {
+    setShowWelcomeDialog(false);
     navigate("/?step=measurement");
   };
 
@@ -361,6 +367,12 @@ const ProductDetail = () => {
           </div>
         </div>
       </main>
+
+      <WelcomeDialog 
+        open={showWelcomeDialog}
+        onOpenChange={setShowWelcomeDialog}
+        onNext={handleWelcomeNext}
+      />
     </div>
   );
 };
