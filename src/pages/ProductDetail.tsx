@@ -8,6 +8,7 @@ import { ArrowLeft, Heart, Star, Truck, Shield, RotateCcw, ExternalLink } from "
 import Navbar from "@/components/Navbar";
 import BodyShapeIcon from "@/components/BodyShapeIcon";
 import WelcomeDialog from "@/components/WelcomeDialog";
+import MeasurementDialog from "@/components/MeasurementDialog";
 import { useState } from "react";
 
 const ProductDetail = () => {
@@ -16,7 +17,7 @@ const ProductDetail = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [userRating, setUserRating] = useState(0);
   const [userReview, setUserReview] = useState("");
-  const [showWelcomeDialog, setShowWelcomeDialog] = useState(false);
+  const [showMeasurementDialog, setShowMeasurementDialog] = useState(false);
   const [reviews, setReviews] = useState([
     {
       id: 1,
@@ -148,11 +149,11 @@ const ProductDetail = () => {
   };
 
   const handleKnowYourBodyShape = () => {
-    setShowWelcomeDialog(true);
+    setShowMeasurementDialog(true);
   };
 
-  const handleWelcomeNext = () => {
-    setShowWelcomeDialog(false);
+  const handleMeasurementNext = () => {
+    setShowMeasurementDialog(false);
     navigate("/?step=measurement");
   };
 
@@ -368,10 +369,10 @@ const ProductDetail = () => {
         </div>
       </main>
 
-      <WelcomeDialog 
-        open={showWelcomeDialog}
-        onOpenChange={setShowWelcomeDialog}
-        onNext={handleWelcomeNext}
+      <MeasurementDialog 
+        open={showMeasurementDialog}
+        onOpenChange={setShowMeasurementDialog}
+        onNext={handleMeasurementNext}
       />
     </div>
   );
