@@ -1,7 +1,9 @@
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
 
 interface MeasurementDialogProps {
   open: boolean;
@@ -10,16 +12,20 @@ interface MeasurementDialogProps {
 }
 
 const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProps) => {
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [age, setAge] = useState("");
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="fixed bottom-4 right-4 w-[380px] h-[680px] p-0 border-none shadow-2xl bg-white rounded-[30px] overflow-hidden"
+        className="fixed bottom-4 right-4 w-[420px] h-[700px] p-0 border-none shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 rounded-[30px] overflow-hidden"
         style={{ 
           transform: 'none',
-          maxWidth: '380px'
+          maxWidth: '420px'
         }}
       >
-        <div className="relative flex flex-col h-full bg-gradient-to-br from-gray-100 to-gray-200">
+        <div className="relative flex flex-col h-full">
           {/* Header with back arrow */}
           <div className="flex items-start justify-start p-6 pt-8 relative z-10">
             <Button 
@@ -33,33 +39,89 @@ const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProp
           </div>
 
           {/* Main content */}
-          <div className="flex-1 flex flex-col items-center justify-center px-8 pb-16">
+          <div className="flex-1 flex flex-col items-center px-8 pb-8">
             {/* Logo */}
             <div className="text-center mb-12">
               <div className="mb-2">
-                <span className="text-4xl font-bold text-black tracking-wider">
+                <span className="text-4xl font-bold text-black tracking-wider" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                   STYLEMY
                 </span>
               </div>
               <div className="relative">
-                <span className="text-4xl font-bold text-red-600 tracking-wider">
+                <span className="text-4xl font-bold text-red-600 tracking-wider" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                   FIT
                 </span>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-red-600"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-red-600 bg-gradient-to-r from-red-600 to-red-700" style={{
+                  backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.3) 2px, rgba(255,255,255,0.3) 3px)'
+                }}></div>
               </div>
             </div>
 
-            {/* Welcome text */}
-            <div className="text-center mb-16 px-4">
-              <p className="text-gray-700 text-lg leading-relaxed italic">
-                Welcome to Stylemyfit, your personal style assistant. Discover your perfect fit and style preferences with ease.
+            {/* Form Fields */}
+            <div className="w-full max-w-[280px] space-y-8">
+              {/* Height Field */}
+              <div className="space-y-3">
+                <label className="text-2xl font-light text-gray-800">Height</label>
+                <div className="relative">
+                  <Input
+                    type="number"
+                    value={height}
+                    onChange={(e) => setHeight(e.target.value)}
+                    className="w-full h-12 bg-white/80 border-none rounded-full px-4 text-gray-600 text-center text-lg"
+                    placeholder=""
+                  />
+                  <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
+                    cm
+                  </div>
+                </div>
+              </div>
+
+              {/* Weight Field */}
+              <div className="space-y-3">
+                <label className="text-2xl font-light text-gray-800">Weight</label>
+                <div className="relative">
+                  <Input
+                    type="number"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                    className="w-full h-12 bg-white/80 border-none rounded-full px-4 text-gray-600 text-center text-lg"
+                    placeholder=""
+                  />
+                  <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
+                    kg
+                  </div>
+                </div>
+              </div>
+
+              {/* Age Field */}
+              <div className="space-y-3">
+                <label className="text-2xl font-light text-gray-800">Age</label>
+                <div className="relative">
+                  <Input
+                    type="number"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    className="w-full h-12 bg-white/80 border-none rounded-full px-4 text-gray-600 text-center text-lg"
+                    placeholder=""
+                  />
+                  <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
+                    years
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Sign in text */}
+            <div className="mt-8 mb-8">
+              <p className="text-red-600 text-base">
+                Already have an account? Sign in.
               </p>
             </div>
 
             {/* Next button */}
             <Button 
               onClick={onNext}
-              className="bg-gray-600 hover:bg-gray-700 text-white px-12 py-3 rounded-full text-lg font-medium"
+              className="bg-gray-600 hover:bg-gray-700 text-white px-12 py-3 rounded-full text-lg font-medium w-40 h-12"
             >
               Next
             </Button>
@@ -68,10 +130,12 @@ const MeasurementDialog = ({ open, onOpenChange, onNext }: MeasurementDialogProp
           {/* Footer logo and disclaimer */}
           <div className="absolute bottom-6 right-6 text-right">
             <div className="mb-2">
-              <div className="text-gray-400 font-bold text-lg tracking-wider">STYLEMY</div>
-              <div className="text-gray-400 font-bold text-lg tracking-wider relative">
+              <div className="text-gray-400 font-bold text-lg tracking-wider" style={{ fontFamily: 'Arial Black, sans-serif' }}>STYLEMY</div>
+              <div className="text-gray-400 font-bold text-lg tracking-wider relative" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                 FIT
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-400"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-400" style={{
+                  backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255,255,255,0.3) 1px, rgba(255,255,255,0.3) 2px)'
+                }}></div>
               </div>
             </div>
             <div className="text-xs text-gray-400 leading-tight max-w-[140px] mt-2">
