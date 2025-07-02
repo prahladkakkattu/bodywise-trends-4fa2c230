@@ -185,7 +185,7 @@ const Index = () => {
                   <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
                     <DollarSign className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
                     <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Increase Revenue</h3>
-                    <p className="text-fashion-teal/70">Boost conversions by up to 35% with accurate fit recommendations.</p>
+                    <p className="text-fashion-teal/70">Boost conversions significantly with accurate fit recommendations.</p>
                   </div>
                   
                   <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
@@ -197,7 +197,7 @@ const Index = () => {
                   <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
                     <ChartBar className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
                     <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Reduce Returns</h3>
-                    <p className="text-fashion-teal/70">Cut return rates by as much as 42% by getting the fit right the first time.</p>
+                    <p className="text-fashion-teal/70">Dramatically cut return rates by getting the fit right the first time.</p>
                   </div>
                 </div>
                 
