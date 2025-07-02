@@ -82,6 +82,38 @@ const Index = () => {
             {/* Hero Banner Carousel */}
             <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
 
+            {/* Find Your Perfect Fit Section */}
+            <section className="py-16 bg-white">
+              <div className="max-w-4xl mx-auto px-4 text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-fashion-teal mb-6">
+                  Find Your Perfect Fit, Instantly
+                </h2>
+                <p className="text-lg md:text-xl text-fashion-teal/80 mb-8 max-w-2xl mx-auto">
+                  No more sizing guesswork. Use our solution to get accurate style and size recommendations—with or without measurements.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button 
+                    variant="premium" 
+                    size="lg" 
+                    className="px-8 py-4 text-lg"
+                    onClick={() => setCurrentStep("measurement")}
+                  >
+                    Find My Style
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="px-8 py-4 text-lg"
+                    onClick={() => setCurrentStep("alternative")}
+                  >
+                    Not sure about my measurements
+                  </Button>
+                </div>
+              </div>
+            </section>
+
             {/* Product Showcase Section - Updated layout matching reference */}
             <section className="py-4 bg-white">
               <div className="max-w-7xl mx-auto px-4">
