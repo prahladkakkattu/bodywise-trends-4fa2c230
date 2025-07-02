@@ -119,9 +119,7 @@ const HeroBannerCarousel = ({
               }} />
                 <h3 className="font-semibold text-fashion-teal">Business Growth</h3>
               </div>
-              <p className="text-sm text-fashion-teal/80 leading-relaxed">
-                Increase conversion rates by 35% and reduce returns by 42% with our intelligent sizing technology that ensures perfect fit every time.
-              </p>
+              <p className="text-sm text-fashion-teal/80 leading-relaxed">Increase conversion rates and reduce returns with our intelligent sizing technology that ensures perfect fit every time.</p>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
