@@ -15,7 +15,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
   const banners = [
     {
       id: 1,
-      image: "/lovable-uploads/e3a03439-b3cc-4c12-8f17-b4af48b5de58.png",
+      image: "/lovable-uploads/1b7f90af-79ff-4f76-9a2d-53a33c92090d.png",
       title: "Find Your Perfect Fit",
       subtitle: "Discover styles that enhance your unique body shape",
       ctaText: "Get Styled Now",
@@ -24,7 +24,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
     },
     {
       id: 2,
-      image: "/lovable-uploads/2cae05db-298f-41b0-8e72-b9bf80c5554e.png",
+      image: "/lovable-uploads/a9633444-15fa-4a60-a0bf-f1dbd3c4ba13.png",
       title: "Personalized Style Recommendations",
       subtitle: "No more guesswork - get accurate fit suggestions",
       ctaText: "Find My Style",
@@ -33,7 +33,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
     },
     {
       id: 3,
-      image: "/lovable-uploads/8533b7f4-b8a3-426f-9586-957df87bb1cb.png",
+      image: "/lovable-uploads/50996a62-9bed-4360-8cfc-1a8fa101a1d0.png",
       title: "Not Sure About Measurements?",
       subtitle: "Use our alternative sizing method to get started",
       ctaText: "Quick Sizing",
