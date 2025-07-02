@@ -20,10 +20,10 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
     <div 
       className="fixed z-50 bg-gray-100 shadow-2xl border overflow-hidden flex flex-col"
       style={{
-        width: '440px',
-        height: '956px',
-        top: '-17px',
-        left: '107px',
+        width: '400px',
+        height: '700px',
+        bottom: '20px',
+        right: '20px',
         borderRadius: '30px'
       }}
     >
@@ -97,7 +97,7 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
               className="w-28 h-12 text-center bg-white border-0 rounded-full text-gray-400 text-lg pr-12"
               placeholder=""
             />
-            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">kg</span>
+            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">cm</span>
           </div>
         </div>
 
@@ -111,7 +111,7 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
               className="w-28 h-12 text-center bg-white border-0 rounded-full text-gray-400 text-lg pr-12"
               placeholder=""
             />
-            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">yrs</span>
+            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">cm</span>
           </div>
         </div>
       </div>
