@@ -68,6 +68,17 @@ const Index = () => {
     switch (currentStep) {
       case "intro":
         return <>
+            {/* Hero Image Section */}
+            <section className="relative w-full">
+              <div className="h-[400px] md:h-[500px] overflow-hidden">
+                <img 
+                  src="/lovable-uploads/e7bff7ff-17bb-4b0c-9725-57299ebf9e10.png" 
+                  alt="Fashion lifestyle" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </section>
+
             {/* Hero Banner Carousel */}
             <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
 
