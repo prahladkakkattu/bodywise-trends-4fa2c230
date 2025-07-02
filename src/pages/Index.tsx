@@ -127,7 +127,7 @@ const Index = () => {
                         <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">{product.type}</p>
                         <h3 className="font-medium text-fashion-teal text-sm">{product.name}</h3>
                         <div className="flex items-center justify-between">
-                          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+                          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="md" />
                           <p className="font-semibold text-fashion-teal">€ {product.price}.00</p>
                         </div>
                       </div>
