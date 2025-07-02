@@ -1,8 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 
 interface HeroBannerCarouselProps {
   onGetStarted: () => void;
@@ -16,29 +14,14 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
     {
       id: 1,
       image: "/lovable-uploads/1b7f90af-79ff-4f76-9a2d-53a33c92090d.png",
-      title: "Find Your Perfect Fit",
-      subtitle: "Discover styles that enhance your unique body shape",
-      ctaText: "Get Styled Now",
-      ctaAction: onGetStarted,
-      overlay: "bg-black/40"
     },
     {
       id: 2,
       image: "/lovable-uploads/a9633444-15fa-4a60-a0bf-f1dbd3c4ba13.png",
-      title: "Personalized Style Recommendations",
-      subtitle: "No more guesswork - get accurate fit suggestions",
-      ctaText: "Find My Style",
-      ctaAction: onGetStarted,
-      overlay: "bg-black/30"
     },
     {
       id: 3,
       image: "/lovable-uploads/50996a62-9bed-4360-8cfc-1a8fa101a1d0.png",
-      title: "Not Sure About Measurements?",
-      subtitle: "Use our alternative sizing method to get started",
-      ctaText: "Quick Sizing",
-      ctaAction: onNoMeasurements,
-      overlay: "bg-black/50"
     }
   ];
 
@@ -63,29 +46,6 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
                   className="absolute inset-0 bg-contain bg-center bg-no-repeat transition-transform duration-700 hover:scale-105"
                   style={{ backgroundImage: `url(${banner.image})` }}
                 />
-                
-                {/* Overlay */}
-                <div className={`absolute inset-0 ${banner.overlay}`} />
-                
-                {/* Content */}
-                <div className="relative z-10 h-full flex items-center justify-center">
-                  <div className="text-center text-white px-4 max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight animate-fade-in">
-                      {banner.title}
-                    </h1>
-                    <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto animate-fade-in">
-                      {banner.subtitle}
-                    </p>
-                    <Button 
-                      size="lg" 
-                      onClick={banner.ctaAction}
-                      className="bg-fashion-coral hover:bg-fashion-coral/90 text-white px-8 py-3 text-lg animate-fade-in"
-                    >
-                      {banner.ctaText}
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </div>
-                </div>
               </div>
             </CarouselItem>
           ))}
