@@ -19,7 +19,7 @@ const BodyShapeChatbot = ({
 
   if (!open) return null;
 
-  return <div className="fixed z-50 bg-white shadow-2xl border overflow-hidden" style={{
+  return <div className="fixed z-50 bg-white shadow-2xl border overflow-hidden flex flex-col" style={{
     width: '440px',
     height: '80vh',
     maxHeight: '956px',
@@ -28,7 +28,7 @@ const BodyShapeChatbot = ({
     borderRadius: '30px'
   }}>
       {/* Header */}
-      <div className="bg-gray-100 p-4 relative">
+      <div className="bg-gray-100 p-4 relative flex-shrink-0">
         <Button variant="ghost" size="icon" className="absolute top-2 left-2 h-8 w-8" onClick={onClose}>
           <ArrowLeft className="h-4 w-4" />
         </Button>
@@ -44,7 +44,7 @@ const BodyShapeChatbot = ({
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col h-full">
+      <div className="p-6 flex flex-col flex-1 min-h-0">
         <div className="space-y-6 flex-1">
           <div className="flex items-center justify-between">
             <label className="text-gray-700 font-medium">Height</label>
@@ -72,7 +72,7 @@ const BodyShapeChatbot = ({
         </div>
 
         {/* Footer */}
-        <div className="mt-auto space-y-4 pb-8">
+        <div className="flex-shrink-0 space-y-4 pt-6">
           <div className="text-center">
             <span className="text-[#a12e1d] text-sm">Already have an account? Sign in.</span>
           </div>
