@@ -4,6 +4,7 @@ import MeasurementForm from "@/components/MeasurementForm";
 import BodyTypeResult from "@/components/BodyTypeResult";
 import ProductRecommendations from "@/components/ProductRecommendations";
 import BodyShapeIcon from "@/components/BodyShapeIcon";
+import HeroBannerCarousel from "@/components/HeroBannerCarousel";
 import { BodyMeasurement, BodyType } from "@/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
@@ -67,30 +68,8 @@ const Index = () => {
     switch (currentStep) {
       case "intro":
         return <>
-            {/* Hero Section - Reduced padding and image size */}
-            <section className="bg-gradient-to-b from-fashion-beige/30 to-white py-6 px-4">
-              <div className="max-w-7xl mx-auto text-center">
-                <h1 className="text-4xl md:text-5xl font-bold text-fashion-teal mb-4 tracking-tight">
-                  Find Your Perfect Fit, Instantly
-                </h1>
-                <p className="text-lg md:text-xl text-fashion-teal/80 max-w-3xl mx-auto mb-6">No more sizing guesswork. Use our solution to get accurate style and size recommendations—with or without measurements.</p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                  <Button size="lg" onClick={() => setCurrentStep("measurement")} className="bg-fashion-coral hover:bg-fashion-coral/90 text-white px-8 py-3 text-lg">
-                    Find My Style
-                  </Button>
-                  
-                  <Button variant="outline" size="lg" onClick={() => setCurrentStep("alternative")} className="px-8 py-3 text-lg">
-                    Not sure about my measurements
-                  </Button>
-                </div>
-                
-                {/* StyleMyFit App Interface - Reduced size */}
-                <div className="flex justify-center items-center">
-                  <img src="/lovable-uploads/fdcd6e24-7331-47cb-ab8b-745435feab3d.png" alt="StyleMyFit App Interface" className="max-w-2xl h-auto drop-shadow-xl" />
-                </div>
-              </div>
-            </section>
+            {/* Hero Banner Carousel */}
+            <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
 
             {/* Product Showcase Section - Updated layout matching reference */}
             <section className="py-4 bg-white">
@@ -239,7 +218,7 @@ const Index = () => {
   return <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
       
-      <main className="pt-16">
+      <main className="pt-20">
         {renderStep()}
         
         {currentStep !== "intro" && <div className="flex justify-center mt-8 pb-8">
