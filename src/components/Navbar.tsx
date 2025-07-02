@@ -50,8 +50,8 @@ const Navbar = () => {
             </div>
           </div>
           
-          {/* Bottom row: Menu options */}
-          <div className="flex justify-center items-center space-x-8">
+          {/* Bottom row: Menu options spread across full width */}
+          <div className="flex justify-between items-center w-full">
             <Link 
               to="/" 
               className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
