@@ -13,10 +13,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4">
         {/* Desktop navigation */}
         <nav className="hidden md:block">
-          {/* Top row: Logo and Icons */}
+          {/* Top row: Logo centered with Icons on the right */}
           <div className="flex justify-between items-center mb-4">
-            {/* Logo */}
-            <div className="flex items-center">
+            {/* Empty space for balance */}
+            <div className="flex-1"></div>
+            
+            {/* Logo - centered */}
+            <div className="flex items-center justify-center flex-1">
               <Link to="/" className="flex items-center">
                 <img 
                   src="/lovable-uploads/31e65978-e2f8-432f-a950-8587ae4d1309.png" 
@@ -26,8 +29,8 @@ const Navbar = () => {
               </Link>
             </div>
             
-            {/* Icons */}
-            <div className="flex items-center space-x-4">
+            {/* Icons - right aligned */}
+            <div className="flex items-center space-x-4 flex-1 justify-end">
               <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                 <Search className="h-4 w-4" />
                 <span className="sr-only">Search</span>
