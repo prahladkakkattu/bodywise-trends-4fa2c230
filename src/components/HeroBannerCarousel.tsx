@@ -51,12 +51,22 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
           ))}
         </CarouselContent>
         
-        {/* Navigation Arrows - Styled with StyleMyFit colors */}
-        <CarouselPrevious className="left-4 bg-fashion-teal/80 hover:bg-fashion-teal text-white border-fashion-teal shadow-lg" />
-        <CarouselNext className="right-4 bg-fashion-teal/80 hover:bg-fashion-teal text-white border-fashion-teal shadow-lg" />
+        {/* Navigation Arrows - Updated with Brick Red color */}
+        <CarouselPrevious 
+          className="left-4 text-white border-[#a12e1d] shadow-lg" 
+          style={{ backgroundColor: 'rgba(161, 46, 29, 0.8)' }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#a12e1d'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(161, 46, 29, 0.8)'}
+        />
+        <CarouselNext 
+          className="right-4 text-white border-[#a12e1d] shadow-lg" 
+          style={{ backgroundColor: 'rgba(161, 46, 29, 0.8)' }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#a12e1d'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(161, 46, 29, 0.8)'}
+        />
       </Carousel>
       
-      {/* Dots Indicator - Styled with StyleMyFit colors */}
+      {/* Dots Indicator - Updated with Brick Red color */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {banners.map((_, index) => (
           <button
@@ -64,9 +74,12 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentSlide 
-                ? 'bg-fashion-coral scale-110 shadow-lg' 
-                : 'bg-fashion-teal/50 hover:bg-fashion-teal/70'
+                ? 'scale-110 shadow-lg' 
+                : 'hover:opacity-70'
             }`}
+            style={{
+              backgroundColor: index === currentSlide ? '#a12e1d' : 'rgba(161, 46, 29, 0.5)'
+            }}
           />
         ))}
       </div>
