@@ -33,7 +33,7 @@ const BodyShapeChatbot = ({
             <span className="text-black"></span>
           </div>
           <div className="text-xl font-bold text-[#a12e1d] relative">
-            FIT
+            Know your bodyshape
             <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#a12e1d]"></div>
             <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#a12e1d] opacity-60"></div>
           </div>
