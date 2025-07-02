@@ -2,18 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { Heart, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
-import { 
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  navigationMenuTriggerStyle
-} from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
   return (
     <nav className="w-full py-1 bg-fashion-white shadow-sm fixed top-0 z-50">
-      <div className="container flex items-center justify-between gap-1 px-4 h-18">
+      <div className="container flex items-center justify-between gap-4 px-4 h-18">
         <div className="flex items-center flex-shrink-0">
           <Link to="/" className="flex items-center">
             <img 
@@ -24,45 +17,38 @@ const Navbar = () => {
           </Link>
         </div>
         
-        <NavigationMenu className="mx-auto">
-          <NavigationMenuList className="gap-1">
-            <NavigationMenuItem>
-              <Link to="/">
-                <NavigationMenuLink className={`${navigationMenuTriggerStyle()} h-10 px-4 py-2 text-sm`}>
-                  Home
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link to="/about">
-                <NavigationMenuLink className={`${navigationMenuTriggerStyle()} h-10 px-4 py-2 text-sm`}>
-                  About Us
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link to="/solution">
-                <NavigationMenuLink className={`${navigationMenuTriggerStyle()} h-10 px-4 py-2 text-sm`}>
-                  Our Solution
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link to="/blog">
-                <NavigationMenuLink className={`${navigationMenuTriggerStyle()} h-10 px-4 py-2 text-sm`}>
-                  Blog
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link to="/contact">
-                <NavigationMenuLink className={`${navigationMenuTriggerStyle()} h-10 px-4 py-2 text-sm`}>
-                  Contact
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="flex items-center justify-center flex-1 gap-8">
+          <Link 
+            to="/" 
+            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
+          >
+            Home
+          </Link>
+          <Link 
+            to="/about" 
+            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
+          >
+            About Us
+          </Link>
+          <Link 
+            to="/solution" 
+            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
+          >
+            Our Solution
+          </Link>
+          <Link 
+            to="/blog" 
+            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
+          >
+            Blog
+          </Link>
+          <Link 
+            to="/contact" 
+            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
+          >
+            Contact
+          </Link>
+        </div>
         
         <div className="flex items-center gap-1 flex-shrink-0">
           <Button variant="ghost" size="sm" asChild className="h-10 px-3 text-sm">
