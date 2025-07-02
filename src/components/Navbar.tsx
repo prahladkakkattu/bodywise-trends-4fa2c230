@@ -11,32 +11,11 @@ const Navbar = () => {
     <header className="w-full bg-white shadow-sm fixed top-0 z-50">
       {/* Main header container */}
       <div className="container mx-auto px-6 py-4">
-        {/* Desktop navigation - single line layout */}
+        {/* Desktop navigation */}
         <nav className="hidden md:block">
-          <div className="flex justify-between items-center w-full">
-            {/* Left side navigation links */}
-            <div className="flex items-center space-x-8">
-              <Link 
-                to="/" 
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
-              >
-                Find My Style
-              </Link>
-              <Link 
-                to="/shop" 
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
-              >
-                Shop
-              </Link>
-              <Link 
-                to="/solution" 
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
-              >
-                Body Shape Guide
-              </Link>
-            </div>
-            
-            {/* Center logo */}
+          {/* Top row: Logo and Icons */}
+          <div className="flex justify-between items-center mb-4">
+            {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center">
                 <img 
@@ -47,40 +26,8 @@ const Navbar = () => {
               </Link>
             </div>
             
-            {/* Right side navigation links and icons */}
-            <div className="flex items-center space-x-8">
-              <Link 
-                to="/about" 
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
-              >
-                About
-              </Link>
-              <Link 
-                to="/blog" 
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
-              >
-                Blog
-              </Link>
-              <Link 
-                to="/contact" 
-                className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
-              >
-                Contact
-              </Link>
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase"
-              >
-                Login
-              </Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase"
-              >
-                Sign Up
-              </Button>
+            {/* Icons */}
+            <div className="flex items-center space-x-4">
               <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                 <Search className="h-4 w-4" />
                 <span className="sr-only">Search</span>
@@ -98,6 +45,60 @@ const Navbar = () => {
                 <span className="sr-only">Cart</span>
               </Button>
             </div>
+          </div>
+          
+          {/* Bottom row: Menu options */}
+          <div className="flex justify-center items-center space-x-8">
+            <Link 
+              to="/" 
+              className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+            >
+              Find My Style
+            </Link>
+            <Link 
+              to="/shop" 
+              className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+            >
+              Shop
+            </Link>
+            <Link 
+              to="/solution" 
+              className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+            >
+              Body Shape Guide
+            </Link>
+            <Link 
+              to="/about" 
+              className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+            >
+              About
+            </Link>
+            <Link 
+              to="/blog" 
+              className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+            >
+              Blog
+            </Link>
+            <Link 
+              to="/contact" 
+              className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+            >
+              Contact
+            </Link>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+            >
+              Login
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+            >
+              Sign Up
+            </Button>
           </div>
         </nav>
 
