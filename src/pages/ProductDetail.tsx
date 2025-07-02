@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import BodyShapeIcon from "@/components/BodyShapeIcon";
 import WelcomeDialog from "@/components/WelcomeDialog";
 import MeasurementDialog from "@/components/MeasurementDialog";
+import BodyShapeChatbot from "@/components/BodyShapeChatbot";
 import { useState } from "react";
 
 const ProductDetail = () => {
@@ -18,6 +19,7 @@ const ProductDetail = () => {
   const [userRating, setUserRating] = useState(0);
   const [userReview, setUserReview] = useState("");
   const [showMeasurementDialog, setShowMeasurementDialog] = useState(false);
+  const [showBodyShapeChatbot, setShowBodyShapeChatbot] = useState(false);
   const [reviews, setReviews] = useState([
     {
       id: 1,
@@ -149,7 +151,7 @@ const ProductDetail = () => {
   };
 
   const handleKnowYourBodyShape = () => {
-    setShowMeasurementDialog(true);
+    setShowBodyShapeChatbot(true);
   };
 
   const handleMeasurementNext = () => {
@@ -373,6 +375,11 @@ const ProductDetail = () => {
         open={showMeasurementDialog}
         onOpenChange={setShowMeasurementDialog}
         onNext={handleMeasurementNext}
+      />
+      
+      <BodyShapeChatbot 
+        open={showBodyShapeChatbot}
+        onClose={() => setShowBodyShapeChatbot(false)}
       />
     </div>
   );
