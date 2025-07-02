@@ -17,7 +17,7 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
   if (!open) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 w-80 h-[500px] bg-white rounded-2xl shadow-2xl border overflow-hidden">
+    <div className="fixed bottom-4 right-4 z-50 w-1/4 min-w-80 h-[500px] bg-white rounded-2xl shadow-2xl border overflow-hidden">
       {/* Header */}
       <div className="bg-gray-100 p-4 relative">
         <Button
