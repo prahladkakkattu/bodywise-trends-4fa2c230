@@ -1,11 +1,14 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { X, ArrowLeft } from "lucide-react";
+
 interface BodyShapeChatbotProps {
   open: boolean;
   onClose: () => void;
 }
+
 const BodyShapeChatbot = ({
   open,
   onClose
@@ -13,7 +16,9 @@ const BodyShapeChatbot = ({
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [age, setAge] = useState("");
+
   if (!open) return null;
+
   return <div className="fixed z-50 bg-white shadow-2xl border overflow-hidden" style={{
     width: '440px',
     height: '80vh',
@@ -67,7 +72,7 @@ const BodyShapeChatbot = ({
         </div>
 
         {/* Footer */}
-        <div className="mt-auto space-y-4">
+        <div className="mt-auto space-y-4 pb-8">
           <div className="text-center">
             <span className="text-[#a12e1d] text-sm">Already have an account? Sign in.</span>
           </div>
@@ -75,22 +80,9 @@ const BodyShapeChatbot = ({
           <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white rounded-full h-12">
             Next
           </Button>
-          
-          <div className="text-center pt-4">
-            <div className="text-xl font-bold text-gray-400 mb-2">
-              <span>STYLEMY</span>
-              <div className="text-sm">FIT</div>
-              <div className="h-0.5 bg-gray-300 mt-1"></div>
-            </div>
-            <p className="text-xs text-gray-400 leading-tight">
-              StyleMy Fit logo are trademarks or registered trademarks of<br />
-              StyleMy Fit, LLC. or its subsidiaries in the United Kingdom and<br />
-              other countries. Other brands and names may be claimed as<br />
-              the property of others.
-            </p>
-          </div>
         </div>
       </div>
     </div>;
 };
+
 export default BodyShapeChatbot;
