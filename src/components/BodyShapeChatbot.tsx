@@ -1,7 +1,8 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 interface BodyShapeChatbotProps {
   open: boolean;
@@ -17,105 +18,149 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
 
   return (
     <div 
-      className="fixed z-50 bg-white shadow-2xl border overflow-hidden"
+      className="fixed z-50 bg-gray-100 shadow-2xl border overflow-hidden flex flex-col"
       style={{
-        width: '440px',
-        height: '80vh',
-        maxHeight: '956px',
+        width: '400px',
+        height: '700px',
         bottom: '20px',
         right: '20px',
         borderRadius: '30px'
       }}
     >
-      {/* Header */}
-      <div className="bg-gray-100 p-4 relative">
+      {/* Header with back arrow */}
+      <div className="relative p-6 pb-8">
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-2 left-2 h-8 w-8"
+          className="absolute top-4 left-4 h-8 w-8 text-black hover:bg-gray-200"
           onClick={onClose}
         >
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-6 w-6" />
         </Button>
         
-        <div className="flex flex-col items-center pt-6">
-          <div className="text-2xl font-bold mb-1">
-            <span className="text-black">STYLEMY</span>
-          </div>
-          <div className="text-xl font-bold text-[#a12e1d] relative">
-            FIT
-            <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#a12e1d]"></div>
-            <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#a12e1d] opacity-60"></div>
+        {/* Logo */}
+        <div className="flex justify-center mt-8">
+          <div className="text-center">
+            <div className="text-4xl font-black mb-1">
+              <span className="text-black tracking-wider">STYLEMY</span>
+            </div>
+            <div className="relative">
+              <div className="text-2xl font-black text-[#B91C1C] tracking-wider">
+                FIT
+              </div>
+              {/* Ruler design */}
+              <div className="absolute -right-8 top-1/2 transform -translate-y-1/2">
+                <div className="w-20 h-2 bg-[#B91C1C] relative">
+                  {/* Ruler marks */}
+                  {[...Array(8)].map((_, i) => (
+                    <div 
+                      key={i}
+                      className="absolute bg-white"
+                      style={{
+                        left: `${i * 12.5}%`,
+                        top: i % 2 === 0 ? '0' : '25%',
+                        width: '1px',
+                        height: i % 2 === 0 ? '100%' : '50%'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col h-full">
-        <div className="space-y-6 flex-1">
-          <div className="flex items-center justify-between">
-            <label className="text-gray-700 font-medium">Height</label>
-            <div className="flex items-center gap-2">
-              <Input
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                className="w-20 h-9 text-center"
-                placeholder=""
-              />
-              <span className="text-gray-400 text-sm">cm</span>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <label className="text-gray-700 font-medium">Weight</label>
-            <div className="flex items-center gap-2">
-              <Input
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                className="w-20 h-9 text-center"
-                placeholder=""
-              />
-              <span className="text-gray-400 text-sm">cm</span>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <label className="text-gray-700 font-medium">Age</label>
-            <div className="flex items-center gap-2">
-              <Input
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                className="w-20 h-9 text-center"
-                placeholder=""
-              />
-              <span className="text-gray-400 text-sm">cm</span>
-            </div>
+      <div className="flex-1 px-8 py-4 space-y-8">
+        {/* Height */}
+        <div className="flex items-center justify-between">
+          <label className="text-black text-xl font-normal">Height</label>
+          <div className="relative">
+            <Input
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+              className="w-28 h-12 text-center bg-white border-0 rounded-full text-gray-400 text-lg pr-12"
+              placeholder=""
+            />
+            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">cm</span>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-auto space-y-4">
-          <div className="text-center">
-            <span className="text-[#a12e1d] text-sm">Already have an account? Sign in.</span>
+        {/* Weight */}
+        <div className="flex items-center justify-between">
+          <label className="text-black text-xl font-normal">Weight</label>
+          <div className="relative">
+            <Input
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              className="w-28 h-12 text-center bg-white border-0 rounded-full text-gray-400 text-lg pr-12"
+              placeholder=""
+            />
+            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">cm</span>
           </div>
-          
-          <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white rounded-full h-12">
-            Next
-          </Button>
-          
-          <div className="text-center pt-4">
-            <div className="text-xl font-bold text-gray-400 mb-2">
-              <span>STYLEMY</span>
-              <div className="text-sm">FIT</div>
-              <div className="h-0.5 bg-gray-300 mt-1"></div>
+        </div>
+
+        {/* Age */}
+        <div className="flex items-center justify-between">
+          <label className="text-black text-xl font-normal">Age</label>
+          <div className="relative">
+            <Input
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              className="w-28 h-12 text-center bg-white border-0 rounded-full text-gray-400 text-lg pr-12"
+              placeholder=""
+            />
+            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">cm</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="px-8 pb-8 space-y-6">
+        {/* Sign in text */}
+        <div className="text-center">
+          <span className="text-[#B91C1C] text-lg">Already have an account? Sign in.</span>
+        </div>
+        
+        {/* Next button */}
+        <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white rounded-full h-14 text-lg font-medium">
+          Next
+        </Button>
+        
+        {/* Bottom logo and disclaimer */}
+        <div className="text-center pt-6">
+          <div className="mb-4">
+            <div className="text-2xl font-black text-gray-400 tracking-wider mb-1">
+              STYLEMY
             </div>
-            <p className="text-xs text-gray-400 leading-tight">
-              StyleMy Fit logo are trademarks or registered trademarks of<br />
-              StyleMy Fit, LLC. or its subsidiaries in the United Kingdom and<br />
-              other countries. Other brands and names may be claimed as<br />
-              the property of others.
-            </p>
+            <div className="text-lg font-black text-gray-400 tracking-wider relative">
+              FIT
+              <div className="absolute -right-6 top-1/2 transform -translate-y-1/2">
+                <div className="w-12 h-1 bg-gray-400 relative">
+                  {[...Array(5)].map((_, i) => (
+                    <div 
+                      key={i}
+                      className="absolute bg-gray-100"
+                      style={{
+                        left: `${i * 20}%`,
+                        top: i % 2 === 0 ? '0' : '25%',
+                        width: '1px',
+                        height: i % 2 === 0 ? '100%' : '50%'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
+          
+          <p className="text-xs text-gray-500 leading-tight px-2">
+            StyleMy Fit logo are trademarks or registered trademarks of<br />
+            StyleMy Fit, LLC. Or its subsidiaries in the United Kingdom and<br />
+            other countries. Other brands and names may be claimed as<br />
+            the property of others.
+          </p>
         </div>
       </div>
     </div>
