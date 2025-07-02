@@ -70,7 +70,7 @@ const Index = () => {
         return <>
             {/* Hero Image Section */}
             <section className="relative w-full">
-              <div className="h-[400px] md:h-[500px] overflow-hidden bg-fashion-beige/20 flex items-center justify-center">
+              <div className="h-[400px] md:h-[500px] overflow-hidden bg-gradient-to-br from-purple-100 via-pink-50 to-orange-100 flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/799b57f6-61b0-4aff-93cb-feb25ad5be3a.png" 
                   alt="Fashion lifestyle" 
