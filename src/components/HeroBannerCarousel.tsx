@@ -36,12 +36,12 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
 
   return (
     <section className="relative w-full flex justify-center py-8">
-      <div className="w-full max-w-2xl mx-auto px-4">
+      <div className="w-full max-w-xl mx-auto px-4">
         <Carousel className="w-full" opts={{ loop: true }}>
           <CarouselContent>
             {banners.map((banner, index) => (
               <CarouselItem key={banner.id}>
-                <div className="relative h-[350px] md:h-[400px] overflow-hidden rounded-lg">
+                <div className="relative h-[300px] md:h-[350px] overflow-hidden rounded-lg">
                   {/* Background Image */}
                   <div 
                     className="absolute inset-0 bg-contain bg-center bg-no-repeat transition-transform duration-700 hover:scale-105"
