@@ -2,45 +2,35 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { X, ArrowLeft } from "lucide-react";
-
 interface BodyShapeChatbotProps {
   open: boolean;
   onClose: () => void;
 }
-
-const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
+const BodyShapeChatbot = ({
+  open,
+  onClose
+}: BodyShapeChatbotProps) => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [age, setAge] = useState("");
-
   if (!open) return null;
-
-  return (
-    <div 
-      className="fixed z-50 bg-white shadow-2xl border overflow-hidden"
-      style={{
-        width: '440px',
-        height: '80vh',
-        maxHeight: '956px',
-        bottom: '20px',
-        right: '20px',
-        borderRadius: '30px'
-      }}
-    >
+  return <div className="fixed z-50 bg-white shadow-2xl border overflow-hidden" style={{
+    width: '440px',
+    height: '80vh',
+    maxHeight: '956px',
+    bottom: '20px',
+    right: '20px',
+    borderRadius: '30px'
+  }}>
       {/* Header */}
       <div className="bg-gray-100 p-4 relative">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute top-2 left-2 h-8 w-8"
-          onClick={onClose}
-        >
+        <Button variant="ghost" size="icon" className="absolute top-2 left-2 h-8 w-8" onClick={onClose}>
           <ArrowLeft className="h-4 w-4" />
         </Button>
         
         <div className="flex flex-col items-center pt-6">
           <div className="text-2xl font-bold mb-1">
-            <span className="text-black">STYLEMY</span>
+            <span className="text-black"></span>
           </div>
           <div className="text-xl font-bold text-[#a12e1d] relative">
             FIT
@@ -56,12 +46,7 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
           <div className="flex items-center justify-between">
             <label className="text-gray-700 font-medium">Height</label>
             <div className="flex items-center gap-2">
-              <Input
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                className="w-20 h-9 text-center"
-                placeholder=""
-              />
+              <Input value={height} onChange={e => setHeight(e.target.value)} className="w-20 h-9 text-center" placeholder="" />
               <span className="text-gray-400 text-sm">cm</span>
             </div>
           </div>
@@ -69,12 +54,7 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
           <div className="flex items-center justify-between">
             <label className="text-gray-700 font-medium">Weight</label>
             <div className="flex items-center gap-2">
-              <Input
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                className="w-20 h-9 text-center"
-                placeholder=""
-              />
+              <Input value={weight} onChange={e => setWeight(e.target.value)} className="w-20 h-9 text-center" placeholder="" />
               <span className="text-gray-400 text-sm">cm</span>
             </div>
           </div>
@@ -82,12 +62,7 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
           <div className="flex items-center justify-between">
             <label className="text-gray-700 font-medium">Age</label>
             <div className="flex items-center gap-2">
-              <Input
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                className="w-20 h-9 text-center"
-                placeholder=""
-              />
+              <Input value={age} onChange={e => setAge(e.target.value)} className="w-20 h-9 text-center" placeholder="" />
               <span className="text-gray-400 text-sm">cm</span>
             </div>
           </div>
@@ -118,8 +93,6 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default BodyShapeChatbot;
