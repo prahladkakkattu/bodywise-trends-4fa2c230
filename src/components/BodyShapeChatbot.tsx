@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,9 +20,10 @@ const BodyShapeChatbot = ({ open, onClose }: BodyShapeChatbotProps) => {
       className="fixed z-50 bg-white shadow-2xl border overflow-hidden"
       style={{
         width: '440px',
-        height: '956px',
-        top: '517px',
-        left: '650px',
+        height: '80vh',
+        maxHeight: '956px',
+        bottom: '20px',
+        right: '20px',
         borderRadius: '30px'
       }}
     >
