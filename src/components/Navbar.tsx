@@ -11,30 +11,11 @@ const Navbar = () => {
     <header className="w-full bg-white shadow-sm fixed top-0 z-50">
       {/* Main header container */}
       <div className="container mx-auto px-6 py-4">
-        {/* Logo centered */}
-        <div className="flex justify-center items-center mb-4">
-          <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/31e65978-e2f8-432f-a950-8587ae4d1309.png" 
-              alt="StyleMyFit Logo" 
-              className="h-12 w-auto"
-            />
-          </Link>
-        </div>
-
-        {/* Navigation menu - Desktop with full width spread */}
+        {/* Desktop navigation - single line layout */}
         <nav className="hidden md:block">
           <div className="flex justify-between items-center w-full">
-            {/* Left side icons */}
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
-                <Search className="h-4 w-4" />
-                <span className="sr-only">Search</span>
-              </Button>
-            </div>
-            
-            {/* Center navigation links - spread across full width */}
-            <div className="flex items-center justify-center space-x-16 flex-1">
+            {/* Left side navigation links */}
+            <div className="flex items-center space-x-8">
               <Link 
                 to="/" 
                 className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
@@ -53,6 +34,21 @@ const Navbar = () => {
               >
                 Body Shape Guide
               </Link>
+            </div>
+            
+            {/* Center logo */}
+            <div className="flex items-center">
+              <Link to="/" className="flex items-center">
+                <img 
+                  src="/lovable-uploads/31e65978-e2f8-432f-a950-8587ae4d1309.png" 
+                  alt="StyleMyFit Logo" 
+                  className="h-12 w-auto"
+                />
+              </Link>
+            </div>
+            
+            {/* Right side navigation links and icons */}
+            <div className="flex items-center space-x-8">
               <Link 
                 to="/about" 
                 className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
@@ -71,10 +67,6 @@ const Navbar = () => {
               >
                 Contact
               </Link>
-            </div>
-            
-            {/* Right side icons and auth buttons */}
-            <div className="flex items-center gap-4">
               <Button 
                 variant="ghost" 
                 size="sm" 
@@ -88,6 +80,10 @@ const Navbar = () => {
                 className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase"
               >
                 Sign Up
+              </Button>
+              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
+                <Search className="h-4 w-4" />
+                <span className="sr-only">Search</span>
               </Button>
               <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                 <User className="h-4 w-4" />
@@ -105,24 +101,37 @@ const Navbar = () => {
           </div>
         </nav>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex justify-between items-center absolute top-4 left-6 right-6">
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
-              <Search className="h-4 w-4" />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
-              <ShoppingBag className="h-4 w-4" />
+        {/* Mobile layout - logo centered */}
+        <div className="md:hidden">
+          <div className="flex justify-center items-center mb-4">
+            <Link to="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/31e65978-e2f8-432f-a950-8587ae4d1309.png" 
+                alt="StyleMyFit Logo" 
+                className="h-12 w-auto"
+              />
+            </Link>
+          </div>
+
+          {/* Mobile menu button and icons */}
+          <div className="flex justify-between items-center absolute top-4 left-6 right-6">
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
+                <Search className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
+                <ShoppingBag className="h-4 w-4" />
+              </Button>
+            </div>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-gray-800 hover:text-gray-600 h-8 w-8"
+            >
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-gray-800 hover:text-gray-600 h-8 w-8"
-          >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
         </div>
       </div>
 
