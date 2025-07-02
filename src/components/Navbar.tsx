@@ -9,10 +9,10 @@ const Navbar = () => {
 
   return (
     <header className="w-full bg-white shadow-sm fixed top-0 z-50">
-      {/* Main header container with reduced padding */}
-      <div className="container mx-auto px-6 py-3">
-        {/* Logo centered with reduced margin */}
-        <div className="flex justify-center items-center mb-3">
+      {/* Main header container */}
+      <div className="container mx-auto px-6 py-4">
+        {/* Logo centered */}
+        <div className="flex justify-center items-center mb-4">
           <Link to="/" className="flex items-center">
             <img 
               src="/lovable-uploads/31e65978-e2f8-432f-a950-8587ae4d1309.png" 
@@ -22,10 +22,19 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Navigation menu - Desktop with reduced spacing */}
+        {/* Navigation menu - Desktop with full width spread */}
         <nav className="hidden md:block">
-          <div className="flex justify-center items-center">
-            <div className="flex items-center justify-center space-x-8 w-full max-w-4xl">
+          <div className="flex justify-between items-center w-full">
+            {/* Left side icons */}
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
+                <Search className="h-4 w-4" />
+                <span className="sr-only">Search</span>
+              </Button>
+            </div>
+            
+            {/* Center navigation links - spread across full width */}
+            <div className="flex items-center justify-center space-x-12 flex-1">
               <Link 
                 to="/" 
                 className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
@@ -64,12 +73,8 @@ const Navbar = () => {
               </Link>
             </div>
             
-            {/* Icons on the right */}
-            <div className="absolute right-6 flex items-center gap-3">
-              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
-                <Search className="h-4 w-4" />
-                <span className="sr-only">Search</span>
-              </Button>
+            {/* Right side icons */}
+            <div className="flex items-center gap-4">
               <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                 <User className="h-4 w-4" />
                 <span className="sr-only">Account</span>
@@ -87,7 +92,7 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile menu button */}
-        <div className="md:hidden flex justify-between items-center absolute top-3 left-6 right-6">
+        <div className="md:hidden flex justify-between items-center absolute top-4 left-6 right-6">
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
               <Search className="h-4 w-4" />
