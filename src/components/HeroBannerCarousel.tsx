@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
 
 interface HeroBannerCarouselProps {
   onGetStarted: () => void;
@@ -8,6 +8,7 @@ interface HeroBannerCarouselProps {
 }
 
 const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarouselProps) => {
+  const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const banners = [
@@ -25,19 +26,43 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
     }
   ];
 
-  // Auto-advance slides every 5 seconds
+  // Auto-advance slides every 5 seconds using the Embla API
   useEffect(() => {
+    if (!api) return;
+
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % banners.length);
+      api.scrollNext();
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [banners.length]);
+  }, [api]);
+
+  // Update currentSlide when carousel changes
+  useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setCurrentSlide(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    onSelect(); // Set initial slide
+
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  const handleDotClick = (index: number) => {
+    if (api) {
+      api.scrollTo(index);
+    }
+  };
 
   return (
     <section className="relative w-full flex justify-center py-8">
       <div className="w-full max-w-xl mx-auto px-4">
-        <Carousel className="w-full" opts={{ loop: true }}>
+        <Carousel className="w-full" opts={{ loop: true }} setApi={setApi}>
           <CarouselContent>
             {banners.map((banner, index) => (
               <CarouselItem key={banner.id}>
@@ -72,7 +97,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
           {banners.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentSlide(index)}
+              onClick={() => handleDotClick(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide 
                   ? 'scale-110 shadow-lg' 
