@@ -34,7 +34,7 @@ const Navbar = () => {
             </div>
             
             {/* Center navigation links - spread across full width */}
-            <div className="flex items-center justify-center space-x-12 flex-1">
+            <div className="flex items-center justify-center space-x-16 flex-1">
               <Link 
                 to="/" 
                 className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
@@ -73,8 +73,22 @@ const Navbar = () => {
               </Link>
             </div>
             
-            {/* Right side icons */}
+            {/* Right side icons and auth buttons */}
             <div className="flex items-center gap-4">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+              >
+                Login
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+              >
+                Sign Up
+              </Button>
               <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                 <User className="h-4 w-4" />
                 <span className="sr-only">Account</span>
@@ -160,6 +174,22 @@ const Navbar = () => {
                 Contact
               </Link>
               <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Login
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Sign Up
+                </Button>
                 <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                   <User className="h-4 w-4" />
                 </Button>

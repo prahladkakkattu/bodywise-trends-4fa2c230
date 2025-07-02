@@ -51,12 +51,12 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
           ))}
         </CarouselContent>
         
-        {/* Navigation Arrows */}
-        <CarouselPrevious className="left-4 bg-white/20 hover:bg-white/30 text-white border-white/30" />
-        <CarouselNext className="right-4 bg-white/20 hover:bg-white/30 text-white border-white/30" />
+        {/* Navigation Arrows - Styled with StyleMyFit colors */}
+        <CarouselPrevious className="left-4 bg-fashion-teal/80 hover:bg-fashion-teal text-white border-fashion-teal shadow-lg" />
+        <CarouselNext className="right-4 bg-fashion-teal/80 hover:bg-fashion-teal text-white border-fashion-teal shadow-lg" />
       </Carousel>
       
-      {/* Dots Indicator */}
+      {/* Dots Indicator - Styled with StyleMyFit colors */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {banners.map((_, index) => (
           <button
@@ -64,8 +64,8 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentSlide 
-                ? 'bg-white scale-110' 
-                : 'bg-white/50 hover:bg-white/70'
+                ? 'bg-fashion-coral scale-110 shadow-lg' 
+                : 'bg-fashion-teal/50 hover:bg-fashion-teal/70'
             }`}
           />
         ))}
