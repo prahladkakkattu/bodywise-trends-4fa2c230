@@ -60,7 +60,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
               <div className="relative h-[500px] md:h-[600px] overflow-hidden">
                 {/* Background Image */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 hover:scale-105"
+                  className="absolute inset-0 bg-contain bg-center bg-no-repeat transition-transform duration-700 hover:scale-105"
                   style={{ backgroundImage: `url(${banner.image})` }}
                 />
                 
