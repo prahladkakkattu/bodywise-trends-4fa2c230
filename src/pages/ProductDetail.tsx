@@ -10,7 +10,7 @@ import BodyShapeIcon from "@/components/BodyShapeIcon";
 import WelcomeDialog from "@/components/WelcomeDialog";
 import MeasurementDialog from "@/components/MeasurementDialog";
 import BodyShapeChatbot from "@/components/BodyShapeChatbot";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -36,6 +36,11 @@ const ProductDetail = () => {
       date: "2024-05-28"
     }
   ]);
+
+  // Scroll to top when component mounts or productId changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productId]);
 
   // Mock product data - in a real app, this would come from an API
   const getProductData = (id: string) => {
