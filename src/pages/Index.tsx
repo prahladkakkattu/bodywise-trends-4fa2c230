@@ -68,7 +68,7 @@ const Index = () => {
     switch (currentStep) {
       case "intro":
         return <>
-            {/* Hero Image Section */}
+            {/* Hero Image Section with Overlay Buttons */}
             <section className="relative w-full">
               <div className="h-[400px] md:h-[500px] overflow-hidden bg-gradient-to-br from-purple-100 via-pink-50 to-orange-100 flex items-center justify-center">
                 <img 
@@ -77,48 +77,61 @@ const Index = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
+              
+              {/* Overlay Call-to-Action Buttons */}
+              <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                <div className="text-center px-4 max-w-2xl mx-auto">
+                  <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+                    Find Your Perfect Fit
+                  </h1>
+                  <p className="text-lg md:text-xl text-white/90 mb-8 drop-shadow-md">
+                    Get personalized style recommendations instantly
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button 
+                      variant="premium" 
+                      size="lg" 
+                      className="px-8 py-4 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                      onClick={() => setCurrentStep("measurement")}
+                    >
+                      Find My Style
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                    <Button 
+                      variant="secondary" 
+                      size="lg" 
+                      className="px-8 py-4 text-lg bg-white/95 text-fashion-teal hover:bg-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                      onClick={() => setCurrentStep("alternative")}
+                    >
+                      Not sure about measurements?
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* Hero Banner Carousel */}
             <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
 
-            {/* Find Your Perfect Fit Section */}
+            {/* Find Your Perfect Fit Section - Updated without duplicate buttons */}
             <section className="py-16 bg-white">
               <div className="max-w-4xl mx-auto px-4 text-center">
                 <h2 className="text-4xl md:text-5xl font-bold text-fashion-teal mb-6">
-                  Find Your Perfect Fit, Instantly
+                  Why Choose StyleMyFit?
                 </h2>
                 <p className="text-lg md:text-xl text-fashion-teal/80 mb-8 max-w-2xl mx-auto">
-                  No more sizing guesswork. Use our solution to get accurate style and size recommendations—with or without measurements.
+                  No more sizing guesswork. Our intelligent solution provides accurate style and size recommendations tailored just for you.
                 </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    variant="premium" 
-                    size="lg" 
-                    className="px-8 py-4 text-lg"
-                    onClick={() => setCurrentStep("measurement")}
-                  >
-                    Find My Style
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="px-8 py-4 text-lg"
-                    onClick={() => setCurrentStep("alternative")}
-                  >
-                    Not sure about my measurements
-                  </Button>
-                </div>
               </div>
             </section>
 
-            {/* Product Showcase Section - Updated layout matching reference */}
+            {/* Product Showcase Section */}
             <section className="py-4 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {getHomepageProducts(showMoreProducts).map(product => <div key={product.id} className="group cursor-pointer" onClick={() => handleProductClick(product.id)}>
+                  {getHomepageProducts(showMoreProducts).map(product => (
+                    <div key={product.id} className="group cursor-pointer" onClick={() => handleProductClick(product.id)}>
                       <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
                         <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       </div>
@@ -130,15 +143,18 @@ const Index = () => {
                           <p className="font-semibold text-fashion-teal">€ {product.price}.00</p>
                         </div>
                       </div>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
                 
                 {/* View More Button */}
-                {!showMoreProducts && <div className="text-center mt-8">
+                {!showMoreProducts && (
+                  <div className="text-center mt-8">
                     <Button variant="outline" size="lg" className="px-8 py-3" onClick={handleViewMore}>
                       View More
                     </Button>
-                  </div>}
+                  </div>
+                )}
               </div>
             </section>
 
@@ -234,27 +250,37 @@ const Index = () => {
           </div>;
       case "results":
         return <div className="max-w-6xl mx-auto">
-            {measurements && <div className="flex flex-col md:flex-row gap-8 mb-16">
+            {measurements && (
+              <div className="flex flex-col md:flex-row gap-8 mb-16">
                 <div className="w-full md:w-1/2">
                   <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
                 </div>
                 
                 <div className="w-full md:w-1/2">
-                  {bodyType ? <BodyTypeResult bodyType={bodyType} /> : <div className="h-full flex items-center justify-center p-6 bg-muted/20 rounded-lg border border-dashed">
+                  {bodyType ? (
+                    <BodyTypeResult bodyType={bodyType} />
+                  ) : (
+                    <div className="h-full flex items-center justify-center p-6 bg-muted/20 rounded-lg border border-dashed">
                       <p className="text-muted-foreground text-center">
                         Enter your measurements to discover your body shape and get personalized style recommendations.
                       </p>
-                    </div>}
+                    </div>
+                  )}
                 </div>
-              </div>}
+              </div>
+            )}
             
-            {!measurements && bodyType && <div className="mb-16">
+            {!measurements && bodyType && (
+              <div className="mb-16">
                 <BodyTypeResult bodyType={bodyType} />
-              </div>}
+              </div>
+            )}
             
-            {bodyType && bodyType !== "unknown" && <section className="mb-12">
+            {bodyType && bodyType !== "unknown" && (
+              <section className="mb-12">
                 <ProductRecommendations bodyType={bodyType} />
-              </section>}
+              </section>
+            )}
           </div>;
     }
   };
@@ -264,11 +290,13 @@ const Index = () => {
       <main className="pt-20">
         {renderStep()}
         
-        {currentStep !== "intro" && <div className="flex justify-center mt-8 pb-8">
+        {currentStep !== "intro" && (
+          <div className="flex justify-center mt-8 pb-8">
             <Button variant="ghost" onClick={() => setCurrentStep("intro")} className="text-muted-foreground">
               Back to Home
             </Button>
-          </div>}
+          </div>
+        )}
       </main>
       
       <footer className="bg-white border-t py-12">
