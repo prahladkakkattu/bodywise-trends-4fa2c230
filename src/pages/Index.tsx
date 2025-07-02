@@ -68,46 +68,53 @@ const Index = () => {
     switch (currentStep) {
       case "intro":
         return <>
-            {/* Top CTA Section - positioned to avoid navbar overlap */}
-            <section className="pt-24 pb-8 bg-gradient-to-br from-purple-100 via-pink-50 to-orange-100">
-              <div className="max-w-4xl mx-auto px-4 text-center">
-                <h1 className="text-3xl md:text-5xl font-bold text-fashion-teal mb-4">
-                  Find Your Perfect Fit
-                </h1>
-                <p className="text-lg md:text-xl text-fashion-teal/80 mb-8 max-w-2xl mx-auto">
-                  Get personalized style recommendations instantly
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    variant="premium" 
-                    size="lg" 
-                    className="px-8 py-4 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                    onClick={() => setCurrentStep("measurement")}
-                  >
-                    Find My Style
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button 
-                    variant="secondary" 
-                    size="lg" 
-                    className="px-8 py-4 text-lg bg-white/95 text-fashion-teal hover:bg-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                    onClick={() => setCurrentStep("alternative")}
-                  >
-                    Not sure about measurements?
-                  </Button>
+            {/* Hero Image Section with Overlay Buttons */}
+            <section className="relative w-full">
+              <div className="h-[400px] md:h-[500px] overflow-hidden bg-gradient-to-br from-purple-100 via-pink-50 to-orange-100 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/33ebd579-7d29-4f90-815d-e29ef0d3ff34.png" 
+                  alt="Fashion lifestyle" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              {/* Overlay Call-to-Action Buttons */}
+              <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                <div className="text-center px-4 max-w-2xl mx-auto">
+                  <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+                    Find Your Perfect Fit
+                  </h1>
+                  <p className="text-lg md:text-xl text-white/90 mb-8 drop-shadow-md">
+                    Get personalized style recommendations instantly
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button 
+                      variant="premium" 
+                      size="lg" 
+                      className="px-8 py-4 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                      onClick={() => setCurrentStep("measurement")}
+                    >
+                      Find My Style
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                    <Button 
+                      variant="secondary" 
+                      size="lg" 
+                      className="px-8 py-4 text-lg bg-white/95 text-fashion-teal hover:bg-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                      onClick={() => setCurrentStep("alternative")}
+                    >
+                      Not sure about measurements?
+                    </Button>
+                  </div>
                 </div>
               </div>
             </section>
 
-            {/* Hero Banner Carousel - with reduced width */}
-            <section className="py-8">
-              <div className="max-w-6xl mx-auto px-4">
-                <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
-              </div>
-            </section>
+            {/* Hero Banner Carousel */}
+            <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
 
-            {/* Find Your Perfect Fit Section */}
+            {/* Find Your Perfect Fit Section - Updated without duplicate buttons */}
             <section className="py-16 bg-white">
               <div className="max-w-4xl mx-auto px-4 text-center">
                 <h2 className="text-4xl md:text-5xl font-bold text-fashion-teal mb-6">
@@ -280,7 +287,7 @@ const Index = () => {
   return <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
       
-      <main>
+      <main className="pt-20">
         {renderStep()}
         
         {currentStep !== "intro" && (
