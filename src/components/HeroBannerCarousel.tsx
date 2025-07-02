@@ -68,7 +68,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
           <div className="hidden lg:block space-y-6">
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
               <div className="flex items-center mb-3">
-                <Brain className="h-6 w-6 text-fashion-coral mr-2" />
+                <Brain className="h-6 w-6 mr-2" style={{ color: '#a12e1d' }} />
                 <h3 className="font-semibold text-fashion-teal">AI-Powered Sizing</h3>
               </div>
               <p className="text-sm text-fashion-teal/80 leading-relaxed">
@@ -78,7 +78,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
             
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
               <div className="flex items-center mb-3">
-                <Zap className="h-6 w-6 text-fashion-coral mr-2" />
+                <Zap className="h-6 w-6 mr-2" style={{ color: '#a12e1d' }} />
                 <h3 className="font-semibold text-fashion-teal">Fashion Technology</h3>
               </div>
               <p className="text-sm text-fashion-teal/80 leading-relaxed">
@@ -142,7 +142,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
           <div className="hidden lg:block space-y-6">
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
               <div className="flex items-center mb-3">
-                <TrendingUp className="h-6 w-6 text-fashion-coral mr-2" />
+                <TrendingUp className="h-6 w-6 mr-2" style={{ color: '#a12e1d' }} />
                 <h3 className="font-semibold text-fashion-teal">Business Growth</h3>
               </div>
               <p className="text-sm text-fashion-teal/80 leading-relaxed">
@@ -152,7 +152,7 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
             
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
               <div className="flex items-center mb-3">
-                <Brain className="h-6 w-6 text-fashion-coral mr-2" />
+                <Brain className="h-6 w-6 mr-2" style={{ color: '#a12e1d' }} />
                 <h3 className="font-semibold text-fashion-teal">Smart Analytics</h3>
               </div>
               <p className="text-sm text-fashion-teal/80 leading-relaxed">
