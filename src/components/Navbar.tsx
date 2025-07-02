@@ -1,96 +1,174 @@
 
 import { Button } from "@/components/ui/button";
-import { Heart, ShoppingBag, User } from "lucide-react";
+import { Heart, ShoppingBag, User, Search, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <nav className="w-full py-1 bg-fashion-white shadow-sm fixed top-0 z-50">
-      <div className="container flex items-center justify-between px-4 h-18">
-        {/* Left side navigation */}
-        <div className="flex items-center gap-8">
-          <Link 
-            to="/" 
-            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
-          >
-            Home
-          </Link>
-          <Link 
-            to="/about" 
-            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
-          >
-            About Us
-          </Link>
+    <header className="w-full bg-white shadow-sm fixed top-0 z-50">
+      {/* Main header container */}
+      <div className="container mx-auto px-6 py-4">
+        {/* Top row with icons on desktop */}
+        <div className="hidden md:flex justify-end items-center mb-4">
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" className="text-black hover:text-gray-600 h-8 w-8">
+              <Search className="h-4 w-4" />
+              <span className="sr-only">Search</span>
+            </Button>
+            <Button variant="ghost" size="icon" className="text-black hover:text-gray-600 h-8 w-8">
+              <User className="h-4 w-4" />
+              <span className="sr-only">Account</span>
+            </Button>
+            <Button variant="ghost" size="icon" className="text-black hover:text-gray-600 h-8 w-8">
+              <Heart className="h-4 w-4" />
+              <span className="sr-only">Wishlist</span>
+            </Button>
+            <Button variant="ghost" size="icon" className="text-black hover:text-gray-600 h-8 w-8">
+              <ShoppingBag className="h-4 w-4" />
+              <span className="sr-only">Cart</span>
+            </Button>
+          </div>
         </div>
-        
-        {/* Centered logo */}
-        <div className="flex items-center">
+
+        {/* Logo centered */}
+        <div className="flex justify-center items-center mb-6">
           <Link to="/" className="flex items-center">
             <img 
               src="/lovable-uploads/31e65978-e2f8-432f-a950-8587ae4d1309.png" 
               alt="StyleMyFit Logo" 
-              className="h-12 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
         </div>
-        
-        {/* Right side navigation and actions */}
-        <div className="flex items-center gap-8">
-          <Link 
-            to="/solution" 
-            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
-          >
-            Our Solution
-          </Link>
-          <Link 
-            to="/blog" 
-            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
-          >
-            Blog
-          </Link>
-          <Link 
-            to="/contact" 
-            className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-medium"
-          >
-            Contact
-          </Link>
-          
-          {/* Action buttons and icons */}
-          <div className="flex items-center gap-1">
-            <Button variant="ghost" size="sm" asChild className="h-10 px-3 text-sm">
-              <Link to="/">Log in</Link>
-            </Button>
-            
-            <Button variant="default" size="sm" asChild className="h-10 px-3 text-sm">
-              <Link to="/">Sign up</Link>
-            </Button>
-            
-            <div className="flex items-center gap-1 ml-2">
-              <Button variant="ghost" size="icon" asChild className="text-fashion-teal h-10 w-10">
-                <Link to="/">
-                  <Heart className="h-5 w-5" />
-                  <span className="sr-only">Favorites</span>
-                </Link>
-              </Button>
-              
-              <Button variant="ghost" size="icon" asChild className="text-fashion-teal h-10 w-10">
-                <Link to="/">
-                  <ShoppingBag className="h-5 w-5" />
-                  <span className="sr-only">Cart</span>
-                </Link>
-              </Button>
-              
-              <Button variant="ghost" size="icon" asChild className="text-fashion-teal h-10 w-10">
-                <Link to="/">
-                  <User className="h-5 w-5" />
-                  <span className="sr-only">Profile</span>
-                </Link>
-              </Button>
+
+        {/* Navigation menu - Desktop */}
+        <nav className="hidden md:block">
+          <div className="flex justify-center items-center">
+            <div className="flex items-center gap-12">
+              <Link 
+                to="/" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+              >
+                Find My Style
+              </Link>
+              <Link 
+                to="/shop" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+              >
+                Shop
+              </Link>
+              <Link 
+                to="/solution" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+              >
+                Body Shape Guide
+              </Link>
+              <Link 
+                to="/about" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+              >
+                About
+              </Link>
+              <Link 
+                to="/blog" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+              >
+                Blog
+              </Link>
+              <Link 
+                to="/contact" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase"
+              >
+                Contact
+              </Link>
             </div>
           </div>
+        </nav>
+
+        {/* Mobile menu button */}
+        <div className="md:hidden flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="icon" className="text-black hover:text-gray-600 h-8 w-8">
+              <Search className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="text-black hover:text-gray-600 h-8 w-8">
+              <ShoppingBag className="h-4 w-4" />
+            </Button>
+          </div>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-black hover:text-gray-600 h-8 w-8"
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
         </div>
       </div>
-    </nav>
+
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100">
+          <nav className="container mx-auto px-6 py-4">
+            <div className="flex flex-col space-y-4">
+              <Link 
+                to="/" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Find My Style
+              </Link>
+              <Link 
+                to="/shop" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Shop
+              </Link>
+              <Link 
+                to="/solution" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Body Shape Guide
+              </Link>
+              <Link 
+                to="/about" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link 
+                to="/blog" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Blog
+              </Link>
+              <Link 
+                to="/contact" 
+                className="text-black hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+              <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
+                <Button variant="ghost" size="icon" className="text-black hover:text-gray-600 h-8 w-8">
+                  <User className="h-4 w-4" />
+                </Button>
+                <Button variant="ghost" size="icon" className="text-black hover:text-gray-600 h-8 w-8">
+                  <Heart className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 };
 
