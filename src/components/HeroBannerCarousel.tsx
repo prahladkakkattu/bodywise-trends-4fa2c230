@@ -35,53 +35,55 @@ const HeroBannerCarousel = ({ onGetStarted, onNoMeasurements }: HeroBannerCarous
   }, [banners.length]);
 
   return (
-    <section className="relative w-full">
-      <Carousel className="w-full" opts={{ loop: true }}>
-        <CarouselContent>
-          {banners.map((banner, index) => (
-            <CarouselItem key={banner.id}>
-              <div className="relative h-[500px] md:h-[600px] overflow-hidden">
-                {/* Background Image */}
-                <div 
-                  className="absolute inset-0 bg-contain bg-center bg-no-repeat transition-transform duration-700 hover:scale-105"
-                  style={{ backgroundImage: `url(${banner.image})` }}
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        
-        {/* Navigation Arrows - Updated with Brick Red color */}
-        <CarouselPrevious 
-          className="left-4 text-white border-[#a12e1d] shadow-lg" 
-          style={{ backgroundColor: 'rgba(161, 46, 29, 0.8)' }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#a12e1d'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(161, 46, 29, 0.8)'}
-        />
-        <CarouselNext 
-          className="right-4 text-white border-[#a12e1d] shadow-lg" 
-          style={{ backgroundColor: 'rgba(161, 46, 29, 0.8)' }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#a12e1d'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(161, 46, 29, 0.8)'}
-        />
-      </Carousel>
-      
-      {/* Dots Indicator - Updated with Brick Red color */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-        {banners.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide 
-                ? 'scale-110 shadow-lg' 
-                : 'hover:opacity-70'
-            }`}
-            style={{
-              backgroundColor: index === currentSlide ? '#a12e1d' : 'rgba(161, 46, 29, 0.5)'
-            }}
+    <section className="relative w-full flex justify-center py-8">
+      <div className="w-full max-w-4xl mx-auto px-4">
+        <Carousel className="w-full" opts={{ loop: true }}>
+          <CarouselContent>
+            {banners.map((banner, index) => (
+              <CarouselItem key={banner.id}>
+                <div className="relative h-[400px] md:h-[450px] overflow-hidden rounded-lg">
+                  {/* Background Image */}
+                  <div 
+                    className="absolute inset-0 bg-contain bg-center bg-no-repeat transition-transform duration-700 hover:scale-105"
+                    style={{ backgroundImage: `url(${banner.image})` }}
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          
+          {/* Navigation Arrows - Updated with Brick Red color */}
+          <CarouselPrevious 
+            className="left-4 text-white border-[#a12e1d] shadow-lg" 
+            style={{ backgroundColor: 'rgba(161, 46, 29, 0.8)' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#a12e1d'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(161, 46, 29, 0.8)'}
           />
-        ))}
+          <CarouselNext 
+            className="right-4 text-white border-[#a12e1d] shadow-lg" 
+            style={{ backgroundColor: 'rgba(161, 46, 29, 0.8)' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#a12e1d'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(161, 46, 29, 0.8)'}
+          />
+        </Carousel>
+        
+        {/* Dots Indicator - Updated with Brick Red color */}
+        <div className="flex justify-center mt-6 space-x-2">
+          {banners.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide 
+                  ? 'scale-110 shadow-lg' 
+                  : 'hover:opacity-70'
+              }`}
+              style={{
+                backgroundColor: index === currentSlide ? '#a12e1d' : 'rgba(161, 46, 29, 0.5)'
+              }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
