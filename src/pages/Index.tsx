@@ -72,7 +72,7 @@ const Index = () => {
             <section className="relative w-full">
               <div className="h-[400px] md:h-[500px] overflow-hidden">
                 <img 
-                  src="/lovable-uploads/e7bff7ff-17bb-4b0c-9725-57299ebf9e10.png" 
+                  src="/lovable-uploads/799b57f6-61b0-4aff-93cb-feb25ad5be3a.png" 
                   alt="Fashion lifestyle" 
                   className="w-full h-full object-cover"
                 />
