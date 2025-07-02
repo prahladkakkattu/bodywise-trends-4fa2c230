@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
 import { Brain, TrendingUp, Zap } from "lucide-react";
@@ -58,8 +59,8 @@ const HeroBannerCarousel = ({
     <section className="relative w-full flex justify-center py-8">
       <div className="w-full max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          {/* Left Side Text - Aligned with product grid */}
-          <div className="hidden lg:flex flex-col space-y-6 h-full justify-between">
+          {/* Left Side Text - Positioned to align with Find My Style */}
+          <div className="hidden lg:flex flex-col space-y-6 h-full justify-between -ml-8">
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 flex-1">
               <div className="flex items-center mb-3">
                 <Brain className="h-6 w-6 mr-2" style={{
@@ -142,8 +143,8 @@ const HeroBannerCarousel = ({
             </div>
           </div>
 
-          {/* Right Side Text - Aligned with product grid */}
-          <div className="hidden lg:flex flex-col space-y-6 h-full justify-between">
+          {/* Right Side Text - Positioned to align with Sign Up button */}
+          <div className="hidden lg:flex flex-col space-y-6 h-full justify-between -mr-8">
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 flex-1">
               <div className="flex items-center mb-3">
                 <TrendingUp className="h-6 w-6 mr-2" style={{
