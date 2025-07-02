@@ -114,18 +114,6 @@ const Index = () => {
             {/* Hero Banner Carousel */}
             <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
 
-            {/* Find Your Perfect Fit Section - Updated without duplicate buttons */}
-            <section className="py-16 bg-white">
-              <div className="max-w-4xl mx-auto px-4 text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-fashion-teal mb-6">
-                  Why Choose StyleMyFit?
-                </h2>
-                <p className="text-lg md:text-xl text-fashion-teal/80 mb-8 max-w-2xl mx-auto">
-                  No more sizing guesswork. Our intelligent solution provides accurate style and size recommendations tailored just for you.
-                </p>
-              </div>
-            </section>
-
             {/* Product Showcase Section */}
             <section className="py-4 bg-white">
               <div className="max-w-7xl mx-auto px-4">
