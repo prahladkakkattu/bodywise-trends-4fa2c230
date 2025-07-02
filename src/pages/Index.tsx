@@ -116,8 +116,8 @@ const Index = () => {
 
             {/* Product Showcase Section */}
             <section className="py-4 bg-white">
-              <div className="max-w-7xl mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="container mx-auto px-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {getHomepageProducts(showMoreProducts).map(product => (
                     <div key={product.id} className="group cursor-pointer" onClick={() => handleProductClick(product.id)}>
                       <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
