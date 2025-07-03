@@ -46,6 +46,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <Heart className={`h-4 w-4 ${isFavorite ? "fill-red-500 text-red-500" : ""}`} />
           <span className="sr-only">Add to favorites</span>
         </Button>
+        <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1">
+          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+        </div>
       </div>
       
       <CardContent className="pt-4">
@@ -54,8 +57,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <p className="text-sm text-muted-foreground line-clamp-2 h-10 text-left">
           {product.description}
         </p>
-        <div className="mt-2 flex justify-between items-center">
-          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+        <div className="mt-2 flex justify-end items-center">
           <div className="font-semibold">€{product.price.toFixed(2)}</div>
         </div>
         <div className="mt-3 flex justify-center">
