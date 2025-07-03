@@ -8,7 +8,7 @@ import HeroBannerCarousel from "@/components/HeroBannerCarousel";
 import { BodyMeasurement, BodyType } from "@/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign, CheckCircle } from "lucide-react";
+import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign, CheckCircle, Heart } from "lucide-react";
 import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
@@ -26,10 +26,23 @@ const Index = () => {
   const [currentStep, setCurrentStep] = useState<Step>("intro");
   const [showLiveDemo, setShowLiveDemo] = useState(false);
   const [showMoreProducts, setShowMoreProducts] = useState(false);
+  const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const {
     toast
   } = useToast();
   const navigate = useNavigate();
+  
+  const toggleFavorite = (e: React.MouseEvent, productId: string) => {
+    e.stopPropagation();
+    const newFavorites = new Set(favorites);
+    if (newFavorites.has(productId)) {
+      newFavorites.delete(productId);
+    } else {
+      newFavorites.add(productId);
+    }
+    setFavorites(newFavorites);
+  };
+  
   const handleBodyTypeChange = (newBodyType: BodyType, newMeasurements: BodyMeasurement) => {
     setIsLoading(true);
 
@@ -64,6 +77,7 @@ const Index = () => {
   const handleViewMore = () => {
     setShowMoreProducts(true);
   };
+  
   const renderStep = () => {
     switch (currentStep) {
       case "intro":
@@ -120,14 +134,25 @@ const Index = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {getHomepageProducts(showMoreProducts).map(product => (
                     <div key={product.id} className="group cursor-pointer" onClick={() => handleProductClick(product.id)}>
-                      <div className="aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
+                      <div className="relative aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
                         <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white w-8 h-8"
+                          onClick={(e) => toggleFavorite(e, product.id)}
+                        >
+                          <Heart className={`h-4 w-4 ${favorites.has(product.id) ? "fill-red-500 text-red-500" : ""}`} />
+                          <span className="sr-only">Add to favorites</span>
+                        </Button>
+                        <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1">
+                          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+                        </div>
                       </div>
                       <div className="space-y-1">
                         <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">{product.type}</p>
                         <h3 className="font-medium text-fashion-teal text-sm">{product.name}</h3>
-                        <div className="flex items-center justify-between">
-                          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="md" />
+                        <div className="flex items-center justify-end">
                           <p className="font-semibold text-fashion-teal">€ {product.price}.00</p>
                         </div>
                       </div>
