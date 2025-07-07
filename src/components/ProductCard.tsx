@@ -46,7 +46,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <Heart className={`h-4 w-4 ${isFavorite ? "fill-red-500 text-red-500" : ""}`} />
           <span className="sr-only">Add to favorites</span>
         </Button>
-        <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1">
+        <div className="absolute bottom-2 right-2">
           <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
         </div>
       </div>

@@ -1,3 +1,4 @@
+
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Heart, Star, Truck, Shield, RotateCcw, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import BodyShapeIcon from "@/components/BodyShapeIcon";
+import ImageGallery from "@/components/ImageGallery";
 import WelcomeDialog from "@/components/WelcomeDialog";
 import MeasurementDialog from "@/components/MeasurementDialog";
 import BodyShapeChatbot from "@/components/BodyShapeChatbot";
@@ -53,7 +55,11 @@ const ProductDetail = () => {
         originalPrice: 520.00,
         description: 'A timeless classic that elevates any outfit. This structured wool blazer features clean lines, a tailored fit, and sophisticated detailing perfect for professional and formal occasions.',
         longDescription: 'Crafted from premium wool blend fabric, this blazer offers the perfect balance of structure and comfort. The classic notched lapels and single-breasted design create a sleek silhouette that works beautifully for hourglass body types. Features include functional buttons, inner lining, and professional tailoring.',
-        imageUrl: '/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png',
+        images: [
+          '/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png',
+          '/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png',
+          '/lovable-uploads/6593ea9a-91e1-415d-8e1e-7641480ae35e.png'
+        ],
         bodyType: 'Hourglass',
         bodyTypeColor: 'bg-fashion-coral',
         sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -69,7 +75,10 @@ const ProductDetail = () => {
         originalPrice: 420.00,
         description: 'A versatile midi dress with a cinched waist that creates a beautiful silhouette. Perfect for both day and evening wear.',
         longDescription: 'This sophisticated midi dress features a flattering belt that accentuates the waist, making it ideal for pear body types. The flowing skirt balances proportions while the structured bodice provides support and style.',
-        imageUrl: '/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png',
+        images: [
+          '/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png',
+          '/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png'
+        ],
         bodyType: 'Pear',
         bodyTypeColor: 'bg-green-600',
         sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -85,7 +94,10 @@ const ProductDetail = () => {
         originalPrice: 340.00,
         description: 'A stunning V-neck sleeveless midi dress that creates an elongating silhouette perfect for apple body types.',
         longDescription: 'This elegant white dress features a flattering V-neckline that draws attention upward and creates a lengthening effect. The sleeveless design and flowing fabric make it comfortable and stylish for apple body types.',
-        imageUrl: '/lovable-uploads/6593ea9a-91e1-415d-8e1e-7641480ae35e.png',
+        images: [
+          '/lovable-uploads/6593ea9a-91e1-415d-8e1e-7641480ae35e.png',
+          '/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png'
+        ],
         bodyType: 'Apple',
         bodyTypeColor: 'bg-blue-600',
         sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -101,7 +113,11 @@ const ProductDetail = () => {
         originalPrice: 580.00,
         description: 'A striking orange blazer set with matching trousers. The structured design enhances the hourglass silhouette.',
         longDescription: 'Make a statement with this vibrant orange blazer set. The structured blazer and tailored trousers create a powerful, professional look that celebrates the hourglass figure with its fitted waist and clean lines.',
-        imageUrl: '/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png',
+        images: [
+          '/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png',
+          '/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png',
+          '/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png'
+        ],
         bodyType: 'Hourglass',
         bodyTypeColor: 'bg-fashion-coral',
         sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -181,15 +197,9 @@ const ProductDetail = () => {
           </Button>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Product Image */}
+            {/* Product Images */}
             <div className="space-y-4">
-              <div className="aspect-square bg-fashion-beige/30 rounded-lg overflow-hidden">
-                <img 
-                  src={product.imageUrl} 
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImageGallery images={product.images} productName={product.name} />
             </div>
 
             {/* Product Details */}
