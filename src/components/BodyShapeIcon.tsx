@@ -11,17 +11,17 @@ const BodyShapeIcon = ({ bodyType, size = "md" }: BodyShapeIconProps) => {
   const getBodyShapeImage = (type: BodyType) => {
     switch (type) {
       case "apple":
-        return "/lovable-uploads/7941f89d-5e17-4443-b299-84a331e24ff9.png"; // Oval shape
+        return "/lovable-uploads/7941f89d-5e17-4443-b299-84a331e24ff9.png";
       case "rectangle":
-        return "/lovable-uploads/86e13313-29a0-40c8-95b5-844fa2119cf6.png"; // Rectangle shape
+        return "/lovable-uploads/86e13313-29a0-40c8-95b5-844fa2119cf6.png";
       case "pear":
-        return "/lovable-uploads/6e605906-05a8-4fcf-ab87-a8e66e8589cf.png"; // Triangle shape
+        return "/lovable-uploads/6e605906-05a8-4fcf-ab87-a8e66e8589cf.png";
       case "hourglass":
-        return "/lovable-uploads/7b81f6a2-a4aa-47a1-ace1-fcb17e58946a.png"; // Hourglass shape
+        return "/lovable-uploads/7b81f6a2-a4aa-47a1-ace1-fcb17e58946a.png";
       case "inverted-triangle":
-        return "/lovable-uploads/845b34bb-5bea-4ca6-af9b-8c2710b0aa37.png"; // Inverted triangle shape
+        return "/lovable-uploads/845b34bb-5bea-4ca6-af9b-8c2710b0aa37.png";
       default:
-        return "/lovable-uploads/86e13313-29a0-40c8-95b5-844fa2119cf6.png"; // Default to rectangle
+        return "/lovable-uploads/86e13313-29a0-40c8-95b5-844fa2119cf6.png";
     }
   };
 
