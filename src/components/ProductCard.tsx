@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -46,7 +47,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <span className="sr-only">Add to favorites</span>
         </Button>
         <div className="absolute bottom-2 right-2">
-          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="md" />
         </div>
       </div>
       

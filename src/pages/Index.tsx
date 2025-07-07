@@ -146,7 +146,7 @@ const Index = () => {
                           <span className="sr-only">Add to favorites</span>
                         </Button>
                         <div className="absolute bottom-2 right-2">
-                          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="sm" />
+                          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="md" />
                         </div>
                       </div>
                       <div className="space-y-1">
