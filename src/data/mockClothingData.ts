@@ -10,7 +10,7 @@ const clothingData: ClothingItem[] = [
     imageUrl: "/lovable-uploads/362a7e77-0f9f-4232-85ad-dc4e1a11f5e1.png",
     description: "A timeless classic that elevates any outfit. This structured wool blazer features clean lines and sophisticated detailing.",
     price: 450,
-    bodyTypes: ["hourglass", "rectangle", "inverted-triangle"],
+    bodyTypes: ["hourglass", "rectangle"],
     brand: "JuJu"
   },
   {
@@ -20,7 +20,7 @@ const clothingData: ClothingItem[] = [
     imageUrl: "/lovable-uploads/080741bc-13b9-47c1-8f51-45e655dbfbaf.png",
     description: "A versatile midi dress with a cinched waist that creates a beautiful silhouette. Perfect for both day and evening wear.",
     price: 385,
-    bodyTypes: ["hourglass", "apple", "pear"],
+    bodyTypes: ["hourglass"],
     brand: "JuJu"
   },
   {
@@ -40,7 +40,7 @@ const clothingData: ClothingItem[] = [
     imageUrl: "/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png",
     description: "A striking orange blazer set with matching trousers. The structured design enhances the hourglass silhouette.",
     price: 520,
-    bodyTypes: ["hourglass", "rectangle", "inverted-triangle"],
+    bodyTypes: ["hourglass", "inverted-triangle"],
     brand: "JuJu"
   },
   {
@@ -50,7 +50,7 @@ const clothingData: ClothingItem[] = [
     imageUrl: "/lovable-uploads/ec196b50-ccbd-479c-9955-bb83a4d454af.png",
     description: "Relaxed fit satin top with elegant velvet finish",
     price: 285,
-    bodyTypes: ["hourglass", "pear", "rectangle"],
+    bodyTypes: ["pear"],
     brand: "JuJu"
   },
   {
@@ -70,7 +70,7 @@ const clothingData: ClothingItem[] = [
     imageUrl: "/lovable-uploads/5b7a49a9-cbee-4976-a7fb-49ea06de02de.png",
     description: "Wool and nylon blend collarless jacket",
     price: 660,
-    bodyTypes: ["hourglass", "pear", "rectangle", "inverted-triangle"],
+    bodyTypes: ["hourglass", "pear"],
     brand: "JuJu"
   },
   {
@@ -80,7 +80,7 @@ const clothingData: ClothingItem[] = [
     imageUrl: "/lovable-uploads/64644141-5070-4b59-8e13-671f62edfc7e.png",
     description: "V neckline elegant dress with modern silhouette",
     price: 558,
-    bodyTypes: ["hourglass", "apple", "rectangle"],
+    bodyTypes: ["apple"],
     brand: "JuJu"
   },
   {
@@ -100,7 +100,7 @@ const clothingData: ClothingItem[] = [
     imageUrl: "/lovable-uploads/eb7dc452-17a8-4f28-b10d-5d5581fc0d20.png",
     description: "Soft, comfortable V-neck sweater for casual elegance",
     price: 110,
-    bodyTypes: ["apple", "inverted-triangle", "rectangle"],
+    bodyTypes: ["apple", "inverted-triangle"],
     brand: "JuJu"
   },
   {
@@ -110,7 +110,7 @@ const clothingData: ClothingItem[] = [
     imageUrl: "/lovable-uploads/64644141-5070-4b59-8e13-671f62edfc7e.png",
     description: "Elegant flowy maxi skirt perfect for summer days",
     price: 120,
-    bodyTypes: ["pear", "hourglass", "apple"],
+    bodyTypes: ["pear", "hourglass"],
     brand: "JuJu"
   }
 ];
