@@ -145,8 +145,10 @@ const Index = () => {
                           <Heart className={`h-4 w-4 ${favorites.has(product.id) ? "fill-red-500 text-red-500" : ""}`} />
                           <span className="sr-only">Add to favorites</span>
                         </Button>
-                        <div className="absolute bottom-2 right-2">
-                          <BodyShapeIcon bodyType={product.bodyTypes[0]} size="md" />
+                        <div className="absolute bottom-2 right-2 flex gap-1">
+                          {product.bodyTypes.map((bodyType, index) => (
+                            <BodyShapeIcon key={index} bodyType={bodyType} size="sm" />
+                          ))}
                         </div>
                       </div>
                       <div className="space-y-1">
