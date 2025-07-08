@@ -252,19 +252,19 @@ const Index = () => {
       case "alternative":
         return <AlternativeSizingOptions onProceedToMeasurements={() => setCurrentStep("measurement")} onBodyTypeSelected={handleAlternativeSizing} />;
       case "measurement":
-        return <div className="max-w-6xl mx-auto">
+        return <div className="max-w-5xl mx-auto mt-8 px-4">
             <div className="flex flex-col md:flex-row gap-8">
-              <div className="w-full md:w-1/2" style={{ marginLeft: 'calc(8.33% - 1rem)' }}>
+              <div className="w-full md:w-1/2">
                 <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
               </div>
               
-              <div className="w-full md:w-1/2" style={{ marginRight: 'calc(8.33% - 1rem)' }}>
+              <div className="w-full md:w-1/2">
                 <QuickMeasurementGuide />
               </div>
             </div>
           </div>;
       case "results":
-        return <div className="max-w-6xl mx-auto">
+        return <div className="max-w-5xl mx-auto mt-8 px-4">
             {measurements && (
               <div className="flex flex-col md:flex-row gap-8 mb-16">
                 <div className="w-full md:w-1/2">
