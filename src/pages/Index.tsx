@@ -302,8 +302,10 @@ const Index = () => {
   return <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
       
-      <main className="pt-20">
-        {renderStep()}
+      <main className="pt-24 min-h-screen">
+        <div className="container mx-auto px-4 py-8">
+          {renderStep()}
+        </div>
         
         {currentStep !== "intro" && (
           <div className="flex justify-center mt-8 pb-8">
