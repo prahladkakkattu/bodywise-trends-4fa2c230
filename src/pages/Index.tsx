@@ -175,7 +175,7 @@ const Index = () => {
 
             {/* Features Section */}
             <section className="py-8 bg-fashion-beige/20">
-              <div className="max-w-6xl mx-auto px-4">
+              <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="bg-white rounded-lg p-8 text-center shadow-sm">
                     <Ruler className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
