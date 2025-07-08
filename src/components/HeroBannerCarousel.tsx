@@ -137,6 +137,75 @@ const HeroBannerCarousel = ({
             </div>
           </div>
         </div>
+        
+        {/* Mobile Feature Cards - Creative floating design */}
+        <div className="lg:hidden mt-8 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* AI-Powered Sizing */}
+            <div className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center mb-3">
+                  <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
+                    <Brain className="h-5 w-5 text-fashion-coral" />
+                  </div>
+                  <h3 className="font-semibold text-fashion-teal text-sm">AI-Powered Sizing</h3>
+                </div>
+                <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                  Advanced algorithms analyze measurements for precise fit recommendations.
+                </p>
+              </div>
+            </div>
+
+            {/* Styling Partner */}
+            <div className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center mb-3">
+                  <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
+                    <Zap className="h-5 w-5 text-fashion-coral" />
+                  </div>
+                  <h3 className="font-semibold text-fashion-teal text-sm">Styling Partner</h3>
+                </div>
+                <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                  Make informed fashion choices unique to your body shape.
+                </p>
+              </div>
+            </div>
+
+            {/* Business Growth */}
+            <div className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center mb-3">
+                  <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
+                    <TrendingUp className="h-5 w-5 text-fashion-coral" />
+                  </div>
+                  <h3 className="font-semibold text-fashion-teal text-sm">Business Growth</h3>
+                </div>
+                <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                  Increase conversions and reduce returns with intelligent sizing.
+                </p>
+              </div>
+            </div>
+
+            {/* Smart Analytics */}
+            <div className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center mb-3">
+                  <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
+                    <Brain className="h-5 w-5 text-fashion-coral" />
+                  </div>
+                  <h3 className="font-semibold text-fashion-teal text-sm">Smart Analytics</h3>
+                </div>
+                <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                  Leverage insights to optimize inventory and enhance user experience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>;
 };
