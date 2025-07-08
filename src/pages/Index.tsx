@@ -254,11 +254,11 @@ const Index = () => {
       case "measurement":
         return <div className="max-w-6xl mx-auto">
             <div className="flex flex-col md:flex-row gap-8">
-              <div className="w-full md:w-1/2">
+              <div className="w-full md:w-1/2" style={{ marginLeft: 'calc(8.33% - 1rem)' }}>
                 <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
               </div>
               
-              <div className="w-full md:w-1/2">
+              <div className="w-full md:w-1/2" style={{ marginRight: 'calc(8.33% - 1rem)' }}>
                 <QuickMeasurementGuide />
               </div>
             </div>

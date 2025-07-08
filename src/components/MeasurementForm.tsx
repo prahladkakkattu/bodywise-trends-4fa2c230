@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { BodyMeasurement, BodyType } from "@/types";
 import { determineBodyType } from "@/utils/bodyTypeUtils";
 import { Ruler } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface MeasurementFormProps {
   onBodyTypeChange: (bodyType: BodyType, measurements: BodyMeasurement) => void;
@@ -15,6 +16,7 @@ interface MeasurementFormProps {
 }
 
 const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) => {
+  const [unit, setUnit] = useState<"inches" | "cm">("inches");
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
     bust: 36,
     waist: 28,
@@ -23,6 +25,28 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     height: 65,
     weight: 140,
   });
+
+  // Conversion functions
+  const inchesToCm = (inches: number) => Math.round(inches * 2.54);
+  const cmToInches = (cm: number) => Math.round(cm / 2.54);
+  const lbsToKg = (lbs: number) => Math.round(lbs * 0.453592);
+  const kgToLbs = (kg: number) => Math.round(kg / 0.453592);
+
+  const getDisplayValue = (value: number, field: string) => {
+    if (unit === "cm") {
+      if (field === "weight") return lbsToKg(value);
+      return inchesToCm(value);
+    }
+    return value;
+  };
+
+  const getStoredValue = (value: number, field: string) => {
+    if (unit === "cm") {
+      if (field === "weight") return kgToLbs(value);
+      return cmToInches(value);
+    }
+    return value;
+  };
 
   const handleChange = (name: keyof BodyMeasurement, value: number) => {
     setMeasurements(prev => ({
@@ -46,39 +70,46 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
         </h2>
       </div>
       
+      <Tabs value={unit} onValueChange={(value) => setUnit(value as "inches" | "cm")} className="mb-4">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="inches">Inches</TabsTrigger>
+          <TabsTrigger value="cm">CM</TabsTrigger>
+        </TabsList>
+      </Tabs>
+
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="bust" className="text-sm font-medium">
-                Bust (inches)
+                Bust ({unit === "inches" ? "inches" : "cm"})
               </Label>
               <div className="flex items-center">
                 <Input
                   id="bust"
                   type="number"
                   className="measurement-input"
-                  value={measurements.bust}
-                  onChange={(e) => handleChange("bust", Number(e.target.value))}
-                  min={20}
-                  max={60}
+                  value={getDisplayValue(measurements.bust, "bust")}
+                  onChange={(e) => handleChange("bust", getStoredValue(Number(e.target.value), "bust"))}
+                  min={unit === "inches" ? 20 : 51}
+                  max={unit === "inches" ? 60 : 152}
                 />
               </div>
             </div>
             
             <div className="space-y-2">
               <Label htmlFor="waist" className="text-sm font-medium">
-                Waist (inches)
+                Waist ({unit === "inches" ? "inches" : "cm"})
               </Label>
               <div className="flex items-center">
                 <Input
                   id="waist"
                   type="number"
                   className="measurement-input"
-                  value={measurements.waist}
-                  onChange={(e) => handleChange("waist", Number(e.target.value))}
-                  min={20}
-                  max={60}
+                  value={getDisplayValue(measurements.waist, "waist")}
+                  onChange={(e) => handleChange("waist", getStoredValue(Number(e.target.value), "waist"))}
+                  min={unit === "inches" ? 20 : 51}
+                  max={unit === "inches" ? 60 : 152}
                 />
               </div>
             </div>
@@ -87,34 +118,34 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="hips" className="text-sm font-medium">
-                Hips (inches)
+                Hips ({unit === "inches" ? "inches" : "cm"})
               </Label>
               <div className="flex items-center">
                 <Input
                   id="hips"
                   type="number"
                   className="measurement-input"
-                  value={measurements.hips}
-                  onChange={(e) => handleChange("hips", Number(e.target.value))}
-                  min={20}
-                  max={60}
+                  value={getDisplayValue(measurements.hips, "hips")}
+                  onChange={(e) => handleChange("hips", getStoredValue(Number(e.target.value), "hips"))}
+                  min={unit === "inches" ? 20 : 51}
+                  max={unit === "inches" ? 60 : 152}
                 />
               </div>
             </div>
             
             <div className="space-y-2">
               <Label htmlFor="shoulders" className="text-sm font-medium">
-                Shoulders (inches)
+                Shoulders ({unit === "inches" ? "inches" : "cm"})
               </Label>
               <div className="flex items-center">
                 <Input
                   id="shoulders"
                   type="number"
                   className="measurement-input"
-                  value={measurements.shoulders}
-                  onChange={(e) => handleChange("shoulders", Number(e.target.value))}
-                  min={20}
-                  max={60}
+                  value={getDisplayValue(measurements.shoulders, "shoulders")}
+                  onChange={(e) => handleChange("shoulders", getStoredValue(Number(e.target.value), "shoulders"))}
+                  min={unit === "inches" ? 20 : 51}
+                  max={unit === "inches" ? 60 : 152}
                 />
               </div>
             </div>
@@ -122,17 +153,17 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           
           <div className="space-y-2">
             <Label htmlFor="weight" className="text-sm font-medium">
-              Weight (lbs)
+              Weight ({unit === "inches" ? "lbs" : "kg"})
             </Label>
             <div className="flex items-center">
               <Input
                 id="weight"
                 type="number"
                 className="measurement-input"
-                value={measurements.weight}
-                onChange={(e) => handleChange("weight", Number(e.target.value))}
-                min={80}
-                max={300}
+                value={getDisplayValue(measurements.weight, "weight")}
+                onChange={(e) => handleChange("weight", getStoredValue(Number(e.target.value), "weight"))}
+                min={unit === "inches" ? 80 : 36}
+                max={unit === "inches" ? 300 : 136}
               />
             </div>
           </div>
@@ -140,17 +171,19 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           <div className="space-y-2">
             <div className="flex justify-between">
               <Label htmlFor="height" className="text-sm font-medium">
-                Height (inches)
+                Height ({unit === "inches" ? "inches" : "cm"})
               </Label>
-              <span className="text-sm text-muted-foreground">{measurements.height}"</span>
+              <span className="text-sm text-muted-foreground">
+                {unit === "inches" ? `${measurements.height}"` : `${inchesToCm(measurements.height)}cm`}
+              </span>
             </div>
             <Slider
               id="height"
-              value={[measurements.height || 65]}
-              min={48}
-              max={78}
+              value={[unit === "inches" ? measurements.height : inchesToCm(measurements.height)]}
+              min={unit === "inches" ? 48 : 122}
+              max={unit === "inches" ? 78 : 198}
               step={1}
-              onValueChange={(value) => handleChange("height", value[0])}
+              onValueChange={(value) => handleChange("height", unit === "inches" ? value[0] : cmToInches(value[0]))}
               className="py-4"
             />
           </div>
