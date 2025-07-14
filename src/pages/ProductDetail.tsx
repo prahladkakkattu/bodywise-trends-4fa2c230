@@ -269,28 +269,42 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Available Sizes */}
-              <div className="border-t pt-6 space-y-4">
+              {/* Available Sizes & Colors */}
+              <div className="border-t pt-6 space-y-6">
                 <div>
-                  <h3 className="text-sm font-medium text-fashion-teal mb-2">Available Sizes</h3>
+                  <h3 className="text-sm font-medium text-fashion-teal mb-3">Available Sizes</h3>
                   <div className="flex gap-2">
                     {['S', 'M', 'L', 'XL'].map((size) => (
-                      <Badge key={size} variant="outline" className="px-3 py-1">
+                      <button
+                        key={size}
+                        className="w-12 h-12 border-2 border-fashion-teal/20 rounded-lg hover:border-fashion-coral hover:bg-fashion-coral hover:text-white transition-all duration-200 flex items-center justify-center font-medium text-fashion-teal hover:scale-105"
+                      >
                         {size}
-                      </Badge>
+                      </button>
                     ))}
                   </div>
                 </div>
                 
                 {/* Available Colors */}
                 <div>
-                  <h3 className="text-sm font-medium text-fashion-teal mb-2">Available Colors</h3>
-                  <div className="flex gap-2">
-                    {['Black', 'Navy', 'Burgundy', 'Olive Green'].map((color) => (
-                      <Badge key={color} variant="secondary" className="px-3 py-1">
-                        {color}
-                      </Badge>
-                    ))}
+                  <h3 className="text-sm font-medium text-fashion-teal mb-3">Available Colors</h3>
+                  <div className="flex gap-3">
+                    <div className="flex flex-col items-center gap-1 cursor-pointer group">
+                      <div className="w-8 h-8 bg-black rounded-full border-2 border-fashion-teal/20 group-hover:border-fashion-coral transition-colors shadow-sm"></div>
+                      <span className="text-xs text-fashion-teal/70">Black</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-1 cursor-pointer group">
+                      <div className="w-8 h-8 bg-blue-900 rounded-full border-2 border-fashion-teal/20 group-hover:border-fashion-coral transition-colors shadow-sm"></div>
+                      <span className="text-xs text-fashion-teal/70">Navy</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-1 cursor-pointer group">
+                      <div className="w-8 h-8 bg-red-900 rounded-full border-2 border-fashion-teal/20 group-hover:border-fashion-coral transition-colors shadow-sm"></div>
+                      <span className="text-xs text-fashion-teal/70">Burgundy</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-1 cursor-pointer group">
+                      <div className="w-8 h-8 bg-green-800 rounded-full border-2 border-fashion-teal/20 group-hover:border-fashion-coral transition-colors shadow-sm"></div>
+                      <span className="text-xs text-fashion-teal/70">Olive</span>
+                    </div>
                   </div>
                 </div>
               </div>
