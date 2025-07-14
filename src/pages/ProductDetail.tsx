@@ -215,47 +215,58 @@ const ProductDetail = () => {
                 </div>
                 
                 {/* Body Type Text */}
-                <div className="mb-4">
+                <div className="mb-6">
                   <p className="text-sm text-fashion-teal/70">
                     Perfect for <span className="font-medium text-fashion-coral">{product.bodyType}</span> body shape
                   </p>
-                  <button 
-                    onClick={handleKnowYourBodyShape}
-                    className="text-sm text-fashion-coral hover:text-fashion-coral/80 underline cursor-pointer transition-colors"
-                  >
-                    Know your bodyshape
-                  </button>
                 </div>
 
                 <p className="text-fashion-teal/80 mb-6">{product.description}</p>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-4 mb-8">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button 
-                      variant="premium" 
-                      size="lg" 
-                      className="flex-1"
-                      onClick={handleBuyNow}
-                    >
-                      <ExternalLink className="h-5 w-5 mr-2" />
-                      Buy Now
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>You will be redirected to the seller or designer website of this product</p>
-                  </TooltipContent>
-                </Tooltip>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  onClick={() => setIsFavorite(!isFavorite)}
-                  className={isFavorite ? "text-red-500 border-red-500" : ""}
-                >
-                  <Heart className={`h-5 w-5 ${isFavorite ? "fill-red-500" : ""}`} />
-                </Button>
+              <div className="space-y-4 mb-8">
+                {/* Know Your Body Shape CTA */}
+                <div className="bg-fashion-beige/20 border border-fashion-coral/20 rounded-lg p-4">
+                  <p className="text-sm text-fashion-teal/80 mb-2">
+                    Not sure if this is right for your body shape?
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={handleKnowYourBodyShape}
+                    className="border-fashion-coral text-fashion-coral hover:bg-fashion-coral hover:text-white"
+                  >
+                    Know your body shape
+                  </Button>
+                </div>
+                
+                <div className="flex gap-4">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button 
+                        variant="premium" 
+                        size="lg" 
+                        className="flex-1"
+                        onClick={handleBuyNow}
+                      >
+                        <ExternalLink className="h-5 w-5 mr-2" />
+                        Buy Now
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>You will be redirected to the seller or designer website of this product</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    onClick={() => setIsFavorite(!isFavorite)}
+                    className={isFavorite ? "text-red-500 border-red-500" : ""}
+                  >
+                    <Heart className={`h-5 w-5 ${isFavorite ? "fill-red-500" : ""}`} />
+                  </Button>
+                </div>
               </div>
 
               {/* Available Sizes */}
