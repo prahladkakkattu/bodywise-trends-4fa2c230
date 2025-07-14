@@ -209,6 +209,11 @@ const ProductDetail = () => {
                 <h1 className="text-3xl font-bold text-fashion-teal mb-2">{product.name}</h1>
                 <p className="text-lg text-fashion-teal/80 mb-4">{product.brand}</p>
                 
+                {/* Price */}
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl font-bold text-fashion-teal">€{product.price.toFixed(2)}</span>
+                </div>
+                
                 {/* Body Type Text */}
                 <div className="mb-4">
                   <p className="text-sm text-fashion-teal/70">
@@ -306,11 +311,6 @@ const ProductDetail = () => {
               <span className="text-sm text-fashion-teal/70">
                 {product.rating} ({product.reviews} reviews)
               </span>
-            </div>
-
-            {/* Price */}
-            <div className="flex items-center gap-3 mb-8">
-              <span className="text-3xl font-bold text-fashion-teal">€{product.price.toFixed(2)}</span>
             </div>
 
             {/* Existing Reviews */}
