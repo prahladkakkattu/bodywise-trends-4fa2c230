@@ -205,41 +205,21 @@ const ProductDetail = () => {
             {/* Product Details */}
             <div className="space-y-6">
               <div>
-                <p className="text-sm text-fashion-teal/60 mb-2">{product.brand}</p>
-                <h1 className="text-3xl font-bold text-fashion-teal mb-4">{product.name}</h1>
+                {/* Title and Subtitle */}
+                <h1 className="text-3xl font-bold text-fashion-teal mb-2">{product.name}</h1>
+                <p className="text-lg text-fashion-teal/80 mb-4">{product.brand}</p>
                 
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`h-4 w-4 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm text-fashion-teal/70">
-                    {product.rating} ({product.reviews} reviews)
-                  </span>
-                </div>
-
-                {/* Body Type Badge */}
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="text-sm text-fashion-teal/70">Perfect for:</span>
-                  <div className="flex items-center gap-2">
-                    <BodyShapeIcon bodyType={product.bodyType as any} size="md" />
-                    <button 
-                      onClick={handleKnowYourBodyShape}
-                      className="text-sm text-fashion-coral hover:text-fashion-coral/80 underline cursor-pointer transition-colors"
-                    >
-                      Know your bodyshape
-                    </button>
-                  </div>
-                </div>
-
-                {/* Price */}
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="text-3xl font-bold text-fashion-teal">€{product.price.toFixed(2)}</span>
+                {/* Body Type Text */}
+                <div className="mb-4">
+                  <p className="text-sm text-fashion-teal/70">
+                    Perfect for <span className="font-medium text-fashion-coral">{product.bodyType}</span> body shape
+                  </p>
+                  <button 
+                    onClick={handleKnowYourBodyShape}
+                    className="text-sm text-fashion-coral hover:text-fashion-coral/80 underline cursor-pointer transition-colors"
+                  >
+                    Know your bodyshape
+                  </button>
                 </div>
 
                 <p className="text-fashion-teal/80 mb-6">{product.description}</p>
@@ -273,19 +253,29 @@ const ProductDetail = () => {
                 </Button>
               </div>
 
-              {/* Shipping & Returns */}
-              <div className="border-t pt-6 space-y-3">
-                <div className="flex items-center text-fashion-teal/70">
-                  <Truck className="h-5 w-5 mr-3 text-fashion-coral" />
-                  Free shipping on orders over €200
+              {/* Available Sizes */}
+              <div className="border-t pt-6 space-y-4">
+                <div>
+                  <h3 className="text-sm font-medium text-fashion-teal mb-2">Available Sizes</h3>
+                  <div className="flex gap-2">
+                    {['S', 'M', 'L', 'XL'].map((size) => (
+                      <Badge key={size} variant="outline" className="px-3 py-1">
+                        {size}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex items-center text-fashion-teal/70">
-                  <RotateCcw className="h-5 w-5 mr-3 text-fashion-coral" />
-                  30-day return policy
-                </div>
-                <div className="flex items-center text-fashion-teal/70">
-                  <Shield className="h-5 w-5 mr-3 text-fashion-coral" />
-                  Secure checkout
+                
+                {/* Available Colors */}
+                <div>
+                  <h3 className="text-sm font-medium text-fashion-teal mb-2">Available Colors</h3>
+                  <div className="flex gap-2">
+                    {['Black', 'Navy', 'Burgundy', 'Olive Green'].map((color) => (
+                      <Badge key={color} variant="secondary" className="px-3 py-1">
+                        {color}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -303,8 +293,59 @@ const ProductDetail = () => {
           <div className="mt-12 border-t pt-8">
             <h2 className="text-2xl font-bold text-fashion-teal mb-6">Customer Reviews</h2>
             
+            {/* Rating */}
+            <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <Star 
+                    key={i} 
+                    className={`h-4 w-4 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-fashion-teal/70">
+                {product.rating} ({product.reviews} reviews)
+              </span>
+            </div>
+
+            {/* Price */}
+            <div className="flex items-center gap-3 mb-8">
+              <span className="text-3xl font-bold text-fashion-teal">€{product.price.toFixed(2)}</span>
+            </div>
+
+            {/* Existing Reviews */}
+            <div className="space-y-4 mb-8">
+              {reviews.map((review) => (
+                <Card key={review.id}>
+                  <CardContent className="pt-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h4 className="font-semibold text-fashion-teal">{review.name}</h4>
+                        <div className="flex items-center gap-2 mt-1">
+                          <div className="flex">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`h-4 w-4 ${
+                                  i < review.rating
+                                    ? "fill-yellow-400 text-yellow-400"
+                                    : "text-gray-300"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <span className="text-sm text-fashion-teal/60">{review.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-fashion-teal/80">{review.comment}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            
             {/* Add Review Form */}
-            <Card className="mb-8">
+            <Card>
               <CardHeader>
                 <CardTitle className="text-lg text-fashion-teal">Write a Review</CardTitle>
               </CardHeader>
@@ -351,37 +392,6 @@ const ProductDetail = () => {
                 </Button>
               </CardContent>
             </Card>
-
-            {/* Existing Reviews */}
-            <div className="space-y-4">
-              {reviews.map((review) => (
-                <Card key={review.id}>
-                  <CardContent className="pt-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h4 className="font-semibold text-fashion-teal">{review.name}</h4>
-                        <div className="flex items-center gap-2 mt-1">
-                          <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                              <Star
-                                key={i}
-                                className={`h-4 w-4 ${
-                                  i < review.rating
-                                    ? "fill-yellow-400 text-yellow-400"
-                                    : "text-gray-300"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                          <span className="text-sm text-fashion-teal/60">{review.date}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-fashion-teal/80">{review.comment}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </main>
