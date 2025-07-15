@@ -86,8 +86,8 @@ const Index = () => {
             <section className="relative w-full">
               <div className="h-[400px] md:h-[500px] overflow-hidden flex items-center justify-center">
                 <img 
-                  src="/lovable-uploads/33ebd579-7d29-4f90-815d-e29ef0d3ff34.png" 
-                  alt="Fashion lifestyle" 
+                  src="/lovable-uploads/fff7fc5a-feec-464b-a87d-1f3d424185c2.png" 
+                  alt="StyleMyFit App - Woman shopping with mobile interface" 
                   className="w-full h-full object-cover"
                 />
               </div>
