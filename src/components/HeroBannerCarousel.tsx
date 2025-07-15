@@ -12,8 +12,10 @@ const HeroBannerCarousel = ({
 }: HeroBannerCarouselProps) => {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [leftPanelOpen, setLeftPanelOpen] = useState(false);
-  const [rightPanelOpen, setRightPanelOpen] = useState(false);
+  const [leftPanel1Open, setLeftPanel1Open] = useState(false);
+  const [leftPanel2Open, setLeftPanel2Open] = useState(false);
+  const [rightPanel1Open, setRightPanel1Open] = useState(false);
+  const [rightPanel2Open, setRightPanel2Open] = useState(false);
   const [mobileDetailsOpen, setMobileDetailsOpen] = useState(false);
   const banners = [{
     id: 1,
@@ -58,51 +60,51 @@ const HeroBannerCarousel = ({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Left Side Text - Collapsible */}
           <div className="hidden lg:flex flex-col space-y-6 h-full justify-center -ml-8">
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center">
-                  <Brain className="h-5 w-5 mr-2 text-fashion-coral" />
-                  <h3 className="font-semibold text-fashion-teal text-sm">AI-Powered Sizing</h3>
-                </div>
-                <Collapsible open={leftPanelOpen} onOpenChange={setLeftPanelOpen}>
+            <Collapsible open={leftPanel1Open} onOpenChange={setLeftPanel1Open}>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center">
+                    <Brain className="h-5 w-5 mr-2 text-fashion-coral" />
+                    <h3 className="font-semibold text-fashion-teal text-sm">AI-Powered Sizing</h3>
+                  </div>
                   <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
-                    {leftPanelOpen ? (
+                    {leftPanel1Open ? (
                       <ChevronUp className="h-4 w-4 text-fashion-coral" />
                     ) : (
                       <ChevronDown className="h-4 w-4 text-fashion-coral" />
                     )}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-3">
-                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
-                      Our advanced machine learning algorithms analyze body measurements to provide precise fit recommendations.
-                    </p>
-                  </CollapsibleContent>
-                </Collapsible>
+                </div>
+                <CollapsibleContent className="mt-3">
+                  <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                    Our advanced machine learning algorithms analyze body measurements to provide precise fit recommendations.
+                  </p>
+                </CollapsibleContent>
               </div>
-            </div>
+            </Collapsible>
             
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center">
-                  <Zap className="h-5 w-5 mr-2 text-fashion-coral" />
-                  <h3 className="font-semibold text-fashion-teal text-sm">Styling Partner</h3>
-                </div>
-                <Collapsible open={leftPanelOpen} onOpenChange={setLeftPanelOpen}>
+            <Collapsible open={leftPanel2Open} onOpenChange={setLeftPanel2Open}>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center">
+                    <Zap className="h-5 w-5 mr-2 text-fashion-coral" />
+                    <h3 className="font-semibold text-fashion-teal text-sm">Styling Partner</h3>
+                  </div>
                   <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
-                    {leftPanelOpen ? (
+                    {leftPanel2Open ? (
                       <ChevronUp className="h-4 w-4 text-fashion-coral" />
                     ) : (
                       <ChevronDown className="h-4 w-4 text-fashion-coral" />
                     )}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-3">
-                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
-                      Make informed fashion choices unique to your body shape.
-                    </p>
-                  </CollapsibleContent>
-                </Collapsible>
+                </div>
+                <CollapsibleContent className="mt-3">
+                  <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                    Make informed fashion choices unique to your body shape.
+                  </p>
+                </CollapsibleContent>
               </div>
-            </div>
+            </Collapsible>
           </div>
 
           {/* Center Carousel */}
@@ -140,51 +142,51 @@ const HeroBannerCarousel = ({
 
           {/* Right Side Text - Collapsible */}
           <div className="hidden lg:flex flex-col space-y-6 h-full justify-center -mr-8">
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center">
-                  <TrendingUp className="h-5 w-5 mr-2 text-fashion-coral" />
-                  <h3 className="font-semibold text-fashion-teal text-sm">Business Growth</h3>
-                </div>
-                <Collapsible open={rightPanelOpen} onOpenChange={setRightPanelOpen}>
+            <Collapsible open={rightPanel1Open} onOpenChange={setRightPanel1Open}>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center">
+                    <TrendingUp className="h-5 w-5 mr-2 text-fashion-coral" />
+                    <h3 className="font-semibold text-fashion-teal text-sm">Business Growth</h3>
+                  </div>
                   <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
-                    {rightPanelOpen ? (
+                    {rightPanel1Open ? (
                       <ChevronUp className="h-4 w-4 text-fashion-coral" />
                     ) : (
                       <ChevronDown className="h-4 w-4 text-fashion-coral" />
                     )}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-3">
-                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
-                      Increase conversion rates and reduce returns with intelligent sizing technology.
-                    </p>
-                  </CollapsibleContent>
-                </Collapsible>
+                </div>
+                <CollapsibleContent className="mt-3">
+                  <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                    Increase conversion rates and reduce returns with intelligent sizing technology.
+                  </p>
+                </CollapsibleContent>
               </div>
-            </div>
+            </Collapsible>
             
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center">
-                  <Brain className="h-5 w-5 mr-2 text-fashion-coral" />
-                  <h3 className="font-semibold text-fashion-teal text-sm">Smart Analytics</h3>
-                </div>
-                <Collapsible open={rightPanelOpen} onOpenChange={setRightPanelOpen}>
+            <Collapsible open={rightPanel2Open} onOpenChange={setRightPanel2Open}>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center">
+                    <Brain className="h-5 w-5 mr-2 text-fashion-coral" />
+                    <h3 className="font-semibold text-fashion-teal text-sm">Smart Analytics</h3>
+                  </div>
                   <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
-                    {rightPanelOpen ? (
+                    {rightPanel2Open ? (
                       <ChevronUp className="h-4 w-4 text-fashion-coral" />
                     ) : (
                       <ChevronDown className="h-4 w-4 text-fashion-coral" />
                     )}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-3">
-                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
-                      Leverage insights to optimize inventory and enhance user experience.
-                    </p>
-                  </CollapsibleContent>
-                </Collapsible>
+                </div>
+                <CollapsibleContent className="mt-3">
+                  <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                    Leverage insights to optimize inventory and enhance user experience.
+                  </p>
+                </CollapsibleContent>
               </div>
-            </div>
+            </Collapsible>
           </div>
         </div>
         
