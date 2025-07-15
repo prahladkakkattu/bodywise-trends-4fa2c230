@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
-import { Brain, TrendingUp, Zap } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Brain, TrendingUp, Zap, ChevronDown, ChevronUp } from "lucide-react";
 interface HeroBannerCarouselProps {
   onGetStarted: () => void;
   onNoMeasurements: () => void;
@@ -11,6 +12,9 @@ const HeroBannerCarousel = ({
 }: HeroBannerCarouselProps) => {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [leftPanelOpen, setLeftPanelOpen] = useState(false);
+  const [rightPanelOpen, setRightPanelOpen] = useState(false);
+  const [mobileDetailsOpen, setMobileDetailsOpen] = useState(false);
   const banners = [{
     id: 1,
     image: "/lovable-uploads/1b7f90af-79ff-4f76-9a2d-53a33c92090d.png"
@@ -52,29 +56,40 @@ const HeroBannerCarousel = ({
   return <section className="relative w-full flex justify-center py-8">
       <div className="w-full max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          {/* Left Side Text - Positioned to align with Find My Style */}
-          <div className="hidden lg:flex flex-col space-y-6 h-full justify-between -ml-8">
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 flex-1">
-              <div className="flex items-center mb-3">
-                <Brain className="h-6 w-6 mr-2" style={{
-                color: '#a12e1d'
-              }} />
-                <h3 className="font-semibold text-fashion-teal">AI-Powered Sizing</h3>
-              </div>
-              <p className="text-sm text-fashion-teal/80 leading-relaxed">
-                Our advanced machine learning algorithms analyze body measurements to provide precise fit recommendations, revolutionizing how customers shop for fashion online.
-              </p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 flex-1">
-              <div className="flex items-center mb-3">
-                <Zap className="h-6 w-6 mr-2" style={{
-                color: '#a12e1d'
-              }} />
-                <h3 className="font-semibold text-fashion-teal">Styling Partner</h3>
-              </div>
-              <p className="text-sm text-fashion-teal/80 leading-relaxed">Our solution will help you make informed decisions around your fashion choices that are unique to your body shape.</p>
-            </div>
+          {/* Left Side Text - Collapsible */}
+          <div className="hidden lg:flex flex-col space-y-6 h-full justify-center -ml-8">
+            <Collapsible open={leftPanelOpen} onOpenChange={setLeftPanelOpen}>
+              <CollapsibleTrigger className="flex items-center justify-center w-12 h-12 bg-white/90 rounded-full shadow-lg border border-fashion-coral/20 hover:bg-white transition-all duration-300 mb-4">
+                {leftPanelOpen ? (
+                  <ChevronUp className="h-5 w-5 text-fashion-coral" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-fashion-coral" />
+                )}
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-4">
+                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
+                  <div className="flex items-center mb-3">
+                    <Brain className="h-6 w-6 mr-2" style={{
+                    color: '#a12e1d'
+                  }} />
+                    <h3 className="font-semibold text-fashion-teal">AI-Powered Sizing</h3>
+                  </div>
+                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
+                    Our advanced machine learning algorithms analyze body measurements to provide precise fit recommendations.
+                  </p>
+                </div>
+                
+                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
+                  <div className="flex items-center mb-3">
+                    <Zap className="h-6 w-6 mr-2" style={{
+                    color: '#a12e1d'
+                  }} />
+                    <h3 className="font-semibold text-fashion-teal">Styling Partner</h3>
+                  </div>
+                  <p className="text-sm text-fashion-teal/80 leading-relaxed">Make informed fashion choices unique to your body shape.</p>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
 
           {/* Center Carousel */}
@@ -110,101 +125,126 @@ const HeroBannerCarousel = ({
             </div>
           </div>
 
-          {/* Right Side Text - Positioned to align with Sign Up button */}
-          <div className="hidden lg:flex flex-col space-y-6 h-full justify-between -mr-8">
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 flex-1">
-              <div className="flex items-center mb-3">
-                <TrendingUp className="h-6 w-6 mr-2" style={{
-                color: '#a12e1d'
-              }} />
-                <h3 className="font-semibold text-fashion-teal">Business Growth</h3>
-              </div>
-              <p className="text-sm text-fashion-teal/80 leading-relaxed">
-                Increase conversion rates and reduce returns with our intelligent sizing technology that ensures perfect fit every time.
-              </p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 flex-1">
-              <div className="flex items-center mb-3">
-                <Brain className="h-6 w-6 mr-2" style={{
-                color: '#a12e1d'
-              }} />
-                <h3 className="font-semibold text-fashion-teal">Smart Analytics</h3>
-              </div>
-              <p className="text-sm text-fashion-teal/80 leading-relaxed">
-                Leverage customer data insights and predictive analytics to optimize inventory, enhance user experience, and drive sustainable fashion retail growth.
-              </p>
-            </div>
+          {/* Right Side Text - Collapsible */}
+          <div className="hidden lg:flex flex-col space-y-6 h-full justify-center -mr-8">
+            <Collapsible open={rightPanelOpen} onOpenChange={setRightPanelOpen}>
+              <CollapsibleTrigger className="flex items-center justify-center w-12 h-12 bg-white/90 rounded-full shadow-lg border border-fashion-coral/20 hover:bg-white transition-all duration-300 mb-4">
+                {rightPanelOpen ? (
+                  <ChevronUp className="h-5 w-5 text-fashion-coral" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-fashion-coral" />
+                )}
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-4">
+                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
+                  <div className="flex items-center mb-3">
+                    <TrendingUp className="h-6 w-6 mr-2" style={{
+                    color: '#a12e1d'
+                  }} />
+                    <h3 className="font-semibold text-fashion-teal">Business Growth</h3>
+                  </div>
+                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
+                    Increase conversion rates and reduce returns with intelligent sizing technology.
+                  </p>
+                </div>
+                
+                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
+                  <div className="flex items-center mb-3">
+                    <Brain className="h-6 w-6 mr-2" style={{
+                    color: '#a12e1d'
+                  }} />
+                    <h3 className="font-semibold text-fashion-teal">Smart Analytics</h3>
+                  </div>
+                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
+                    Leverage insights to optimize inventory and enhance user experience.
+                  </p>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
         </div>
         
-        {/* Mobile Feature Cards - Creative floating design */}
-        <div className="lg:hidden mt-8 space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* AI-Powered Sizing */}
-            <div className="group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center mb-3">
-                  <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
-                    <Brain className="h-5 w-5 text-fashion-coral" />
-                  </div>
-                  <h3 className="font-semibold text-fashion-teal text-sm">AI-Powered Sizing</h3>
-                </div>
-                <p className="text-xs text-fashion-teal/80 leading-relaxed">
-                  Advanced algorithms analyze measurements for precise fit recommendations.
-                </p>
-              </div>
+        {/* Mobile Feature Cards - Collapsible */}
+        <div className="lg:hidden mt-8">
+          <Collapsible open={mobileDetailsOpen} onOpenChange={setMobileDetailsOpen}>
+            <div className="flex justify-center mb-4">
+              <CollapsibleTrigger className="flex items-center gap-2 px-4 py-2 bg-white/90 rounded-full shadow-lg border border-fashion-coral/20 hover:bg-white transition-all duration-300">
+                <span className="text-sm font-medium text-fashion-teal">Features</span>
+                {mobileDetailsOpen ? (
+                  <ChevronUp className="h-4 w-4 text-fashion-coral" />
+                ) : (
+                  <ChevronDown className="h-4 w-4 text-fashion-coral" />
+                )}
+              </CollapsibleTrigger>
             </div>
+            <CollapsibleContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* AI-Powered Sizing */}
+                <div className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+                  <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex items-center mb-3">
+                      <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
+                        <Brain className="h-5 w-5 text-fashion-coral" />
+                      </div>
+                      <h3 className="font-semibold text-fashion-teal text-sm">AI-Powered Sizing</h3>
+                    </div>
+                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                      Advanced algorithms analyze measurements for precise fit recommendations.
+                    </p>
+                  </div>
+                </div>
 
-            {/* Styling Partner */}
-            <div className="group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center mb-3">
-                  <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
-                    <Zap className="h-5 w-5 text-fashion-coral" />
+                {/* Styling Partner */}
+                <div className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+                  <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex items-center mb-3">
+                      <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
+                        <Zap className="h-5 w-5 text-fashion-coral" />
+                      </div>
+                      <h3 className="font-semibold text-fashion-teal text-sm">Styling Partner</h3>
+                    </div>
+                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                      Make informed fashion choices unique to your body shape.
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-fashion-teal text-sm">Styling Partner</h3>
                 </div>
-                <p className="text-xs text-fashion-teal/80 leading-relaxed">
-                  Make informed fashion choices unique to your body shape.
-                </p>
-              </div>
-            </div>
 
-            {/* Business Growth */}
-            <div className="group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center mb-3">
-                  <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
-                    <TrendingUp className="h-5 w-5 text-fashion-coral" />
+                {/* Business Growth */}
+                <div className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+                  <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex items-center mb-3">
+                      <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
+                        <TrendingUp className="h-5 w-5 text-fashion-coral" />
+                      </div>
+                      <h3 className="font-semibold text-fashion-teal text-sm">Business Growth</h3>
+                    </div>
+                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                      Increase conversions and reduce returns with intelligent sizing.
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-fashion-teal text-sm">Business Growth</h3>
                 </div>
-                <p className="text-xs text-fashion-teal/80 leading-relaxed">
-                  Increase conversions and reduce returns with intelligent sizing.
-                </p>
-              </div>
-            </div>
 
-            {/* Smart Analytics */}
-            <div className="group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center mb-3">
-                  <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
-                    <Brain className="h-5 w-5 text-fashion-coral" />
+                {/* Smart Analytics */}
+                <div className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-fashion-coral/20 to-fashion-coral/5 rounded-xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+                  <div className="relative bg-white/95 backdrop-blur-sm rounded-xl p-5 border border-fashion-coral/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex items-center mb-3">
+                      <div className="p-2 bg-fashion-coral/10 rounded-lg mr-3">
+                        <Brain className="h-5 w-5 text-fashion-coral" />
+                      </div>
+                      <h3 className="font-semibold text-fashion-teal text-sm">Smart Analytics</h3>
+                    </div>
+                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                      Leverage insights to optimize inventory and enhance user experience.
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-fashion-teal text-sm">Smart Analytics</h3>
                 </div>
-                <p className="text-xs text-fashion-teal/80 leading-relaxed">
-                  Leverage insights to optimize inventory and enhance user experience.
-                </p>
               </div>
-            </div>
-          </div>
+            </CollapsibleContent>
+          </Collapsible>
         </div>
       </div>
     </section>;
