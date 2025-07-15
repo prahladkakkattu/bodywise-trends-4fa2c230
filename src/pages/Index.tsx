@@ -147,7 +147,7 @@ const Index = () => {
                         </Button>
                         <BodyShapeHolder 
                           bodyTypes={product.bodyTypes} 
-                          className="absolute bottom-2 right-2" 
+                          className="absolute bottom-2 right-2 relative" 
                         />
                       </div>
                       <div className="space-y-1">
