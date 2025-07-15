@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
 import BodyTypeResult from "@/components/BodyTypeResult";
 import ProductRecommendations from "@/components/ProductRecommendations";
-import BodyShapeIcon from "@/components/BodyShapeIcon";
+import BodyShapeHolder from "@/components/BodyShapeHolder";
 import HeroBannerCarousel from "@/components/HeroBannerCarousel";
 import { BodyMeasurement, BodyType } from "@/types";
 import { useToast } from "@/components/ui/use-toast";
@@ -145,11 +145,10 @@ const Index = () => {
                           <Heart className={`h-4 w-4 ${favorites.has(product.id) ? "fill-red-500 text-red-500" : ""}`} />
                           <span className="sr-only">Add to favorites</span>
                         </Button>
-                        <div className="absolute bottom-2 right-2 flex flex-col gap-1">
-                          {product.bodyTypes.map((bodyType, index) => (
-                            <BodyShapeIcon key={index} bodyType={bodyType} size="sm" />
-                          ))}
-                        </div>
+                        <BodyShapeHolder 
+                          bodyTypes={product.bodyTypes} 
+                          className="absolute bottom-2 right-2" 
+                        />
                       </div>
                       <div className="space-y-1">
                         <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">{product.type}</p>
