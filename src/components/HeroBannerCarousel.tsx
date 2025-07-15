@@ -58,38 +58,51 @@ const HeroBannerCarousel = ({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Left Side Text - Collapsible */}
           <div className="hidden lg:flex flex-col space-y-6 h-full justify-center -ml-8">
-            <Collapsible open={leftPanelOpen} onOpenChange={setLeftPanelOpen}>
-              <CollapsibleTrigger className="flex items-center justify-center w-12 h-12 bg-white/90 rounded-full shadow-lg border border-fashion-coral/20 hover:bg-white transition-all duration-300 mb-4">
-                {leftPanelOpen ? (
-                  <ChevronUp className="h-5 w-5 text-fashion-coral" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 text-fashion-coral" />
-                )}
-              </CollapsibleTrigger>
-              <CollapsibleContent className="space-y-4">
-                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
-                  <div className="flex items-center mb-3">
-                    <Brain className="h-6 w-6 mr-2" style={{
-                    color: '#a12e1d'
-                  }} />
-                    <h3 className="font-semibold text-fashion-teal">AI-Powered Sizing</h3>
-                  </div>
-                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
-                    Our advanced machine learning algorithms analyze body measurements to provide precise fit recommendations.
-                  </p>
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <Brain className="h-5 w-5 mr-2 text-fashion-coral" />
+                  <h3 className="font-semibold text-fashion-teal text-sm">AI-Powered Sizing</h3>
                 </div>
-                
-                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
-                  <div className="flex items-center mb-3">
-                    <Zap className="h-6 w-6 mr-2" style={{
-                    color: '#a12e1d'
-                  }} />
-                    <h3 className="font-semibold text-fashion-teal">Styling Partner</h3>
-                  </div>
-                  <p className="text-sm text-fashion-teal/80 leading-relaxed">Make informed fashion choices unique to your body shape.</p>
+                <Collapsible open={leftPanelOpen} onOpenChange={setLeftPanelOpen}>
+                  <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
+                    {leftPanelOpen ? (
+                      <ChevronUp className="h-4 w-4 text-fashion-coral" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-fashion-coral" />
+                    )}
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-3">
+                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                      Our advanced machine learning algorithms analyze body measurements to provide precise fit recommendations.
+                    </p>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <Zap className="h-5 w-5 mr-2 text-fashion-coral" />
+                  <h3 className="font-semibold text-fashion-teal text-sm">Styling Partner</h3>
                 </div>
-              </CollapsibleContent>
-            </Collapsible>
+                <Collapsible open={leftPanelOpen} onOpenChange={setLeftPanelOpen}>
+                  <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
+                    {leftPanelOpen ? (
+                      <ChevronUp className="h-4 w-4 text-fashion-coral" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-fashion-coral" />
+                    )}
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-3">
+                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                      Make informed fashion choices unique to your body shape.
+                    </p>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            </div>
           </div>
 
           {/* Center Carousel */}
@@ -127,49 +140,66 @@ const HeroBannerCarousel = ({
 
           {/* Right Side Text - Collapsible */}
           <div className="hidden lg:flex flex-col space-y-6 h-full justify-center -mr-8">
-            <Collapsible open={rightPanelOpen} onOpenChange={setRightPanelOpen}>
-              <CollapsibleTrigger className="flex items-center justify-center w-12 h-12 bg-white/90 rounded-full shadow-lg border border-fashion-coral/20 hover:bg-white transition-all duration-300 mb-4">
-                {rightPanelOpen ? (
-                  <ChevronUp className="h-5 w-5 text-fashion-coral" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 text-fashion-coral" />
-                )}
-              </CollapsibleTrigger>
-              <CollapsibleContent className="space-y-4">
-                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
-                  <div className="flex items-center mb-3">
-                    <TrendingUp className="h-6 w-6 mr-2" style={{
-                    color: '#a12e1d'
-                  }} />
-                    <h3 className="font-semibold text-fashion-teal">Business Growth</h3>
-                  </div>
-                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
-                    Increase conversion rates and reduce returns with intelligent sizing technology.
-                  </p>
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <TrendingUp className="h-5 w-5 mr-2 text-fashion-coral" />
+                  <h3 className="font-semibold text-fashion-teal text-sm">Business Growth</h3>
                 </div>
-                
-                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
-                  <div className="flex items-center mb-3">
-                    <Brain className="h-6 w-6 mr-2" style={{
-                    color: '#a12e1d'
-                  }} />
-                    <h3 className="font-semibold text-fashion-teal">Smart Analytics</h3>
-                  </div>
-                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
-                    Leverage insights to optimize inventory and enhance user experience.
-                  </p>
+                <Collapsible open={rightPanelOpen} onOpenChange={setRightPanelOpen}>
+                  <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
+                    {rightPanelOpen ? (
+                      <ChevronUp className="h-4 w-4 text-fashion-coral" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-fashion-coral" />
+                    )}
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-3">
+                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                      Increase conversion rates and reduce returns with intelligent sizing technology.
+                    </p>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <Brain className="h-5 w-5 mr-2 text-fashion-coral" />
+                  <h3 className="font-semibold text-fashion-teal text-sm">Smart Analytics</h3>
                 </div>
-              </CollapsibleContent>
-            </Collapsible>
+                <Collapsible open={rightPanelOpen} onOpenChange={setRightPanelOpen}>
+                  <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
+                    {rightPanelOpen ? (
+                      <ChevronUp className="h-4 w-4 text-fashion-coral" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-fashion-coral" />
+                    )}
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-3">
+                    <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                      Leverage insights to optimize inventory and enhance user experience.
+                    </p>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            </div>
           </div>
         </div>
         
         {/* Mobile Feature Cards - Collapsible */}
         <div className="lg:hidden mt-8">
+          <div className="text-center mb-4">
+            <h3 className="text-lg font-semibold text-fashion-teal mb-2">Key Features</h3>
+            <p className="text-sm text-fashion-teal/70 mb-4">AI-powered sizing and styling solutions for perfect fit</p>
+          </div>
           <Collapsible open={mobileDetailsOpen} onOpenChange={setMobileDetailsOpen}>
             <div className="flex justify-center mb-4">
               <CollapsibleTrigger className="flex items-center gap-2 px-4 py-2 bg-white/90 rounded-full shadow-lg border border-fashion-coral/20 hover:bg-white transition-all duration-300">
-                <span className="text-sm font-medium text-fashion-teal">Features</span>
+                <span className="text-sm font-medium text-fashion-teal">
+                  {mobileDetailsOpen ? "Show Less" : "Show More"}
+                </span>
                 {mobileDetailsOpen ? (
                   <ChevronUp className="h-4 w-4 text-fashion-coral" />
                 ) : (
