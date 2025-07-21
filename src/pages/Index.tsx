@@ -176,22 +176,58 @@ const Index = () => {
             <section className="py-8 bg-fashion-beige/20">
               <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-white rounded-lg p-8 text-center shadow-sm">
-                    <Ruler className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                  <div className="bg-white rounded-lg p-8 text-center shadow-sm group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden">
+                    <Ruler className="h-12 w-12 text-fashion-coral mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
                     <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Precise Recommendations</h3>
-                    <p className="text-fashion-teal/70">Get clothing suggestions perfectly matched to your unique body shape.</p>
+                    <p className="text-fashion-teal/70 transition-all duration-300 group-hover:text-fashion-teal">
+                      Get clothing suggestions perfectly matched to your unique body shape.
+                    </p>
+                    {/* Expandable content on hover */}
+                    <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                      <div className="pt-4 border-t border-fashion-beige/30">
+                        <ul className="text-sm text-fashion-teal/60 space-y-2">
+                          <li>• AI-powered body shape analysis</li>
+                          <li>• Personalized style recommendations</li>
+                          <li>• Real-time fit predictions</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                   
-                  <div className="bg-white rounded-lg p-8 text-center shadow-sm">
-                    <CheckCircle className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                  <div className="bg-white rounded-lg p-8 text-center shadow-sm group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden">
+                    <CheckCircle className="h-12 w-12 text-fashion-coral mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
                     <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Perfect Fit Every Time</h3>
-                    <p className="text-fashion-teal/70">Say goodbye to returns and exchanges with our tailored sizing solution.</p>
+                    <p className="text-fashion-teal/70 transition-all duration-300 group-hover:text-fashion-teal">
+                      Say goodbye to returns and exchanges with our tailored sizing solution.
+                    </p>
+                    {/* Expandable content on hover */}
+                    <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                      <div className="pt-4 border-t border-fashion-beige/30">
+                        <ul className="text-sm text-fashion-teal/60 space-y-2">
+                          <li>• 95% accuracy rate</li>
+                          <li>• Size conversion across brands</li>
+                          <li>• Fit confidence scoring</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                   
-                  <div className="bg-white rounded-lg p-8 text-center shadow-sm">
-                    <Sparkles className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                  <div className="bg-white rounded-lg p-8 text-center shadow-sm group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden">
+                    <Sparkles className="h-12 w-12 text-fashion-coral mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
                     <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Styling Expertise</h3>
-                    <p className="text-fashion-teal/70">Discover which styles enhance your natural shape and personal style.</p>
+                    <p className="text-fashion-teal/70 transition-all duration-300 group-hover:text-fashion-teal">
+                      Discover which styles enhance your natural shape and personal style.
+                    </p>
+                    {/* Expandable content on hover */}
+                    <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                      <div className="pt-4 border-t border-fashion-beige/30">
+                        <ul className="text-sm text-fashion-teal/60 space-y-2">
+                          <li>• Professional styling tips</li>
+                          <li>• Color palette suggestions</li>
+                          <li>• Trend-based recommendations</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -208,22 +244,61 @@ const Index = () => {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
-                    <DollarSign className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center group hover:bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden">
+                    <DollarSign className="h-12 w-12 text-fashion-coral mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
                     <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Increase Revenue</h3>
-                    <p className="text-fashion-teal/70">Boost conversions by up to 35% with accurate fit recommendations.</p>
+                    <p className="text-fashion-teal/70 transition-all duration-300 group-hover:text-fashion-teal">
+                      Boost conversions by up to 35% with accurate fit recommendations.
+                    </p>
+                    {/* Expandable content on hover */}
+                    <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                      <div className="pt-4 border-t border-fashion-coral/20">
+                        <div className="text-sm text-fashion-teal/60 space-y-2">
+                          <p className="font-medium text-fashion-coral">Key Benefits:</p>
+                          <p>• Higher conversion rates</p>
+                          <p>• Increased average order value</p>
+                          <p>• Better customer satisfaction</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   
-                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
-                    <Users className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center group hover:bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden">
+                    <Users className="h-12 w-12 text-fashion-coral mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
                     <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Enhance Experience</h3>
-                    <p className="text-fashion-teal/70">Provide personalized shopping journeys that make customers feel valued.</p>
+                    <p className="text-fashion-teal/70 transition-all duration-300 group-hover:text-fashion-teal">
+                      Provide personalized shopping journeys that make customers feel valued.
+                    </p>
+                    {/* Expandable content on hover */}
+                    <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                      <div className="pt-4 border-t border-fashion-coral/20">
+                        <div className="text-sm text-fashion-teal/60 space-y-2">
+                          <p className="font-medium text-fashion-coral">Features Include:</p>
+                          <p>• Personalized recommendations</p>
+                          <p>• Interactive size guides</p>
+                          <p>• Virtual fitting rooms</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   
-                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center">
-                    <ChartBar className="h-12 w-12 text-fashion-coral mb-4 mx-auto" />
+                  <div className="bg-fashion-beige/30 p-8 rounded-lg text-center group hover:bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden">
+                    <ChartBar className="h-12 w-12 text-fashion-coral mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
                     <h3 className="text-xl font-semibold mb-3 text-fashion-teal">Reduce Returns</h3>
-                    <p className="text-fashion-teal/70">Cut return rates by as much as 42% by getting the fit right the first time.</p>
+                    <p className="text-fashion-teal/70 transition-all duration-300 group-hover:text-fashion-teal">
+                      Cut return rates by as much as 42% by getting the fit right the first time.
+                    </p>
+                    {/* Expandable content on hover */}
+                    <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                      <div className="pt-4 border-t border-fashion-coral/20">
+                        <div className="text-sm text-fashion-teal/60 space-y-2">
+                          <p className="font-medium text-fashion-coral">Impact Metrics:</p>
+                          <p>• 42% reduction in returns</p>
+                          <p>• Faster inventory turnover</p>
+                          <p>• Improved profit margins</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
