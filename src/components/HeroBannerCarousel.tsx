@@ -13,7 +13,7 @@ const HeroBannerCarousel = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side Text - Hover Expandable */}
           <div className="flex flex-col space-y-8 h-full justify-center">
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden">
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="flex items-center mb-3">
                 <Brain className="h-5 w-5 mr-2 text-fashion-coral group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="font-semibold text-fashion-teal text-base">AI-Powered Sizing</h3>
@@ -21,21 +21,6 @@ const HeroBannerCarousel = ({
               <p className="text-sm text-fashion-teal/80 leading-relaxed transition-all duration-300 group-hover:text-fashion-teal">
                 Our advanced machine learning algorithms analyze body measurements to provide precise fit recommendations.
               </p>
-              {/* Expandable content on hover */}
-              <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                <div className="pt-4 border-t border-fashion-coral/20">
-                  <div className="flex items-center space-x-4 text-sm text-fashion-teal/60">
-                    <div className="flex items-center">
-                      <Target className="h-4 w-4 mr-1 text-fashion-coral" />
-                      <span>98% Accuracy</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Users className="h-4 w-4 mr-1 text-fashion-coral" />
-                      <span>500K+ Users</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden">
@@ -61,7 +46,7 @@ const HeroBannerCarousel = ({
 
           {/* Right Side Text - Hover Expandable */}
           <div className="flex flex-col space-y-8 h-full justify-center">
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden">
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="flex items-center mb-3">
                 <TrendingUp className="h-5 w-5 mr-2 text-fashion-coral group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="font-semibold text-fashion-teal text-base">Business Growth</h3>
@@ -69,21 +54,6 @@ const HeroBannerCarousel = ({
               <p className="text-sm text-fashion-teal/80 leading-relaxed transition-all duration-300 group-hover:text-fashion-teal">
                 Increase conversion rates and reduce returns with intelligent sizing technology.
               </p>
-              {/* Expandable content on hover */}
-              <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                <div className="pt-4 border-t border-fashion-coral/20">
-                  <div className="flex items-center space-x-4 text-sm text-fashion-teal/60">
-                    <div className="flex items-center">
-                      <ChartLine className="h-4 w-4 mr-1 text-fashion-coral" />
-                      <span>+35% Conversion</span>
-                    </div>
-                    <div className="flex items-center">
-                      <TrendingUp className="h-4 w-4 mr-1 text-fashion-coral" />
-                      <span>-42% Returns</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden">
@@ -124,12 +94,6 @@ const HeroBannerCarousel = ({
                 <p className="text-xs text-fashion-teal/80 leading-relaxed group-hover:text-fashion-teal transition-colors duration-300">
                   Advanced algorithms analyze measurements for precise fit recommendations.
                 </p>
-                {/* Additional info on hover */}
-                <div className="mt-3 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                  <div className="pt-2 border-t border-fashion-coral/20">
-                    <span className="text-xs text-fashion-coral font-medium">98% accuracy rate</span>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -168,12 +132,6 @@ const HeroBannerCarousel = ({
                 <p className="text-xs text-fashion-teal/80 leading-relaxed group-hover:text-fashion-teal transition-colors duration-300">
                   Increase conversions and reduce returns with intelligent sizing.
                 </p>
-                {/* Additional info on hover */}
-                <div className="mt-3 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                  <div className="pt-2 border-t border-fashion-coral/20">
-                    <span className="text-xs text-fashion-coral font-medium">+35% conversion rate</span>
-                  </div>
-                </div>
               </div>
             </div>
 
