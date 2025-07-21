@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Heart, Filter, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import BodyShapeHolder from "@/components/BodyShapeHolder";
 
 interface Filters {
   bodyTypes: BodyType[];
@@ -280,53 +281,37 @@ const Shop = () => {
                   </Button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                   {filteredProducts.map((product) => (
-                    <Card key={product.id} className="group hover:shadow-lg transition-shadow duration-300">
-                      <CardContent className="p-0">
-                        <div className="relative overflow-hidden">
-                          <Link to={`/product/${product.id}`}>
-                             <img 
-                              src={product.imageUrl} 
-                              alt={product.name}
-                              className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          </Link>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="absolute top-3 right-3 bg-white/80 hover:bg-white"
-                          >
-                            <Heart className="h-4 w-4" />
-                          </Button>
+                    <div key={product.id} className="group cursor-pointer" onClick={() => window.location.href = `/product/${product.id}`}>
+                      <div className="relative aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-2">
+                        <img 
+                          src={product.imageUrl} 
+                          alt={product.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white w-7 h-7"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Heart className="h-3 w-3" />
+                        </Button>
+                        <BodyShapeHolder 
+                          bodyTypes={product.bodyTypes} 
+                          className="absolute bottom-2 right-2" 
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">{product.type}</p>
+                        <h3 className="font-medium text-fashion-teal text-sm">{product.name}</h3>
+                        <p className="text-xs text-fashion-teal/70">{product.brand}</p>
+                        <div className="flex items-center justify-end">
+                          <p className="font-semibold text-fashion-teal">${product.price}</p>
                         </div>
-                        
-                        <div className="p-4">
-                          <Link to={`/product/${product.id}`} className="block">
-                            <h3 className="font-semibold text-gray-900 mb-1 hover:text-fashion-teal transition-colors">
-                              {product.name}
-                            </h3>
-                            <p className="text-sm text-gray-600 mb-3">{product.brand}</p>
-                            
-                            {/* Body Type Badges */}
-                            <div className="flex flex-wrap gap-1 mb-3">
-                              {product.bodyTypes.slice(0, 2).map((bodyType) => (
-                                <Badge key={bodyType} variant="secondary" className="text-xs">
-                                  {bodyType}
-                                </Badge>
-                              ))}
-                              {product.bodyTypes.length > 2 && (
-                                <Badge variant="secondary" className="text-xs">
-                                  +{product.bodyTypes.length - 2}
-                                </Badge>
-                              )}
-                            </div>
-                            
-                            <p className="text-lg font-bold text-fashion-teal">${product.price}</p>
-                          </Link>
-                        </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}
