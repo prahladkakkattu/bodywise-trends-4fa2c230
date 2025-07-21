@@ -4,7 +4,7 @@ import { BodyType } from "@/types";
 
 interface BodyShapeIconProps {
   bodyType: BodyType;
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: "xxs" | "xs" | "sm" | "md" | "lg";
   className?: string;
 }
 
@@ -61,6 +61,7 @@ const BodyShapeIcon = ({ bodyType, size = "md", className }: BodyShapeIconProps)
   };
 
   const sizeClasses = {
+    xxs: "w-3 h-3",
     xs: "w-5 h-5",
     sm: "w-8 h-8",
     md: "w-12 h-12", 
