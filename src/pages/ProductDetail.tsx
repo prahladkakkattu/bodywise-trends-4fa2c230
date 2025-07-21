@@ -314,14 +314,6 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* Product Description */}
-          <div className="mt-12 border-t pt-8">
-            <h2 className="text-2xl font-bold text-fashion-teal mb-4">Product Details</h2>
-            <p className="text-fashion-teal/80 leading-relaxed max-w-4xl">
-              {product.longDescription}
-            </p>
-          </div>
-
           {/* You May Also Like */}
           <div className="mt-12 border-t pt-8">
             <h2 className="text-2xl font-bold text-fashion-teal mb-6">You May Also Like</h2>
