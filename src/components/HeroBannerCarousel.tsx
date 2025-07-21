@@ -15,16 +15,16 @@ const HeroBannerCarousel = ({
   const [rightPanel2Open, setRightPanel2Open] = useState(false);
   const [mobileDetailsOpen, setMobileDetailsOpen] = useState(false);
   return <section className="relative w-full flex justify-center py-8">
-      <div className="w-full max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      <div className="w-full max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side Text - Collapsible */}
-          <div className="flex flex-col space-y-6 h-full justify-center">
+          <div className="flex flex-col space-y-8 h-full justify-center">
             <Collapsible open={leftPanel1Open} onOpenChange={setLeftPanel1Open}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
-                <div className="flex items-center justify-between mb-2">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center">
                     <Brain className="h-5 w-5 mr-2 text-fashion-coral" />
-                    <h3 className="font-semibold text-fashion-teal text-sm">AI-Powered Sizing</h3>
+                    <h3 className="font-semibold text-fashion-teal text-base">AI-Powered Sizing</h3>
                   </div>
                   <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
                     {leftPanel1Open ? (
@@ -34,8 +34,8 @@ const HeroBannerCarousel = ({
                     )}
                   </CollapsibleTrigger>
                 </div>
-                <CollapsibleContent className="mt-3">
-                  <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                <CollapsibleContent className="mt-4">
+                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
                     Our advanced machine learning algorithms analyze body measurements to provide precise fit recommendations.
                   </p>
                 </CollapsibleContent>
@@ -43,11 +43,11 @@ const HeroBannerCarousel = ({
             </Collapsible>
             
             <Collapsible open={leftPanel2Open} onOpenChange={setLeftPanel2Open}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
-                <div className="flex items-center justify-between mb-2">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center">
                     <Zap className="h-5 w-5 mr-2 text-fashion-coral" />
-                    <h3 className="font-semibold text-fashion-teal text-sm">Styling Partner</h3>
+                    <h3 className="font-semibold text-fashion-teal text-base">Styling Partner</h3>
                   </div>
                   <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
                     {leftPanel2Open ? (
@@ -57,8 +57,8 @@ const HeroBannerCarousel = ({
                     )}
                   </CollapsibleTrigger>
                 </div>
-                <CollapsibleContent className="mt-3">
-                  <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                <CollapsibleContent className="mt-4">
+                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
                     Make informed fashion choices unique to your body shape.
                   </p>
                 </CollapsibleContent>
@@ -66,24 +66,14 @@ const HeroBannerCarousel = ({
             </Collapsible>
           </div>
 
-          {/* Center Content - Placeholder for where carousel was */}
-          <div className="w-full flex items-center justify-center h-[300px] md:h-[350px] bg-gradient-to-br from-fashion-beige/20 to-fashion-coral/10 rounded-lg">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold text-fashion-teal mb-4">Perfect Fit Technology</h2>
-              <p className="text-fashion-teal/80 max-w-md">
-                Experience the future of online fashion shopping with our AI-powered sizing and styling solutions.
-              </p>
-            </div>
-          </div>
-
           {/* Right Side Text - Collapsible */}
-          <div className="flex flex-col space-y-6 h-full justify-center">
+          <div className="flex flex-col space-y-8 h-full justify-center">
             <Collapsible open={rightPanel1Open} onOpenChange={setRightPanel1Open}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
-                <div className="flex items-center justify-between mb-2">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center">
                     <TrendingUp className="h-5 w-5 mr-2 text-fashion-coral" />
-                    <h3 className="font-semibold text-fashion-teal text-sm">Business Growth</h3>
+                    <h3 className="font-semibold text-fashion-teal text-base">Business Growth</h3>
                   </div>
                   <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
                     {rightPanel1Open ? (
@@ -93,8 +83,8 @@ const HeroBannerCarousel = ({
                     )}
                   </CollapsibleTrigger>
                 </div>
-                <CollapsibleContent className="mt-3">
-                  <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                <CollapsibleContent className="mt-4">
+                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
                     Increase conversion rates and reduce returns with intelligent sizing technology.
                   </p>
                 </CollapsibleContent>
@@ -102,11 +92,11 @@ const HeroBannerCarousel = ({
             </Collapsible>
             
             <Collapsible open={rightPanel2Open} onOpenChange={setRightPanel2Open}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-fashion-beige/50">
-                <div className="flex items-center justify-between mb-2">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50">
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center">
                     <Brain className="h-5 w-5 mr-2 text-fashion-coral" />
-                    <h3 className="font-semibold text-fashion-teal text-sm">Smart Analytics</h3>
+                    <h3 className="font-semibold text-fashion-teal text-base">Smart Analytics</h3>
                   </div>
                   <CollapsibleTrigger className="p-1 hover:bg-fashion-coral/10 rounded-full transition-colors">
                     {rightPanel2Open ? (
@@ -116,8 +106,8 @@ const HeroBannerCarousel = ({
                     )}
                   </CollapsibleTrigger>
                 </div>
-                <CollapsibleContent className="mt-3">
-                  <p className="text-xs text-fashion-teal/80 leading-relaxed">
+                <CollapsibleContent className="mt-4">
+                  <p className="text-sm text-fashion-teal/80 leading-relaxed">
                     Leverage insights to optimize inventory and enhance user experience.
                   </p>
                 </CollapsibleContent>
