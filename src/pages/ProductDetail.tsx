@@ -24,6 +24,7 @@ const ProductDetail = () => {
   const [userReview, setUserReview] = useState("");
   const [showMeasurementDialog, setShowMeasurementDialog] = useState(false);
   const [showBodyShapeChatbot, setShowBodyShapeChatbot] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   
   // Get related products for "You May Also Like" section
   const allProducts = getAllClothing();
@@ -235,7 +236,31 @@ const ProductDetail = () => {
                   </p>
                 </div>
 
-                <p className="text-fashion-teal/80 mb-6">{product.description}</p>
+                <div className="mb-6">
+                  {(() => {
+                    const maxLength = 120;
+                    const shouldTruncate = product.description.length > maxLength;
+                    const displayText = !isDescriptionExpanded && shouldTruncate 
+                      ? product.description.substring(0, maxLength) + "..."
+                      : product.description;
+                    
+                    return (
+                      <div>
+                        <p className="text-fashion-teal/80 mb-2">{displayText}</p>
+                        {shouldTruncate && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                            className="text-fashion-coral hover:text-fashion-coral/80 p-0 h-auto font-normal"
+                          >
+                            {isDescriptionExpanded ? "See Less" : "See More"}
+                          </Button>
+                        )}
+                      </div>
+                    );
+                  })()}
+                </div>
               </div>
 
               {/* Action Buttons */}
