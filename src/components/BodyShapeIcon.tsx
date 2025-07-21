@@ -4,10 +4,11 @@ import { BodyType } from "@/types";
 
 interface BodyShapeIconProps {
   bodyType: BodyType;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
+  className?: string;
 }
 
-const BodyShapeIcon = ({ bodyType, size = "md" }: BodyShapeIconProps) => {
+const BodyShapeIcon = ({ bodyType, size = "md", className }: BodyShapeIconProps) => {
   const getBodyShapeImage = (type: BodyType) => {
     switch (type) {
       case "apple":
@@ -60,6 +61,7 @@ const BodyShapeIcon = ({ bodyType, size = "md" }: BodyShapeIconProps) => {
   };
 
   const sizeClasses = {
+    xs: "w-5 h-5",
     sm: "w-8 h-8",
     md: "w-12 h-12", 
     lg: "w-16 h-16"
@@ -69,7 +71,7 @@ const BodyShapeIcon = ({ bodyType, size = "md" }: BodyShapeIconProps) => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <div className={`inline-flex items-center justify-center cursor-help ${sizeClasses[size]}`}>
+          <div className={`inline-flex items-center justify-center cursor-help ${sizeClasses[size]} ${className || ""}`}>
             <img 
               src={getBodyShapeImage(bodyType)}
               alt={getBodyShapeLabel(bodyType)}

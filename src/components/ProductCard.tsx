@@ -47,9 +47,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <span className="sr-only">Add to favorites</span>
         </Button>
         {/* White shape icon holder */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 h-5/6 w-12 bg-white rounded-lg shadow-sm flex flex-col justify-center items-center gap-1 px-2">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 h-5/6 w-10 md:w-12 bg-white rounded-lg shadow-sm flex flex-col justify-center items-center gap-1 px-1 md:px-2">
           {product.bodyTypes.map((bodyType, index) => (
-            <BodyShapeIcon key={index} bodyType={bodyType} size="sm" />
+            <BodyShapeIcon key={index} bodyType={bodyType} size="xs" className="md:hidden" />
+          ))}
+          {product.bodyTypes.map((bodyType, index) => (
+            <BodyShapeIcon key={index} bodyType={bodyType} size="sm" className="hidden md:block" />
           ))}
         </div>
       </div>
