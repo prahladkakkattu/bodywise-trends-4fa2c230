@@ -298,14 +298,6 @@ const ProductDetail = () => {
                         <div className="w-8 h-8 bg-blue-900 rounded-full border-2 border-fashion-teal/20 group-hover:border-fashion-coral transition-colors shadow-sm"></div>
                         <span className="text-xs text-fashion-teal/70">Navy</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer group">
-                        <div className="w-8 h-8 bg-red-900 rounded-full border-2 border-fashion-teal/20 group-hover:border-fashion-coral transition-colors shadow-sm"></div>
-                        <span className="text-xs text-fashion-teal/70">Burgundy</span>
-                      </div>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer group">
-                        <div className="w-8 h-8 bg-green-800 rounded-full border-2 border-fashion-teal/20 group-hover:border-fashion-coral transition-colors shadow-sm"></div>
-                        <span className="text-xs text-fashion-teal/70">Olive</span>
-                      </div>
                     </div>
                   </div>
                 </div>
