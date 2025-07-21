@@ -286,10 +286,10 @@ const Shop = () => {
                       <CardContent className="p-0">
                         <div className="relative overflow-hidden">
                           <Link to={`/product/${product.id}`}>
-                            <img 
+                             <img 
                               src={product.imageUrl} 
                               alt={product.name}
-                              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                              className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </Link>
                           <Button
@@ -306,8 +306,7 @@ const Shop = () => {
                             <h3 className="font-semibold text-gray-900 mb-1 hover:text-fashion-teal transition-colors">
                               {product.name}
                             </h3>
-                            <p className="text-sm text-gray-600 mb-2">{product.brand}</p>
-                            <p className="text-sm text-gray-500 mb-3 line-clamp-2">{product.description}</p>
+                            <p className="text-sm text-gray-600 mb-3">{product.brand}</p>
                             
                             {/* Body Type Badges */}
                             <div className="flex flex-wrap gap-1 mb-3">
