@@ -208,7 +208,7 @@ const ProductDetail = () => {
                 {/* Title and Subtitle */}
                 <h1 className="text-3xl font-bold text-fashion-teal mb-2">{product.name}</h1>
                 <p className="text-lg text-fashion-teal/80 mb-2">{product.brand}</p>
-                <p className="text-sm text-fashion-teal/60 mb-4">Elegant Fashion by Landskein</p>
+                <p className="text-sm text-fashion-teal/60 mb-4">by Landskein</p>
                 
                 {/* Price */}
                 <div className="flex items-center gap-3 mb-4">
