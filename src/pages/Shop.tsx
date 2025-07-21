@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { getAllClothing } from "@/data/mockClothingData";
 import { ClothingItem, BodyType, ClothingType } from "@/types";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Filter, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import BodyShapeHolder from "@/components/BodyShapeHolder";
 
@@ -22,6 +22,7 @@ interface Filters {
 const Shop = () => {
   const [products] = useState<ClothingItem[]>(getAllClothing());
   const [showFilters, setShowFilters] = useState(false);
+  const [searchParams] = useSearchParams();
   const [filters, setFilters] = useState<Filters>({
     bodyTypes: [],
     brands: [],
@@ -29,6 +30,17 @@ const Shop = () => {
     priceRange: "all",
     sortBy: "name"
   });
+
+  // Apply URL parameters to filters on component mount
+  useEffect(() => {
+    const brandParam = searchParams.get('brand');
+    if (brandParam) {
+      setFilters(prev => ({
+        ...prev,
+        brands: [brandParam]
+      }));
+    }
+  }, [searchParams]);
 
   // Get unique values for filter options
   const uniqueBrands = useMemo(() => 
