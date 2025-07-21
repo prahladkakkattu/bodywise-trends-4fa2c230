@@ -157,7 +157,7 @@ const Shop = () => {
 
           <div className="flex flex-col md:flex-row gap-8">
             {/* Filters Sidebar */}
-            <div className={`w-full md:w-80 ${showFilters ? 'block' : 'hidden md:block'}`}>
+            <div className={`w-full md:w-64 ${showFilters ? 'block' : 'hidden md:block'}`}>
               <Card>
                 <CardContent className="p-6">
                   <div className="flex justify-between items-center mb-4">
@@ -280,7 +280,7 @@ const Shop = () => {
                   </Button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredProducts.map((product) => (
                     <Card key={product.id} className="group hover:shadow-lg transition-shadow duration-300">
                       <CardContent className="p-0">

@@ -112,6 +112,36 @@ const clothingData: ClothingItem[] = [
     price: 120,
     bodyTypes: ["pear", "hourglass"],
     brand: "JuJu"
+  },
+  {
+    id: "landskein-silk-blouse",
+    name: "Silk Elegance Blouse",
+    type: "tops",
+    imageUrl: "/lovable-uploads/799b57f6-61b0-4aff-93cb-feb25ad5be3a.png",
+    description: "Luxurious silk blouse with refined tailoring",
+    price: 295,
+    bodyTypes: ["hourglass", "rectangle", "inverted-triangle"],
+    brand: "Landskein"
+  },
+  {
+    id: "landskein-tailored-pants",
+    name: "Tailored Wide-Leg Pants",
+    type: "bottoms",
+    imageUrl: "/lovable-uploads/7941f89d-5e17-4443-b299-84a331e24ff9.png",
+    description: "Contemporary wide-leg trousers with elegant drape",
+    price: 385,
+    bodyTypes: ["pear", "hourglass", "rectangle"],
+    brand: "Landskein"
+  },
+  {
+    id: "landskein-midi-dress",
+    name: "Structured Midi Dress",
+    type: "dresses",
+    imageUrl: "/lovable-uploads/845b34bb-5bea-4ca6-af9b-8c2710b0aa37.png",
+    description: "Sophisticated midi dress with architectural lines",
+    price: 485,
+    bodyTypes: ["apple", "hourglass"],
+    brand: "Landskein"
   }
 ];
 
