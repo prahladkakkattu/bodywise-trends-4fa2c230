@@ -125,9 +125,6 @@ const Index = () => {
               </div>
             </section>
 
-            {/* Hero Banner Carousel */}
-            <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
-
             {/* Product Showcase Section */}
             <section className="py-4 bg-white">
               <div className="container mx-auto px-6">
@@ -171,6 +168,9 @@ const Index = () => {
                 )}
               </div>
             </section>
+
+            {/* Hero Banner Carousel */}
+            <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
 
             {/* Features Section */}
             <section className="py-8 bg-fashion-beige/20">
