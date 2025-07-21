@@ -118,23 +118,7 @@ const HeroBannerCarousel = ({
         
         {/* Mobile Feature Cards - Collapsible */}
         <div className="lg:hidden mt-8">
-          <div className="text-center mb-4">
-            <h3 className="text-lg font-semibold text-fashion-teal mb-2">Key Features</h3>
-            <p className="text-sm text-fashion-teal/70 mb-4">AI-powered sizing and styling solutions for perfect fit</p>
-          </div>
           <Collapsible open={mobileDetailsOpen} onOpenChange={setMobileDetailsOpen}>
-            <div className="flex justify-center mb-4">
-              <CollapsibleTrigger className="flex items-center gap-2 px-4 py-2 bg-white/90 rounded-full shadow-lg border border-fashion-coral/20 hover:bg-white transition-all duration-300">
-                <span className="text-sm font-medium text-fashion-teal">
-                  {mobileDetailsOpen ? "Show Less" : "Show More"}
-                </span>
-                {mobileDetailsOpen ? (
-                  <ChevronUp className="h-4 w-4 text-fashion-coral" />
-                ) : (
-                  <ChevronDown className="h-4 w-4 text-fashion-coral" />
-                )}
-              </CollapsibleTrigger>
-            </div>
             <CollapsibleContent>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* AI-Powered Sizing */}
