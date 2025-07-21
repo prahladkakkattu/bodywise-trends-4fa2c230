@@ -208,12 +208,9 @@ const ProductDetail = () => {
               <div>
                 {/* Title and Subtitle */}
                 <h1 className="text-3xl font-bold text-fashion-teal mb-2">{product.name}</h1>
-                <button 
-                  onClick={() => navigate(`/shop?brand=${encodeURIComponent(product.brand)}`)}
-                  className="text-lg text-fashion-teal/80 hover:text-fashion-coral transition-colors cursor-pointer hover:underline text-left block"
-                >
+                <p className="text-lg text-fashion-teal/80 block">
                   {product.brand}
-                </button>
+                </p>
                 <button 
                   onClick={() => navigate(`/shop?brand=${encodeURIComponent('Landskein')}`)}
                   className="text-sm text-fashion-teal/60 mb-4 hover:text-fashion-coral transition-colors cursor-pointer hover:underline text-left block"
