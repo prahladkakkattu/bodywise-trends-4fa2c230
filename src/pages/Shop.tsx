@@ -34,10 +34,13 @@ const Shop = () => {
   // Apply URL parameters to filters on component mount
   useEffect(() => {
     const brandParam = searchParams.get('brand');
-    if (brandParam) {
+    const bodyTypeParam = searchParams.get('bodyType');
+    
+    if (brandParam || bodyTypeParam) {
       setFilters(prev => ({
         ...prev,
-        brands: [brandParam]
+        brands: brandParam ? [brandParam] : prev.brands,
+        bodyTypes: bodyTypeParam ? [bodyTypeParam as BodyType] : prev.bodyTypes
       }));
     }
   }, [searchParams]);

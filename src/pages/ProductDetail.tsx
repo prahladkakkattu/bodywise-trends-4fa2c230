@@ -232,7 +232,38 @@ const ProductDetail = () => {
                 {/* Body Type Text */}
                 <div className="mb-6">
                   <p className="text-sm text-fashion-teal/70">
-                    Perfect for <span className="font-medium text-fashion-coral">{product.bodyType}</span> body shape
+                    Perfect for{" "}
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          onClick={() => navigate(`/shop?bodyType=${encodeURIComponent(product.bodyType.toLowerCase())}`)}
+                          className="font-medium text-fashion-coral hover:text-fashion-coral/80 hover:underline cursor-pointer transition-colors"
+                        >
+                          {product.bodyType}
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent className="max-w-xs">
+                        <p>
+                          {(() => {
+                            switch (product.bodyType.toLowerCase()) {
+                              case 'hourglass':
+                                return 'Balanced bust and hips with a defined waist. This body shape suits fitted styles that emphasize the waistline.';
+                              case 'pear':
+                                return 'Hips wider than bust with a defined waist. Styles that balance the upper body work best for this shape.';
+                              case 'apple':
+                                return 'Fuller midsection with shoulders and bust broader than hips. V-necks and empire waists are flattering.';
+                              case 'rectangle':
+                                return 'Bust, waist, and hips are similar in width. Styles that create curves and define the waist work well.';
+                              case 'inverted-triangle':
+                                return 'Broader shoulders and bust with narrower hips. Styles that add volume to the lower body create balance.';
+                              default:
+                                return 'This body shape has specific styling recommendations for the most flattering fit.';
+                            }
+                          })()}
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                    {" "}body shape
                   </p>
                 </div>
 
