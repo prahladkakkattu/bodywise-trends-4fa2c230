@@ -207,7 +207,8 @@ const ProductDetail = () => {
               <div>
                 {/* Title and Subtitle */}
                 <h1 className="text-3xl font-bold text-fashion-teal mb-2">{product.name}</h1>
-                <p className="text-lg text-fashion-teal/80 mb-4">{product.brand}</p>
+                <p className="text-lg text-fashion-teal/80 mb-2">{product.brand}</p>
+                <p className="text-sm text-fashion-teal/60 mb-4">Elegant Fashion by Landskein</p>
                 
                 {/* Price */}
                 <div className="flex items-center gap-3 mb-4">
@@ -311,6 +312,46 @@ const ProductDetail = () => {
             <p className="text-fashion-teal/80 leading-relaxed max-w-4xl">
               {product.longDescription}
             </p>
+          </div>
+
+          {/* More from this brand */}
+          <div className="mt-12 border-t pt-8">
+            <h2 className="text-2xl font-bold text-fashion-teal mb-6">More from this brand</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Sample brand products - in real app, this would be fetched based on brand */}
+              <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                <CardContent className="p-4">
+                  <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                    <span className="text-gray-400 text-sm">Product Image</span>
+                  </div>
+                  <h3 className="font-medium text-fashion-teal mb-1">Premium Wool Coat</h3>
+                  <p className="text-sm text-fashion-teal/60 mb-2">€380.00</p>
+                  <Badge variant="secondary" className="text-xs">Hourglass</Badge>
+                </CardContent>
+              </Card>
+              
+              <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                <CardContent className="p-4">
+                  <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                    <span className="text-gray-400 text-sm">Product Image</span>
+                  </div>
+                  <h3 className="font-medium text-fashion-teal mb-1">Silk Blouse</h3>
+                  <p className="text-sm text-fashion-teal/60 mb-2">€225.00</p>
+                  <Badge variant="secondary" className="text-xs">Pear</Badge>
+                </CardContent>
+              </Card>
+              
+              <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                <CardContent className="p-4">
+                  <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                    <span className="text-gray-400 text-sm">Product Image</span>
+                  </div>
+                  <h3 className="font-medium text-fashion-teal mb-1">Tailored Trousers</h3>
+                  <p className="text-sm text-fashion-teal/60 mb-2">€195.00</p>
+                  <Badge variant="secondary" className="text-xs">Apple</Badge>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
           {/* Product Reviews Section */}
