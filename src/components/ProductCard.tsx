@@ -46,8 +46,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <Heart className={`h-4 w-4 ${isFavorite ? "fill-red-500 text-red-500" : ""}`} />
           <span className="sr-only">Add to favorites</span>
         </Button>
-        {/* White shape icon holder with fade effect */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 h-5/6 w-16 bg-gradient-to-tr from-white via-white to-white/30 rounded-lg shadow-sm flex flex-col justify-center items-center gap-1 px-2">
+        {/* White shape icon holder */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 h-5/6 w-12 bg-white rounded-lg shadow-sm flex flex-col justify-center items-center gap-1 px-2">
           {product.bodyTypes.map((bodyType, index) => (
             <BodyShapeIcon key={index} bodyType={bodyType} size="sm" />
           ))}
