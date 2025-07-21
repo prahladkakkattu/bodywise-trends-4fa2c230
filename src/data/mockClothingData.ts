@@ -1,5 +1,7 @@
 
 import { ClothingItem, BodyType } from "@/types";
+import structuredMidiDressModel from "@/assets/structured-midi-dress-model.jpg";
+import tailoredWideLegPantsModel from "@/assets/tailored-wide-leg-pants-model.jpg";
 
 // Mock product data - using the same products as shown on home page
 const clothingData: ClothingItem[] = [
@@ -127,7 +129,7 @@ const clothingData: ClothingItem[] = [
     id: "landskein-tailored-pants",
     name: "Tailored Wide-Leg Pants",
     type: "bottoms",
-    imageUrl: "/lovable-uploads/7941f89d-5e17-4443-b299-84a331e24ff9.png",
+    imageUrl: tailoredWideLegPantsModel,
     description: "Contemporary wide-leg trousers with elegant drape",
     price: 385,
     bodyTypes: ["pear", "hourglass", "rectangle"],
@@ -137,7 +139,7 @@ const clothingData: ClothingItem[] = [
     id: "landskein-midi-dress",
     name: "Structured Midi Dress",
     type: "dresses",
-    imageUrl: "/lovable-uploads/845b34bb-5bea-4ca6-af9b-8c2710b0aa37.png",
+    imageUrl: structuredMidiDressModel,
     description: "Sophisticated midi dress with architectural lines",
     price: 485,
     bodyTypes: ["apple", "hourglass"],
