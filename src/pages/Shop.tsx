@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Filter, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
 interface Filters {
@@ -20,7 +20,6 @@ interface Filters {
 
 const Shop = () => {
   const [products] = useState<ClothingItem[]>(getAllClothing());
-  const navigate = useNavigate();
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState<Filters>({
     bodyTypes: [],
@@ -283,48 +282,52 @@ const Shop = () => {
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredProducts.map((product) => (
-                    <div key={product.id} className="group cursor-pointer" onClick={() => navigate(`/product/${product.id}`)}>
-                      <div className="relative aspect-[3/4] bg-fashion-beige/20 rounded-lg overflow-hidden mb-3">
-                        <img 
-                          src={product.imageUrl} 
-                          alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white w-8 h-8"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            // Add to favorites logic here
-                          }}
-                        >
-                          <Heart className="h-4 w-4" />
-                        </Button>
-                        <div className="absolute bottom-2 right-2">
-                          <div className="flex flex-wrap gap-1">
-                            {product.bodyTypes.slice(0, 2).map((bodyType) => (
-                              <div key={bodyType} className="bg-white/80 backdrop-blur-sm rounded-full px-2 py-1">
-                                <span className="text-xs text-fashion-teal font-medium">{bodyType}</span>
-                              </div>
-                            ))}
-                            {product.bodyTypes.length > 2 && (
-                              <div className="bg-white/80 backdrop-blur-sm rounded-full px-2 py-1">
-                                <span className="text-xs text-fashion-teal font-medium">+{product.bodyTypes.length - 2}</span>
-                              </div>
-                            )}
-                          </div>
+                    <Card key={product.id} className="group hover:shadow-lg transition-shadow duration-300">
+                      <CardContent className="p-0">
+                        <div className="relative overflow-hidden">
+                          <Link to={`/product/${product.id}`}>
+                            <img 
+                              src={product.imageUrl} 
+                              alt={product.name}
+                              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </Link>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="absolute top-3 right-3 bg-white/80 hover:bg-white"
+                          >
+                            <Heart className="h-4 w-4" />
+                          </Button>
                         </div>
-                      </div>
-                      <div className="space-y-1">
-                        <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">{product.type}</p>
-                        <h3 className="font-medium text-fashion-teal text-sm">{product.name}</h3>
-                        <p className="text-xs text-fashion-teal/60">{product.brand}</p>
-                        <div className="flex items-center justify-end">
-                          <p className="font-semibold text-fashion-teal">${product.price}</p>
+                        
+                        <div className="p-4">
+                          <Link to={`/product/${product.id}`} className="block">
+                            <h3 className="font-semibold text-gray-900 mb-1 hover:text-fashion-teal transition-colors">
+                              {product.name}
+                            </h3>
+                            <p className="text-sm text-gray-600 mb-2">{product.brand}</p>
+                            <p className="text-sm text-gray-500 mb-3 line-clamp-2">{product.description}</p>
+                            
+                            {/* Body Type Badges */}
+                            <div className="flex flex-wrap gap-1 mb-3">
+                              {product.bodyTypes.slice(0, 2).map((bodyType) => (
+                                <Badge key={bodyType} variant="secondary" className="text-xs">
+                                  {bodyType}
+                                </Badge>
+                              ))}
+                              {product.bodyTypes.length > 2 && (
+                                <Badge variant="secondary" className="text-xs">
+                                  +{product.bodyTypes.length - 2}
+                                </Badge>
+                              )}
+                            </div>
+                            
+                            <p className="text-lg font-bold text-fashion-teal">${product.price}</p>
+                          </Link>
                         </div>
-                      </div>
-                    </div>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
               )}
