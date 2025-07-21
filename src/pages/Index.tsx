@@ -142,10 +142,17 @@ const Index = () => {
                           <Heart className={`h-4 w-4 ${favorites.has(product.id) ? "fill-red-500 text-red-500" : ""}`} />
                           <span className="sr-only">Add to favorites</span>
                         </Button>
-                        <BodyShapeHolder 
-                          bodyTypes={product.bodyTypes} 
-                          className="absolute bottom-2 right-2" 
-                        />
+                        <div className="absolute bottom-2 right-2">
+                          <img 
+                            src="/lovable-uploads/b40f2835-a571-4b83-8000-cfb347f308a9.png" 
+                            alt="" 
+                            className="absolute inset-0 w-full h-full object-cover rounded"
+                          />
+                          <BodyShapeHolder 
+                            bodyTypes={product.bodyTypes} 
+                            className="relative z-10" 
+                          />
+                        </div>
                       </div>
                       <div className="space-y-1">
                         <p className="text-xs text-fashion-teal/60 uppercase tracking-wide">{product.type}</p>
