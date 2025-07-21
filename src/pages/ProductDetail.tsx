@@ -5,13 +5,14 @@ import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Heart, Star, Truck, Shield, RotateCcw, ExternalLink } from "lucide-react";
+import { ArrowLeft, Heart, Star, Truck, Shield, RotateCcw, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import BodyShapeIcon from "@/components/BodyShapeIcon";
 import ImageGallery from "@/components/ImageGallery";
 import WelcomeDialog from "@/components/WelcomeDialog";
 import MeasurementDialog from "@/components/MeasurementDialog";
 import BodyShapeChatbot from "@/components/BodyShapeChatbot";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 
 const ProductDetail = () => {
@@ -314,61 +315,99 @@ const ProductDetail = () => {
             </p>
           </div>
 
-          {/* More from this brand */}
+          {/* You May Also Like */}
           <div className="mt-12 border-t pt-8">
-            <h2 className="text-2xl font-bold text-fashion-teal mb-6">More from this brand</h2>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-              {/* Sample brand products - in real app, this would be fetched based on brand */}
-              <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                <CardContent className="p-2">
-                  <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                    <span className="text-gray-400 text-xs">Image</span>
-                  </div>
-                  <h3 className="font-medium text-fashion-teal text-xs mb-1">Premium Wool Coat</h3>
-                  <p className="text-xs text-fashion-teal/60">€380.00</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                <CardContent className="p-2">
-                  <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                    <span className="text-gray-400 text-xs">Image</span>
-                  </div>
-                  <h3 className="font-medium text-fashion-teal text-xs mb-1">Silk Blouse</h3>
-                  <p className="text-xs text-fashion-teal/60">€225.00</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                <CardContent className="p-2">
-                  <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                    <span className="text-gray-400 text-xs">Image</span>
-                  </div>
-                  <h3 className="font-medium text-fashion-teal text-xs mb-1">Tailored Trousers</h3>
-                  <p className="text-xs text-fashion-teal/60">€195.00</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                <CardContent className="p-2">
-                  <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                    <span className="text-gray-400 text-xs">Image</span>
-                  </div>
-                  <h3 className="font-medium text-fashion-teal text-xs mb-1">Cashmere Sweater</h3>
-                  <p className="text-xs text-fashion-teal/60">€290.00</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                <CardContent className="p-2">
-                  <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                    <span className="text-gray-400 text-xs">Image</span>
-                  </div>
-                  <h3 className="font-medium text-fashion-teal text-xs mb-1">Designer Dress</h3>
-                  <p className="text-xs text-fashion-teal/60">€450.00</p>
-                </CardContent>
-              </Card>
-            </div>
+            <h2 className="text-2xl font-bold text-fashion-teal mb-6">You May Also Like</h2>
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {/* Sample similar products - in real app, this would be fetched based on similar styles */}
+                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                    <CardContent className="p-2">
+                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
+                        <span className="text-gray-400 text-xs">Image</span>
+                      </div>
+                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Premium Wool Coat</h3>
+                      <p className="text-xs text-fashion-teal/60">€380.00</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                
+                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                    <CardContent className="p-2">
+                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
+                        <span className="text-gray-400 text-xs">Image</span>
+                      </div>
+                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Silk Blouse</h3>
+                      <p className="text-xs text-fashion-teal/60">€225.00</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                
+                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                    <CardContent className="p-2">
+                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
+                        <span className="text-gray-400 text-xs">Image</span>
+                      </div>
+                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Tailored Trousers</h3>
+                      <p className="text-xs text-fashion-teal/60">€195.00</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                
+                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                    <CardContent className="p-2">
+                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
+                        <span className="text-gray-400 text-xs">Image</span>
+                      </div>
+                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Cashmere Sweater</h3>
+                      <p className="text-xs text-fashion-teal/60">€290.00</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                
+                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                    <CardContent className="p-2">
+                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
+                        <span className="text-gray-400 text-xs">Image</span>
+                      </div>
+                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Designer Dress</h3>
+                      <p className="text-xs text-fashion-teal/60">€450.00</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                
+                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                    <CardContent className="p-2">
+                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
+                        <span className="text-gray-400 text-xs">Image</span>
+                      </div>
+                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Evening Gown</h3>
+                      <p className="text-xs text-fashion-teal/60">€520.00</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                
+                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
+                    <CardContent className="p-2">
+                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
+                        <span className="text-gray-400 text-xs">Image</span>
+                      </div>
+                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Cropped Jacket</h3>
+                      <p className="text-xs text-fashion-teal/60">€310.00</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="left-2" />
+              <CarouselNext className="right-2" />
+            </Carousel>
           </div>
 
           {/* Product Reviews Section */}
