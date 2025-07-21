@@ -1,4 +1,5 @@
 
+import { getAllClothing } from "@/data/mockClothingData";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +24,10 @@ const ProductDetail = () => {
   const [userReview, setUserReview] = useState("");
   const [showMeasurementDialog, setShowMeasurementDialog] = useState(false);
   const [showBodyShapeChatbot, setShowBodyShapeChatbot] = useState(false);
+  
+  // Get related products for "You May Also Like" section
+  const allProducts = getAllClothing();
+  const relatedProducts = allProducts.filter(p => p.id !== productId).slice(0, 8);
   const [reviews, setReviews] = useState([
     {
       id: 1,
@@ -319,90 +324,23 @@ const ProductDetail = () => {
             <h2 className="text-2xl font-bold text-fashion-teal mb-6">You May Also Like</h2>
             <Carousel className="w-full">
               <CarouselContent className="-ml-2 md:-ml-4">
-                {/* Sample similar products - in real app, this would be fetched based on similar styles */}
-                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
-                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                    <CardContent className="p-2">
-                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">Image</span>
-                      </div>
-                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Premium Wool Coat</h3>
-                      <p className="text-xs text-fashion-teal/60">€380.00</p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-                
-                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
-                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                    <CardContent className="p-2">
-                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">Image</span>
-                      </div>
-                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Silk Blouse</h3>
-                      <p className="text-xs text-fashion-teal/60">€225.00</p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-                
-                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
-                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                    <CardContent className="p-2">
-                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">Image</span>
-                      </div>
-                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Tailored Trousers</h3>
-                      <p className="text-xs text-fashion-teal/60">€195.00</p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-                
-                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
-                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                    <CardContent className="p-2">
-                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">Image</span>
-                      </div>
-                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Cashmere Sweater</h3>
-                      <p className="text-xs text-fashion-teal/60">€290.00</p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-                
-                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
-                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                    <CardContent className="p-2">
-                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">Image</span>
-                      </div>
-                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Designer Dress</h3>
-                      <p className="text-xs text-fashion-teal/60">€450.00</p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-                
-                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
-                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                    <CardContent className="p-2">
-                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">Image</span>
-                      </div>
-                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Evening Gown</h3>
-                      <p className="text-xs text-fashion-teal/60">€520.00</p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-                
-                <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
-                  <Card className="group cursor-pointer hover:shadow-lg transition-shadow">
-                    <CardContent className="p-2">
-                      <div className="aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">Image</span>
-                      </div>
-                      <h3 className="font-medium text-fashion-teal text-xs mb-1">Cropped Jacket</h3>
-                      <p className="text-xs text-fashion-teal/60">€310.00</p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
+                {relatedProducts.map((relatedProduct) => (
+                  <CarouselItem key={relatedProduct.id} className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                    <Card className="group cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate(`/product/${relatedProduct.id}`)}>
+                      <CardContent className="p-2">
+                        <div className="aspect-square bg-gray-100 rounded-lg mb-2 overflow-hidden">
+                          <img 
+                            src={relatedProduct.imageUrl} 
+                            alt={relatedProduct.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <h3 className="font-medium text-fashion-teal text-xs mb-1 line-clamp-2">{relatedProduct.name}</h3>
+                        <p className="text-xs text-fashion-teal/60">€{relatedProduct.price.toFixed(2)}</p>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
               </CarouselContent>
               <CarouselPrevious className="left-2" />
               <CarouselNext className="right-2" />
