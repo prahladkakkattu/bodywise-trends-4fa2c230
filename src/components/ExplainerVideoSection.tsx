@@ -39,19 +39,6 @@ const ExplainerVideoSection = () => {
                   2:30
                 </div>
               </div>
-              
-              {/* Call to action text */}
-              <div className="mt-6">
-                <Button 
-                  variant="premium" 
-                  size="lg" 
-                  className="px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                  onClick={() => setIsVideoOpen(true)}
-                >
-                  Watch Demo Video
-                  <Play className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
             </div>
           </div>
         </div>
