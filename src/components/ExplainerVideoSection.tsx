@@ -11,13 +11,9 @@ const ExplainerVideoSection = () => {
       <section className="py-16 bg-gradient-to-br from-fashion-beige/10 to-white">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-fashion-teal mb-6">
-              See StyleMyFit in Action
+            <h2 className="text-3xl md:text-4xl font-bold text-fashion-teal mb-8">
+              How StyleMyFit Works
             </h2>
-            <p className="text-lg text-fashion-teal/80 mb-8 max-w-2xl mx-auto">
-              Watch how our AI-powered avatar technology creates personalized fashion recommendations 
-              based on your unique body measurements and style preferences.
-            </p>
             
             {/* Video Thumbnail with Play Button */}
             <div className="relative group cursor-pointer" onClick={() => setIsVideoOpen(true)}>
