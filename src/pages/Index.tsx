@@ -13,6 +13,7 @@ import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
 import LiveDemoDialog from "@/components/LiveDemoDialog";
+import ExplainerVideoSection from "@/components/ExplainerVideoSection";
 import { getHomepageProducts } from "@/data/mockClothingData";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useNavigate } from "react-router-dom";
@@ -171,6 +172,9 @@ const Index = () => {
 
             {/* Hero Banner Carousel */}
             <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
+
+            {/* Explainer Video Section */}
+            <ExplainerVideoSection />
 
             {/* Features Section */}
             <section className="py-8 bg-fashion-beige/20">
