@@ -23,7 +23,7 @@ const HeroBannerCarousel = ({
               </p>
             </div>
             
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden">
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="flex items-center mb-3">
                 <Zap className="h-5 w-5 mr-2 text-fashion-coral group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="font-semibold text-fashion-teal text-base">Styling Partner</h3>
@@ -31,16 +31,6 @@ const HeroBannerCarousel = ({
               <p className="text-sm text-fashion-teal/80 leading-relaxed transition-all duration-300 group-hover:text-fashion-teal">
                 Make informed fashion choices unique to your body shape.
               </p>
-              {/* Expandable content on hover */}
-              <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                <div className="pt-4 border-t border-fashion-coral/20">
-                  <div className="text-sm text-fashion-teal/60 space-y-1">
-                    <p>• Personalized style recommendations</p>
-                    <p>• Color palette suggestions</p>
-                    <p>• Body shape specific tips</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -56,7 +46,7 @@ const HeroBannerCarousel = ({
               </p>
             </div>
             
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden">
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-fashion-beige/50 group hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="flex items-center mb-3">
                 <Brain className="h-5 w-5 mr-2 text-fashion-coral group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="font-semibold text-fashion-teal text-base">Smart Analytics</h3>
@@ -64,16 +54,6 @@ const HeroBannerCarousel = ({
               <p className="text-sm text-fashion-teal/80 leading-relaxed transition-all duration-300 group-hover:text-fashion-teal">
                 Leverage insights to optimize inventory and enhance user experience.
               </p>
-              {/* Expandable content on hover */}
-              <div className="mt-4 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                <div className="pt-4 border-t border-fashion-coral/20">
-                  <div className="text-sm text-fashion-teal/60 space-y-1">
-                    <p>• Real-time size analytics</p>
-                    <p>• Customer behavior insights</p>
-                    <p>• Inventory optimization</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -110,12 +90,6 @@ const HeroBannerCarousel = ({
                 <p className="text-xs text-fashion-teal/80 leading-relaxed group-hover:text-fashion-teal transition-colors duration-300">
                   Make informed fashion choices unique to your body shape.
                 </p>
-                {/* Additional info on hover */}
-                <div className="mt-3 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                  <div className="pt-2 border-t border-fashion-coral/20">
-                    <span className="text-xs text-fashion-coral font-medium">Personalized recommendations</span>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -148,12 +122,6 @@ const HeroBannerCarousel = ({
                 <p className="text-xs text-fashion-teal/80 leading-relaxed group-hover:text-fashion-teal transition-colors duration-300">
                   Leverage insights to optimize inventory and enhance user experience.
                 </p>
-                {/* Additional info on hover */}
-                <div className="mt-3 h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                  <div className="pt-2 border-t border-fashion-coral/20">
-                    <span className="text-xs text-fashion-coral font-medium">Real-time insights</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
