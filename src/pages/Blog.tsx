@@ -34,7 +34,7 @@ const Blog = () => {
       {/* Top Strip */}
       <div className="h-2 bg-gradient-to-r from-brand-100 to-brand-200"></div>
       
-      <main className="container pt-16 pb-16">
+      <main className="container pt-32 pb-16">
         <h1 className="text-4xl font-bold mb-6">Blog</h1>
         <p className="text-lg text-muted-foreground mb-8">
           The latest news, articles, and resources on fashion, body positivity, and finding your perfect fit.

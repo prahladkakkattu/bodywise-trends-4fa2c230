@@ -158,7 +158,7 @@ const Shop = () => {
       {/* Top Strip */}
       <div className="h-2 bg-gradient-to-r from-brand-100 to-brand-200"></div>
       
-      <div className="pt-16 pb-12">
+      <div className="pt-32 pb-12">
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
