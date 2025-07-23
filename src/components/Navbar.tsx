@@ -8,13 +8,33 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { LoginDialog } from "./LoginDialog";
+import { SignupDialog } from "./SignupDialog";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
   
   // Mock user state - in a real app, this would come from authentication context
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("Sarah");
-  return <header className="w-full bg-white shadow-sm fixed top-0 z-50">
+
+  const handleLogin = (name: string) => {
+    setUserName(name);
+    setIsLoggedIn(true);
+  };
+
+  const handleSignup = (name: string) => {
+    setUserName(name);
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserName("");
+  };
+  return (<>
+    <header className="w-full bg-white shadow-sm fixed top-0 z-50">
       {/* Main header container */}
       <div className="container mx-auto px-6 py-4">
         {/* Desktop navigation */}
@@ -52,7 +72,7 @@ const Navbar = () => {
                       <User className="h-4 w-4 mr-2" />
                       My Profile
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setIsLoggedIn(false)}>
+                    <DropdownMenuItem onClick={handleLogout}>
                       <span className="h-4 w-4 mr-2">🚪</span>
                       Logout
                     </DropdownMenuItem>
@@ -60,10 +80,10 @@ const Navbar = () => {
                 </DropdownMenu>
               ) : (
                 <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="sm" className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => setIsLoggedIn(true)}>
+                  <Button variant="ghost" size="sm" className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => setIsLoginOpen(true)}>
                     Login
                   </Button>
-                  <Button variant="outline" size="sm" className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase">
+                  <Button variant="outline" size="sm" className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => setIsSignupOpen(true)}>
                     Sign Up
                   </Button>
                 </div>
@@ -149,10 +169,10 @@ const Navbar = () => {
                   </div>
                 ) : (
                   <>
-                    <Button variant="ghost" size="sm" className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => { setIsLoggedIn(true); setIsMobileMenuOpen(false); }}>
+                    <Button variant="ghost" size="sm" className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => { setIsLoginOpen(true); setIsMobileMenuOpen(false); }}>
                       Login
                     </Button>
-                    <Button variant="outline" size="sm" className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button variant="outline" size="sm" className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => { setIsSignupOpen(true); setIsMobileMenuOpen(false); }}>
                       Sign Up
                     </Button>
                   </>
@@ -161,7 +181,7 @@ const Navbar = () => {
                   <Heart className="h-4 w-4" />
                 </Button>
                 {isLoggedIn && (
-                  <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-800 text-xs" onClick={() => { setIsLoggedIn(false); setIsMobileMenuOpen(false); }}>
+                  <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-800 text-xs" onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }}>
                     Logout
                   </Button>
                 )}
@@ -169,6 +189,21 @@ const Navbar = () => {
             </div>
           </nav>
         </div>}
-    </header>;
+    </header>
+
+    <LoginDialog 
+      open={isLoginOpen} 
+      onOpenChange={setIsLoginOpen} 
+      onLogin={handleLogin}
+    />
+    
+    <SignupDialog 
+      open={isSignupOpen} 
+      onOpenChange={setIsSignupOpen} 
+      onSignup={handleSignup}
+    />
+    </>
+  );
 };
+
 export default Navbar;
