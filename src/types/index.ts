@@ -9,7 +9,7 @@ export type BodyMeasurement = {
 
 export type BodyType = 'hourglass' | 'pear' | 'apple' | 'rectangle' | 'inverted-triangle' | 'unknown';
 
-export type ClothingType = 'tops' | 'bottoms' | 'dresses' | 'outerwear' | 'accessories';
+export type ClothingType = 'tops' | 'dresses' | 'outerwear' | 'accessories' | 'jeans' | 'knitwear' | 'skirts' | 'blouses' | 'trousers';
 
 export type ClothingItem = {
   id: string;

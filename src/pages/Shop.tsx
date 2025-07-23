@@ -60,9 +60,13 @@ const Shop = () => {
 
   const clothingTypeOptions: { value: ClothingType; label: string }[] = [
     { value: "tops", label: "Top wear" },
-    { value: "bottoms", label: "Bottom wear" },
     { value: "dresses", label: "Full length Dress" },
-    { value: "outerwear", label: "Coat/Jacket" }
+    { value: "outerwear", label: "Coat/Jacket" },
+    { value: "jeans", label: "Jeans" },
+    { value: "knitwear", label: "Knitwear" },
+    { value: "skirts", label: "Skirts" },
+    { value: "blouses", label: "Blouses" },
+    { value: "trousers", label: "Trousers" }
   ];
 
   // Filter and sort products
@@ -151,7 +155,10 @@ const Shop = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       
-      <div className="pt-32 pb-12">
+      {/* Top Strip */}
+      <div className="h-2 bg-gradient-to-r from-brand-100 to-brand-200"></div>
+      
+      <div className="pt-16 pb-12">
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">

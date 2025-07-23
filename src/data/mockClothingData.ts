@@ -88,7 +88,7 @@ const clothingData: ClothingItem[] = [
   {
     id: "slim-fit-trousers",
     name: "Slim-Fit Trousers",
-    type: "bottoms",
+    type: "trousers",
     imageUrl: "/lovable-uploads/8533b7f4-b8a3-426f-9586-957df87bb1cb.png",
     description: "Sophisticated slim-fit trousers for work or evenings",
     price: 95,
@@ -108,7 +108,7 @@ const clothingData: ClothingItem[] = [
   {
     id: "flowy-maxi-skirt",
     name: "Flowy Maxi Skirt",
-    type: "bottoms",
+    type: "skirts",
     imageUrl: "/lovable-uploads/64644141-5070-4b59-8e13-671f62edfc7e.png",
     description: "Elegant flowy maxi skirt perfect for summer days",
     price: 120,
@@ -128,7 +128,7 @@ const clothingData: ClothingItem[] = [
   {
     id: "landskein-tailored-pants",
     name: "Tailored Wide-Leg Pants",
-    type: "bottoms",
+    type: "trousers",
     imageUrl: tailoredWideLegPantsModel,
     description: "Contemporary wide-leg trousers with elegant drape",
     price: 385,
