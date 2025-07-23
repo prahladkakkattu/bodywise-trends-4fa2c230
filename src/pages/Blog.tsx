@@ -31,7 +31,7 @@ const Blog = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      <main className="container pt-24 pb-16">
+      <main className="container pt-32 pb-16">
         <h1 className="text-4xl font-bold mb-6">Blog</h1>
         <p className="text-lg text-muted-foreground mb-8">
           The latest news, articles, and resources on fashion, body positivity, and finding your perfect fit.
