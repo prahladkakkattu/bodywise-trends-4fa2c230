@@ -380,7 +380,10 @@ const Index = () => {
   return <div className="min-h-screen bg-fashion-beige/10">
       <Navbar />
       
-      <main className="pt-24 min-h-screen">
+      {/* Top Strip */}
+      <div className="h-2 bg-gradient-to-r from-brand-100 to-brand-200"></div>
+      
+      <main className="pt-16 min-h-screen">
         <div className="container mx-auto px-4 py-8">
           {renderStep()}
         </div>

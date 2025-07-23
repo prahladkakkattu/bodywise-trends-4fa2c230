@@ -6,7 +6,10 @@ const About = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      <main className="container pt-24 pb-16">
+      {/* Top Strip */}
+      <div className="h-2 bg-gradient-to-r from-brand-100 to-brand-200"></div>
+      
+      <main className="container pt-16 pb-16">
         <h1 className="text-4xl font-bold mb-6">About Us</h1>
         <p className="text-lg text-muted-foreground mb-8">
           StyleMyFit is committed to revolutionizing how people shop for clothes online by eliminating the guesswork from sizing.
