@@ -1,9 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Heart, ShoppingBag, User, Search, Menu, X } from "lucide-react";
+import { Heart, User, Search, Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Mock user state - in a real app, this would come from authentication context
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userName, setUserName] = useState("Sarah");
   return <header className="w-full bg-white shadow-sm fixed top-0 z-50">
       {/* Main header container */}
       <div className="container mx-auto px-6 py-4">
@@ -27,17 +37,37 @@ const Navbar = () => {
                 <Search className="h-4 w-4" />
                 <span className="sr-only">Search</span>
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
-                <User className="h-4 w-4" />
-                <span className="sr-only">Account</span>
-              </Button>
+              
+              {isLoggedIn ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="text-gray-800 hover:text-gray-600 h-8 px-3 flex items-center gap-2">
+                      <User className="h-4 w-4" />
+                      <span className="text-sm">Welcome, {userName}</span>
+                      <ChevronDown className="h-3 w-3" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuItem>
+                      <User className="h-4 w-4 mr-2" />
+                      My Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setIsLoggedIn(false)}>
+                      <span className="h-4 w-4 mr-2">🚪</span>
+                      Logout
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
+                  <User className="h-4 w-4" />
+                  <span className="sr-only">Account</span>
+                </Button>
+              )}
+              
               <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                 <Heart className="h-4 w-4" />
                 <span className="sr-only">Wishlist</span>
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
-                <ShoppingBag className="h-4 w-4" />
-                <span className="sr-only">Cart</span>
               </Button>
             </div>
           </div>
@@ -60,12 +90,16 @@ const Navbar = () => {
             <Link to="/contact" className="text-gray-800 hover:text-gray-600 transition-colors duration-200 text-sm font-light tracking-wide uppercase">
               Contact
             </Link>
-            <Button variant="ghost" size="sm" className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase">
-              Login
-            </Button>
-            <Button variant="outline" size="sm" className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase">
-              Sign Up
-            </Button>
+{!isLoggedIn && (
+              <>
+                <Button variant="ghost" size="sm" className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => setIsLoggedIn(true)}>
+                  Login
+                </Button>
+                <Button variant="outline" size="sm" className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase">
+                  Sign Up
+                </Button>
+              </>
+            )}
           </div>
         </nav>
 
@@ -82,9 +116,6 @@ const Navbar = () => {
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                 <Search className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
-                <ShoppingBag className="h-4 w-4" />
               </Button>
             </div>
             <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-gray-800 hover:text-gray-600 h-8 w-8">
@@ -117,18 +148,29 @@ const Navbar = () => {
                 Contact
               </Link>
               <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-                <Button variant="ghost" size="sm" className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => setIsMobileMenuOpen(false)}>
-                  Login
-                </Button>
-                <Button variant="outline" size="sm" className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => setIsMobileMenuOpen(false)}>
-                  Sign Up
-                </Button>
-                <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
-                  <User className="h-4 w-4" />
-                </Button>
+                {isLoggedIn ? (
+                  <div className="flex items-center gap-2 text-sm text-gray-800">
+                    <User className="h-4 w-4" />
+                    <span>Welcome, {userName}</span>
+                  </div>
+                ) : (
+                  <>
+                    <Button variant="ghost" size="sm" className="text-fashion-teal hover:text-fashion-coral transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => { setIsLoggedIn(true); setIsMobileMenuOpen(false); }}>
+                      Login
+                    </Button>
+                    <Button variant="outline" size="sm" className="text-fashion-teal border-fashion-teal hover:bg-fashion-teal hover:text-white transition-colors duration-200 text-sm font-light tracking-wide uppercase" onClick={() => setIsMobileMenuOpen(false)}>
+                      Sign Up
+                    </Button>
+                  </>
+                )}
                 <Button variant="ghost" size="icon" className="text-gray-800 hover:text-gray-600 h-8 w-8">
                   <Heart className="h-4 w-4" />
                 </Button>
+                {isLoggedIn && (
+                  <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-800 text-xs" onClick={() => { setIsLoggedIn(false); setIsMobileMenuOpen(false); }}>
+                    Logout
+                  </Button>
+                )}
               </div>
             </div>
           </nav>
