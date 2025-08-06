@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Ruler, ShirtIcon, Users, ChartBar, DollarSign, CheckCircle, Heart } from "lucide-react";
 import { Sparkles } from "@/components/ui/icons";
 import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
-import QuickMeasurementGuide from "@/components/QuickMeasurementGuide";
+
 import LiveDemoDialog from "@/components/LiveDemoDialog";
 import ExplainerVideoSection from "@/components/ExplainerVideoSection";
 import { getHomepageProducts } from "@/data/mockClothingData";
@@ -331,14 +331,8 @@ const Index = () => {
         return <AlternativeSizingOptions onProceedToMeasurements={() => setCurrentStep("measurement")} onBodyTypeSelected={handleAlternativeSizing} />;
       case "measurement":
         return <div className="max-w-5xl mx-auto mt-8 px-4">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="w-full md:w-1/2">
-                <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
-              </div>
-              
-              <div className="w-full md:w-1/2">
-                <QuickMeasurementGuide />
-              </div>
+            <div className="flex justify-center">
+              <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
             </div>
           </div>;
       case "results":
