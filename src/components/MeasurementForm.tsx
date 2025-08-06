@@ -10,6 +10,7 @@ import { determineBodyType } from "@/utils/bodyTypeUtils";
 import { Ruler } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
+import BodyShapeAvatar3D from "./BodyShapeAvatar3D";
 
 interface MeasurementFormProps {
   onBodyTypeChange: (bodyType: BodyType, measurements: BodyMeasurement) => void;
@@ -63,8 +64,10 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
   };
 
   return (
-    <Card className="w-full max-w-xl p-6 shadow-md">
-      <div className="flex items-center gap-2 mb-6">
+    <div className="flex gap-8 max-w-6xl w-full">
+      {/* Measurement Form */}
+      <Card className="flex-1 max-w-xl p-6 shadow-md">
+        <div className="flex items-center gap-2 mb-6">
           <Ruler className="h-5 w-5 text-brand-300" />
           <h2 className="text-2xl font-semibold">
             <span className="text-brand-600">Your</span> <span className="text-brand-300">Measurements</span>
@@ -198,7 +201,37 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           Your measurements are only used to determine your body shape and are never stored.
         </p>
       </form>
-    </Card>
+      </Card>
+
+      {/* 3D Avatar Visualization */}
+      <div className="flex-1 max-w-lg">
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape</h3>
+          <p className="text-sm text-muted-foreground">Interactive 3D visualization based on your measurements</p>
+        </div>
+        <BodyShapeAvatar3D measurements={measurements} />
+        
+        {/* Measurement Legend */}
+        <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-0.5 bg-red-400 rounded"></div>
+            <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-0.5 bg-teal-400 rounded"></div>
+            <span>Bust: {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-0.5 bg-blue-400 rounded"></div>
+            <span>Waist: {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-0.5 bg-green-400 rounded"></div>
+            <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
