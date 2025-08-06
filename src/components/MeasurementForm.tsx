@@ -63,10 +63,8 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
   };
 
   return (
-    <div className="flex gap-6 max-w-6xl w-full">
-      {/* Measurement Form */}
-      <Card className="flex-1 max-w-xl p-6 shadow-md">
-        <div className="flex items-center gap-2 mb-6">
+    <Card className="w-full max-w-xl p-6 shadow-md">
+      <div className="flex items-center gap-2 mb-6">
           <Ruler className="h-5 w-5 text-brand-300" />
           <h2 className="text-2xl font-semibold">
             <span className="text-brand-600">Your</span> <span className="text-brand-300">Measurements</span>
@@ -200,40 +198,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           Your measurements are only used to determine your body shape and are never stored.
         </p>
       </form>
-      </Card>
-
-      {/* Body Shape Visualization */}
-      <Card className="flex-1 max-w-sm p-6 shadow-md">
-        <div className="text-center">
-          <h3 className="text-lg font-semibold mb-4 text-brand-600">Measurement Guide</h3>
-          <div className="relative">
-            <img 
-              src={bodyAvatarImage} 
-              alt="Body measurement guide" 
-              className="w-full h-auto max-w-64 mx-auto"
-            />
-            <div className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center justify-between">
-                <span>Shoulders:</span>
-                <span className="font-medium">{getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Bust:</span>
-                <span className="font-medium">{getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Waist:</span>
-                <span className="font-medium">{getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Hips:</span>
-                <span className="font-medium">{getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Card>
-    </div>
+    </Card>
   );
 };
 
