@@ -64,9 +64,9 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
   };
 
   return (
-    <div className="flex gap-8 max-w-6xl w-full">
+    <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
-      <Card className="flex-1 max-w-xl p-6 shadow-md">
+      <Card className="flex-1 max-w-none lg:max-w-xl p-4 lg:p-6 shadow-md">
         <div className="flex items-center gap-2 mb-6">
           <Ruler className="h-5 w-5 text-brand-300" />
           <h2 className="text-2xl font-semibold">
@@ -83,7 +83,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="bust" className="text-sm font-medium">
                 Bust ({unit === "inches" ? "inches" : "cm"})
@@ -119,7 +119,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
             </div>
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="hips" className="text-sm font-medium">
                 Hips ({unit === "inches" ? "inches" : "cm"})
@@ -204,15 +204,17 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
       </Card>
 
       {/* 3D Avatar Visualization */}
-      <div className="flex-1 max-w-lg">
+      <div className="flex-1 max-w-none lg:max-w-lg">
         <div className="mb-4">
           <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape</h3>
           <p className="text-sm text-muted-foreground">Interactive 3D visualization based on your measurements</p>
         </div>
-        <BodyShapeAvatar3D measurements={measurements} />
+        <div className="h-64 lg:h-auto">
+          <BodyShapeAvatar3D measurements={measurements} />
+        </div>
         
         {/* Measurement Legend */}
-        <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
           <div className="flex items-center gap-2">
             <div className="w-3 h-0.5 bg-red-400 rounded"></div>
             <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
