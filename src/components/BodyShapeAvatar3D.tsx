@@ -15,9 +15,9 @@ interface BodyPartProps {
 const BodyPart = ({ measurements }: BodyPartProps) => {
   const meshRef = useRef<Group>(null);
   
-  // Convert measurements to 3D proportions
+  // Convert measurements to 3D proportions with more realistic scaling
   const proportions = useMemo(() => {
-    const baseScale = 0.5;
+    const baseScale = 0.4;
     const shoulderWidth = (measurements.shoulders / 40) * baseScale;
     const bustWidth = (measurements.bust / 36) * baseScale;
     const waistWidth = (measurements.waist / 28) * baseScale;
@@ -25,89 +25,131 @@ const BodyPart = ({ measurements }: BodyPartProps) => {
     const height = (measurements.height / 65) * 2;
     
     return {
-      shoulderWidth: Math.max(0.3, shoulderWidth),
-      bustWidth: Math.max(0.3, bustWidth),
-      waistWidth: Math.max(0.2, waistWidth),
-      hipWidth: Math.max(0.3, hipWidth),
+      shoulderWidth: Math.max(0.25, shoulderWidth),
+      bustWidth: Math.max(0.25, bustWidth),
+      waistWidth: Math.max(0.18, waistWidth),
+      hipWidth: Math.max(0.25, hipWidth),
       height: Math.max(1.5, height),
     };
   }, [measurements]);
 
+  // Realistic human silhouette material
+  const bodyMaterial = <meshLambertMaterial color="#2a2a2a" />;
+  const measurementMaterial = (color: string) => <meshBasicMaterial color={color} transparent opacity={0.8} />;
+
   return (
     <group ref={meshRef}>
-      {/* Head */}
-      <mesh position={[0, proportions.height * 0.45, 0]}>
-        <sphereGeometry args={[0.12, 16, 16]} />
-        <meshPhongMaterial color="#8B7355" />
+      {/* Head - more realistic oval shape */}
+      <mesh position={[0, proportions.height * 0.42, 0]}>
+        <sphereGeometry args={[0.08, 16, 12]} />
+        {bodyMaterial}
       </mesh>
       
-      {/* Torso - upper (shoulders/bust area) */}
-      <mesh position={[0, proportions.height * 0.25, 0]} scale={[proportions.shoulderWidth, 0.15, 0.2]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshPhongMaterial color="#A0856B" />
+      {/* Neck */}
+      <mesh position={[0, proportions.height * 0.36, 0]}>
+        <cylinderGeometry args={[0.03, 0.04, 0.08, 12]} />
+        {bodyMaterial}
       </mesh>
       
-      {/* Torso - middle (bust area) */}
-      <mesh position={[0, proportions.height * 0.15, 0]} scale={[proportions.bustWidth, 0.12, 0.2]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshPhongMaterial color="#A0856B" />
+      {/* Upper torso - shoulders */}
+      <mesh position={[0, proportions.height * 0.28, 0]} scale={[proportions.shoulderWidth, 0.1, 0.15]}>
+        <sphereGeometry args={[1, 16, 12]} />
+        {bodyMaterial}
       </mesh>
       
-      {/* Torso - waist */}
-      <mesh position={[0, proportions.height * 0.05, 0]} scale={[proportions.waistWidth, 0.1, 0.18]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshPhongMaterial color="#A0856B" />
+      {/* Chest/Bust area - more rounded */}
+      <mesh position={[0, proportions.height * 0.2, 0]} scale={[proportions.bustWidth * 0.9, 0.12, 0.18]}>
+        <sphereGeometry args={[1, 16, 12]} />
+        {bodyMaterial}
       </mesh>
       
-      {/* Hips */}
-      <mesh position={[0, proportions.height * -0.05, 0]} scale={[proportions.hipWidth, 0.12, 0.2]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshPhongMaterial color="#A0856B" />
+      {/* Upper waist transition */}
+      <mesh position={[0, proportions.height * 0.12, 0]} scale={[proportions.waistWidth * 1.1, 0.08, 0.16]}>
+        <sphereGeometry args={[1, 16, 12]} />
+        {bodyMaterial}
       </mesh>
       
-      {/* Arms */}
-      <mesh position={[-proportions.shoulderWidth * 0.6, proportions.height * 0.2, 0]} scale={[0.08, 0.3, 0.08]}>
-        <cylinderGeometry args={[1, 1, 1, 8]} />
-        <meshPhongMaterial color="#8B7355" />
-      </mesh>
-      <mesh position={[proportions.shoulderWidth * 0.6, proportions.height * 0.2, 0]} scale={[0.08, 0.3, 0.08]}>
-        <cylinderGeometry args={[1, 1, 1, 8]} />
-        <meshPhongMaterial color="#8B7355" />
+      {/* Waist - narrowest point */}
+      <mesh position={[0, proportions.height * 0.05, 0]} scale={[proportions.waistWidth, 0.08, 0.14]}>
+        <sphereGeometry args={[1, 16, 12]} />
+        {bodyMaterial}
       </mesh>
       
-      {/* Legs */}
-      <mesh position={[-proportions.hipWidth * 0.25, proportions.height * -0.25, 0]} scale={[0.1, 0.4, 0.1]}>
-        <cylinderGeometry args={[1, 1, 1, 8]} />
-        <meshPhongMaterial color="#8B7355" />
-      </mesh>
-      <mesh position={[proportions.hipWidth * 0.25, proportions.height * -0.25, 0]} scale={[0.1, 0.4, 0.1]}>
-        <cylinderGeometry args={[1, 1, 1, 8]} />
-        <meshPhongMaterial color="#8B7355" />
+      {/* Hip transition */}
+      <mesh position={[0, proportions.height * -0.02, 0]} scale={[proportions.hipWidth * 0.9, 0.08, 0.16]}>
+        <sphereGeometry args={[1, 16, 12]} />
+        {bodyMaterial}
       </mesh>
       
-      {/* Measurement indicators */}
+      {/* Hips - fuller shape */}
+      <mesh position={[0, proportions.height * -0.08, 0]} scale={[proportions.hipWidth, 0.1, 0.18]}>
+        <sphereGeometry args={[1, 16, 12]} />
+        {bodyMaterial}
+      </mesh>
+      
+      {/* Upper legs */}
+      <mesh position={[-proportions.hipWidth * 0.22, proportions.height * -0.22, 0]}>
+        <cylinderGeometry args={[0.06, 0.08, 0.25, 12]} />
+        {bodyMaterial}
+      </mesh>
+      <mesh position={[proportions.hipWidth * 0.22, proportions.height * -0.22, 0]}>
+        <cylinderGeometry args={[0.06, 0.08, 0.25, 12]} />
+        {bodyMaterial}
+      </mesh>
+      
+      {/* Lower legs */}
+      <mesh position={[-proportions.hipWidth * 0.22, proportions.height * -0.4, 0]}>
+        <cylinderGeometry args={[0.04, 0.06, 0.25, 12]} />
+        {bodyMaterial}
+      </mesh>
+      <mesh position={[proportions.hipWidth * 0.22, proportions.height * -0.4, 0]}>
+        <cylinderGeometry args={[0.04, 0.06, 0.25, 12]} />
+        {bodyMaterial}
+      </mesh>
+      
+      {/* Arms - upper */}
+      <mesh position={[-proportions.shoulderWidth * 0.55, proportions.height * 0.18, 0]}>
+        <cylinderGeometry args={[0.04, 0.05, 0.2, 12]} />
+        {bodyMaterial}
+      </mesh>
+      <mesh position={[proportions.shoulderWidth * 0.55, proportions.height * 0.18, 0]}>
+        <cylinderGeometry args={[0.04, 0.05, 0.2, 12]} />
+        {bodyMaterial}
+      </mesh>
+      
+      {/* Arms - lower */}
+      <mesh position={[-proportions.shoulderWidth * 0.55, proportions.height * 0.05, 0]}>
+        <cylinderGeometry args={[0.03, 0.04, 0.18, 12]} />
+        {bodyMaterial}
+      </mesh>
+      <mesh position={[proportions.shoulderWidth * 0.55, proportions.height * 0.05, 0]}>
+        <cylinderGeometry args={[0.03, 0.04, 0.18, 12]} />
+        {bodyMaterial}
+      </mesh>
+      
+      {/* Measurement indicators - more subtle */}
       {/* Shoulder line */}
-      <mesh position={[0, proportions.height * 0.25, 0.12]} scale={[proportions.shoulderWidth * 1.1, 0.01, 0.01]}>
+      <mesh position={[0, proportions.height * 0.28, 0.11]} scale={[proportions.shoulderWidth * 1.1, 0.005, 0.005]}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshBasicMaterial color="#ff6b6b" />
+        {measurementMaterial("#ff6b6b")}
       </mesh>
       
       {/* Bust line */}
-      <mesh position={[0, proportions.height * 0.15, 0.12]} scale={[proportions.bustWidth * 1.1, 0.01, 0.01]}>
+      <mesh position={[0, proportions.height * 0.2, 0.11]} scale={[proportions.bustWidth * 1.1, 0.005, 0.005]}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshBasicMaterial color="#4ecdc4" />
+        {measurementMaterial("#4ecdc4")}
       </mesh>
       
       {/* Waist line */}
-      <mesh position={[0, proportions.height * 0.05, 0.12]} scale={[proportions.waistWidth * 1.1, 0.01, 0.01]}>
+      <mesh position={[0, proportions.height * 0.05, 0.11]} scale={[proportions.waistWidth * 1.1, 0.005, 0.005]}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshBasicMaterial color="#45b7d1" />
+        {measurementMaterial("#45b7d1")}
       </mesh>
       
       {/* Hip line */}
-      <mesh position={[0, proportions.height * -0.05, 0.12]} scale={[proportions.hipWidth * 1.1, 0.01, 0.01]}>
+      <mesh position={[0, proportions.height * -0.08, 0.11]} scale={[proportions.hipWidth * 1.1, 0.005, 0.005]}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshBasicMaterial color="#96ceb4" />
+        {measurementMaterial("#96ceb4")}
       </mesh>
     </group>
   );
