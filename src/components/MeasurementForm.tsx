@@ -62,13 +62,15 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
   };
 
   return (
-    <Card className="w-full max-w-xl p-6 shadow-md">
-      <div className="flex items-center gap-2 mb-6">
-        <Ruler className="h-5 w-5 text-brand-300" />
-        <h2 className="text-2xl font-semibold">
-          <span className="text-brand-600">Your</span> <span className="text-brand-300">Measurements</span>
-        </h2>
-      </div>
+    <div className="flex gap-8 max-w-6xl mx-auto">
+      {/* Measurements Form */}
+      <Card className="w-full max-w-xl p-6 shadow-md">
+        <div className="flex items-center gap-2 mb-6">
+          <Ruler className="h-5 w-5 text-brand-300" />
+          <h2 className="text-2xl font-semibold">
+            <span className="text-brand-600">Your</span> <span className="text-brand-300">Measurements</span>
+          </h2>
+        </div>
       
       <Tabs value={unit} onValueChange={(value) => setUnit(value as "inches" | "cm")} className="mb-4">
         <TabsList className="grid w-full grid-cols-2">
@@ -198,6 +200,71 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
         </p>
       </form>
     </Card>
+
+    {/* Body Shape Avatar */}
+    <div className="flex-shrink-0 hidden lg:flex flex-col items-center justify-center bg-muted/30 rounded-xl p-8 min-h-[600px] min-w-[300px]">
+      <div className="text-center mb-6">
+        <h3 className="text-lg font-medium text-muted-foreground mb-2">Body Shape Visualization</h3>
+        <p className="text-sm text-muted-foreground">Track your measurements</p>
+      </div>
+      
+      <div className="relative">
+        {/* Body silhouette */}
+        <div className="w-48 h-80 relative">
+          <svg viewBox="0 0 120 200" className="w-full h-full text-muted-foreground/40 fill-current">
+            {/* Female body silhouette */}
+            <path d="M60 10 
+                     C55 10, 50 15, 50 25
+                     C45 30, 40 35, 38 45
+                     C35 55, 40 65, 45 70
+                     C40 80, 35 90, 38 100
+                     C35 110, 40 120, 45 130
+                     C50 140, 55 150, 60 160
+                     C60 170, 58 180, 56 190
+                     L64 190
+                     C62 180, 60 170, 60 160
+                     C65 150, 70 140, 75 130
+                     C80 120, 85 110, 82 100
+                     C85 90, 80 80, 75 70
+                     C80 65, 85 55, 82 45
+                     C80 35, 75 30, 70 25
+                     C70 15, 65 10, 60 10 Z"/>
+          </svg>
+          
+          {/* Measurement indicators */}
+          <div className="absolute top-12 left-0 right-0 flex justify-between items-center opacity-60">
+            <div className="w-2 h-0.5 bg-brand-300"></div>
+            <span className="text-xs text-brand-300 bg-background px-1 rounded">SHOULDERS</span>
+            <div className="w-2 h-0.5 bg-brand-300"></div>
+          </div>
+          
+          <div className="absolute top-20 left-0 right-0 flex justify-between items-center opacity-60">
+            <div className="w-2 h-0.5 bg-brand-300"></div>
+            <span className="text-xs text-brand-300 bg-background px-1 rounded">BUST</span>
+            <div className="w-2 h-0.5 bg-brand-300"></div>
+          </div>
+          
+          <div className="absolute top-32 left-0 right-0 flex justify-between items-center opacity-60">
+            <div className="w-2 h-0.5 bg-brand-300"></div>
+            <span className="text-xs text-brand-300 bg-background px-1 rounded">WAIST</span>
+            <div className="w-2 h-0.5 bg-brand-300"></div>
+          </div>
+          
+          <div className="absolute top-44 left-0 right-0 flex justify-between items-center opacity-60">
+            <div className="w-2 h-0.5 bg-brand-300"></div>
+            <span className="text-xs text-brand-300 bg-background px-1 rounded">HIPS</span>
+            <div className="w-2 h-0.5 bg-brand-300"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mt-6 text-center">
+        <p className="text-xs text-muted-foreground">
+          Enter your measurements to see your body shape analysis
+        </p>
+      </div>
+    </div>
+  </div>
   );
 };
 
