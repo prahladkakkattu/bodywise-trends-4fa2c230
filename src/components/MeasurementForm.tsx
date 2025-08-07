@@ -209,8 +209,12 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape</h3>
           <p className="text-sm text-muted-foreground">Interactive 3D visualization based on your measurements</p>
         </div>
-        <div className="h-64 lg:h-auto">
-          <BodyShapeAvatar3D measurements={measurements} />
+        <div className="h-64 lg:h-auto flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner">
+          <img 
+            src="/lovable-uploads/5bb3e4fc-3a75-419e-a173-8ebc2607d65e.png" 
+            alt="Body shape silhouette"
+            className="h-full max-h-60 lg:max-h-80 w-auto object-contain"
+          />
         </div>
         
         {/* Measurement Legend */}
