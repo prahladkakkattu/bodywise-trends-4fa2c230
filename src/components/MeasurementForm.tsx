@@ -210,7 +210,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           <p className="text-sm text-muted-foreground">Interactive 3D visualization - rotate to see different views</p>
         </div>
         <div className="h-64 lg:h-96 relative">
-          <RotatableAvatar3D measurements={measurements} />
+          <RotatableAvatar3D />
         </div>
         
         {/* Measurement Legend */}
