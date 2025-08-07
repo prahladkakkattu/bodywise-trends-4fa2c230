@@ -1,13 +1,12 @@
-const RotatableAvatar3D = () => {
-  return (
-    <div className="w-full h-full min-h-[300px] flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner">
-      <img 
-        src="/lovable-uploads/5bb3e4fc-3a75-419e-a173-8ebc2607d65e.png" 
-        alt="Body shape silhouette - front view"
-        className="h-full max-h-60 lg:max-h-80 w-auto object-contain"
-      />
-    </div>
-  );
+import DynamicBodyMeasurementSVG from './DynamicBodyMeasurementSVG';
+import { BodyMeasurement } from '@/types';
+
+interface RotatableAvatar3DProps {
+  measurements?: BodyMeasurement;
+}
+
+const RotatableAvatar3D: React.FC<RotatableAvatar3DProps> = ({ measurements }) => {
+  return <DynamicBodyMeasurementSVG measurements={measurements} showFrontView={true} />;
 };
 
 export default RotatableAvatar3D;
