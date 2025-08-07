@@ -10,7 +10,7 @@ import { determineBodyType } from "@/utils/bodyTypeUtils";
 import { Ruler } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
-import BodyShapeAvatar3D from "./BodyShapeAvatar3D";
+import RotatableAvatar3D from "./RotatableAvatar3D";
 
 interface MeasurementFormProps {
   onBodyTypeChange: (bodyType: BodyType, measurements: BodyMeasurement) => void;
@@ -207,14 +207,10 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
       <div className="flex-1 max-w-none lg:max-w-lg">
         <div className="mb-4">
           <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape</h3>
-          <p className="text-sm text-muted-foreground">Interactive 3D visualization based on your measurements</p>
+          <p className="text-sm text-muted-foreground">Interactive 3D visualization - rotate to see different views</p>
         </div>
-        <div className="h-64 lg:h-auto flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner">
-          <img 
-            src="/lovable-uploads/d048e95b-ed16-4128-85ff-82dd8c79c718.png" 
-            alt="Body shape silhouette - side view"
-            className="h-full max-h-60 lg:max-h-80 w-auto object-contain"
-          />
+        <div className="h-64 lg:h-96 relative">
+          <RotatableAvatar3D />
         </div>
         
         {/* Measurement Legend */}
