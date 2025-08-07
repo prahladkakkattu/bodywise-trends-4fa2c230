@@ -1,24 +1,15 @@
-import { useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useTexture } from '@react-three/drei';
+import { useTexture } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const AvatarMesh = () => {
-  const meshRef = useRef<THREE.Group>(null);
   const [frontTexture, sideTexture] = useTexture([
     '/lovable-uploads/5bb3e4fc-3a75-419e-a173-8ebc2607d65e.png',
     '/lovable-uploads/d048e95b-ed16-4128-85ff-82dd8c79c718.png'
   ]);
 
-  // Auto-rotate when not being manually controlled
-  useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.2;
-    }
-  });
-
   return (
-    <group ref={meshRef}>
+    <group rotation={[0, Math.PI / 6, 0]}>
       {/* Front view plane */}
       <mesh position={[0, 0, 0.01]} rotation={[0, 0, 0]}>
         <planeGeometry args={[2, 3]} />
@@ -52,20 +43,7 @@ const RotatableAvatar3D = () => {
         <directionalLight position={[10, 10, 5]} intensity={0.8} />
         
         <AvatarMesh />
-        
-        <OrbitControls 
-          enablePan={false}
-          enableZoom={true}
-          minDistance={2}
-          maxDistance={8}
-          maxPolarAngle={Math.PI}
-          minPolarAngle={0}
-        />
       </Canvas>
-      
-      <div className="absolute bottom-2 left-2 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded">
-        Click and drag to rotate • Scroll to zoom
-      </div>
     </div>
   );
 };
