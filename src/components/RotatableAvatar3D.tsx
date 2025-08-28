@@ -1,5 +1,7 @@
 import { BodyMeasurement } from "@/types";
 import { useState } from "react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 
 interface RotatableAvatar3DProps {
   measurements?: BodyMeasurement;
@@ -12,6 +14,14 @@ interface RotatableAvatar3DProps {
 const RotatableAvatar3D = ({ measurements, activeMeasurement, onAvatarSelect, viewMode = false, selectedAvatar: externalSelectedAvatar }: RotatableAvatar3DProps) => {
   const [internalSelectedAvatar, setInternalSelectedAvatar] = useState<number | null>(null);
   const selectedAvatar = externalSelectedAvatar !== undefined ? externalSelectedAvatar : internalSelectedAvatar;
+  
+  const avatarDescriptions = [
+    "Your waist is significantly smaller than both your hips and shoulders, and those two are nearly the same width. That natural balance gives you a classic hourglass figure with a lighter bust.",
+    "Your waist is well-defined, with shoulders and hips in balance, paired with a fuller bust.",
+    "You have the natural hourglass balance, but your height and leaner thighs make your proportions appear even longer.",
+    "You're tall with an hourglass balance, but your thighs carry more fullness, shaping your silhouette.",
+    "Your waist is defined, but as someone with a shorter frame, your thighs add more presence to your overall silhouette."
+  ];
   
   const bodyShapeImages = [
     "/lovable-uploads/3f0aa350-f276-4d70-a0a9-37c98c766c38.png",
@@ -42,6 +52,20 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement, onAvatarSelect, vi
         alt={`Body shape variation ${index + 1}`}
         className="h-full max-h-48 lg:max-h-64 w-auto object-contain mx-auto transition-all duration-300"
       />
+      
+      {/* Tooltip for avatar description */}
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div className="absolute top-2 right-2 w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center cursor-help hover:bg-primary/30 transition-colors">
+              <Info className="w-3 h-3 text-primary" />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side="left" className="max-w-xs">
+            <p className="text-sm">{avatarDescriptions[index]}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       
       {/* Selection indicator */}
       {selectedAvatar === index && (

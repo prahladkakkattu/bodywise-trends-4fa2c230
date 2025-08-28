@@ -31,14 +31,6 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     weight: 140,
   });
 
-  const avatarDescriptions = [
-    "Your waist is significantly smaller than both your hips and shoulders, and those two are nearly the same width. That natural balance gives you a classic hourglass figure with a lighter bust.",
-    "Your waist is well-defined, with shoulders and hips in balance, paired with a fuller bust.",
-    "You have the natural hourglass balance, but your height and leaner thighs make your proportions appear even longer.",
-    "You're tall with an hourglass balance, but your thighs carry more fullness, shaping your silhouette.",
-    "Your waist is defined, but as someone with a shorter frame, your thighs add more presence to your overall silhouette."
-  ];
-
   // Conversion functions
   const inchesToCm = (inches: number) => Math.round(inches * 2.54);
   const cmToInches = (cm: number) => Math.round(cm / 2.54);
@@ -247,16 +239,11 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
             )}
           </div>
           <p className="text-sm text-muted-foreground mb-3">
-            {selectedAvatar !== null 
-              ? avatarDescriptions[selectedAvatar]
-              : "An hourglass body shape is typically defined by a balanced bust and hips with a well-defined waist. There can be variations within the hourglass shape, but the key feature is the natural waistline definition."
-            }
+            An hourglass body shape is typically defined by a balanced bust and hips with a well-defined waist. There can be variations within the hourglass shape, but the key feature is the natural waistline definition.
           </p>
-          {selectedAvatar === null && (
-            <p className="text-sm text-brand-600 font-medium">
-              Select the body shape that best represents your body
-            </p>
-          )}
+          <p className="text-sm text-brand-600 font-medium">
+            Select the body shape that best represents your body
+          </p>
         </div>
         <div className="h-64 lg:h-96 relative">
           <RotatableAvatar3D 
