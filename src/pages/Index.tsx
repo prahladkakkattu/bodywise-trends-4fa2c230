@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MeasurementForm from "@/components/MeasurementForm";
-import BodyTypeResult from "@/components/BodyTypeResult";
 import ProductRecommendations from "@/components/ProductRecommendations";
 import BodyShapeHolder from "@/components/BodyShapeHolder";
 import HeroBannerCarousel from "@/components/HeroBannerCarousel";
@@ -339,27 +338,9 @@ const Index = () => {
         return <div className="max-w-5xl mx-auto mt-8 px-4">
             {measurements && (
               <div className="flex flex-col md:flex-row gap-8 mb-16">
-                <div className="w-full md:w-1/2">
+                <div className="w-full">
                   <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
                 </div>
-                
-                <div className="w-full md:w-1/2">
-                  {bodyType ? (
-                    <BodyTypeResult bodyType={bodyType} />
-                  ) : (
-                    <div className="h-full flex items-center justify-center p-6 bg-muted/20 rounded-lg border border-dashed">
-                      <p className="text-muted-foreground text-center">
-                        Enter your measurements to discover your body shape and get personalized style recommendations.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-            
-            {!measurements && bodyType && (
-              <div className="mb-16">
-                <BodyTypeResult bodyType={bodyType} />
               </div>
             )}
             

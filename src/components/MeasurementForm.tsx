@@ -215,8 +215,13 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
         <div className="mb-4">
-          <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape</h3>
-          <p className="text-sm text-muted-foreground">Interactive 3D visualization - rotate to see different views</p>
+          <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape: Hourglass</h3>
+          <p className="text-sm text-muted-foreground mb-3">
+            An hourglass body shape is typically defined by a balanced bust and hips with a well-defined waist. There can be variations within the hourglass shape, but the key feature is the natural waistline definition.
+          </p>
+          <p className="text-sm text-brand-600 font-medium">
+            Select the body shape that best represents your body
+          </p>
         </div>
         <div className="h-64 lg:h-96 relative">
           <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
