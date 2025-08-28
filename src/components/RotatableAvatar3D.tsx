@@ -5,10 +5,13 @@ interface RotatableAvatar3DProps {
   measurements?: BodyMeasurement;
   activeMeasurement?: keyof BodyMeasurement | null;
   onAvatarSelect?: (index: number) => void;
+  viewMode?: boolean;
+  selectedAvatar?: number | null;
 }
 
-const RotatableAvatar3D = ({ measurements, activeMeasurement, onAvatarSelect }: RotatableAvatar3DProps) => {
-  const [selectedAvatar, setSelectedAvatar] = useState<number | null>(null);
+const RotatableAvatar3D = ({ measurements, activeMeasurement, onAvatarSelect, viewMode = false, selectedAvatar: externalSelectedAvatar }: RotatableAvatar3DProps) => {
+  const [internalSelectedAvatar, setInternalSelectedAvatar] = useState<number | null>(null);
+  const selectedAvatar = externalSelectedAvatar !== undefined ? externalSelectedAvatar : internalSelectedAvatar;
   
   const bodyShapeImages = [
     "/lovable-uploads/3f0aa350-f276-4d70-a0a9-37c98c766c38.png",
@@ -19,7 +22,9 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement, onAvatarSelect }: 
   ];
 
   const handleAvatarClick = (index: number) => {
-    setSelectedAvatar(index);
+    if (externalSelectedAvatar === undefined) {
+      setInternalSelectedAvatar(index);
+    }
     onAvatarSelect?.(index);
   };
 
@@ -72,12 +77,21 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement, onAvatarSelect }: 
     </div>
   );
 
+  const imagesToShow = viewMode && selectedAvatar !== null 
+    ? [bodyShapeImages[selectedAvatar]]
+    : bodyShapeImages;
+
+  const indicesToShow = viewMode && selectedAvatar !== null
+    ? [selectedAvatar]
+    : bodyShapeImages.map((_, index) => index);
+
   return (
     <div className="w-full h-full min-h-[300px] bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner p-4">
-      <div className="flex justify-center items-center gap-2 h-full">
-        {bodyShapeImages.map((src, index) => (
-          <SingleAvatar key={index} src={src} index={index} />
-        ))}
+      <div className={`flex justify-center items-center gap-2 h-full ${viewMode && selectedAvatar !== null ? 'justify-center' : ''}`}>
+        {imagesToShow.map((src, displayIndex) => {
+          const actualIndex = indicesToShow[displayIndex];
+          return <SingleAvatar key={actualIndex} src={src} index={actualIndex} />;
+        })}
       </div>
     </div>
   );

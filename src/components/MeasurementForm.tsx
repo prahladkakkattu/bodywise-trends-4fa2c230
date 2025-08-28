@@ -20,6 +20,8 @@ interface MeasurementFormProps {
 const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) => {
   const [unit, setUnit] = useState<"inches" | "cm">("inches");
   const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
+  const [selectedAvatar, setSelectedAvatar] = useState<number | null>(null);
+  const [viewMode, setViewMode] = useState(false);
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
     bust: 36,
     waist: 28,
@@ -28,6 +30,14 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     height: 65,
     weight: 140,
   });
+
+  const avatarDescriptions = [
+    "Your waist is significantly smaller than both your hips and shoulders, and those two are nearly the same width. That natural balance gives you a classic hourglass figure with a lighter bust.",
+    "Your waist is well-defined, with shoulders and hips in balance, paired with a fuller bust.",
+    "You have the natural hourglass balance, but your height and leaner thighs make your proportions appear even longer.",
+    "You're tall with an hourglass balance, but your thighs carry more fullness, shaping your silhouette.",
+    "Your waist is defined, but as someone with a shorter frame, your thighs add more presence to your overall silhouette."
+  ];
 
   // Conversion functions
   const inchesToCm = (inches: number) => Math.round(inches * 2.54);
@@ -62,6 +72,14 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     e.preventDefault();
     const bodyType = determineBodyType(measurements);
     onBodyTypeChange(bodyType, measurements);
+  };
+
+  const handleAvatarSelect = (index: number) => {
+    setSelectedAvatar(index);
+  };
+
+  const toggleViewMode = () => {
+    setViewMode(!viewMode);
   };
 
   return (
@@ -215,16 +233,39 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
         <div className="mb-4">
-          <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape: Hourglass</h3>
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-lg font-semibold text-brand-600">Your Body Shape: Hourglass</h3>
+            {selectedAvatar !== null && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleViewMode}
+                className="text-xs"
+              >
+                {viewMode ? "Show All" : "View Selected"}
+              </Button>
+            )}
+          </div>
           <p className="text-sm text-muted-foreground mb-3">
-            An hourglass body shape is typically defined by a balanced bust and hips with a well-defined waist. There can be variations within the hourglass shape, but the key feature is the natural waistline definition.
+            {selectedAvatar !== null 
+              ? avatarDescriptions[selectedAvatar]
+              : "An hourglass body shape is typically defined by a balanced bust and hips with a well-defined waist. There can be variations within the hourglass shape, but the key feature is the natural waistline definition."
+            }
           </p>
-          <p className="text-sm text-brand-600 font-medium">
-            Select the body shape that best represents your body
-          </p>
+          {selectedAvatar === null && (
+            <p className="text-sm text-brand-600 font-medium">
+              Select the body shape that best represents your body
+            </p>
+          )}
         </div>
         <div className="h-64 lg:h-96 relative">
-          <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
+          <RotatableAvatar3D 
+            measurements={measurements} 
+            activeMeasurement={activeMeasurement}
+            onAvatarSelect={handleAvatarSelect}
+            viewMode={viewMode}
+            selectedAvatar={selectedAvatar}
+          />
         </div>
         
         {/* Measurement Legend */}
