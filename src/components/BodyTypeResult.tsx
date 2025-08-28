@@ -33,11 +33,15 @@ const BodyTypeResult = ({ bodyType }: BodyTypeResultProps) => {
   return (
     <Card className="w-full p-6 shadow-md bg-brand-100/50">
       <h2 className="text-2xl font-semibold text-center mb-2">
-        <span className="text-brand-600">Your Body Shape:</span> <span className="text-brand-300 font-bold">{formattedBodyType}</span>
+        <span className="text-brand-600">Your Body Shape: {formattedBodyType}</span>
       </h2>
       
-      <p className="text-center text-muted-foreground mb-6">
-        {description}
+      <p className="text-center text-muted-foreground mb-4">
+        An hourglass body shape is typically defined by a balanced bust and hips with a well-defined waist. There can be variations within the hourglass shape, but the key feature is the natural waistline definition.
+      </p>
+      
+      <p className="text-center text-brand-600 font-medium mb-6">
+        Select the body shape that best represents your body
       </p>
       
       <div className="space-y-4">
