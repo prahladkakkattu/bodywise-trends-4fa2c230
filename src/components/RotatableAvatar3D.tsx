@@ -1,11 +1,15 @@
 import { BodyMeasurement } from "@/types";
+import { useState } from "react";
 
 interface RotatableAvatar3DProps {
   measurements?: BodyMeasurement;
   activeMeasurement?: keyof BodyMeasurement | null;
+  onAvatarSelect?: (index: number) => void;
 }
 
-const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3DProps) => {
+const RotatableAvatar3D = ({ measurements, activeMeasurement, onAvatarSelect }: RotatableAvatar3DProps) => {
+  const [selectedAvatar, setSelectedAvatar] = useState<number | null>(null);
+  
   const bodyShapeImages = [
     "/lovable-uploads/3f0aa350-f276-4d70-a0a9-37c98c766c38.png",
     "/lovable-uploads/b7c98bdb-f70a-4222-996b-190272574906.png", 
@@ -14,13 +18,32 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
     "/lovable-uploads/0eca5ceb-5eeb-4a02-a9eb-df7eb0ccbcfd.png"
   ];
 
+  const handleAvatarClick = (index: number) => {
+    setSelectedAvatar(index);
+    onAvatarSelect?.(index);
+  };
+
   const SingleAvatar = ({ src, index }: { src: string; index: number }) => (
-    <div className="relative flex-1 min-w-0">
+    <div 
+      className={`relative flex-1 min-w-0 cursor-pointer transition-all duration-300 rounded-lg p-2 ${
+        selectedAvatar === index 
+          ? 'bg-primary/10 ring-2 ring-primary shadow-lg scale-105' 
+          : 'hover:bg-slate-100/50 hover:scale-102'
+      }`}
+      onClick={() => handleAvatarClick(index)}
+    >
       <img 
         src={src}
         alt={`Body shape variation ${index + 1}`}
         className="h-full max-h-48 lg:max-h-64 w-auto object-contain mx-auto transition-all duration-300"
       />
+      
+      {/* Selection indicator */}
+      {selectedAvatar === index && (
+        <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+          <div className="w-3 h-3 bg-white rounded-full"></div>
+        </div>
+      )}
       
       {/* Highlighting overlays */}
       {activeMeasurement && (
