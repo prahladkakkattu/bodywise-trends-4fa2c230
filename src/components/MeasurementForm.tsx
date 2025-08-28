@@ -19,6 +19,7 @@ interface MeasurementFormProps {
 
 const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) => {
   const [unit, setUnit] = useState<"inches" | "cm">("inches");
+  const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
     bust: 36,
     waist: 28,
@@ -95,6 +96,8 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   className="measurement-input"
                   value={getDisplayValue(measurements.bust, "bust")}
                   onChange={(e) => handleChange("bust", getStoredValue(Number(e.target.value), "bust"))}
+                  onFocus={() => setActiveMeasurement("bust")}
+                  onBlur={() => setActiveMeasurement(null)}
                   min={unit === "inches" ? 20 : 51}
                   max={unit === "inches" ? 60 : 152}
                 />
@@ -112,6 +115,8 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   className="measurement-input"
                   value={getDisplayValue(measurements.waist, "waist")}
                   onChange={(e) => handleChange("waist", getStoredValue(Number(e.target.value), "waist"))}
+                  onFocus={() => setActiveMeasurement("waist")}
+                  onBlur={() => setActiveMeasurement(null)}
                   min={unit === "inches" ? 20 : 51}
                   max={unit === "inches" ? 60 : 152}
                 />
@@ -131,6 +136,8 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   className="measurement-input"
                   value={getDisplayValue(measurements.hips, "hips")}
                   onChange={(e) => handleChange("hips", getStoredValue(Number(e.target.value), "hips"))}
+                  onFocus={() => setActiveMeasurement("hips")}
+                  onBlur={() => setActiveMeasurement(null)}
                   min={unit === "inches" ? 20 : 51}
                   max={unit === "inches" ? 60 : 152}
                 />
@@ -148,6 +155,8 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   className="measurement-input"
                   value={getDisplayValue(measurements.shoulders, "shoulders")}
                   onChange={(e) => handleChange("shoulders", getStoredValue(Number(e.target.value), "shoulders"))}
+                  onFocus={() => setActiveMeasurement("shoulders")}
+                  onBlur={() => setActiveMeasurement(null)}
                   min={unit === "inches" ? 20 : 51}
                   max={unit === "inches" ? 60 : 152}
                 />
@@ -210,7 +219,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           <p className="text-sm text-muted-foreground">Interactive 3D visualization - rotate to see different views</p>
         </div>
         <div className="h-64 lg:h-96 relative">
-          <RotatableAvatar3D measurements={measurements} />
+          <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
         </div>
         
         {/* Measurement Legend */}
