@@ -1,122 +1,43 @@
 import { BodyMeasurement } from "@/types";
-import { useState } from "react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Info } from "lucide-react";
 
 interface RotatableAvatar3DProps {
   measurements?: BodyMeasurement;
   activeMeasurement?: keyof BodyMeasurement | null;
-  onAvatarSelect?: (index: number) => void;
-  viewMode?: boolean;
-  selectedAvatar?: number | null;
 }
 
-const RotatableAvatar3D = ({ measurements, activeMeasurement, onAvatarSelect, viewMode = false, selectedAvatar: externalSelectedAvatar }: RotatableAvatar3DProps) => {
-  const [internalSelectedAvatar, setInternalSelectedAvatar] = useState<number | null>(null);
-  const selectedAvatar = externalSelectedAvatar !== undefined ? externalSelectedAvatar : internalSelectedAvatar;
-  
-  const avatarDescriptions = [
-    "Your waist is significantly smaller than both your hips and shoulders, and those two are nearly the same width. That natural balance gives you a classic hourglass figure with a lighter bust.",
-    "Your waist is well-defined, with shoulders and hips in balance, paired with a fuller bust.",
-    "You have the natural hourglass balance, but your height and leaner thighs make your proportions appear even longer.",
-    "You're tall with an hourglass balance, but your thighs carry more fullness, shaping your silhouette.",
-    "Your waist is defined, but as someone with a shorter frame, your thighs add more presence to your overall silhouette."
-  ];
-  
-  const bodyShapeImages = [
-    "/lovable-uploads/3f0aa350-f276-4d70-a0a9-37c98c766c38.png",
-    "/lovable-uploads/b7c98bdb-f70a-4222-996b-190272574906.png", 
-    "/lovable-uploads/7da019fb-2ed5-4b11-98f3-c2d2cc604397.png",
-    "/lovable-uploads/9c769a7a-0de5-4fae-94e5-e057d64a9770.png",
-    "/lovable-uploads/0eca5ceb-5eeb-4a02-a9eb-df7eb0ccbcfd.png"
-  ];
-
-  const handleAvatarClick = (index: number) => {
-    if (externalSelectedAvatar === undefined) {
-      setInternalSelectedAvatar(index);
-    }
-    onAvatarSelect?.(index);
-  };
-
-  const SingleAvatar = ({ src, index }: { src: string; index: number }) => (
-    <div 
-      className={`relative flex-1 min-w-0 cursor-pointer transition-all duration-300 rounded-lg p-2 ${
-        selectedAvatar === index 
-          ? 'bg-primary/10 ring-2 ring-primary shadow-lg scale-105' 
-          : 'hover:bg-slate-100/50 hover:scale-102'
-      }`}
-      onClick={() => handleAvatarClick(index)}
-    >
+const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3DProps) => {
+  return (
+    <div className="w-full h-full min-h-[300px] flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner relative">
       <img 
-        src={src}
-        alt={`Body shape variation ${index + 1}`}
-        className="h-full max-h-48 lg:max-h-64 w-auto object-contain mx-auto transition-all duration-300"
+        src="/lovable-uploads/fa789694-790e-4255-85c2-2d1984f709e2.png" 
+        alt="Body shape silhouette - front view"
+        className="h-full max-h-60 lg:max-h-80 w-auto object-contain transition-all duration-300 relative z-10"
       />
-      
-      {/* Tooltip for avatar description */}
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <div className="absolute top-2 right-2 w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center cursor-help hover:bg-primary/30 transition-colors">
-              <Info className="w-3 h-3 text-primary" />
-            </div>
-          </TooltipTrigger>
-          <TooltipContent side="left" className="max-w-xs">
-            <p className="text-sm">{avatarDescriptions[index]}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-      
-      {/* Selection indicator */}
-      {selectedAvatar === index && (
-        <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-          <div className="w-3 h-3 bg-white rounded-full"></div>
-        </div>
-      )}
       
       {/* Highlighting overlays */}
       {activeMeasurement && (
         <div className="absolute inset-0 pointer-events-none">
           {/* Shoulders highlight */}
           {activeMeasurement === "shoulders" && (
-            <div className="absolute top-[18%] left-1/2 transform -translate-x-1/2 w-8 lg:w-12 h-2 bg-red-400/30 border border-red-400 rounded-full animate-pulse" />
+            <div className="absolute top-[18%] left-1/2 transform -translate-x-1/2 w-36 h-6 bg-red-400/30 border-2 border-red-400 rounded-full animate-pulse" />
           )}
           
           {/* Bust highlight */}
           {activeMeasurement === "bust" && (
-            <div className="absolute top-[32%] left-1/2 transform -translate-x-1/2 w-6 lg:w-10 h-4 bg-teal-400/30 border border-teal-400 rounded-full animate-pulse" />
+            <div className="absolute top-[32%] left-1/2 transform -translate-x-1/2 w-24 h-10 bg-teal-400/30 border-2 border-teal-400 rounded-full animate-pulse" />
           )}
           
           {/* Waist highlight */}
           {activeMeasurement === "waist" && (
-            <div className="absolute top-[55%] left-1/2 transform -translate-x-1/2 w-4 lg:w-6 h-3 bg-blue-400/30 border border-blue-400 rounded-full animate-pulse" />
+            <div className="absolute top-[55%] left-1/2 transform -translate-x-1/2 w-16 h-6 bg-blue-400/30 border-2 border-blue-400 rounded-full animate-pulse" />
           )}
           
           {/* Hips highlight */}
           {activeMeasurement === "hips" && (
-            <div className="absolute top-[72%] left-1/2 transform -translate-x-1/2 w-7 lg:w-11 h-4 bg-green-400/30 border border-green-400 rounded-full animate-pulse" />
+            <div className="absolute top-[72%] left-1/2 transform -translate-x-1/2 w-28 h-10 bg-green-400/30 border-2 border-green-400 rounded-full animate-pulse" />
           )}
         </div>
       )}
-    </div>
-  );
-
-  const imagesToShow = viewMode && selectedAvatar !== null 
-    ? [bodyShapeImages[selectedAvatar]]
-    : bodyShapeImages;
-
-  const indicesToShow = viewMode && selectedAvatar !== null
-    ? [selectedAvatar]
-    : bodyShapeImages.map((_, index) => index);
-
-  return (
-    <div className="w-full h-full min-h-[300px] bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner p-4">
-      <div className={`flex justify-center items-center gap-2 h-full ${viewMode && selectedAvatar !== null ? 'justify-center' : ''}`}>
-        {imagesToShow.map((src, displayIndex) => {
-          const actualIndex = indicesToShow[displayIndex];
-          return <SingleAvatar key={actualIndex} src={src} index={actualIndex} />;
-        })}
-      </div>
     </div>
   );
 };
