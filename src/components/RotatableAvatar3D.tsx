@@ -59,9 +59,9 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
 
   return (
     <TooltipProvider>
-      <div className="space-y-3">
+      <div className="space-y-3 w-full max-w-md mx-auto">
         {/* Body Shape Header */}
-        <Card className="p-4 bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20 shadow-sm -mt-2">
+        <Card className="w-full p-4 bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20 shadow-sm -mt-2">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
@@ -127,7 +127,7 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
     </div>
 
       {/* Feedback Section */}
-      <Card className="p-4 bg-white/80 backdrop-blur-sm">
+      <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
         <div className="text-center space-y-3">
           <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
           <div className="flex gap-2 justify-center">
@@ -155,7 +155,7 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
 
       {/* Alternative Avatar Selection */}
       {showAlternatives && (
-        <Card className="p-4 bg-white/80 backdrop-blur-sm">
+        <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
           <div className="space-y-3">
             <p className="text-sm font-medium text-center text-foreground">Choose a body shape that better represents you:</p>
             <div className="grid grid-cols-3 gap-2">
