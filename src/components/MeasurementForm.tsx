@@ -226,27 +226,29 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape</h3>
           <p className="text-sm text-muted-foreground">Interactive 3D visualization - rotate to see different views</p>
         </div>
-        <div className="h-64 lg:h-96 relative">
-          <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
-        </div>
-        
-        {/* Measurement Legend */}
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-0.5 bg-red-400 rounded"></div>
-            <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
+        <div className="flex gap-4">
+          <div className="h-64 lg:h-96 flex-1">
+            <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-0.5 bg-teal-400 rounded"></div>
-            <span>Bust: {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-0.5 bg-blue-400 rounded"></div>
-            <span>Waist: {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-0.5 bg-green-400 rounded"></div>
-            <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
+          
+          {/* Measurement Legend - Right Side */}
+          <div className="flex flex-col justify-center space-y-3 text-xs min-w-[140px]">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-0.5 bg-red-400 rounded"></div>
+              <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-0.5 bg-teal-400 rounded"></div>
+              <span>Bust: {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-0.5 bg-blue-400 rounded"></div>
+              <span>Waist: {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-0.5 bg-green-400 rounded"></div>
+              <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
+            </div>
           </div>
         </div>
       </div>
