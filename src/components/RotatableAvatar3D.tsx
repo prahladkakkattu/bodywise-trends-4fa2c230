@@ -59,9 +59,9 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
 
   return (
     <TooltipProvider>
-      <div className="space-y-4">
+      <div className="space-y-3">
         {/* Body Shape Header */}
-        <Card className="p-4 bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20 shadow-sm">
+        <Card className="p-4 bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20 shadow-sm -mt-2">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
