@@ -10,7 +10,6 @@ interface RotatableAvatar3DProps {
 }
 
 const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3DProps) => {
-  const [showFeedback, setShowFeedback] = useState(true);
   const [selectedAvatar, setSelectedAvatar] = useState("/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png");
   const [showAlternatives, setShowAlternatives] = useState(false);
 
@@ -23,11 +22,8 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
   ];
 
   const handleAvatarFeedback = (isCorrect: boolean) => {
-    if (isCorrect) {
-      setShowFeedback(false);
-    } else {
+    if (!isCorrect) {
       setShowAlternatives(true);
-      setShowFeedback(false);
     }
   };
 
@@ -38,7 +34,6 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
 
   const handleCancel = () => {
     setShowAlternatives(false);
-    setShowFeedback(true);
   };
 
   return (
@@ -77,33 +72,31 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
     </div>
 
       {/* Feedback Section */}
-      {showFeedback && (
-        <Card className="p-4 bg-white/80 backdrop-blur-sm">
-          <div className="text-center space-y-3">
-            <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
-            <div className="flex gap-2 justify-center">
-              <Button
-                onClick={() => handleAvatarFeedback(true)}
-                variant="outline"
-                size="sm"
-                className="flex items-center gap-2"
-              >
-                <CheckCircle className="h-4 w-4 text-green-600" />
-                Yes, looks right
-              </Button>
-              <Button
-                onClick={() => handleAvatarFeedback(false)}
-                variant="outline"
-                size="sm"
-                className="flex items-center gap-2"
-              >
-                <XCircle className="h-4 w-4 text-orange-600" />
-                Not quite right
-              </Button>
-            </div>
+      <Card className="p-4 bg-white/80 backdrop-blur-sm">
+        <div className="text-center space-y-3">
+          <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
+          <div className="flex gap-2 justify-center">
+            <Button
+              onClick={() => handleAvatarFeedback(true)}
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+            >
+              <CheckCircle className="h-4 w-4 text-green-600" />
+              Yes, looks right
+            </Button>
+            <Button
+              onClick={() => handleAvatarFeedback(false)}
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+            >
+              <XCircle className="h-4 w-4 text-orange-600" />
+              Not quite right
+            </Button>
           </div>
-        </Card>
-      )}
+        </div>
+      </Card>
 
       {/* Alternative Avatar Selection */}
       {showAlternatives && (
