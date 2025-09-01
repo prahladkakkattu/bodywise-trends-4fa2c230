@@ -61,31 +61,35 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
     <TooltipProvider>
       <div className="space-y-4">
         {/* Body Shape Header */}
-        <Card className="p-3 bg-white/80 backdrop-blur-sm">
-          <div className="flex items-center justify-between">
+        <Card className="p-4 bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20 shadow-sm">
+          <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-medium text-foreground">
-                Your Body Shape: <span className="text-primary font-semibold">{formattedBodyType}</span>
-              </h3>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="ghost" size="sm" className="p-1 h-auto">
-                    <Info className="h-3 w-3 text-muted-foreground hover:text-foreground" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="bottom" className="max-w-xs">
-                  <div className="space-y-2">
-                    <p className="font-medium">Body Shape Guide:</p>
-                    {Object.entries(allBodyShapeInfo).map(([shape, description]) => (
-                      <div key={shape} className="text-sm">
-                        <span className="font-medium">{shape}:</span> {description}
-                      </div>
-                    ))}
-                  </div>
-                </TooltipContent>
-              </Tooltip>
+              <div className="flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+                <h3 className="text-sm font-medium text-foreground">
+                  Your Body Shape: <span className="text-primary font-semibold">{formattedBodyType}</span>
+                </h3>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="ghost" size="sm" className="p-1 h-auto hover:bg-primary/20">
+                      <Info className="h-3 w-3 text-primary/70 hover:text-primary" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" className="max-w-xs">
+                    <div className="space-y-2">
+                      <p className="font-medium">Body Shape Guide:</p>
+                      {Object.entries(allBodyShapeInfo).map(([shape, description]) => (
+                        <div key={shape} className="text-sm">
+                          <span className="font-medium">{shape}:</span> {description}
+                        </div>
+                      ))}
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
             </div>
-            <p className="text-xs text-muted-foreground">{bodyTypeDescription}</p>
+            <p className="text-sm text-muted-foreground bg-background/50 p-2 rounded-md border-l-2 border-primary/30">
+              {bodyTypeDescription}
+            </p>
           </div>
         </Card>
 
