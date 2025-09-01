@@ -2,7 +2,9 @@ import { BodyMeasurement } from "@/types";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { CheckCircle, XCircle } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { CheckCircle, XCircle, Info } from "lucide-react";
+import { determineBodyType, getBodyTypeDescription } from "@/utils/bodyTypeUtils";
 
 interface RotatableAvatar3DProps {
   measurements?: BodyMeasurement;
@@ -21,6 +23,25 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
     { src: "/lovable-uploads/23f742dd-83aa-4a29-bd7a-5f6a14ccddfa.png", label: "Tall" }
   ];
 
+  // Calculate body type from measurements
+  const bodyType = measurements ? determineBodyType(measurements) : 'hourglass';
+  const bodyTypeDescription = getBodyTypeDescription(bodyType);
+  
+  // Format body type for display
+  const formattedBodyType = bodyType
+    .split("-")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  // Tooltip content for all body shapes
+  const allBodyShapeInfo = {
+    "Hourglass": "Well-balanced bust and hips with a defined waist. Creates a classic feminine silhouette.",
+    "Pear": "Narrower shoulders and bust, with fuller hips. The waist is typically well-defined.",
+    "Apple": "Fuller midsection with narrower hips. Shoulders may be broader than hips.",
+    "Rectangle": "Similar measurements for bust, waist, and hips. Straight up-and-down silhouette.",
+    "Inverted Triangle": "Broader shoulders and bust with narrower hips. Athletic build with strong upper body."
+  };
+
   const handleAvatarFeedback = (isCorrect: boolean) => {
     if (!isCorrect) {
       setShowAlternatives(true);
@@ -37,8 +58,38 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
   };
 
   return (
-    <div className="space-y-4">
-      <div className="w-full h-full min-h-[300px] flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner relative">
+    <TooltipProvider>
+      <div className="space-y-4">
+        {/* Body Shape Header */}
+        <Card className="p-4 bg-white/80 backdrop-blur-sm">
+          <div className="text-center space-y-2">
+            <div className="flex items-center justify-center gap-2">
+              <h3 className="text-lg font-semibold text-foreground">
+                Your Body Shape: <span className="text-primary">{formattedBodyType}</span>
+              </h3>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="sm" className="p-1 h-auto">
+                    <Info className="h-4 w-4 text-muted-foreground hover:text-foreground" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom" className="max-w-xs">
+                  <div className="space-y-2">
+                    <p className="font-medium">Body Shape Guide:</p>
+                    {Object.entries(allBodyShapeInfo).map(([shape, description]) => (
+                      <div key={shape} className="text-sm">
+                        <span className="font-medium">{shape}:</span> {description}
+                      </div>
+                    ))}
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+            <p className="text-sm text-muted-foreground">{bodyTypeDescription}</p>
+          </div>
+        </Card>
+
+        <div className="w-full h-full min-h-[300px] flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner relative">
         <img 
           src={selectedAvatar} 
           alt="Body shape silhouette - front view"
@@ -135,6 +186,7 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
         </Card>
       )}
     </div>
+    </TooltipProvider>
   );
 };
 
