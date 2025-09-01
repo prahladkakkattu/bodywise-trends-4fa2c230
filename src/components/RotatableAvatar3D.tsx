@@ -61,16 +61,16 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
     <TooltipProvider>
       <div className="space-y-4">
         {/* Body Shape Header */}
-        <Card className="p-4 bg-white/80 backdrop-blur-sm">
-          <div className="text-center space-y-2">
-            <div className="flex items-center justify-center gap-2">
-              <h3 className="text-lg font-semibold text-foreground">
-                Your Body Shape: <span className="text-primary">{formattedBodyType}</span>
+        <Card className="p-3 bg-white/80 backdrop-blur-sm">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-medium text-foreground">
+                Your Body Shape: <span className="text-primary font-semibold">{formattedBodyType}</span>
               </h3>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button variant="ghost" size="sm" className="p-1 h-auto">
-                    <Info className="h-4 w-4 text-muted-foreground hover:text-foreground" />
+                    <Info className="h-3 w-3 text-muted-foreground hover:text-foreground" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="bottom" className="max-w-xs">
@@ -85,7 +85,7 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
                 </TooltipContent>
               </Tooltip>
             </div>
-            <p className="text-sm text-muted-foreground">{bodyTypeDescription}</p>
+            <p className="text-xs text-muted-foreground">{bodyTypeDescription}</p>
           </div>
         </Card>
 
