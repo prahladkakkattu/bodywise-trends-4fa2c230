@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -11,13 +10,14 @@ import { Ruler } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
 import RotatableAvatar3D from "./RotatableAvatar3D";
-
 interface MeasurementFormProps {
   onBodyTypeChange: (bodyType: BodyType, measurements: BodyMeasurement) => void;
   isLoading: boolean;
 }
-
-const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) => {
+const MeasurementForm = ({
+  onBodyTypeChange,
+  isLoading
+}: MeasurementFormProps) => {
   const [unit, setUnit] = useState<"inches" | "cm">("inches");
   const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
@@ -26,7 +26,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     hips: 38,
     shoulders: 40,
     height: 65,
-    weight: 140,
+    weight: 140
   });
 
   // Conversion functions
@@ -34,7 +34,6 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
   const cmToInches = (cm: number) => Math.round(cm / 2.54);
   const lbsToKg = (lbs: number) => Math.round(lbs * 0.453592);
   const kgToLbs = (kg: number) => Math.round(kg / 0.453592);
-
   const getDisplayValue = (value: number, field: string) => {
     if (unit === "cm") {
       if (field === "weight") return lbsToKg(value);
@@ -42,7 +41,6 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     }
     return value;
   };
-
   const getStoredValue = (value: number, field: string) => {
     if (unit === "cm") {
       if (field === "weight") return kgToLbs(value);
@@ -50,22 +48,18 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
     }
     return value;
   };
-
   const handleChange = (name: keyof BodyMeasurement, value: number) => {
     setMeasurements(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const bodyType = determineBodyType(measurements);
     onBodyTypeChange(bodyType, measurements);
   };
-
-  return (
-    <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
+  return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
       <Card className="flex-1 max-w-none lg:max-w-xl p-4 lg:p-6 shadow-md">
         <div className="flex items-center gap-2 mb-6">
@@ -75,7 +69,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           </h2>
         </div>
       
-      <Tabs value={unit} onValueChange={(value) => setUnit(value as "inches" | "cm")} className="mb-4">
+      <Tabs value={unit} onValueChange={value => setUnit(value as "inches" | "cm")} className="mb-4">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="inches">Inches</TabsTrigger>
           <TabsTrigger value="cm">CM</TabsTrigger>
@@ -94,15 +88,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}
                 </span>
               </div>
-              <Slider
-                id="bust"
-                value={[getDisplayValue(measurements.bust, "bust")]}
-                min={unit === "inches" ? 20 : 51}
-                max={unit === "inches" ? 60 : 152}
-                step={0.5}
-                onValueChange={(value) => handleChange("bust", getStoredValue(value[0], "bust"))}
-                className="py-4"
-              />
+              <Slider id="bust" value={[getDisplayValue(measurements.bust, "bust")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("bust", getStoredValue(value[0], "bust"))} className="py-4" />
             </div>
             
             <div className="space-y-2">
@@ -114,15 +100,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}
                 </span>
               </div>
-              <Slider
-                id="waist"
-                value={[getDisplayValue(measurements.waist, "waist")]}
-                min={unit === "inches" ? 20 : 51}
-                max={unit === "inches" ? 60 : 152}
-                step={0.5}
-                onValueChange={(value) => handleChange("waist", getStoredValue(value[0], "waist"))}
-                className="py-4"
-              />
+              <Slider id="waist" value={[getDisplayValue(measurements.waist, "waist")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("waist", getStoredValue(value[0], "waist"))} className="py-4" />
             </div>
             
             <div className="space-y-2">
@@ -134,15 +112,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}
                 </span>
               </div>
-              <Slider
-                id="hips"
-                value={[getDisplayValue(measurements.hips, "hips")]}
-                min={unit === "inches" ? 20 : 51}
-                max={unit === "inches" ? 60 : 152}
-                step={0.5}
-                onValueChange={(value) => handleChange("hips", getStoredValue(value[0], "hips"))}
-                className="py-4"
-              />
+              <Slider id="hips" value={[getDisplayValue(measurements.hips, "hips")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("hips", getStoredValue(value[0], "hips"))} className="py-4" />
             </div>
             
             <div className="space-y-2">
@@ -154,15 +124,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}
                 </span>
               </div>
-              <Slider
-                id="shoulders"
-                value={[getDisplayValue(measurements.shoulders, "shoulders")]}
-                min={unit === "inches" ? 20 : 51}
-                max={unit === "inches" ? 60 : 152}
-                step={0.5}
-                onValueChange={(value) => handleChange("shoulders", getStoredValue(value[0], "shoulders"))}
-                className="py-4"
-              />
+              <Slider id="shoulders" value={[getDisplayValue(measurements.shoulders, "shoulders")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("shoulders", getStoredValue(value[0], "shoulders"))} className="py-4" />
             </div>
             
           </div>
@@ -177,15 +139,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   {getDisplayValue(measurements.weight, "weight")}{unit === "inches" ? 'lbs' : 'kg'}
                 </span>
               </div>
-              <Slider
-                id="weight"
-                value={[getDisplayValue(measurements.weight, "weight")]}
-                min={unit === "inches" ? 80 : 36}
-                max={unit === "inches" ? 300 : 136}
-                step={1}
-                onValueChange={(value) => handleChange("weight", getStoredValue(value[0], "weight"))}
-                className="py-2"
-              />
+              <Slider id="weight" value={[getDisplayValue(measurements.weight, "weight")]} min={unit === "inches" ? 80 : 36} max={unit === "inches" ? 300 : 136} step={1} onValueChange={value => handleChange("weight", getStoredValue(value[0], "weight"))} className="py-2" />
             </div>
             
             <div className="space-y-2">
@@ -197,15 +151,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                   {unit === "inches" ? `${measurements.height}"` : `${inchesToCm(measurements.height)}cm`}
                 </span>
               </div>
-              <Slider
-                id="height"
-                value={[unit === "inches" ? measurements.height : inchesToCm(measurements.height)]}
-                min={unit === "inches" ? 48 : 122}
-                max={unit === "inches" ? 78 : 198}
-                step={1}
-                onValueChange={(value) => handleChange("height", unit === "inches" ? value[0] : cmToInches(value[0]))}
-                className="py-2"
-              />
+              <Slider id="height" value={[unit === "inches" ? measurements.height : inchesToCm(measurements.height)]} min={unit === "inches" ? 48 : 122} max={unit === "inches" ? 78 : 198} step={1} onValueChange={value => handleChange("height", unit === "inches" ? value[0] : cmToInches(value[0]))} className="py-2" />
             </div>
           </div>
         </div>
@@ -223,8 +169,10 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
         <div className="mb-4">
-          <h3 className="text-lg font-semibold text-brand-600 mb-2">Your Body Shape</h3>
-          <p className="text-sm text-muted-foreground">Interactive 3D visualization - rotate to see different views</p>
+          <h3 className="text-lg font-semibold text-brand-600 mb-2">
+        </h3>
+          <p className="text-sm text-muted-foreground">
+        </p>
         </div>
         <div className="flex gap-4">
           <div className="h-64 lg:h-96 flex-1">
@@ -252,8 +200,6 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default MeasurementForm;
