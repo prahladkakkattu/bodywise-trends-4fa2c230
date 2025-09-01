@@ -16,11 +16,11 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
 
   const avatarOptions = [
     { src: "/lovable-uploads/fa789694-790e-4255-85c2-2d1984f709e2.png", label: "Standard" },
-    { src: "/lovable-uploads/bust-large.png", label: "Curvy" },
-    { src: "/lovable-uploads/bust-small.png", label: "Petite" },
-    { src: "/lovable-uploads/86e13313-29a0-40c8-95b5-844fa2119cf6.png", label: "Athletic" },
-    { src: "/lovable-uploads/33ebd579-7d29-4f90-815d-e29ef0d3ff34.png", label: "Tall" },
-    { src: "/lovable-uploads/5bb3e4fc-3a75-419e-a173-8ebc2607d65e.png", label: "Plus Size" }
+    { src: "/lovable-uploads/86e13313-29a0-40c8-95b5-844fa2119cf6.png", label: "Curvy" },
+    { src: "/lovable-uploads/33ebd579-7d29-4f90-815d-e29ef0d3ff34.png", label: "Petite" },
+    { src: "/lovable-uploads/5bb3e4fc-3a75-419e-a173-8ebc2607d65e.png", label: "Athletic" },
+    { src: "/lovable-uploads/2cd58b40-2fc6-4a4c-8b33-f3c9929017bf.png", label: "Tall" },
+    { src: "/lovable-uploads/31e65978-e2f8-432f-a950-8587ae4d1309.png", label: "Plus Size" }
   ];
 
   const handleAvatarFeedback = (isCorrect: boolean) => {
@@ -43,7 +43,7 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
         <img 
           src={selectedAvatar} 
           alt="Body shape silhouette - front view"
-          className="h-full max-h-60 lg:max-h-80 w-auto object-contain transition-all duration-300 relative z-10"
+          className="h-full max-h-72 lg:max-h-96 w-auto object-contain transition-all duration-300 relative z-10 scale-110"
         />
       
       {/* Highlighting overlays */}
@@ -116,7 +116,7 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
                   <img
                     src={avatar.src}
                     alt={avatar.label}
-                    className="w-12 h-16 object-contain"
+                    className="w-16 h-20 object-contain"
                   />
                   <span className="text-xs text-muted-foreground">{avatar.label}</span>
                 </button>
