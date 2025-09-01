@@ -83,100 +83,105 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
       </Tabs>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="space-y-6">
+          <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="bust" className="text-sm font-medium">
-                Bust ({unit === "inches" ? "inches" : "cm"})
-              </Label>
-              <div className="flex items-center">
-                <Input
-                  id="bust"
-                  type="number"
-                  className="measurement-input"
-                  value={getDisplayValue(measurements.bust, "bust")}
-                  onChange={(e) => handleChange("bust", getStoredValue(Number(e.target.value), "bust"))}
-                  onFocus={() => setActiveMeasurement("bust")}
-                  onBlur={() => setActiveMeasurement(null)}
-                  min={unit === "inches" ? 20 : 51}
-                  max={unit === "inches" ? 60 : 152}
-                />
+              <div className="flex justify-between">
+                <Label htmlFor="bust" className="text-sm font-medium">
+                  Bust ({unit === "inches" ? "inches" : "cm"})
+                </Label>
+                <span className="text-sm text-muted-foreground">
+                  {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}
+                </span>
               </div>
+              <Slider
+                id="bust"
+                value={[getDisplayValue(measurements.bust, "bust")]}
+                min={unit === "inches" ? 20 : 51}
+                max={unit === "inches" ? 60 : 152}
+                step={0.5}
+                onValueChange={(value) => handleChange("bust", getStoredValue(value[0], "bust"))}
+                className="py-4"
+              />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="waist" className="text-sm font-medium">
-                Waist ({unit === "inches" ? "inches" : "cm"})
-              </Label>
-              <div className="flex items-center">
-                <Input
-                  id="waist"
-                  type="number"
-                  className="measurement-input"
-                  value={getDisplayValue(measurements.waist, "waist")}
-                  onChange={(e) => handleChange("waist", getStoredValue(Number(e.target.value), "waist"))}
-                  onFocus={() => setActiveMeasurement("waist")}
-                  onBlur={() => setActiveMeasurement(null)}
-                  min={unit === "inches" ? 20 : 51}
-                  max={unit === "inches" ? 60 : 152}
-                />
+              <div className="flex justify-between">
+                <Label htmlFor="waist" className="text-sm font-medium">
+                  Waist ({unit === "inches" ? "inches" : "cm"})
+                </Label>
+                <span className="text-sm text-muted-foreground">
+                  {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}
+                </span>
               </div>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="hips" className="text-sm font-medium">
-                Hips ({unit === "inches" ? "inches" : "cm"})
-              </Label>
-              <div className="flex items-center">
-                <Input
-                  id="hips"
-                  type="number"
-                  className="measurement-input"
-                  value={getDisplayValue(measurements.hips, "hips")}
-                  onChange={(e) => handleChange("hips", getStoredValue(Number(e.target.value), "hips"))}
-                  onFocus={() => setActiveMeasurement("hips")}
-                  onBlur={() => setActiveMeasurement(null)}
-                  min={unit === "inches" ? 20 : 51}
-                  max={unit === "inches" ? 60 : 152}
-                />
-              </div>
+              <Slider
+                id="waist"
+                value={[getDisplayValue(measurements.waist, "waist")]}
+                min={unit === "inches" ? 20 : 51}
+                max={unit === "inches" ? 60 : 152}
+                step={0.5}
+                onValueChange={(value) => handleChange("waist", getStoredValue(value[0], "waist"))}
+                className="py-4"
+              />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="shoulders" className="text-sm font-medium">
-                Shoulders ({unit === "inches" ? "inches" : "cm"})
-              </Label>
-              <div className="flex items-center">
-                <Input
-                  id="shoulders"
-                  type="number"
-                  className="measurement-input"
-                  value={getDisplayValue(measurements.shoulders, "shoulders")}
-                  onChange={(e) => handleChange("shoulders", getStoredValue(Number(e.target.value), "shoulders"))}
-                  onFocus={() => setActiveMeasurement("shoulders")}
-                  onBlur={() => setActiveMeasurement(null)}
-                  min={unit === "inches" ? 20 : 51}
-                  max={unit === "inches" ? 60 : 152}
-                />
+              <div className="flex justify-between">
+                <Label htmlFor="hips" className="text-sm font-medium">
+                  Hips ({unit === "inches" ? "inches" : "cm"})
+                </Label>
+                <span className="text-sm text-muted-foreground">
+                  {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}
+                </span>
               </div>
+              <Slider
+                id="hips"
+                value={[getDisplayValue(measurements.hips, "hips")]}
+                min={unit === "inches" ? 20 : 51}
+                max={unit === "inches" ? 60 : 152}
+                step={0.5}
+                onValueChange={(value) => handleChange("hips", getStoredValue(value[0], "hips"))}
+                className="py-4"
+              />
             </div>
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="weight" className="text-sm font-medium">
-              Weight ({unit === "inches" ? "lbs" : "kg"})
-            </Label>
-            <div className="flex items-center">
-              <Input
+            
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <Label htmlFor="shoulders" className="text-sm font-medium">
+                  Shoulders ({unit === "inches" ? "inches" : "cm"})
+                </Label>
+                <span className="text-sm text-muted-foreground">
+                  {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}
+                </span>
+              </div>
+              <Slider
+                id="shoulders"
+                value={[getDisplayValue(measurements.shoulders, "shoulders")]}
+                min={unit === "inches" ? 20 : 51}
+                max={unit === "inches" ? 60 : 152}
+                step={0.5}
+                onValueChange={(value) => handleChange("shoulders", getStoredValue(value[0], "shoulders"))}
+                className="py-4"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <Label htmlFor="weight" className="text-sm font-medium">
+                  Weight ({unit === "inches" ? "lbs" : "kg"})
+                </Label>
+                <span className="text-sm text-muted-foreground">
+                  {getDisplayValue(measurements.weight, "weight")}{unit === "inches" ? 'lbs' : 'kg'}
+                </span>
+              </div>
+              <Slider
                 id="weight"
-                type="number"
-                className="measurement-input"
-                value={getDisplayValue(measurements.weight, "weight")}
-                onChange={(e) => handleChange("weight", getStoredValue(Number(e.target.value), "weight"))}
+                value={[getDisplayValue(measurements.weight, "weight")]}
                 min={unit === "inches" ? 80 : 36}
                 max={unit === "inches" ? 300 : 136}
+                step={1}
+                onValueChange={(value) => handleChange("weight", getStoredValue(value[0], "weight"))}
+                className="py-4"
               />
             </div>
           </div>
