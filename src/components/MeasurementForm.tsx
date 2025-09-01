@@ -6,11 +6,10 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { BodyMeasurement, BodyType } from "@/types";
-import { determineBodyType } from "@/utils/bodyTypeUtils";
 import { Ruler } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
 import RotatableAvatar3D from "./RotatableAvatar3D";
+import BodyShapeSelection from "./BodyShapeSelection";
 
 interface MeasurementFormProps {
   onBodyTypeChange: (bodyType: BodyType, measurements: BodyMeasurement) => void;
@@ -20,6 +19,7 @@ interface MeasurementFormProps {
 const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) => {
   const [unit, setUnit] = useState<"inches" | "cm">("inches");
   const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
+  const [showBodyShapeSelection, setShowBodyShapeSelection] = useState(false);
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
     bust: 36,
     waist: 28,
@@ -60,9 +60,33 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const bodyType = determineBodyType(measurements);
-    onBodyTypeChange(bodyType, measurements);
+    setShowBodyShapeSelection(true);
   };
+
+  const handleBackToMeasurements = () => {
+    setShowBodyShapeSelection(false);
+  };
+
+  if (showBodyShapeSelection) {
+    return (
+      <div className="max-w-4xl w-full">
+        <div className="mb-4">
+          <Button
+            variant="outline" 
+            onClick={handleBackToMeasurements}
+            className="mb-4"
+          >
+            ← Back to Measurements
+          </Button>
+        </div>
+        <BodyShapeSelection
+          measurements={measurements}
+          onBodyTypeSelect={onBodyTypeChange}
+          isLoading={isLoading}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
@@ -203,7 +227,7 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
         </div>
         
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "Analyzing..." : "Find My Style"}
+          {isLoading ? "Analyzing..." : "Continue to Body Shape Selection"}
         </Button>
         
         <p className="text-xs text-center text-muted-foreground">
