@@ -36,6 +36,11 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
     setShowAlternatives(false);
   };
 
+  const handleCancel = () => {
+    setShowAlternatives(false);
+    setShowFeedback(true);
+  };
+
   return (
     <div className="space-y-4">
       <div className="w-full h-full min-h-[300px] flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner relative">
@@ -110,7 +115,11 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
                 <button
                   key={index}
                   onClick={() => selectAvatar(avatar.src)}
-                  className="flex flex-col items-center gap-1 p-2 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors"
+                  className={`flex flex-col items-center gap-1 p-2 rounded-lg border transition-colors ${
+                    selectedAvatar === avatar.src 
+                      ? 'border-primary bg-primary/10 ring-2 ring-primary/20' 
+                      : 'border-border hover:border-primary hover:bg-primary/5'
+                  }`}
                 >
                   <img
                     src={avatar.src}
@@ -122,7 +131,7 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
               ))}
             </div>
             <Button
-              onClick={() => setShowAlternatives(false)}
+              onClick={handleCancel}
               variant="ghost"
               size="sm"
               className="w-full mt-2"
