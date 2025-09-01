@@ -11,16 +11,15 @@ interface RotatableAvatar3DProps {
 
 const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3DProps) => {
   const [showFeedback, setShowFeedback] = useState(true);
-  const [selectedAvatar, setSelectedAvatar] = useState("/lovable-uploads/fa789694-790e-4255-85c2-2d1984f709e2.png");
+  const [selectedAvatar, setSelectedAvatar] = useState("/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png");
   const [showAlternatives, setShowAlternatives] = useState(false);
 
   const avatarOptions = [
-    { src: "/lovable-uploads/fa789694-790e-4255-85c2-2d1984f709e2.png", label: "Standard" },
-    { src: "/lovable-uploads/bust-large.png", label: "Curvy" },
-    { src: "/lovable-uploads/bust-small.png", label: "Petite" },
-    { src: "/lovable-uploads/86e13313-29a0-40c8-95b5-844fa2119cf6.png", label: "Athletic" },
-    { src: "/lovable-uploads/33ebd579-7d29-4f90-815d-e29ef0d3ff34.png", label: "Tall" },
-    { src: "/lovable-uploads/5bb3e4fc-3a75-419e-a173-8ebc2607d65e.png", label: "Plus Size" }
+    { src: "/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png", label: "Standard" },
+    { src: "/lovable-uploads/2872d137-9eeb-4a2b-aea9-e9882bf555f8.png", label: "Curvy" },
+    { src: "/lovable-uploads/afcc7e0c-90ec-47a7-919d-32633298ee26.png", label: "Petite" },
+    { src: "/lovable-uploads/8643f61b-2202-4f5d-a1f9-7eae40132ed3.png", label: "Athletic" },
+    { src: "/lovable-uploads/23f742dd-83aa-4a29-bd7a-5f6a14ccddfa.png", label: "Tall" }
   ];
 
   const handleAvatarFeedback = (isCorrect: boolean) => {
