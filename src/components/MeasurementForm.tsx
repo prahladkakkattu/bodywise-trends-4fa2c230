@@ -165,12 +165,15 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
               />
             </div>
             
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <div className="flex justify-between">
                 <Label htmlFor="weight" className="text-sm font-medium">
                   Weight ({unit === "inches" ? "lbs" : "kg"})
                 </Label>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-muted-foreground font-semibold">
                   {getDisplayValue(measurements.weight, "weight")}{unit === "inches" ? 'lbs' : 'kg'}
                 </span>
               </div>
@@ -181,29 +184,29 @@ const MeasurementForm = ({ onBodyTypeChange, isLoading }: MeasurementFormProps) 
                 max={unit === "inches" ? 300 : 136}
                 step={1}
                 onValueChange={(value) => handleChange("weight", getStoredValue(value[0], "weight"))}
-                className="py-4"
+                className="py-2"
               />
             </div>
-          </div>
-          
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <Label htmlFor="height" className="text-sm font-medium">
-                Height ({unit === "inches" ? "inches" : "cm"})
-              </Label>
-              <span className="text-sm text-muted-foreground">
-                {unit === "inches" ? `${measurements.height}"` : `${inchesToCm(measurements.height)}cm`}
-              </span>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <Label htmlFor="height" className="text-sm font-medium">
+                  Height ({unit === "inches" ? "inches" : "cm"})
+                </Label>
+                <span className="text-sm text-muted-foreground font-semibold">
+                  {unit === "inches" ? `${measurements.height}"` : `${inchesToCm(measurements.height)}cm`}
+                </span>
+              </div>
+              <Slider
+                id="height"
+                value={[unit === "inches" ? measurements.height : inchesToCm(measurements.height)]}
+                min={unit === "inches" ? 48 : 122}
+                max={unit === "inches" ? 78 : 198}
+                step={1}
+                onValueChange={(value) => handleChange("height", unit === "inches" ? value[0] : cmToInches(value[0]))}
+                className="py-2"
+              />
             </div>
-            <Slider
-              id="height"
-              value={[unit === "inches" ? measurements.height : inchesToCm(measurements.height)]}
-              min={unit === "inches" ? 48 : 122}
-              max={unit === "inches" ? 78 : 198}
-              step={1}
-              onValueChange={(value) => handleChange("height", unit === "inches" ? value[0] : cmToInches(value[0]))}
-              className="py-4"
-            />
           </div>
         </div>
         
