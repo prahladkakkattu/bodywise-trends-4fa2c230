@@ -130,7 +130,7 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
       {/* Feedback Section */}
       <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
         <div className="text-center space-y-3">
-          <p className="text-sm font-medium text-foreground">We've made our best prediction, but here are some closely related options you might also identify with.</p>
+          <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
           <div className="flex gap-2 justify-center">
             <Button
               onClick={() => handleAvatarFeedback(true)}
