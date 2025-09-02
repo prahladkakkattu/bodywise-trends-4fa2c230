@@ -68,23 +68,24 @@ const RotatableAvatar3D = ({ measurements, activeMeasurement }: RotatableAvatar3
                 <h3 className="text-sm font-medium text-foreground">
                   Your Body Shape: <span className="text-primary font-semibold">{formattedBodyType}</span>
                 </h3>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" className="p-1 h-auto hover:bg-primary/20">
-                      <Info className="h-3 w-3 text-primary/70 hover:text-primary" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom" className="max-w-xs">
-                    <div className="space-y-2">
-                      <p className="font-medium">Body Shape Guide:</p>
-                      {Object.entries(allBodyShapeInfo).map(([shape, description]) => (
-                        <div key={shape} className="text-sm">
-                          <span className="font-medium">{shape}:</span> {description}
-                        </div>
-                      ))}
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
+                 <Tooltip>
+                   <TooltipTrigger asChild>
+                     <Button variant="ghost" size="sm" className="p-1 h-auto hover:bg-primary/20">
+                       <Info className="h-3 w-3 text-primary/70 hover:text-primary" />
+                     </Button>
+                   </TooltipTrigger>
+                   <TooltipContent side="bottom" className="max-w-md p-4">
+                     <div className="space-y-3">
+                       <p className="font-semibold text-base border-b pb-2">All Body Shape Types:</p>
+                       {Object.entries(allBodyShapeInfo).map(([shape, description]) => (
+                         <div key={shape} className="space-y-1">
+                           <span className="font-medium text-primary text-sm block">{shape}</span>
+                           <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+                         </div>
+                       ))}
+                     </div>
+                   </TooltipContent>
+                 </Tooltip>
               </div>
             </div>
             <p className="text-sm text-muted-foreground bg-background/50 p-2 rounded-md border-l-2 border-primary/30">
