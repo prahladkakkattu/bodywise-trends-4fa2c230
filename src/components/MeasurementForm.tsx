@@ -61,7 +61,7 @@ const MeasurementForm = ({
   };
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
-      <Card className="flex-1 max-w-none lg:max-w-xl p-4 lg:p-6 shadow-md">
+      <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
         <div className="flex items-center gap-2 mb-6">
           <Ruler className="h-5 w-5 text-brand-300" />
           <h2 className="text-2xl font-semibold">
