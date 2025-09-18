@@ -14,12 +14,13 @@ import AlternativeSizingOptions from "@/components/AlternativeSizingOptions";
 
 import LiveDemoDialog from "@/components/LiveDemoDialog";
 import ExplainerVideoSection from "@/components/ExplainerVideoSection";
+import GuidedBodyShapeFlow from "@/components/GuidedBodyShapeFlow";
 import { getHomepageProducts } from "@/data/mockClothingData";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useNavigate } from "react-router-dom";
 
 // Steps in the user flow
-type Step = "intro" | "alternative" | "measurement" | "results";
+type Step = "intro" | "alternative" | "measurement" | "results" | "guided";
 const Index = () => {
   const [bodyType, setBodyType] = useState<BodyType | null>(null);
   const [measurements, setMeasurements] = useState<BodyMeasurement | null>(null);
@@ -72,6 +73,22 @@ const Index = () => {
       setCurrentStep("results");
     }, 1000);
   };
+
+  const handleGuidedFlowComplete = (bodyType: BodyType, predictions: string[]) => {
+    setIsLoading(true);
+    
+    // Simulate processing delay
+    setTimeout(() => {
+      setBodyType(bodyType);
+      setIsLoading(false);
+      setCurrentStep("results");
+      toast({
+        title: "Body Shape Prediction Complete",
+        description: `Great! We've identified your body shape as ${bodyType.replace('-', ' ')}`,
+        duration: 5000
+      });
+    }, 1000);
+  };
   const handleProductClick = (productId: string) => {
     navigate(`/product/${productId}`);
   };
@@ -117,9 +134,9 @@ const Index = () => {
                       variant="secondary" 
                       size="lg" 
                       className="px-8 py-4 text-lg bg-white/95 text-fashion-teal hover:bg-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                      onClick={() => setCurrentStep("alternative")}
+                      onClick={() => setCurrentStep("guided")}
                     >
-                      Not sure about measurements?
+                      I don't know my measurements
                     </Button>
                   </div>
                 </div>
@@ -171,7 +188,7 @@ const Index = () => {
             </section>
 
             {/* Hero Banner Carousel */}
-            <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("alternative")} />
+            <HeroBannerCarousel onGetStarted={() => setCurrentStep("measurement")} onNoMeasurements={() => setCurrentStep("guided")} />
 
             {/* Explainer Video Section */}
             <ExplainerVideoSection />
@@ -334,6 +351,13 @@ const Index = () => {
             <div className="flex justify-center">
               <MeasurementForm onBodyTypeChange={handleBodyTypeChange} isLoading={isLoading} />
             </div>
+          </div>;
+      case "guided":
+        return <div className="max-w-5xl mx-auto mt-8 px-4">
+            <GuidedBodyShapeFlow 
+              onComplete={handleGuidedFlowComplete} 
+              onBack={() => setCurrentStep("intro")} 
+            />
           </div>;
       case "results":
         return <div className="max-w-5xl mx-auto mt-8 px-4">
