@@ -19,7 +19,7 @@ interface QuizAnswers {
   braSize: string | null;
   height: number | null;
   heightUnit: "cm" | "inches";
-  thighBuild: "thin" | "fuller" | null;
+  age: number | null;
 }
 const braToCategory = (braSize: string): "small" | "medium" | "full" => {
   const size = braSize.slice(-1);
@@ -35,7 +35,7 @@ const predictBodyShapes = (answers: QuizAnswers): {
     shouldersVsHips,
     waistDefinition,
     braSize,
-    thighBuild
+    age
   } = answers;
 
   // Basic shape determination
@@ -79,7 +79,7 @@ const GuidedBodyShapeFlow = ({
     braSize: null,
     height: null,
     heightUnit: "cm",
-    thighBuild: null
+    age: null
   });
   const [selectedVariation, setSelectedVariation] = useState<string | null>(null);
   const [predictions, setPredictions] = useState<{
@@ -114,7 +114,7 @@ const GuidedBodyShapeFlow = ({
       case 3:
         return answers.braSize !== null;
       case 4:
-        return answers.height !== null && answers.thighBuild !== null;
+        return answers.height !== null && answers.age !== null;
       default:
         return false;
     }
@@ -239,7 +239,7 @@ const GuidedBodyShapeFlow = ({
 
       {currentStep === 4 && <div className="space-y-6">
           <div>
-            <h3 className="text-xl font-semibold text-fashion-teal mb-2">Tell us about your height and thigh build</h3>
+            <h3 className="text-xl font-semibold text-fashion-teal mb-2">Tell us about your height and age</h3>
             <p className="text-fashion-teal/70 mb-6">These final details help create your complete profile.</p>
           </div>
           
@@ -267,20 +267,17 @@ const GuidedBodyShapeFlow = ({
             </div>
 
             <div>
-              <Label className="text-sm font-medium mb-3 block">Thigh build</Label>
-              <RadioGroup value={answers.thighBuild || ""} onValueChange={value => setAnswers(prev => ({
-            ...prev,
-            thighBuild: value as any
-          }))}>
-                <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-fashion-beige/20">
-                  <RadioGroupItem value="thin" id="thin" />
-                  <Label htmlFor="thin" className="flex-1 cursor-pointer">Thin to medium thighs</Label>
-                </div>
-                <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-fashion-beige/20">
-                  <RadioGroupItem value="fuller" id="fuller-thighs" />
-                  <Label htmlFor="fuller-thighs" className="flex-1 cursor-pointer">Fuller thighs</Label>
-                </div>
-              </RadioGroup>
+              <Label className="text-sm font-medium mb-2 block">Age</Label>
+              <Input 
+                type="number" 
+                placeholder="25" 
+                value={answers.age || ""} 
+                onChange={e => setAnswers(prev => ({
+                  ...prev,
+                  age: Number(e.target.value)
+                }))} 
+                className="w-full" 
+              />
             </div>
           </div>
         </div>}
