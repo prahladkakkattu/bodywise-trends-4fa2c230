@@ -185,16 +185,6 @@ const MeasurementForm = ({
 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
-        {!showAvatar && (
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold text-brand-600 mb-2">
-              Preview
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Adjust measurements to see changes
-            </p>
-          </div>
-        )}
         {showAvatar ? (
           <div className="space-y-4 w-full">
             <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
@@ -204,21 +194,6 @@ const MeasurementForm = ({
                 className="max-h-[500px] w-auto object-contain"
               />
             </div>
-            
-            {/* Body Type Description */}
-            {currentBodyType && currentBodyType !== "unknown" && (
-              <Card className="p-4 bg-brand-100/50">
-                <h3 className="text-lg font-semibold mb-2">
-                  <span className="text-brand-600">Your Body Shape:</span>{" "}
-                  <span className="text-brand-300 font-bold">
-                    {currentBodyType.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
-                  </span>
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {getBodyTypeDescription(currentBodyType)}
-                </p>
-              </Card>
-            )}
             
             <div className="flex gap-3">
               <Button 
