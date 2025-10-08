@@ -17,7 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
-import avatarModel3D from "@/assets/3d-avatar-model.png";
+import avatarModel3D from "@/assets/3d-avatar-body.png";
 import RotatableAvatar3D from "./RotatableAvatar3D";
 interface MeasurementFormProps {
   onBodyTypeChange: (bodyType: BodyType, measurements: BodyMeasurement) => void;
@@ -364,7 +364,7 @@ const MeasurementForm = ({
               <div className="w-2 h-2 bg-brand-400 rounded-full animate-[bounce_1s_ease-in-out_0.4s_infinite]"></div>
             </div>
           </div>
-        ) : showAvatar ? <div className="space-y-4 w-full">
+        ) : showAvatar ? <div className="space-y-4 w-full min-h-[600px]">
             {/* 3D Avatar - First to appear */}
             <div className={`flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6 transition-all duration-500 ${showAvatarImage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <img src={avatarModel3D} alt="3D Avatar Model" className="max-h-[500px] w-auto object-contain" />
