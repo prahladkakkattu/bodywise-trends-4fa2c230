@@ -250,13 +250,17 @@ const MeasurementForm = ({
         )}
       </form>
       
-      {/* Measurement Guide Button */}
+      {/* Privacy Text */}
+      <p className="text-xs text-center text-muted-foreground mt-4">
+        Your measurements are only used to determine your body shape and are never stored.
+      </p>
+      
+      {/* Measurement Guide */}
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="w-full mt-4" size="sm">
-            <HelpCircle className="h-4 w-4 mr-2" />
+          <button className="w-full text-center text-sm text-brand-500 hover:text-brand-600 underline underline-offset-2 transition-colors">
             How to Take Measurements
-          </Button>
+          </button>
         </DialogTrigger>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
@@ -323,12 +327,6 @@ const MeasurementForm = ({
                 <Ruler className="text-brand-300 h-5 w-5 mt-0.5 shrink-0" />
                 <p className="text-sm font-medium">Tip: For even better results, take photos of yourself from the front and side to help determine your overall body shape.</p>
               </div>
-            </div>
-            
-            <div className="pt-4 border-t">
-              <p className="text-xs text-center text-muted-foreground">
-                Your measurements are only used to determine your body shape and are never stored.
-              </p>
             </div>
           </div>
         </DialogContent>
