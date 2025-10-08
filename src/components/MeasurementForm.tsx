@@ -137,7 +137,7 @@ const MeasurementForm = ({
       setTimeout(() => setShowFeedback(true), 3900);
     }, 3000);
   };
-  return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
+  return <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
       <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
       {/* Measurement Guide */}
