@@ -63,13 +63,14 @@ const MeasurementForm = ({
   };
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
-      <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
-        <div className="flex items-center gap-2 mb-6">
-          <Ruler className="h-5 w-5 text-brand-300" />
-          <h2 className="text-2xl font-semibold">
-            <span className="text-brand-600">Your</span> <span className="text-brand-300">Measurements</span>
-          </h2>
-        </div>
+      {!showAvatar && (
+        <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
+          <div className="flex items-center gap-2 mb-6">
+            <Ruler className="h-5 w-5 text-brand-300" />
+            <h2 className="text-2xl font-semibold">
+              <span className="text-brand-600">Your</span> <span className="text-brand-300">Measurements</span>
+            </h2>
+          </div>
       
       <Tabs value={unit} onValueChange={value => setUnit(value as "inches" | "cm")} className="mb-4">
         <TabsList className="grid w-full grid-cols-2">
@@ -158,21 +159,20 @@ const MeasurementForm = ({
           </div>
         </div>
         
-        {!showAvatar && (
-          <Button 
-            type="button" 
-            className="w-full" 
-            onClick={() => setShowAvatar(true)}
-          >
-            Create Your 3D Avatar
-          </Button>
-        )}
+        <Button 
+          type="button" 
+          className="w-full" 
+          onClick={() => setShowAvatar(true)}
+        >
+          Create Your 3D Avatar
+        </Button>
         
         <p className="text-xs text-center text-muted-foreground">
           Your measurements are only used to determine your body shape and are never stored.
         </p>
       </form>
-      </Card>
+        </Card>
+      )}
 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
@@ -185,7 +185,7 @@ const MeasurementForm = ({
         </p>
         </div>
         {showAvatar ? (
-          <div className="space-y-4">
+          <div className="space-y-4 w-full">
             <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
               <img 
                 src={avatarModel3D} 
@@ -193,13 +193,22 @@ const MeasurementForm = ({
                 className="max-h-[500px] w-auto object-contain"
               />
             </div>
-            <Button 
-              onClick={handleSubmit} 
-              className="w-full" 
-              disabled={isLoading}
-            >
-              {isLoading ? "Analyzing..." : "Find My Style"}
-            </Button>
+            <div className="flex gap-3">
+              <Button 
+                variant="outline"
+                onClick={() => setShowAvatar(false)} 
+                className="flex-1"
+              >
+                Reset Measurements
+              </Button>
+              <Button 
+                onClick={handleSubmit} 
+                className="flex-1" 
+                disabled={isLoading}
+              >
+                {isLoading ? "Analyzing..." : "Find My Style"}
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="flex gap-4">
