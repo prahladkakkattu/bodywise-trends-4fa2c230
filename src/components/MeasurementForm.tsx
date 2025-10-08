@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { BodyMeasurement, BodyType } from "@/types";
 import { determineBodyType, getBodyTypeDescription } from "@/utils/bodyTypeUtils";
-import { Ruler } from "lucide-react";
+import { Ruler, CheckCircle, XCircle } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
 import avatarModel3D from "@/assets/3d-avatar-model.png";
@@ -23,6 +23,8 @@ const MeasurementForm = ({
   const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
   const [showAvatar, setShowAvatar] = useState(false);
   const [currentBodyType, setCurrentBodyType] = useState<BodyType | null>(null);
+  const [selectedAvatar, setSelectedAvatar] = useState("/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png");
+  const [showAlternatives, setShowAlternatives] = useState(false);
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
     bust: 36,
     waist: 28,
@@ -31,6 +33,23 @@ const MeasurementForm = ({
     height: 65,
     weight: 140
   });
+
+  const avatarOptions = [{
+    src: "/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png",
+    label: "Standard"
+  }, {
+    src: "/lovable-uploads/2872d137-9eeb-4a2b-aea9-e9882bf555f8.png",
+    label: "Curvy"
+  }, {
+    src: "/lovable-uploads/afcc7e0c-90ec-47a7-919d-32633298ee26.png",
+    label: "Petite"
+  }, {
+    src: "/lovable-uploads/8643f61b-2202-4f5d-a1f9-7eae40132ed3.png",
+    label: "Athletic"
+  }, {
+    src: "/lovable-uploads/23f742dd-83aa-4a29-bd7a-5f6a14ccddfa.png",
+    label: "Tall"
+  }];
 
   // Calculate body type when avatar is shown
   useEffect(() => {
@@ -69,6 +88,21 @@ const MeasurementForm = ({
     e.preventDefault();
     const bodyType = determineBodyType(measurements);
     onBodyTypeChange(bodyType, measurements);
+  };
+
+  const handleAvatarFeedback = (isCorrect: boolean) => {
+    if (!isCorrect) {
+      setShowAlternatives(true);
+    }
+  };
+
+  const selectAvatar = (avatarSrc: string) => {
+    setSelectedAvatar(avatarSrc);
+    setShowAlternatives(false);
+  };
+
+  const handleCancel = () => {
+    setShowAlternatives(false);
   };
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
@@ -213,7 +247,7 @@ const MeasurementForm = ({
             </div>
           </div> : <div className="space-y-4">
             <div className="h-64 lg:h-96 w-full">
-              <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
+              <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} selectedAvatar={selectedAvatar} />
             </div>
             
             {/* Measurement Legend - Below Avatar */}
@@ -235,6 +269,39 @@ const MeasurementForm = ({
                 <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
               </div>
             </div>
+
+            {/* Feedback Section */}
+            <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
+              <div className="text-center space-y-3">
+                <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
+                <div className="flex gap-2 justify-center">
+                  <Button onClick={() => handleAvatarFeedback(true)} variant="outline" size="sm" className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    Yes, looks right
+                  </Button>
+                  <Button onClick={() => handleAvatarFeedback(false)} variant="outline" size="sm" className="flex items-center gap-2">
+                    <XCircle className="h-4 w-4 text-orange-600" />
+                    Not quite right
+                  </Button>
+                </div>
+              </div>
+            </Card>
+
+            {/* Alternative Avatar Selection */}
+            {showAlternatives && <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
+              <div className="space-y-3">
+                <p className="text-sm font-medium text-center text-foreground">Choose a body shape that better represents you:</p>
+                <div className="grid grid-cols-3 gap-2">
+                  {avatarOptions.map((avatar, index) => <button key={index} onClick={() => selectAvatar(avatar.src)} className={`flex flex-col items-center gap-1 p-2 rounded-lg border transition-colors ${selectedAvatar === avatar.src ? 'border-primary bg-primary/10 ring-2 ring-primary/20' : 'border-border hover:border-primary hover:bg-primary/5'}`}>
+                    <img src={avatar.src} alt={avatar.label} className="w-12 h-16 object-contain" />
+                    <span className="text-xs text-muted-foreground">{avatar.label}</span>
+                  </button>)}
+                </div>
+                <Button onClick={handleCancel} variant="ghost" size="sm" className="w-full mt-2">
+                  Cancel
+                </Button>
+              </div>
+            </Card>}
           </div>}
       </div>
     </div>;
