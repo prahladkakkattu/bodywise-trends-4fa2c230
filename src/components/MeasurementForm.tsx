@@ -23,6 +23,10 @@ const MeasurementForm = ({
   const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
   const [showAvatar, setShowAvatar] = useState(false);
   const [isCreatingAvatar, setIsCreatingAvatar] = useState(false);
+  const [showAvatarImage, setShowAvatarImage] = useState(false);
+  const [showMeasurementLegend, setShowMeasurementLegend] = useState(false);
+  const [showBodyTypeInfo, setShowBodyTypeInfo] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
   const [currentBodyType, setCurrentBodyType] = useState<BodyType | null>(null);
   const [selectedAvatar, setSelectedAvatar] = useState("/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png");
   const [showAlternatives, setShowAlternatives] = useState(false);
@@ -108,9 +112,21 @@ const MeasurementForm = ({
 
   const handleCreateAvatar = () => {
     setIsCreatingAvatar(true);
+    // Reset animation states
+    setShowAvatarImage(false);
+    setShowMeasurementLegend(false);
+    setShowBodyTypeInfo(false);
+    setShowFeedback(false);
+    
     setTimeout(() => {
       setIsCreatingAvatar(false);
       setShowAvatar(true);
+      
+      // Stagger the animations
+      setTimeout(() => setShowAvatarImage(true), 100);
+      setTimeout(() => setShowMeasurementLegend(true), 500);
+      setTimeout(() => setShowBodyTypeInfo(true), 900);
+      setTimeout(() => setShowFeedback(true), 1300);
     }, 3000);
   };
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
@@ -263,32 +279,36 @@ const MeasurementForm = ({
             </div>
           </div>
         ) : showAvatar ? <div className="space-y-4 w-full">
-            <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
+            {/* 3D Avatar - First to appear */}
+            <div className={`flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6 transition-all duration-500 ${showAvatarImage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <img src={avatarModel3D} alt="3D Avatar Model" className="max-h-[500px] w-auto object-contain" />
             </div>
             
-            {/* Measurement Legend */}
-            <div className="flex flex-wrap justify-center gap-4 text-xs">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-0.5 bg-red-400 rounded"></div>
-                <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
+            {/* Measurement Legend - Second to appear */}
+            {showMeasurementLegend && (
+              <div className="flex flex-wrap justify-center gap-4 text-xs animate-fade-in">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-0.5 bg-red-400 rounded"></div>
+                  <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-0.5 bg-teal-400 rounded"></div>
+                  <span>Bust: {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-0.5 bg-blue-400 rounded"></div>
+                  <span>Waist: {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-0.5 bg-green-400 rounded"></div>
+                  <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-0.5 bg-teal-400 rounded"></div>
-                <span>Bust: {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-0.5 bg-blue-400 rounded"></div>
-                <span>Waist: {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-0.5 bg-green-400 rounded"></div>
-                <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
-              </div>
-            </div>
+            )}
             
-            {/* Body Type Description */}
-            {currentBodyType && currentBodyType !== "unknown" && <Card className="p-4 bg-brand-100/50">
+            {/* Body Type Description - Third to appear */}
+            {showBodyTypeInfo && currentBodyType && currentBodyType !== "unknown" && (
+              <Card className="p-4 bg-brand-100/50 animate-fade-in">
                 <h3 className="text-lg font-semibold mb-2">
                   <span className="text-brand-600">Your Body Shape:</span>{" "}
                   <span className="text-brand-300 font-bold">
@@ -298,24 +318,27 @@ const MeasurementForm = ({
                 <p className="text-sm text-muted-foreground">
                   {getBodyTypeDescription(currentBodyType)}
                 </p>
-              </Card>}
+              </Card>
+            )}
             
-            {/* Feedback Section */}
-            <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
-              <div className="text-center space-y-3">
-                <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
-                <div className="flex gap-2 justify-center">
-                  <Button onClick={() => handleAvatarFeedback(true)} variant="outline" size="sm" className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
-                    Yes, looks right
-                  </Button>
-                  <Button onClick={() => handleAvatarFeedback(false)} variant="outline" size="sm" className="flex items-center gap-2">
-                    <XCircle className="h-4 w-4 text-orange-600" />
-                    Not quite right
-                  </Button>
+            {/* Feedback Section - Fourth to appear */}
+            {showFeedback && (
+              <Card className="w-full p-4 bg-white/80 backdrop-blur-sm animate-fade-in">
+                <div className="text-center space-y-3">
+                  <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
+                  <div className="flex gap-2 justify-center">
+                    <Button onClick={() => handleAvatarFeedback(true)} variant="outline" size="sm" className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      Yes, looks right
+                    </Button>
+                    <Button onClick={() => handleAvatarFeedback(false)} variant="outline" size="sm" className="flex items-center gap-2">
+                      <XCircle className="h-4 w-4 text-orange-600" />
+                      Not quite right
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            )}
 
             {/* Alternative Avatar Selection */}
             {showAlternatives && <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
