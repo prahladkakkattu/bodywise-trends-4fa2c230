@@ -185,14 +185,16 @@ const MeasurementForm = ({
 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold text-brand-600 mb-2">
-            {showAvatar ? "Your 3D Avatar" : "Preview"}
-        </h3>
-          <p className="text-sm text-muted-foreground">
-            {showAvatar ? "Based on your measurements" : "Adjust measurements to see changes"}
-        </p>
-        </div>
+        {!showAvatar && (
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold text-brand-600 mb-2">
+              Preview
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Adjust measurements to see changes
+            </p>
+          </div>
+        )}
         {showAvatar ? (
           <div className="space-y-4 w-full">
             <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
