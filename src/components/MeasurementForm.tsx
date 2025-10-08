@@ -9,6 +9,7 @@ import { determineBodyType } from "@/utils/bodyTypeUtils";
 import { Ruler } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
+import avatarModel3D from "@/assets/3d-avatar-model.png";
 import RotatableAvatar3D from "./RotatableAvatar3D";
 interface MeasurementFormProps {
   onBodyTypeChange: (bodyType: BodyType, measurements: BodyMeasurement) => void;
@@ -20,6 +21,7 @@ const MeasurementForm = ({
 }: MeasurementFormProps) => {
   const [unit, setUnit] = useState<"inches" | "cm">("inches");
   const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
+  const [showAvatar, setShowAvatar] = useState(false);
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
     bust: 36,
     waist: 28,
@@ -156,9 +158,19 @@ const MeasurementForm = ({
           </div>
         </div>
         
-        <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "Analyzing..." : "Find My Style"}
-        </Button>
+        {!showAvatar ? (
+          <Button 
+            type="button" 
+            className="w-full" 
+            onClick={() => setShowAvatar(true)}
+          >
+            Create Your 3D Avatar
+          </Button>
+        ) : (
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? "Analyzing..." : "Find My Style"}
+          </Button>
+        )}
         
         <p className="text-xs text-center text-muted-foreground">
           Your measurements are only used to determine your body shape and are never stored.
@@ -170,35 +182,47 @@ const MeasurementForm = ({
       <div className="flex-1 max-w-none lg:max-w-lg">
         <div className="mb-4">
           <h3 className="text-lg font-semibold text-brand-600 mb-2">
+            {showAvatar ? "Your 3D Avatar" : "Preview"}
         </h3>
           <p className="text-sm text-muted-foreground">
+            {showAvatar ? "Based on your measurements" : "Adjust measurements to see changes"}
         </p>
         </div>
-        <div className="flex gap-4">
-          <div className="h-64 lg:h-96 flex-1">
-            <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
+        {showAvatar ? (
+          <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
+            <img 
+              src={avatarModel3D} 
+              alt="3D Avatar Model" 
+              className="max-h-[500px] w-auto object-contain"
+            />
           </div>
-          
-          {/* Measurement Legend - Right Side */}
-          <div className="flex flex-col justify-center space-y-3 text-xs min-w-[140px]">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-0.5 bg-red-400 rounded"></div>
-              <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
+        ) : (
+          <div className="flex gap-4">
+            <div className="h-64 lg:h-96 flex-1">
+              <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-0.5 bg-teal-400 rounded"></div>
-              <span>Bust: {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-0.5 bg-blue-400 rounded"></div>
-              <span>Waist: {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-0.5 bg-green-400 rounded"></div>
-              <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
+            
+            {/* Measurement Legend - Right Side */}
+            <div className="flex flex-col justify-center space-y-3 text-xs min-w-[140px]">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-0.5 bg-red-400 rounded"></div>
+                <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-0.5 bg-teal-400 rounded"></div>
+                <span>Bust: {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-0.5 bg-blue-400 rounded"></div>
+                <span>Waist: {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-0.5 bg-green-400 rounded"></div>
+                <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>;
 };
