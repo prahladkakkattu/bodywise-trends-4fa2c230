@@ -250,11 +250,6 @@ const MeasurementForm = ({
         )}
       </form>
       
-      {/* Privacy Text */}
-      <p className="text-xs text-center text-muted-foreground mt-4">
-        Your measurements are only used to determine your body shape and are never stored.
-      </p>
-      
       {/* Measurement Guide */}
       <Dialog>
         <DialogTrigger asChild>
@@ -331,6 +326,11 @@ const MeasurementForm = ({
           </div>
         </DialogContent>
       </Dialog>
+      
+      {/* Privacy Text */}
+      <p className="text-xs text-center text-muted-foreground mt-6">
+        Your measurements are only used to determine your body shape and are never stored.
+      </p>
         </Card>
 
       {/* 3D Avatar Visualization */}
