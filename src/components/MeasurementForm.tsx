@@ -106,7 +106,7 @@ const MeasurementForm = ({
   };
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
-      {!showAvatar && <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
+      <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
           <div className="flex items-center gap-2 mb-6">
             <Ruler className="h-5 w-5 text-brand-300" />
             <h2 className="text-2xl font-semibold">
@@ -133,7 +133,7 @@ const MeasurementForm = ({
                   {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}
                 </span>
               </div>
-              <Slider id="bust" value={[getDisplayValue(measurements.bust, "bust")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("bust", getStoredValue(value[0], "bust"))} className="py-4" />
+              <Slider id="bust" value={[getDisplayValue(measurements.bust, "bust")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("bust", getStoredValue(value[0], "bust"))} disabled={showAvatar} className="py-4" />
             </div>
             
             <div className="space-y-2">
@@ -145,7 +145,7 @@ const MeasurementForm = ({
                   {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}
                 </span>
               </div>
-              <Slider id="waist" value={[getDisplayValue(measurements.waist, "waist")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("waist", getStoredValue(value[0], "waist"))} className="py-4" />
+              <Slider id="waist" value={[getDisplayValue(measurements.waist, "waist")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("waist", getStoredValue(value[0], "waist"))} disabled={showAvatar} className="py-4" />
             </div>
             
             <div className="space-y-2">
@@ -157,7 +157,7 @@ const MeasurementForm = ({
                   {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}
                 </span>
               </div>
-              <Slider id="hips" value={[getDisplayValue(measurements.hips, "hips")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("hips", getStoredValue(value[0], "hips"))} className="py-4" />
+              <Slider id="hips" value={[getDisplayValue(measurements.hips, "hips")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("hips", getStoredValue(value[0], "hips"))} disabled={showAvatar} className="py-4" />
             </div>
             
             <div className="space-y-2">
@@ -169,7 +169,7 @@ const MeasurementForm = ({
                   {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}
                 </span>
               </div>
-              <Slider id="shoulders" value={[getDisplayValue(measurements.shoulders, "shoulders")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("shoulders", getStoredValue(value[0], "shoulders"))} className="py-4" />
+              <Slider id="shoulders" value={[getDisplayValue(measurements.shoulders, "shoulders")]} min={unit === "inches" ? 20 : 51} max={unit === "inches" ? 60 : 152} step={0.5} onValueChange={value => handleChange("shoulders", getStoredValue(value[0], "shoulders"))} disabled={showAvatar} className="py-4" />
             </div>
             
           </div>
@@ -184,7 +184,7 @@ const MeasurementForm = ({
                   {getDisplayValue(measurements.weight, "weight")}{unit === "inches" ? 'lbs' : 'kg'}
                 </span>
               </div>
-              <Slider id="weight" value={[getDisplayValue(measurements.weight, "weight")]} min={unit === "inches" ? 80 : 36} max={unit === "inches" ? 300 : 136} step={1} onValueChange={value => handleChange("weight", getStoredValue(value[0], "weight"))} className="py-2" />
+              <Slider id="weight" value={[getDisplayValue(measurements.weight, "weight")]} min={unit === "inches" ? 80 : 36} max={unit === "inches" ? 300 : 136} step={1} onValueChange={value => handleChange("weight", getStoredValue(value[0], "weight"))} disabled={showAvatar} className="py-2" />
             </div>
             
             <div className="space-y-2">
@@ -196,32 +196,46 @@ const MeasurementForm = ({
                   {unit === "inches" ? `${measurements.height}"` : `${inchesToCm(measurements.height)}cm`}
                 </span>
               </div>
-              <Slider id="height" value={[unit === "inches" ? measurements.height : inchesToCm(measurements.height)]} min={unit === "inches" ? 48 : 122} max={unit === "inches" ? 78 : 198} step={1} onValueChange={value => handleChange("height", unit === "inches" ? value[0] : cmToInches(value[0]))} className="py-2" />
+              <Slider id="height" value={[unit === "inches" ? measurements.height : inchesToCm(measurements.height)]} min={unit === "inches" ? 48 : 122} max={unit === "inches" ? 78 : 198} step={1} onValueChange={value => handleChange("height", unit === "inches" ? value[0] : cmToInches(value[0]))} disabled={showAvatar} className="py-2" />
             </div>
           </div>
         </div>
         
-        <Button type="button" className="w-full" onClick={() => setShowAvatar(true)}>
+        {!showAvatar && <Button type="button" className="w-full" onClick={() => setShowAvatar(true)}>
           Create Your 3D Avatar
-        </Button>
+        </Button>}
         
         <p className="text-xs text-center text-muted-foreground">
           Your measurements are only used to determine your body shape and are never stored.
         </p>
       </form>
-        </Card>}
+        </Card>
 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
-        {!showAvatar && <div className="mb-4">
-            <h3 className="text-lg font-semibold text-brand-600 mb-2">
-        </h3>
-            <p className="text-sm text-muted-foreground">
-        </p>
-          </div>}
         {showAvatar ? <div className="space-y-4 w-full">
             <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
               <img src={avatarModel3D} alt="3D Avatar Model" className="max-h-[500px] w-auto object-contain" />
+            </div>
+            
+            {/* Measurement Legend */}
+            <div className="flex flex-wrap justify-center gap-4 text-xs">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-0.5 bg-red-400 rounded"></div>
+                <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-0.5 bg-teal-400 rounded"></div>
+                <span>Bust: {getDisplayValue(measurements.bust, "bust")}{unit === "inches" ? '"' : 'cm'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-0.5 bg-blue-400 rounded"></div>
+                <span>Waist: {getDisplayValue(measurements.waist, "waist")}{unit === "inches" ? '"' : 'cm'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-0.5 bg-green-400 rounded"></div>
+                <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
+              </div>
             </div>
             
             {/* Body Type Description */}
@@ -236,6 +250,39 @@ const MeasurementForm = ({
                   {getBodyTypeDescription(currentBodyType)}
                 </p>
               </Card>}
+            
+            {/* Feedback Section */}
+            <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
+              <div className="text-center space-y-3">
+                <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
+                <div className="flex gap-2 justify-center">
+                  <Button onClick={() => handleAvatarFeedback(true)} variant="outline" size="sm" className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    Yes, looks right
+                  </Button>
+                  <Button onClick={() => handleAvatarFeedback(false)} variant="outline" size="sm" className="flex items-center gap-2">
+                    <XCircle className="h-4 w-4 text-orange-600" />
+                    Not quite right
+                  </Button>
+                </div>
+              </div>
+            </Card>
+
+            {/* Alternative Avatar Selection */}
+            {showAlternatives && <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
+              <div className="space-y-3">
+                <p className="text-sm font-medium text-center text-foreground">Choose a body shape that better represents you:</p>
+                <div className="grid grid-cols-3 gap-2">
+                  {avatarOptions.map((avatar, index) => <button key={index} onClick={() => selectAvatar(avatar.src)} className={`flex flex-col items-center gap-1 p-2 rounded-lg border transition-colors ${selectedAvatar === avatar.src ? 'border-primary bg-primary/10 ring-2 ring-primary/20' : 'border-border hover:border-primary hover:bg-primary/5'}`}>
+                    <img src={avatar.src} alt={avatar.label} className="w-12 h-16 object-contain" />
+                    <span className="text-xs text-muted-foreground">{avatar.label}</span>
+                  </button>)}
+                </div>
+                <Button onClick={handleCancel} variant="ghost" size="sm" className="w-full mt-2">
+                  Cancel
+                </Button>
+              </div>
+            </Card>}
             
             <div className="flex gap-3">
               <Button variant="outline" onClick={() => setShowAvatar(false)} className="flex-1">
@@ -269,39 +316,6 @@ const MeasurementForm = ({
                 <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
               </div>
             </div>
-
-            {/* Feedback Section */}
-            <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
-              <div className="text-center space-y-3">
-                <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
-                <div className="flex gap-2 justify-center">
-                  <Button onClick={() => handleAvatarFeedback(true)} variant="outline" size="sm" className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
-                    Yes, looks right
-                  </Button>
-                  <Button onClick={() => handleAvatarFeedback(false)} variant="outline" size="sm" className="flex items-center gap-2">
-                    <XCircle className="h-4 w-4 text-orange-600" />
-                    Not quite right
-                  </Button>
-                </div>
-              </div>
-            </Card>
-
-            {/* Alternative Avatar Selection */}
-            {showAlternatives && <Card className="w-full p-4 bg-white/80 backdrop-blur-sm">
-              <div className="space-y-3">
-                <p className="text-sm font-medium text-center text-foreground">Choose a body shape that better represents you:</p>
-                <div className="grid grid-cols-3 gap-2">
-                  {avatarOptions.map((avatar, index) => <button key={index} onClick={() => selectAvatar(avatar.src)} className={`flex flex-col items-center gap-1 p-2 rounded-lg border transition-colors ${selectedAvatar === avatar.src ? 'border-primary bg-primary/10 ring-2 ring-primary/20' : 'border-border hover:border-primary hover:bg-primary/5'}`}>
-                    <img src={avatar.src} alt={avatar.label} className="w-12 h-16 object-contain" />
-                    <span className="text-xs text-muted-foreground">{avatar.label}</span>
-                  </button>)}
-                </div>
-                <Button onClick={handleCancel} variant="ghost" size="sm" className="w-full mt-2">
-                  Cancel
-                </Button>
-              </div>
-            </Card>}
           </div>}
       </div>
     </div>;
