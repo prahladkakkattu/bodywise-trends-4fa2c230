@@ -211,13 +211,13 @@ const MeasurementForm = ({
                 {isLoading ? "Analyzing..." : "Find My Style"}
               </Button>
             </div>
-          </div> : <div className="flex gap-4">
-            <div className="h-64 lg:h-96 flex-1">
+          </div> : <div className="space-y-4">
+            <div className="h-64 lg:h-96 w-full">
               <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
             </div>
             
-            {/* Measurement Legend - Right Side */}
-            <div className="flex flex-col justify-center space-y-3 text-xs min-w-[140px]">
+            {/* Measurement Legend - Below Avatar */}
+            <div className="flex flex-wrap justify-center gap-4 text-xs">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-0.5 bg-red-400 rounded"></div>
                 <span>Shoulders: {getDisplayValue(measurements.shoulders, "shoulders")}{unit === "inches" ? '"' : 'cm'}</span>
