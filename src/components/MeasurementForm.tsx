@@ -248,10 +248,6 @@ const MeasurementForm = ({
             </Button>
           </div>
         )}
-        
-        <p className="text-xs text-center text-muted-foreground">
-          Your measurements are only used to determine your body shape and are never stored.
-        </p>
       </form>
       
       {/* Measurement Guide Button */}
@@ -327,6 +323,12 @@ const MeasurementForm = ({
                 <Ruler className="text-brand-300 h-5 w-5 mt-0.5 shrink-0" />
                 <p className="text-sm font-medium">Tip: For even better results, take photos of yourself from the front and side to help determine your overall body shape.</p>
               </div>
+            </div>
+            
+            <div className="pt-4 border-t">
+              <p className="text-xs text-center text-muted-foreground">
+                Your measurements are only used to determine your body shape and are never stored.
+              </p>
             </div>
           </div>
         </DialogContent>
