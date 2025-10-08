@@ -158,17 +158,13 @@ const MeasurementForm = ({
           </div>
         </div>
         
-        {!showAvatar ? (
+        {!showAvatar && (
           <Button 
             type="button" 
             className="w-full" 
             onClick={() => setShowAvatar(true)}
           >
             Create Your 3D Avatar
-          </Button>
-        ) : (
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Analyzing..." : "Find My Style"}
           </Button>
         )}
         
@@ -189,12 +185,21 @@ const MeasurementForm = ({
         </p>
         </div>
         {showAvatar ? (
-          <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
-            <img 
-              src={avatarModel3D} 
-              alt="3D Avatar Model" 
-              className="max-h-[500px] w-auto object-contain"
-            />
+          <div className="space-y-4">
+            <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
+              <img 
+                src={avatarModel3D} 
+                alt="3D Avatar Model" 
+                className="max-h-[500px] w-auto object-contain"
+              />
+            </div>
+            <Button 
+              onClick={handleSubmit} 
+              className="w-full" 
+              disabled={isLoading}
+            >
+              {isLoading ? "Analyzing..." : "Find My Style"}
+            </Button>
           </div>
         ) : (
           <div className="flex gap-4">
