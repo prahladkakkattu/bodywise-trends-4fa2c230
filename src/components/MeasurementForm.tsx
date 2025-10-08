@@ -22,6 +22,7 @@ const MeasurementForm = ({
   const [unit, setUnit] = useState<"inches" | "cm">("inches");
   const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
   const [showAvatar, setShowAvatar] = useState(false);
+  const [isCreatingAvatar, setIsCreatingAvatar] = useState(false);
   const [currentBodyType, setCurrentBodyType] = useState<BodyType | null>(null);
   const [selectedAvatar, setSelectedAvatar] = useState("/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png");
   const [showAlternatives, setShowAlternatives] = useState(false);
@@ -103,6 +104,14 @@ const MeasurementForm = ({
 
   const handleCancel = () => {
     setShowAlternatives(false);
+  };
+
+  const handleCreateAvatar = () => {
+    setIsCreatingAvatar(true);
+    setTimeout(() => {
+      setIsCreatingAvatar(false);
+      setShowAvatar(true);
+    }, 3000);
   };
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
@@ -202,8 +211,8 @@ const MeasurementForm = ({
         </div>
         
         {!showAvatar ? (
-          <Button type="button" className="w-full" onClick={() => setShowAvatar(true)}>
-            Create Your 3D Avatar
+          <Button type="button" className="w-full" onClick={handleCreateAvatar} disabled={isCreatingAvatar}>
+            {isCreatingAvatar ? "Creating..." : "Create Your 3D Avatar"}
           </Button>
         ) : (
           <div className="flex gap-3">
@@ -224,7 +233,36 @@ const MeasurementForm = ({
 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
-        {showAvatar ? <div className="space-y-4 w-full">
+        {isCreatingAvatar ? (
+          <div className="h-full flex flex-col items-center justify-center space-y-6 p-8">
+            <div className="relative w-32 h-32">
+              {/* Outer spinning ring */}
+              <div className="absolute inset-0 border-4 border-brand-200/30 rounded-full animate-[spin_3s_linear_infinite]"></div>
+              {/* Middle spinning ring */}
+              <div className="absolute inset-2 border-4 border-brand-300/50 rounded-full animate-[spin_2s_linear_infinite_reverse]"></div>
+              {/* Inner spinning ring */}
+              <div className="absolute inset-4 border-4 border-brand-400 rounded-full animate-[spin_1.5s_linear_infinite]"></div>
+              {/* Center pulsing dot */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-8 h-8 bg-brand-500 rounded-full animate-pulse"></div>
+              </div>
+            </div>
+            
+            <div className="text-center space-y-2 animate-fade-in">
+              <h3 className="text-xl font-semibold text-brand-600">Creating Your Avatar</h3>
+              <p className="text-sm text-muted-foreground max-w-xs">
+                Analyzing your measurements and stitching together your personalized 3D model...
+              </p>
+            </div>
+            
+            {/* Progress indicators */}
+            <div className="flex gap-2">
+              <div className="w-2 h-2 bg-brand-400 rounded-full animate-[bounce_1s_ease-in-out_infinite]"></div>
+              <div className="w-2 h-2 bg-brand-400 rounded-full animate-[bounce_1s_ease-in-out_0.2s_infinite]"></div>
+              <div className="w-2 h-2 bg-brand-400 rounded-full animate-[bounce_1s_ease-in-out_0.4s_infinite]"></div>
+            </div>
+          </div>
+        ) : showAvatar ? <div className="space-y-4 w-full">
             <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
               <img src={avatarModel3D} alt="3D Avatar Model" className="max-h-[500px] w-auto object-contain" />
             </div>
