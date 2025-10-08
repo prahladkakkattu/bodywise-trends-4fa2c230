@@ -134,7 +134,7 @@ const MeasurementForm = ({
       setTimeout(() => setShowAvatarImage(true), 100);
       setTimeout(() => setShowMeasurementLegend(true), 500);
       setTimeout(() => setShowBodyTypeInfo(true), 900);
-      setTimeout(() => setShowFeedback(true), 1300);
+      setTimeout(() => setShowFeedback(true), 3900);
     }, 3000);
   };
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
