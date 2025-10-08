@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { BodyMeasurement, BodyType } from "@/types";
-import { determineBodyType } from "@/utils/bodyTypeUtils";
+import { determineBodyType, getBodyTypeDescription } from "@/utils/bodyTypeUtils";
 import { Ruler } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
@@ -22,6 +22,7 @@ const MeasurementForm = ({
   const [unit, setUnit] = useState<"inches" | "cm">("inches");
   const [activeMeasurement, setActiveMeasurement] = useState<keyof BodyMeasurement | null>(null);
   const [showAvatar, setShowAvatar] = useState(false);
+  const [currentBodyType, setCurrentBodyType] = useState<BodyType | null>(null);
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
     bust: 36,
     waist: 28,
@@ -30,6 +31,14 @@ const MeasurementForm = ({
     height: 65,
     weight: 140
   });
+
+  // Calculate body type when avatar is shown
+  useEffect(() => {
+    if (showAvatar) {
+      const bodyType = determineBodyType(measurements);
+      setCurrentBodyType(bodyType);
+    }
+  }, [showAvatar, measurements]);
 
   // Conversion functions
   const inchesToCm = (inches: number) => Math.round(inches * 2.54);
@@ -193,6 +202,22 @@ const MeasurementForm = ({
                 className="max-h-[500px] w-auto object-contain"
               />
             </div>
+            
+            {/* Body Type Description */}
+            {currentBodyType && currentBodyType !== "unknown" && (
+              <Card className="p-4 bg-brand-100/50">
+                <h3 className="text-lg font-semibold mb-2">
+                  <span className="text-brand-600">Your Body Shape:</span>{" "}
+                  <span className="text-brand-300 font-bold">
+                    {currentBodyType.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+                  </span>
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {getBodyTypeDescription(currentBodyType)}
+                </p>
+              </Card>
+            )}
+            
             <div className="flex gap-3">
               <Button 
                 variant="outline"
