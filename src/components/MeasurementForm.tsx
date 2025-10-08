@@ -72,8 +72,7 @@ const MeasurementForm = ({
   };
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
-      {!showAvatar && (
-        <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
+      {!showAvatar && <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
           <div className="flex items-center gap-2 mb-6">
             <Ruler className="h-5 w-5 text-brand-300" />
             <h2 className="text-2xl font-semibold">
@@ -168,11 +167,7 @@ const MeasurementForm = ({
           </div>
         </div>
         
-        <Button 
-          type="button" 
-          className="w-full" 
-          onClick={() => setShowAvatar(true)}
-        >
+        <Button type="button" className="w-full" onClick={() => setShowAvatar(true)}>
           Create Your 3D Avatar
         </Button>
         
@@ -180,34 +175,23 @@ const MeasurementForm = ({
           Your measurements are only used to determine your body shape and are never stored.
         </p>
       </form>
-        </Card>
-      )}
+        </Card>}
 
       {/* 3D Avatar Visualization */}
       <div className="flex-1 max-w-none lg:max-w-lg">
-        {!showAvatar && (
-          <div className="mb-4">
+        {!showAvatar && <div className="mb-4">
             <h3 className="text-lg font-semibold text-brand-600 mb-2">
-              Preview
-            </h3>
+        </h3>
             <p className="text-sm text-muted-foreground">
-              Adjust measurements to see changes
-            </p>
-          </div>
-        )}
-        {showAvatar ? (
-          <div className="space-y-4 w-full">
+        </p>
+          </div>}
+        {showAvatar ? <div className="space-y-4 w-full">
             <div className="flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6">
-              <img 
-                src={avatarModel3D} 
-                alt="3D Avatar Model" 
-                className="max-h-[500px] w-auto object-contain"
-              />
+              <img src={avatarModel3D} alt="3D Avatar Model" className="max-h-[500px] w-auto object-contain" />
             </div>
             
             {/* Body Type Description */}
-            {currentBodyType && currentBodyType !== "unknown" && (
-              <Card className="p-4 bg-brand-100/50">
+            {currentBodyType && currentBodyType !== "unknown" && <Card className="p-4 bg-brand-100/50">
                 <h3 className="text-lg font-semibold mb-2">
                   <span className="text-brand-600">Your Body Shape:</span>{" "}
                   <span className="text-brand-300 font-bold">
@@ -217,28 +201,17 @@ const MeasurementForm = ({
                 <p className="text-sm text-muted-foreground">
                   {getBodyTypeDescription(currentBodyType)}
                 </p>
-              </Card>
-            )}
+              </Card>}
             
             <div className="flex gap-3">
-              <Button 
-                variant="outline"
-                onClick={() => setShowAvatar(false)} 
-                className="flex-1"
-              >
+              <Button variant="outline" onClick={() => setShowAvatar(false)} className="flex-1">
                 Reset Measurements
               </Button>
-              <Button 
-                onClick={handleSubmit} 
-                className="flex-1" 
-                disabled={isLoading}
-              >
+              <Button onClick={handleSubmit} className="flex-1" disabled={isLoading}>
                 {isLoading ? "Analyzing..." : "Find My Style"}
               </Button>
             </div>
-          </div>
-        ) : (
-          <div className="flex gap-4">
+          </div> : <div className="flex gap-4">
             <div className="h-64 lg:h-96 flex-1">
               <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} />
             </div>
@@ -262,8 +235,7 @@ const MeasurementForm = ({
                 <span>Hips: {getDisplayValue(measurements.hips, "hips")}{unit === "inches" ? '"' : 'cm'}</span>
               </div>
             </div>
-          </div>
-        )}
+          </div>}
       </div>
     </div>;
 };
