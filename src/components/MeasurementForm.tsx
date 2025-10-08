@@ -415,23 +415,41 @@ const MeasurementForm = ({
             
             {/* Body Type Description - Third to appear */}
             {showBodyTypeInfo && currentBodyType && currentBodyType !== "unknown" && (
-              <Card className="p-4 bg-brand-100/50 animate-fade-in">
-                <h3 className="text-lg font-semibold mb-2">
-                  <span className="text-brand-600">Your Body Shape:</span>{" "}
-                  <span className="text-brand-300 font-bold">
-                    {currentBodyType.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
-                  </span>
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {getBodyTypeDescription(currentBodyType)}
-                </p>
+              <Card className="p-4 bg-brand-100/50 animate-fade-in animate-scale-in relative overflow-hidden">
+                {/* Animated glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-300/10 to-brand-500/5 animate-fade-in"></div>
+                
+                {/* Animated corner accents */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-brand-400/40 animate-fade-in"></div>
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-brand-400/40 animate-fade-in"></div>
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="text-lg font-semibold mb-2">
+                    <span className="text-brand-600">Your Body Shape:</span>{" "}
+                    <span className="text-brand-300 font-bold">
+                      {currentBodyType.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+                    </span>
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {getBodyTypeDescription(currentBodyType)}
+                  </p>
+                </div>
               </Card>
             )}
             
             {/* Feedback Section - Fourth to appear */}
             {showFeedback && (
-              <Card className="w-full p-4 bg-white/80 backdrop-blur-sm animate-fade-in">
-                <div className="text-center space-y-3">
+              <Card className="w-full p-4 bg-white/80 backdrop-blur-sm animate-fade-in animate-scale-in relative overflow-hidden">
+                {/* Animated glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-200/10 to-transparent animate-fade-in"></div>
+                
+                {/* Animated corner accents */}
+                <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-brand-400/40 animate-fade-in"></div>
+                <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-brand-400/40 animate-fade-in"></div>
+                
+                {/* Content */}
+                <div className="text-center space-y-3 relative z-10">
                   <p className="text-sm font-medium text-foreground">Does this avatar represent your body shape?</p>
                   <div className="flex gap-2 justify-center">
                     <Button onClick={() => handleAvatarFeedback(true)} variant="outline" size="sm" className="flex items-center gap-2">

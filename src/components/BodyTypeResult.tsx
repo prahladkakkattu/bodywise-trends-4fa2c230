@@ -20,7 +20,7 @@ const BodyTypeResult = ({ bodyType }: BodyTypeResultProps) => {
   
   if (bodyType === "unknown") {
     return (
-      <Card className="w-full p-6 shadow-md bg-muted/50">
+      <Card className="w-full p-6 shadow-md bg-muted/50 animate-fade-in">
         <h2 className="text-xl font-semibold text-center mb-4">We Need More Information</h2>
         <p className="text-center text-muted-foreground mb-4">
           The measurements provided don't clearly indicate a specific body shape. 
@@ -31,7 +31,12 @@ const BodyTypeResult = ({ bodyType }: BodyTypeResultProps) => {
   }
   
   return (
-    <Card className="w-full p-6 shadow-md bg-brand-100/50">
+    <Card className="w-full p-6 shadow-md bg-brand-100/50 animate-fade-in animate-scale-in relative overflow-hidden">
+      {/* Animated glow effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-300/10 to-brand-500/5 animate-fade-in"></div>
+      
+      {/* Content */}
+      <div className="relative z-10">
       <h2 className="text-2xl font-semibold text-center mb-2">
         <span className="text-brand-600">Your Body Shape:</span> <span className="text-brand-300 font-bold">{formattedBodyType}</span>
       </h2>
@@ -50,6 +55,7 @@ const BodyTypeResult = ({ bodyType }: BodyTypeResultProps) => {
             </li>
           ))}
         </ul>
+      </div>
       </div>
     </Card>
   );
