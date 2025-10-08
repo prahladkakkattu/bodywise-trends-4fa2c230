@@ -140,11 +140,18 @@ const MeasurementForm = ({
   return <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl w-full">
       {/* Measurement Form */}
       <Card className="flex-1 max-w-none lg:max-w-md p-4 lg:p-6 shadow-md">
+      {/* Measurement Guide */}
+      <Dialog>
           <div className="flex items-center gap-2 mb-6">
             <Ruler className="h-5 w-5 text-brand-300" />
             <h2 className="text-2xl font-semibold">
               <span className="text-brand-600">Your</span> <span className="text-brand-300">Measurements</span>
             </h2>
+            <DialogTrigger asChild>
+              <button className="ml-1 text-muted-foreground hover:text-brand-500 transition-colors">
+                <HelpCircle className="h-4 w-4" />
+              </button>
+            </DialogTrigger>
           </div>
       
       <Tabs value={unit} onValueChange={value => setUnit(value as "inches" | "cm")} className="mb-4">
@@ -250,13 +257,6 @@ const MeasurementForm = ({
         )}
       </form>
       
-      {/* Measurement Guide */}
-      <Dialog>
-        <DialogTrigger asChild>
-          <button className="w-full text-center text-sm text-brand-500 hover:text-brand-600 underline underline-offset-2 transition-colors">
-            How to Take Measurements
-          </button>
-        </DialogTrigger>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
