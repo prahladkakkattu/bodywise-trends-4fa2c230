@@ -1,31 +1,87 @@
+import { useRef, useEffect, useState } from "react";
+import { Canvas, useLoader } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
+import * as THREE from "three";
 import { BodyMeasurement } from "@/types";
+
 interface RotatableAvatar3DProps {
   measurements?: BodyMeasurement;
   activeMeasurement?: keyof BodyMeasurement | null;
   selectedAvatar?: string;
 }
+
+const AvatarModel = ({ activeMeasurement }: { activeMeasurement?: keyof BodyMeasurement | null }) => {
+  const obj = useLoader(OBJLoader, "/models/FinalBaseMesh.obj");
+  const meshRef = useRef<THREE.Group>(null);
+
+  useEffect(() => {
+    if (obj) {
+      obj.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          child.material = new THREE.MeshPhongMaterial({
+            color: 0xA0856B,
+            flatShading: false,
+          });
+        }
+      });
+      
+      // Center and scale the model
+      const box = new THREE.Box3().setFromObject(obj);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      
+      obj.position.x = -center.x;
+      obj.position.y = -center.y;
+      obj.position.z = -center.z;
+      
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 2 / maxDim;
+      obj.scale.setScalar(scale);
+    }
+  }, [obj]);
+
+  return <primitive ref={meshRef} object={obj} />;
+};
+
 const RotatableAvatar3D = ({
   measurements,
   activeMeasurement,
-  selectedAvatar = "/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png"
+  selectedAvatar
 }: RotatableAvatar3DProps) => {
-  return <div className="w-full h-full min-h-[300px] flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner relative">
-      <img src={selectedAvatar} alt="Body shape silhouette - front view" className="h-full max-h-60 lg:max-h-80 w-auto object-contain transition-all duration-300 relative z-10" />
-    
-      {/* Highlighting overlays */}
-      {activeMeasurement && <div className="absolute inset-0 pointer-events-none">
-        {/* Shoulders highlight */}
-        {activeMeasurement === "shoulders" && <div className="absolute top-[18%] left-1/2 transform -translate-x-1/2 w-36 h-6 bg-red-400/30 border-2 border-red-400 rounded-full animate-pulse" />}
-        
-        {/* Bust highlight */}
-        {activeMeasurement === "bust" && <div className="absolute top-[32%] left-1/2 transform -translate-x-1/2 w-24 h-10 bg-teal-400/30 border-2 border-teal-400 rounded-full animate-pulse" />}
-        
-        {/* Waist highlight */}
-        {activeMeasurement === "waist" && <div className="absolute top-[55%] left-1/2 transform -translate-x-1/2 w-16 h-6 bg-blue-400/30 border-2 border-blue-400 rounded-full animate-pulse" />}
-        
-        {/* Hips highlight */}
-        {activeMeasurement === "hips" && <div className="absolute top-[72%] left-1/2 transform -translate-x-1/2 w-28 h-10 bg-green-400/30 border-2 border-green-400 rounded-full animate-pulse" />}
-      </div>}
-    </div>;
+  const [error, setError] = useState(false);
+
+  return (
+    <div className="w-full h-full min-h-[300px] bg-gradient-to-b from-slate-50 to-slate-100 rounded-lg shadow-inner relative">
+      {!error ? (
+        <>
+          <Canvas camera={{ position: [0, 0, 3], fov: 50 }}>
+            <ambientLight intensity={0.6} />
+            <directionalLight position={[2, 2, 1]} intensity={0.8} />
+            <pointLight position={[-2, 1, 1]} intensity={0.4} />
+            
+            <AvatarModel activeMeasurement={activeMeasurement} />
+            
+            <OrbitControls 
+              enablePan={false}
+              enableZoom={true}
+              maxDistance={5}
+              minDistance={1.5}
+              autoRotate={false}
+            />
+          </Canvas>
+          
+          <div className="absolute bottom-4 left-4 text-xs text-muted-foreground bg-white/80 px-2 py-1 rounded">
+            Drag to rotate • Scroll to zoom
+          </div>
+        </>
+      ) : (
+        <div className="flex items-center justify-center h-full text-muted-foreground">
+          Failed to load 3D model
+        </div>
+      )}
+    </div>
+  );
 };
+
 export default RotatableAvatar3D;
