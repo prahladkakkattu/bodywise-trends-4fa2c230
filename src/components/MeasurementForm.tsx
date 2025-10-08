@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import bodyAvatarImage from "@/assets/body-measurement-avatar.png";
 import avatarModel3D from "@/assets/3d-avatar-model.png";
 import RotatableAvatar3D from "./RotatableAvatar3D";
+import QuickMeasurementGuide from "./QuickMeasurementGuide";
 interface MeasurementFormProps {
   onBodyTypeChange: (bodyType: BodyType, measurements: BodyMeasurement) => void;
   isLoading: boolean;
@@ -245,6 +246,11 @@ const MeasurementForm = ({
           Your measurements are only used to determine your body shape and are never stored.
         </p>
       </form>
+      
+      {/* Measurement Guide */}
+      <div className="mt-6">
+        <QuickMeasurementGuide />
+      </div>
         </Card>
 
       {/* 3D Avatar Visualization */}
