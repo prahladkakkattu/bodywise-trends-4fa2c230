@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { BodyType } from "@/types";
+import { BustAdjustmentControls } from "./BustAdjustmentControls";
+import { AdjustableSilhouette } from "./AdjustableSilhouette";
 interface GuidedBodyShapeFlowProps {
   onComplete: (bodyType: BodyType, predictions: string[]) => void;
   onBack: () => void;
@@ -86,6 +88,8 @@ const GuidedBodyShapeFlow = ({
     primary: BodyType;
     subVariations: string[];
   } | null>(null);
+  const [bustSize, setBustSize] = useState(36);
+  const [underbustSize, setUnderbustSize] = useState(32);
   const progress = currentStep === "results" ? 100 : currentStep / 4 * 100;
   const handleNext = () => {
     if (currentStep === 4) {
@@ -126,10 +130,37 @@ const GuidedBodyShapeFlow = ({
   };
   const braSizes = ["30A", "30B", "30C", "30D", "30DD", "32A", "32B", "32C", "32D", "32DD", "34A", "34B", "34C", "34D", "34DD", "36A", "36B", "36C", "36D", "36DD", "38A", "38B", "38C", "38D", "38DD", "40A", "40B", "40C", "40D", "40DD"];
   if (currentStep === "results" && predictions) {
-    return <Card className="max-w-2xl mx-auto p-8">
+    return <Card className="max-w-6xl mx-auto p-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-fashion-teal mb-4">Your Predicted Body Shapes</h2>
-          <p className="text-fashion-teal/80">Based on your answers, here are the two shapes that match you best:</p>
+          <p className="text-fashion-teal/80">Adjust the measurements to see how the avatar changes, then select which feels most like you</p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8 mb-8">
+          {/* Adjustment Controls */}
+          <div className="lg:col-span-1">
+            <BustAdjustmentControls
+              bustSize={bustSize}
+              underbustSize={underbustSize}
+              onBustChange={(bust, waist) => {
+                setBustSize(bust);
+                setUnderbustSize(waist);
+              }}
+            />
+          </div>
+          
+          {/* Adjustable Avatar */}
+          <div className="lg:col-span-2">
+            <Card className="p-6 bg-card/50 h-full">
+              <div className="max-w-sm mx-auto h-full flex items-center justify-center">
+                <AdjustableSilhouette
+                  bustSize={bustSize}
+                  underbustSize={underbustSize}
+                  className="w-full max-h-96"
+                />
+              </div>
+            </Card>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
