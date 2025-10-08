@@ -201,9 +201,20 @@ const MeasurementForm = ({
           </div>
         </div>
         
-        {!showAvatar && <Button type="button" className="w-full" onClick={() => setShowAvatar(true)}>
-          Create Your 3D Avatar
-        </Button>}
+        {!showAvatar ? (
+          <Button type="button" className="w-full" onClick={() => setShowAvatar(true)}>
+            Create Your 3D Avatar
+          </Button>
+        ) : (
+          <div className="flex gap-3">
+            <Button variant="outline" onClick={() => setShowAvatar(false)} className="flex-1">
+              Reset Measurements
+            </Button>
+            <Button onClick={handleSubmit} className="flex-1" disabled={isLoading}>
+              {isLoading ? "Analyzing..." : "Find My Style"}
+            </Button>
+          </div>
+        )}
         
         <p className="text-xs text-center text-muted-foreground">
           Your measurements are only used to determine your body shape and are never stored.
@@ -283,15 +294,6 @@ const MeasurementForm = ({
                 </Button>
               </div>
             </Card>}
-            
-            <div className="flex gap-3">
-              <Button variant="outline" onClick={() => setShowAvatar(false)} className="flex-1">
-                Reset Measurements
-              </Button>
-              <Button onClick={handleSubmit} className="flex-1" disabled={isLoading}>
-                {isLoading ? "Analyzing..." : "Find My Style"}
-              </Button>
-            </div>
           </div> : <div className="space-y-4">
             <div className="h-64 lg:h-96 w-full">
               <RotatableAvatar3D measurements={measurements} activeMeasurement={activeMeasurement} selectedAvatar={selectedAvatar} />
