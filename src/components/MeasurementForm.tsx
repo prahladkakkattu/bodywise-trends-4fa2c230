@@ -36,7 +36,7 @@ const MeasurementForm = ({
   const [showBodyTypeInfo, setShowBodyTypeInfo] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [currentBodyType, setCurrentBodyType] = useState<BodyType | null>(null);
-  const [selectedAvatar, setSelectedAvatar] = useState("/lovable-uploads/b00b9e96-74df-451c-9fb0-378ee5245709.png");
+  const [selectedAvatar, setSelectedAvatar] = useState("/lovable-uploads/avatar-white-dress.png");
   const [showAlternatives, setShowAlternatives] = useState(false);
   const [measurements, setMeasurements] = useState<BodyMeasurement>({
     bust: 36,
@@ -365,7 +365,7 @@ const MeasurementForm = ({
             </div>
           </div>
         ) : showAvatar ? <div className="space-y-4 w-full min-h-[600px]">
-            {/* 3D Avatar - First to appear */}
+            {/* Model with Measurement Guide - First to appear */}
             <div className={`relative flex justify-center items-center bg-gradient-to-b from-muted/20 to-background rounded-lg p-6 overflow-hidden transition-all duration-500 ${showAvatarImage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               {/* Animated glow effect */}
               <div className={`absolute inset-0 bg-gradient-to-br from-brand-200/10 via-brand-100/5 to-transparent transition-opacity duration-1000 ${showAvatarImage ? 'opacity-100' : 'opacity-0'}`}></div>
@@ -376,19 +376,26 @@ const MeasurementForm = ({
               <div className={`absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-brand-400/30 transition-all duration-700 ${showAvatarImage ? 'opacity-100' : 'opacity-0 -translate-x-4 translate-y-4'}`}></div>
               <div className={`absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-brand-400/30 transition-all duration-700 ${showAvatarImage ? 'opacity-100' : 'opacity-0 translate-x-4 translate-y-4'}`}></div>
               
-              {/* Avatar with zoom animation */}
-              <img 
-                src={avatarModel3D} 
-                alt="3D Avatar Model" 
-                className={`max-h-[500px] w-auto object-contain relative z-10 transition-all duration-1000 ${
-                  showAvatarImage 
-                    ? 'scale-100 opacity-100' 
-                    : 'scale-75 opacity-0'
-                }`}
-                style={{
-                  filter: showAvatarImage ? 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))' : 'none'
-                }}
-              />
+              {/* Model with measurement highlights */}
+              <div className={`w-full max-w-md transition-all duration-1000 ${
+                showAvatarImage 
+                  ? 'scale-100 opacity-100' 
+                  : 'scale-75 opacity-0'
+              }`}>
+                <RotatableAvatar3D 
+                  measurements={measurements}
+                  selectedAvatar={selectedAvatar}
+                />
+              </div>
+              
+              {/* Measurement instruction overlay */}
+              {showAvatarImage && (
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg animate-fade-in">
+                  <p className="text-xs text-center text-gray-700 font-medium">
+                    Visual guide showing where to measure each body part
+                  </p>
+                </div>
+              )}
             </div>
             
             {/* Measurement Legend - Second to appear */}
